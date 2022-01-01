@@ -55,7 +55,6 @@ Dans cette partie, nous allons nous intéresser au langage __SQL__ dans sa parti
 <br>
 Pour la suite de ce chapitre, nous prendrons en exemple la petite base de données suivante constituée de 4 relations :
 <center>
-<div class="padding1">
 
 | NomStation        | Capacite      | Lieu 		| Region        |Tarif	       |
 | :---------------: | :-----------: | :---: 	| :-----------: |:-----------: |
@@ -66,7 +65,6 @@ Pour la suite de ce chapitre, nous prendrons en exemple la petite base de donné
 
 __Relation « Stations »__
 
-</div>
 </center>
 
 <br>
@@ -158,9 +156,10 @@ Le résultat obtenu est le suivant :
 | Courchevel		| Alpes    	|
 
 </center>
-<div class = "couleur_puce4">
 
 !!! tip "__Remarques__"
+	<div class = "couleur_puce4">
+	
 	* Le résultat d'une requête est une relation (table) dont les attributs sont ceux sélectionnés dans la clause __SELECT__.
 	* Pour sélectionner toutes les colonnes, on utilise le caractère « __*__ ». Par exemple :
 		```SQL
@@ -168,7 +167,7 @@ Le résultat obtenu est le suivant :
 		```
 	* Dans la clause __WHERE__, on spécifie une condition booléenne. On utilise alors les mots clés standards de la logique booléenne, c'est-à-dire __AND__, __OR__ et __NOT__. On peut également utiliser les opérateurs de comparaison $<$ , $<=$ (pour $\le$), $>$ , $>=$ (pour $\ge$), $=$ et $<>$ (pour $\ne$).
 
-</div>
+	</div>
 
 #### <div class = "encadré8_SQL">La recherche « floue »</div>
 
