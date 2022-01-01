@@ -66,10 +66,8 @@ Pour la suite de ce chapitre, nous prendrons en exemple la petite base de donné
 __Relation « Stations »__
 
 </center>
-
 <br>
 <center>
-<div class="padding2">
 
 | NomStation        | Libelle	    | Prix 		|
 | :---------------: | :-----------: | :---: 	|
@@ -82,11 +80,9 @@ __Relation « Stations »__
 
 __Relation « Activites »__
 
-</div>
 </center>
 <br>  
 <center>
-<div class="padding3">
 
 | Id    | Nom	   	| Prenom	| Ville       	|Région	       |Solde     |
 | :---: | :------: 	| :---: 	| :-----------: |:-----------: |:------:  |
@@ -96,11 +92,9 @@ __Relation « Activites »__
 
 __Relation « Clients »__
 
-</div>
 </center>
 <br>  
 <center>
-<div class="padding4">
 
 | IdClient 	| Station   	| Arrivee		| NbPlaces  |
 | :-------:	| :-----------: | :----------:  | :-------: |
@@ -115,7 +109,6 @@ __Relation « Clients »__
 
 __Relation « Sejours »__
 
-</div>
 </center>
 <br>
 On peut télécharger cette base de données <a href="Exemple_du_cours.db" >ici</a> et l'ouvrir avec le logiciel __DB Browser for SQLite__ (voir la présentation dans le menu à gauche).
@@ -187,9 +180,8 @@ Le résultat obtenu est le suivant :
 | Bauer      |
 
 </center>
-<div class = "couleur_puce3">
-
 Les modèles de recherche sont multiples :
+<div class = "couleur_puce3">
 
 * `LIKE '%a'` recherche toutes les valeurs de l'attribut qui se terminent par le caractère « a ».
 * `LIKE 'a%'` recherche toutes les valeurs de l'attribut qui commencent par le caractère « a ».
@@ -319,9 +311,10 @@ FROM Clients
 | Britney JONHSON	| New York 	|
 
 </center>
-<div class = "couleur_puce4">
 
 !!! tip "__Remarques__"
+	<div class = "couleur_puce4">
+		
 	* La fonction __CONCAT__ permet de concaténer plusieurs attributs. Cette fonction, standardisée dans le langage __SQL__ n'est pas supportée par le moteur SQLite. Au lieu de celà, il utilise l'opérateur de concaténation `||`	pour fusionner deux chaînes de caractères en une seule. Ce qui donne dans notre exemple :
 		```SQL
 		SELECT Prenom || ' ' || UPPER(Nom) AS Individu, Ville
@@ -330,7 +323,7 @@ FROM Clients
 	* La fonction __UPPER__, quant à elle, permet de transformer l'attribut, initialement en minuscules, en majuscules.
 	* Le mot-clé __AS__ permet de renommer l'attribut. On utilise un alias permettant de faciliter la lecture du résultat.
 
-</div>
+	</div>
 
 #### <div class = "encadré12_SQL">__Requêtes sur plusieurs tables (jointures)__</div>
 
