@@ -38,7 +38,6 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 
 </center>
 <div class="decal4" markdown="1"> On supposera que le prix saisi dans la base est le tarif HT et que le taux de TVA est de 20 %.</div>
-</div>
 <div class="list1_2" markdown="1">
 
 2. Les données qui correspondent au tarif TTC des stations sont-elles stockées dans la base de données ?
