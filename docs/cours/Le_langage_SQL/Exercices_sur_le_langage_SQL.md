@@ -4,7 +4,6 @@
 
 Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obtenu :
 <div class="list1_1" markdown="1">
-
 1. Noms des stations ayant strictement plus de 200 places.
 2. Noms des clients dont le nom commence par « J » ou dont le solde est supérieur à 10000.
 3. Noms des stations qui proposent de la plongée.
