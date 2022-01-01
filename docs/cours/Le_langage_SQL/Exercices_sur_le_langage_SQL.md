@@ -17,7 +17,6 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 
 Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obtenu :
 <div class="list1_1" markdown="1">
-
 1. Combien de séjours ont eu lieu à Victoria ? On stockera le résultat dans une colonne nommée *Total*.
 2. Donner le prix moyen d'une activité à Tanger. On stockera le résultat dans une colonne nommée *Prix Moyen Activites Tanger*.
 </div>
@@ -26,9 +25,8 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 
 ### <div class = "encadré17" markdown="1"> __Exercice 3__ </div>
 <div class="list1_1" markdown="1">
-
 1. Donner l'expression __SQL__ de la requête permettant d'afficher la liste des stations suivie du lieu (en majuscule) entre parenthèses <div class="decal2" markdown="1">et du tarif HT et TTC comme le montre l'exemple suivant :</div>
-
+</div>
 <center>
 
 | Stations	        	| Tarif HT	    |Tarif TTC 	    |
