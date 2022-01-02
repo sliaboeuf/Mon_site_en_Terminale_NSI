@@ -4,13 +4,11 @@
 
 Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obtenu :
 <div class="list1_1">
-
 1. Noms des stations ayant strictement plus de 200 places.
 2. Noms des clients dont le nom commence par « J » ou dont le solde est supérieur à 10000.
 3. Noms des stations qui proposent de la plongée.
 4. Noms des clients qui sont allés à La Bourboule.
 5. Noms des stations visitées par des européens.
-
 </div>
 
 [Correction de l'exercice](Correction_des_exercices.md#correction-de-lexercice-1){:target="_blank"}
