@@ -1,4 +1,4 @@
-password: test
+password:
 
 # <center><div class = "titre3"> Correction des exercices </div></center>
 
