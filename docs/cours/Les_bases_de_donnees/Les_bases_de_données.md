@@ -366,9 +366,9 @@ Une première règle est que toute entité du __MCD__ est transformée en un __t
 
 <center markdown="1">
 
-![](Images/Disques2.png){display=inline-block vertical-align=middle}
-![](Images/Fleche.png){display=inline-block vertical-align=middle width=5% height=5%}
-![](Images/Relation.png){display=inline-block vertical-align=middle}
+![](Images/Disques2.png){: class="picture"}
+![](Images/Fleche.png){: class="picture" width=5% height=5%}
+![](Images/Relation.png){: class="picture"}
 
 </center>
 
