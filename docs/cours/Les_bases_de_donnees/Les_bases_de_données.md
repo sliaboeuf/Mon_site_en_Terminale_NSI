@@ -177,7 +177,7 @@ La conception des bases de données est la tâche la plus ardue du processus de 
 ??? warning "Remarque importante"  
 	Le point crucial à enregistrer dès maintenant, c'est que le __MLD__ se déduit strictement du __MCD__ d'après des règles formelles. Autrement dit, une fois le __MCD__ réalisé, il n'y a plus besoin de réfléchir une seule seconde pour produire le __MLD__ : tout se fait par automatismes. La meilleure preuve, c'est qu'il existe des logiciels qui se proposent de réaliser le __MLD__ d'un clic de souris, d'après le __MCD__. En revanche, il n'existe rien de tel pour concevoir le __MCD__ : le seul ingrédient qui entre dans sa composition est l'huile de neurones...
 <center>
-<img src="Images/BDD.png" style="width: 75%;height: 75%">
+![](Images/BDD.png){width=75% height=75%}
 </center>
 
 ## <div class = "encadré4_BDD" markdown="1">__Le modèle Entité–Association__</div>
