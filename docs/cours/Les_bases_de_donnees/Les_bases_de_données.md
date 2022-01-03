@@ -301,7 +301,7 @@ Ces occurrences sont appelées __tuples__ ou lignes.
 
 On peut représenter une association par le schéma suivant :
 <center>
-<img src = "Images/Association.png" style = "width: 75%; height: 75%">
+![](Images/Association.png){width=75% height=75%}
 </center>
 
 Dans le cas de notre discothèque, puisque chaque CD __possède__ un genre (et pas n'importe lequel), les deux entités se trouvent naturellement en relation l'une avec l'autre et on peut nommer « possède » cette association.
@@ -365,9 +365,11 @@ On rappelle que par rapport au __MCD__, le __MLD__ est un plan moins abstrait et
 Une première règle est que toute entité du __MCD__ est transformée en un __tableau à deux dimensions__ appelé __relation__ comme le montre la figure suivante :
 
 <center markdown="1">
-<img src="Images/Disques2.png" class="picture">
-<img src="Images/Fleche.png" class="picture" style = "width: 5%; height: 5%">
-<img src="Images/Relation.png" class="picture">
+
+![](Images/Disques2.png){display=inline-block vertical-align=middle}
+![](Images/Fleche.png){display=inline-block vertical-align=middle width=5% height=5%}
+![](Images/Relation.png){display=inline-block vertical-align=middle}
+
 </center>
 
 !!! tip "__Remarques__"
