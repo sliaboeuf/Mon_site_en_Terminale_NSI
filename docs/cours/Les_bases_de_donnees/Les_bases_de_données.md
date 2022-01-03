@@ -321,9 +321,9 @@ De là, il faut distinguer le nombre minimum et le nombre maximum de ces corresp
 En reprenant l'exemple de la discothèque, cela revient à se poser les questions suivantes :
 <div class="couleur_puce5_vert" markdown="1">
 
-* À combien de genres au minimum correspond chaque CD ? (autrement dit : un CD peut-il ne pas avoir de genre, ou en a-t-il <div class="decal2">forcément au moins un ?)</div>
-* À combien de genres au maximum correspond chaque CD ? (autrement dit : un CD peut-il avoir plusieurs genres, ou est-il limité <div class="decal2">à un seul ?)</div>
-* À combien de CDs au minimum correspond chaque genre ? (autrement dit : ma table des genres comprend-elle uniquement <div class="decal2">des genres qui correspondent à mes CDs, ou peut-il y avoir des genres « orphelins » ?)</div>
+* À combien de genres au minimum correspond chaque CD ? (autrement dit : un CD peut-il ne pas avoir de genre, ou en a-t-il forcément au moins un ?)
+* À combien de genres au maximum correspond chaque CD ? (autrement dit : un CD peut-il avoir plusieurs genres, ou est-il limité à un seul ?)
+* À combien de CDs au minimum correspond chaque genre ? (autrement dit : ma table des genres comprend-elle uniquement des genres qui correspondent à mes CDs, ou peut-il y avoir des genres « orphelins » ?)
 * À combien de CDs au maximum correspond chaque genre ? (autrement dit : puis-je avoir plusieurs CDs du même genre, ou est-<div class="decal2">ce interdit ?)</div>
 
 </div>
