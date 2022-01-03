@@ -1,6 +1,6 @@
 # <center><div class = "titre1_BDD">Les bases de données</div> </center>
 
-## <div class = "encadré1_BDD">__Introduction aux bases de données__</div>
+## <div class = "encadré1_BDD" markdown="1">__Introduction aux bases de données__</div>
 
 !!! book "__Définitions__"
     
@@ -18,7 +18,7 @@
 	<a href="https://www.timetoast.com/timelines/2317528" target="_blank">Cliquer ici pour voir cette frise chronologique</a>
 	</center>
 
-## <div class = "encadré2_BDD">__Premiers problèmes... et premières solutions__</div>
+## <div class = "encadré2_BDD" markdown="1">__Premiers problèmes... et premières solutions__</div>
 
 Organiser des données, où est le problème, direz-vous ? Y a-t-il vraiment besoin de faire des études pour cela ? Il suffit d'être un peu soigneux, et il n'y a aucune raison que ça se passe mal.
 
@@ -27,7 +27,7 @@ Eh bien si, en fait. Les données, quand elles se présentent en (très) grandes
 Voyons les problèmes les plus évidents qui se posent lorsqu'on veut organiser des informations. Pour cela, imaginons que nous voulions informatiser les rayons de ma discothèque… – enfin, disons les dix premiers CD du rayonnage, parce que sinon, ça va être un peu longuet.
 
 Faisons simple pour commencer : nous ne noterons, pour chaque CD, que le titre, l'année, le nom de l'artiste et le genre musical. Cela nous donne la liste suivante :
-<div class="couleur_puce1">
+<div class="couleur_puce1" markdown="1">
 
 *   Nursery Cryme, Genesis, 1972, rock progressif
 *   Foxtrot, Genesis, 1972, rock progressif
@@ -40,11 +40,11 @@ Faisons simple pour commencer : nous ne noterons, pour chaque CD, que le titre, 
 *   Thick as a Brick, Jethro Tull, 1973, rock progressif
 *   Purpendicular, Deep Purple, 1996, rock
 
-</div>
+</div markdown="1">
 Il va de soi que pour représenter de telles informations, une liste c'est bien, mais qu'un tableau, ce serait beaucoup mieux.  
 Les conventions étant en accord avec ce que nous suggère l'intuition, on mettra en ligne, les uns en-dessous des autres, les différents disques (autrement dit, en quelque sorte, les « individus » de notre base). Et on portera en colonne les différents renseignements dont on dispose pour chacun de ces individus. Naturellement, il est préférable – et, en réalité, obligatoire – de nommer ces colonnes : ma discothèque prendrait ainsi la forme du tableau suivant :
 
-<center>
+<center markdown="1">
 
 | Titre                           | Artiste       | Annee | Genre             |
 | :---------:                     | :-----------: | :---: | :---------------: |
@@ -59,7 +59,7 @@ Les conventions étant en accord avec ce que nous suggère l'intuition, on mettr
 | Thick as a Brick                | Jethro Tull   | 1973  | rock progressif   |
 | Purpendicular                   | Deep Purple   | 1996  | rock              |
 
-</center>
+</center markdown="1">
 
 Or, ce petit tableau, à lui seul, fait apparaître au moins deux problèmes majeurs.
 <div class="couleur_puce5_vert">
