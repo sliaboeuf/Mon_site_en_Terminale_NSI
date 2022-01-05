@@ -295,7 +295,6 @@ Ces occurrences sont appelées __tuples__ ou lignes.
 
     	</div>
 
-</div>
 !!! tip "__Remarque__"
 	Une association peut aussi avoir des attributs.
 
