@@ -28,7 +28,6 @@ Voyons les problèmes les plus évidents qui se posent lorsqu'on veut organiser 
 
 Faisons simple pour commencer : nous ne noterons, pour chaque CD, que le titre, l'année, le nom de l'artiste et le genre musical. Cela nous donne la liste suivante :
 <div class="couleur_puce1" markdown="1">
-
 *   Nursery Cryme, Genesis, 1972, rock progressif
 *   Foxtrot, Genesis, 1972, rock progressif
 *   Selling England by the Pound, Genesis, 1973, rock progressif
@@ -39,7 +38,6 @@ Faisons simple pour commencer : nous ne noterons, pour chaque CD, que le titre, 
 *   5th Gear, Brad Paisley, 2007, country
 *   Thick as a Brick, Jethro Tull, 1973, rock progressif
 *   Purpendicular, Deep Purple, 1996, rock
-
 </div>
 Il va de soi que pour représenter de telles informations, une liste c'est bien, mais qu'un tableau, ce serait beaucoup mieux.  
 Les conventions étant en accord avec ce que nous suggère l'intuition, on mettra en ligne, les uns en-dessous des autres, les différents disques (autrement dit, en quelque sorte, les « individus » de notre base). Et on portera en colonne les différents renseignements dont on dispose pour chacun de ces individus. Naturellement, il est préférable – et, en réalité, obligatoire – de nommer ces colonnes : ma discothèque prendrait ainsi la forme du tableau suivant :
