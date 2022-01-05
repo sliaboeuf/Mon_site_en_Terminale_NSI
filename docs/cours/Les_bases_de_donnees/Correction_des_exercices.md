@@ -1,26 +1,23 @@
-password:
-
 # <center><div class = "titre3"> Correction des exercices </div></center>
 
-### <div class = "encadré18" markdown="1"> __Correction de l'exercice 1__ </div>
-<div class="list1_1" markdown="1">
+### <div class = "encadré18"> __Correction de l'exercice 1__ </div>
+<div class="list1_1">
 
-1. Le nom du client n'est pas l'attribut identifiant l'entité « Client ».
+1. Le nom du client n'est pas l'attribut identifiant l'entité « Client ».   
 L'identifiant est ici l'attribut « *Numero* ». Il peut donc y avoir des clients homonymes, ces clients auront des numéros différents.
-2. La cardinalité maximale de l'entité « Client » est $N$ donc un client peut réserver plusieurs fois.
+2. La cardinalité maximale de l'entité « Client » est $N$ donc un client peut réserver plusieurs fois.  
 Cependant, d'après la cardinalité de l'entité « Réservation », une chambre ne peut correspondre qu'à une et une seule réservation. On en conclut qu'un client peut réserver plusieurs chambres à une date donnée s'il effectue plusieurs réservations.
 3. Oui, un client peut réserver une chambre sur plusieurs jours à condition qu'il effectue plusieurs réservations.
 4. Oui, pour savoir si une chambre est disponible à une date donnée, il faudra lister les réservations et s'assurer qu'il n'y en a aucune à la date donnée.
 5. Oui dans ce schéma, rien ne garantit qu'une même chambre puisse être louée qu'une seule fois.
-
 </div>
 
-### <div class = "encadré18" markdown="1"> __Correction de l'exercice 2__ </div>
+### <div class = "encadré18"> __Correction de l'exercice 2__ </div>
 Il faut commencer par convertir toutes les entités en relations et ensuite compléter ces relations en fonction des associations.
 
 !!! tools "__Conseils__"
-	<div class = "couleur_puce6" markdown="1">
-	
+	<div class = "couleur_puce6">
+
 	* On convertit les 4 entités en 4 relations en changeant les identifiants en clé primaires.
 	* Ici, nous n'avons que des associations possédant au moins une cardinalité $(0,1)$ ou $(1,1)$, il suffit donc d'ajouter les clés étrangères dans les relations existantes.
 	* Il faut lier ces contraintes de clés étrangères aux clés primaires dont elles sont issues. 
@@ -28,12 +25,12 @@ Il faut commencer par convertir toutes les entités en relations et ensuite comp
 	</div>
 
 ??? key "__Solution__"
-	<center markdown="1">
+	<center>
 	![Hotel MLD](Images/Hotel_MLD.png)
 	</center>
 
-### <div class = "encadré18" markdown="1"> __Correction de l'exercice 3__ </div>
-<div class="list1_1" markdown="1">
+### <div class = "encadré18"> __Correction de l'exercice 3__ </div>
+<div class="list1_1">
 
 1. Oui car la cardinalité maximale $N$ (côté entité « Patient ») existant sur l'association « Assister » exprime le fait qu'un patient peut participer à plusieurs consultations.
 2. Non car une consultation est donnée par un et un seul médecin, cela est spécifié par la cardinalité $(1,1)$ côté entité « Consultation » sur l'association « Donner ».  
@@ -43,19 +40,19 @@ De même, seul un patient assiste à une consultation. Cela est également spéc
 
 </div>
 
-### <div class = "encadré18" markdown="1"> __Correction de l'exercice 4__ </div>
+### <div class = "encadré18"> __Correction de l'exercice 4__ </div>
 La méthode est la même que celle utilisée dans l'exercice 2. La seule différence est qu'il existe dans ce schéma une association sans cardinalité $(0,1)$ ou $(1,1)$, il faudra donc créer une relation propre à cette association.
 
 ??? key "__Solution__"
-	<center markdown="1">
+	<center>
 	![Medecins MLD](Images/Medecins_MLD.png)
 	</center>
 
 !!! warning "Attention"  
 	Il faut bien veiller à définir comme clé primaire de la relation « Prescrire » les deux clés étrangères « *Numero* » et « *Code* ».
 
-### <div class = "encadré18" markdown="1"> __Correction de l'exercice 5__ </div>
-<center markdown="1">
+### <div class = "encadré18"> __Correction de l'exercice 5__ </div>
+<center>
 
 | Relation    | Attribut  | Type       | Unicité | Domaine éventuel | Valeur nulle permise | Clé |
 | :---------: | :-------: | :--------: | :-----: | :--------------: | :-----------------:  |     |
@@ -67,19 +64,19 @@ La méthode est la même que celle utilisée dans l'exercice 2. La seule différ
 </center>
 
 !!! warning "Attention"
-	<div class = "couleur_puce7" markdown="1">
-	
+	<div class = "couleur_puce7">
+
 	* « *Nom_Hotel* » est une clé étrangère dans la relation « Chambre », il ne peut être nul, par contre, il peut ne pas être unique.
 	* « *Prix* » doit vraisemblablement être positif.
 	* « *Date_resa* » n'est pas unique et n'est pas nécessairement présent.
 	* « *Numero_cl* » est bien la clé primaire de la relation « Client », cet attribut est donc unique et non nul.
 
 	</div>
-
-### <div class = "encadré18" markdown="1"> __Correction de l'exercice 6__ </div>
+	
+### <div class = "encadré18"> __Correction de l'exercice 6__ </div>
 
 On dénombre 3 anomalies :
-<div class = "couleur_puce5_rouge" markdown="1">
+<div class = "couleur_puce5_rouge">
 
 * Il ne peut pas y avoir dans les valeurs de l'attribut « *Numero* » des valeurs identiques puisque cet attribut est la clé primaire de la relation « Consultation ».
 * Le « *Numero_SS* » ne peut être absent dans la première occurrence. En effet, il fait le lien avec le patient.
@@ -88,7 +85,7 @@ On dénombre 3 anomalies :
 </div>
 
 !!! tip "__Remarques__"
-	<div class = "couleur_puce4" markdown="1">
+	<div class = "couleur_puce4">
 	
 	* « *Date_consult* » peut être absente, nous n'avons aucune contrainte sur cet attribut.
 	* Nous pouvons avoir le même matricule sur des occurrences différentes. En effet, un médecin peut effectuer plusieurs consultations. La seule contrainte, c'est d'avoir un numéro différent.

@@ -31,7 +31,7 @@ On dispose du dictionnaire de données suivant :
 
 1. Identifier les différentes entités en jeu ainsi que leurs identifiants.
 2. Les 3 associations mises en jeu par ces entités seront nommées « Etablir », « Recevoir » et « Ajouter ».  
-<div class="decal5">Pour chacune d'entre elles, spécifier leur cardinalité et éventuellement leurs attributs.</div>
+Pour chacune d'entre elles, spécifier leur cardinalité et éventuellement leurs attributs.
 
 </div>
 <div class="list2_2">

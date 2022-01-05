@@ -25,33 +25,38 @@
 </div>
 <div class="decal6">
 <center>![Etablir](Images/Ex_bilan_5.1/Etablir.png)</center>
-<div class="couleur_puce6">
 
 !!! tools "__Précisions__"
+	<div class="couleur_puce6">
+
 	* Un vendeur peut ne pas être associé à une facture ou bien il peut être associé à plusieurs factures, d'où la cardinalité coté « Vendeur » de $(0,N)$.
 	 * Une facture ne peut être associée qu'à un seul vendeur.
-</div>
+
+	</div>
 <br>
 Pour l'association « Recevoir » :
 <br>
 <center>![Recevoir](Images/Ex_bilan_5.1/Recevoir.png)</center>
-<div class = "couleur_puce4">
 
 !!! tip "__Remarques__"
+	<div class = "couleur_puce4">
+
 	* Un client peut ne pas être associé à une facture ou bien il peut être associé à plusieurs factures, d'où la cardinalité coté « Client » de $(0,N)$.
 	* Une facture ne peut être associée qu'à un seul client.
-</div>
+
+	</div>
 <br>
 Et enfin, pour l'association « Ajouter » :
 <br>
 <center>![Recevoir](Images/Ex_bilan_5.1/Ajouter.png)</center>
-<div class = "couleur_puce4">
 
 !!! tip "__Remarques__"
-		* Un produit peut ne pas être associé à une facture ou bien il peut être associé à plusieurs factures, d'où la cardinalité coté « Produit » de $(0,N)$.
-		* Une facture peut être associée au minimum à un produit mais aussi à plusieurs.
+	<div class = "couleur_puce4">
 
-</div>
+	* Un produit peut ne pas être associé à une facture ou bien il peut être associé à plusieurs factures, d'où la cardinalité coté « Produit » de $(0,N)$.
+	* Une facture peut être associée au minimum à un produit mais aussi à plusieurs.
+
+	</div>
 </div>
 <div class="list2_2">
 
