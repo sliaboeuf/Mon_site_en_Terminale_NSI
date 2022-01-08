@@ -1,3 +1,5 @@
+password: coucou
+
 # <center markdown="1"><div class = "titre3" markdown="1"> Correction des exercices </div></center>
 
 ### <div class = "encadré18" markdown="1"> __Correction de l'exercice 1__ </div>
