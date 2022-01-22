@@ -1,0 +1,2149 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Sylvain Liaboeuf">
+      
+      
+      <link rel="icon" href="../../../Images/Logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
+    
+    
+      
+        <title>Les bases de données - Cours de Terminale NSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#les-bases-de-donnees" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Cours de Terminale NSI" class="md-header__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Les bases de données
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="red"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Mode sombre" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="orange"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Mode clair" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      🏡 Page d'accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        📦 Les bases de données
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Le_langage_SQL/Le_langage_SQL/" class="md-tabs__link">
+        📇 Le langage SQL
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Poo/POO/" class="md-tabs__link">
+        💻 Programmation orientée objet
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Complexité_tris/complexite.md" class="md-tabs__link">
+        ⏳ Complexité
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Epreuve_pratique/Modalite/" class="md-tabs__link">
+        🛠️ Epreuve pratique
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cours de Terminale NSI" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Cours de Terminale NSI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        🏡 Page d'accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          📦 Les bases de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="📦 Les bases de données" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          📦 Les bases de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Les bases de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Les bases de données
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-aux-bases-de-donnees" class="md-nav__link">
+    Introduction aux bases de données
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#premiers-problemes-et-premieres-solutions" class="md-nav__link">
+    Premiers problèmes... et premières solutions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conception-de-bases-de-donnees-relationnelles" class="md-nav__link">
+    Conception de bases de données relationnelles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-modele-entiteassociation" class="md-nav__link">
+    Le modèle Entité–Association
+  </a>
+  
+    <nav class="md-nav" aria-label="Le modèle Entité–Association">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entites-attributs-et-identifiants" class="md-nav__link">
+    Entités, attributs et identifiants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#associations" class="md-nav__link">
+    Associations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinalites" class="md-nav__link">
+    Cardinalités
+  </a>
+  
+    <nav class="md-nav" aria-label="Cardinalités">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cardinalites-minimum-et-maximum" class="md-nav__link">
+    Cardinalités minimum et maximum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formalisme-des-cardinalites-les-differentes-valeurs" class="md-nav__link">
+    Formalisme des cardinalités : les différentes valeurs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raccourcis-de-langage" class="md-nav__link">
+    Raccourcis de langage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#du-mcd-au-mld-premiere-approche" class="md-nav__link">
+    Du MCD au MLD : première approche
+  </a>
+  
+    <nav class="md-nav" aria-label="Du MCD au MLD : première approche">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformation-dune-entite-en-relation" class="md-nav__link">
+    Transformation d'une entité en relation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformation-dune-association-en-relation" class="md-nav__link">
+    Transformation d’une association en relation
+  </a>
+  
+    <nav class="md-nav" aria-label="Transformation d’une association en relation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#si-lune-des-deux-cardinalites-maximales-vaut-1" class="md-nav__link">
+    Si l'une des deux cardinalités maximales vaut 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#si-les-deux-cardinalites-maximales-sont-n" class="md-nav__link">
+    Si les deux cardinalités maximales sont N
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-contraintes-dintegrite" class="md-nav__link">
+    Les contraintes d'intégrité
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercices_sur_les_bases_de_donn%C3%A9es/" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Correction_des_exercices/" class="md-nav__link">
+        Correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercice_bilan/" class="md-nav__link">
+        Exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Correction_de_l%27exercice_bilan/" class="md-nav__link">
+        Correction de l'exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          📇 Le langage SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="📇 Le langage SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          📇 Le langage SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Le_langage_SQL/" class="md-nav__link">
+        Le langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Prise_en_main_DB_Browser/" class="md-nav__link">
+        Présentation de DB Browser for SQLite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Memento_SQL/" class="md-nav__link">
+        Memento SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Exercices_sur_le_langage_SQL/" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Correction_des_exercices/" class="md-nav__link">
+        Correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Exercice_bilan/" class="md-nav__link">
+        Exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Correction_de_l%27exercice_bilan/" class="md-nav__link">
+        Correction de l'exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Mini_projet/" class="md-nav__link">
+        Mini-projet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 Programmation orientée objet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 Programmation orientée objet" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 Programmation orientée objet
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" data-md-state="indeterminate" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Poo/POO/" class="md-nav__link">
+        Programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Poo/Exercice/" class="md-nav__link">
+        Exercice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Poo/Correction_de_l_exercice/" class="md-nav__link">
+        Correction de l'exercice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Poo/Mini_projet/" class="md-nav__link">
+        Mini-projet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          ⏳ Complexité
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="⏳ Complexité" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          ⏳ Complexité
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" data-md-state="indeterminate" type="checkbox" id="__nav_5_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/complexite.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Correction des exos du cours.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          TP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TP" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          TP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/TD_Complexite.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Correction des exos du TP.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Exercices.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Correction.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          🛠️ Epreuve pratique
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🛠️ Epreuve pratique" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          🛠️ Epreuve pratique
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Epreuve_pratique/Modalite/" class="md-nav__link">
+        Modalité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Epreuve_pratique/EP/" class="md-nav__link">
+        Banque d'exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+<a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI/edit/main/docs/cours/Les_bases_de_donnees/Les_bases_de_données.md" title="Editer cette page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="les-bases-de-donnees"><center><div class = "titre1_BDD" markdown="1">Les bases de données</div> </center></h1>
+<h2 id="introduction-aux-bases-de-donnees"><div class = "encadré1_BDD" markdown="1"><strong>Introduction aux bases de données</strong></div></h2>
+<div class="admonition book">
+<p class="admonition-title"><strong>Définitions</strong></p>
+<details class="plus-circle">
+<summary><strong>BDD</strong></summary>
+<p>Une <strong>Base De Données (BDD)</strong> représente un <strong>ensemble ordonné de données</strong> dont l'organisation est régie par un modèle de données. </p>
+</details>
+<details class="plus-circle">
+<summary><strong>SGBD</strong></summary>
+<p>Le <strong>Système de Gestion de Bases de Données (SGBD)</strong> peut être vu comme le logiciel qui prend en charge <strong>la structuration, le stockage, la mise à jour et la maintenance des données.</strong> C'est en fait l'interface entre la base de données et les multiples utilisateurs (ou leurs programmes). </p>
+</details>
+</div>
+<div class="admonition castle">
+<p class="admonition-title">Historique</p>
+<p>Quasiment toutes les bases de données que nous utilisons aujourd'hui sont basées sur les travaux d'<strong>Edgar F. Codd</strong> (1970). C'est le point essentiel dans l'histoire des bases de données.
+<br>
+<img alt="Ma frise" src="../Images/Frise.png" />
+<center markdown="1">
+<a href="https://www.timetoast.com/timelines/2317528" target="_blank">Cliquer ici pour voir cette frise chronologique</a>
+</center></p>
+</div>
+<h2 id="premiers-problemes-et-premieres-solutions"><div class = "encadré2_BDD" markdown="1"><strong>Premiers problèmes... et premières solutions</strong></div></h2>
+<p>Organiser des données, où est le problème, direz-vous ? Y a-t-il vraiment besoin de faire des études pour cela ? Il suffit d'être un peu soigneux, et il n'y a aucune raison que ça se passe mal.</p>
+<p>Eh bien si, en fait. Les données, quand elles se présentent en (très) grandes quantités, posent des problèmes auxquels on ne s'attend pas. C'est bien pour cela qu'on a mis au point un certain nombre de règles et de méthodes qui, si elles ne peuvent dispenser personne de réfléchir, aident néanmoins à réfléchir en évitant les catastrophes les plus courantes.</p>
+<p>Voyons les problèmes les plus évidents qui se posent lorsqu'on veut organiser des informations. Pour cela, imaginons que nous voulions informatiser les rayons de ma discothèque… – enfin, disons les dix premiers CD du rayonnage, parce que sinon, ça va être un peu longuet.</p>
+<p>Faisons simple pour commencer : nous ne noterons, pour chaque CD, que le titre, l'année, le nom de l'artiste et le genre musical. Cela nous donne la liste suivante :</p>
+<div class="couleur_puce1">
+<ul>
+<li>Nursery Cryme, Genesis, 1972, rock progressif</li>
+<li>Foxtrot, Genesis, 1972, rock progressif</li>
+<li>Selling England by the Pound, Genesis, 1973, rock progressif</li>
+<li>Symphonie n°2, Sibelius, 1985, classique</li>
+<li>Symphonie n°7, Sibelius, 1987, classique</li>
+<li>Concerto pour violon, Mendelssohn, 1992, classique</li>
+<li>Crime passionnel, Guidoni, 1982, chanson française</li>
+<li>5th Gear, Brad Paisley, 2007, country</li>
+<li>Thick as a Brick, Jethro Tull, 1973, rock progressif</li>
+<li>Purpendicular, Deep Purple, 1996, rock</li>
+</ul>
+</div>
+<p>Il va de soi que pour représenter de telles informations, une liste c'est bien, mais qu'un tableau, ce serait beaucoup mieux.<br />
+Les conventions étant en accord avec ce que nous suggère l'intuition, on mettra en ligne, les uns en-dessous des autres, les différents disques (autrement dit, en quelque sorte, les « individus » de notre base). Et on portera en colonne les différents renseignements dont on dispose pour chacun de ces individus. Naturellement, il est préférable – et, en réalité, obligatoire – de nommer ces colonnes : ma discothèque prendrait ainsi la forme du tableau suivant :</p>
+<p><center markdown="1"></p>
+<table>
+<thead>
+<tr>
+<th align="center">Titre</th>
+<th align="center">Artiste</th>
+<th align="center">Annee</th>
+<th align="center">Genre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Nursery Cryme</td>
+<td align="center">Genesis</td>
+<td align="center">1972</td>
+<td align="center">rock progressif</td>
+</tr>
+<tr>
+<td align="center">Foxtrot</td>
+<td align="center">Genesis</td>
+<td align="center">1972</td>
+<td align="center">rock progresif</td>
+</tr>
+<tr>
+<td align="center">Selling England by the Pound</td>
+<td align="center">Genesis</td>
+<td align="center">1973</td>
+<td align="center">rock progressif</td>
+</tr>
+<tr>
+<td align="center">Symphonie n°2</td>
+<td align="center">Sibelius</td>
+<td align="center">1985</td>
+<td align="center">classique</td>
+</tr>
+<tr>
+<td align="center">Symphonie n°7</td>
+<td align="center">Sibelius</td>
+<td align="center">1987</td>
+<td align="center">classique</td>
+</tr>
+<tr>
+<td align="center">Concerto pour violon</td>
+<td align="center">Mendelssohn</td>
+<td align="center">1992</td>
+<td align="center">Classique</td>
+</tr>
+<tr>
+<td align="center">Crime passionnel</td>
+<td align="center">Guidoni</td>
+<td align="center">1982</td>
+<td align="center">chanson française</td>
+</tr>
+<tr>
+<td align="center">5th Gear</td>
+<td align="center">Brad Paisley</td>
+<td align="center">2007</td>
+<td align="center">country</td>
+</tr>
+<tr>
+<td align="center">Thick as a Brick</td>
+<td align="center">Jethro Tull</td>
+<td align="center">1973</td>
+<td align="center">rock progressif</td>
+</tr>
+<tr>
+<td align="center">Purpendicular</td>
+<td align="center">Deep Purple</td>
+<td align="center">1996</td>
+<td align="center">rock</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>Or, ce petit tableau, à lui seul, fait apparaître au moins deux problèmes majeurs.</p>
+<div class="couleur_puce5_vert">
+<ul>
+<li>Le premier, c'est que des informations identiques s'y répètent : en l'occurrence, celles concernant les artistes, et encore plus, le genre. En termes savants, on parle de <strong>redondance</strong> des informations. Imaginons que ma discothèque comporte plusieurs centaines de CDs, il y a fort à parier que la mention « classique » ou « rock progressif » va se retrouver répliquée des dizaines de fois. Or, tout cela, il va bien falloir le stocker quelque part sous forme de bits et d'octets, et des informations inutilement répétées, ce sont des <strong>octets inutilement occupés</strong>… On n'en meurt pas, direz-vous. Certes, encore que.</li>
+<li>Le second problème, lié au premier, est pour sa part rédhibitoire. C'est que vu la manière dont j'ai bâti mes informations, je ne suis pas à l'abri d'une erreur, ou même d'un simple manque d'homogénéité, dans la saisie. Par exemple, lorsque j'ai tapé le genre du CD Foxtrot, j'ai oublié les deux « s » de « progressif », ce qui est une faute de frappe assez classique. De même, le genre « classique » est orthographié tantôt avec une majuscule, tantôt sans majuscule. Tout cela est fort préjudiciable pour la suite des événements. Si je fais une recherche, par exemple, sur le genre « rock progressif » ou « classique », il manquera des CDs qui auraient dû y figurer. Cette organisation laisse donc la possibilité qu'existe une <strong>hétérogénéité</strong> des données, un des pires cauchemars de l'informaticien (qui pourtant n'en manque pas).</li>
+</ul>
+</div>
+<p>Ces deux problèmes possèdent une solution commune, très simple mais extrêmement efficace, qui consiste à recenser <strong>séparément</strong> les CDs et les genres :</p>
+<p><center markdown="1"></p>
+<div class="tableaux">
+<table>
+<thead>
+<tr>
+<th align="center">Titre</th>
+<th align="center">Artiste</th>
+<th align="center">Annee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Nursery Cryme</td>
+<td align="center">Genesis</td>
+<td align="center">1972</td>
+</tr>
+<tr>
+<td align="center">Foxtrot</td>
+<td align="center">Genesis</td>
+<td align="center">1972</td>
+</tr>
+<tr>
+<td align="center">Selling England by the Pound</td>
+<td align="center">Genesis</td>
+<td align="center">1973</td>
+</tr>
+<tr>
+<td align="center">Symphonie n°2</td>
+<td align="center">Sibelius</td>
+<td align="center">1985</td>
+</tr>
+<tr>
+<td align="center">Symphonie n°7</td>
+<td align="center">Sibelius</td>
+<td align="center">1987</td>
+</tr>
+<tr>
+<td align="center">Concerto pour violon</td>
+<td align="center">Mendelssohn</td>
+<td align="center">1992</td>
+</tr>
+<tr>
+<td align="center">Crime passionnel</td>
+<td align="center">Guidoni</td>
+<td align="center">1982</td>
+</tr>
+<tr>
+<td align="center">5th Gear</td>
+<td align="center">Brad Paisley</td>
+<td align="center">2007</td>
+</tr>
+<tr>
+<td align="center">Thick as a Brick</td>
+<td align="center">Jethro Tull</td>
+<td align="center">1973</td>
+</tr>
+<tr>
+<td align="center">Purpendicular</td>
+<td align="center">Deep Purple</td>
+<td align="center">1996</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class="tableaux">
+<table>
+<thead>
+<tr>
+<th align="center">Genre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">chanson française</td>
+</tr>
+<tr>
+<td align="center">classique</td>
+</tr>
+<tr>
+<td align="center">country</td>
+</tr>
+<tr>
+<td align="center">rock</td>
+</tr>
+<tr>
+<td align="center">rock progressif</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></center>
+Il ne reste plus à présent qu'à préciser à quel genre appartient chaque CD. Pour ce faire, on identifie chaque genre par un code unique : </p>
+<p><center markdown="1"></p>
+<table>
+<thead>
+<tr>
+<th align="center">Code</th>
+<th align="center">Genre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">chanson française</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">classique</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">country</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">rock</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">rock progressif</td>
+</tr>
+</tbody>
+</table>
+<p></center>
+Et on reporte ce code dans le tableau des CDs :</p>
+<p><center markdown="1"></p>
+<table>
+<thead>
+<tr>
+<th align="center">Titre</th>
+<th align="center">Artiste</th>
+<th align="center">Annee</th>
+<th align="center">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Nursery Cryme</td>
+<td align="center">Genesis</td>
+<td align="center">1972</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">Foxtrot</td>
+<td align="center">Genesis</td>
+<td align="center">1972</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">Selling England by the Pound</td>
+<td align="center">Genesis</td>
+<td align="center">1973</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">Symphonie n°2</td>
+<td align="center">Sibelius</td>
+<td align="center">1985</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">Symphonie n°7</td>
+<td align="center">Sibelius</td>
+<td align="center">1987</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">Concerto pour violon</td>
+<td align="center">Mendelssohn</td>
+<td align="center">1992</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">Crime passionnel</td>
+<td align="center">Guidoni</td>
+<td align="center">1982</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">5th Gear</td>
+<td align="center">Brad Paisley</td>
+<td align="center">2007</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">Thick as a Brick</td>
+<td align="center">Jethro Tull</td>
+<td align="center">1973</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">Purpendicular</td>
+<td align="center">Deep Purple</td>
+<td align="center">1996</td>
+<td align="center">4</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>Ainsi, nous venons de faire d'une pierre deux coups :</p>
+<div class="couleur_puce1">
+<ul>
+<li>On a <strong>économisé de la place en mémoire</strong>, car stocker un code mobilise beaucoup moins d'octets que stocker un intitulé.</li>
+<li>Surtout, on a pris <strong>une garantie contre les informations hétérogènes</strong> : le code correspond toujours au même intitulé, et on ne peut plus guère imaginer se retrouver avec un même genre musical orthographié différemment.</li>
+</ul>
+</div>
+<p>Ce que nous venons de faire, c'est – en tout petit – le fond de la question en matière de modélisation de l'information : nous venons de créer une <strong>relation</strong> entre deux tables (deux <strong>entités</strong>) ; voilà pourquoi on parle de <strong>Systèmes de Bases de Données Relationnelles</strong>. Tout ce que nous allons voir ensuite, n'est pour ainsi dire que des complications et des raffinements à partir de cette base simple.</p>
+<p>Cela dit, jusqu'à maintenant, nous avons procédé uniquement par intuition – or, vous vous en doutez bien, il existe un certain nombre de formes pré-établies, de standards (tant de méthode que de représentation) pour venir à bout des problèmes les plus complexes. Ce sont ces formes et ces standards que nous allons aborder à présent.</p>
+<details class="danger">
+<summary>Remarque capitale</summary>
+<p>Il suffit d'observer la situation à laquelle nous sommes parvenus pour constater que nous n'avons parcouru que la moitié du chemin. Nous avons certes éliminé une source de redondances en créant la table « <em>Genre</em> ». Mais nous en avons laissé une deuxième : celle liée aux artistes. Il est donc essentiel de comprendre que ce qui est présenté ici n'est que le premier pas, et que notre modélisation est irrecevable en l'état.</p>
+</details>
+<h2 id="conception-de-bases-de-donnees-relationnelles"><div class = "encadré3_BDD" markdown="1"><strong>Conception de bases de données relationnelles</strong></div></h2>
+<p>La conception des bases de données est la tâche la plus ardue du processus de développement du système d’information. Les méthodes de conception préconisent une démarche en étapes et font appel à des modèles pour représenter les <strong>objets</strong> qui composent les systèmes d’information, les <strong>relations</strong> existantes entre ces objets ainsi que les <strong>règles sous-jacentes</strong>. La modélisation se réalise en trois étapes principales qui correspondent à trois niveaux d’abstraction différents :</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><strong>Niveau conceptuel</strong></label><label for="__tabbed_1_2"><strong>Niveau logique</strong></label><label for="__tabbed_1_3"><strong>Niveau physique</strong></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>La représentation de la base de données est faite indépendamment de toute considération informatique. C'est le niveau le plus abstrait (mais qui contient déjà toutes les informations indispensables pour la construction de la base de données). On parle de <strong>Modèle Conceptuel de Données (MCD)</strong>.</p>
+</div>
+<div class="tabbed-block">
+<p>Il s'agit de l'adaptation du schéma conceptuel en tableaux à deux dimensions. Ce niveau est plus proche de ce que sera la base effective qui sera réalisée sur machine. On parle ici de <strong>Modèle Logique des Données (MLD)</strong>.</p>
+</div>
+<div class="tabbed-block">
+<p>Implémentation informatique sur un système de gestion de bases de données relationnelles (SGBD).</p>
+</div>
+</div>
+</div>
+<details class="warning">
+<summary>Remarque importante</summary>
+<p>Le point crucial à enregistrer dès maintenant, c'est que le <strong>MLD</strong> se déduit strictement du <strong>MCD</strong> d'après des règles formelles. Autrement dit, une fois le <strong>MCD</strong> réalisé, il n'y a plus besoin de réfléchir une seule seconde pour produire le <strong>MLD</strong> : tout se fait par automatismes. La meilleure preuve, c'est qu'il existe des logiciels qui se proposent de réaliser le <strong>MLD</strong> d'un clic de souris, d'après le <strong>MCD</strong>. En revanche, il n'existe rien de tel pour concevoir le <strong>MCD</strong> : le seul ingrédient qui entre dans sa composition est l'huile de neurones...</p>
+</details>
+<p><center markdown="1">
+<img alt="" height="75%" src="../Images/BDD.png" width="75%" />
+</center></p>
+<h2 id="le-modele-entiteassociation"><div class = "encadré4_BDD" markdown="1"><strong>Le modèle Entité–Association</strong></div></h2>
+<h3 id="entites-attributs-et-identifiants"><div class = "encadré5_BDD" markdown="1"><strong>Entités, attributs et identifiants</strong></div></h3>
+<p>Ce modèle permet de distinguer les entités qui constituent la base de données et les associations entre ces entités.</p>
+<div class="admonition book">
+<p class="admonition-title"><strong>Définitions</strong></p>
+<details class="plus-circle">
+<summary><strong>Entités</strong></summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Définition</label><label for="__tabbed_2_2">Retour à l'exemple</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>On appelle <strong>entité</strong> un <strong>objet pouvant être identifié distinctement</strong>. 
+Chaque entité est donc unique.  </p>
+</div>
+<div class="tabbed-block">
+<p>Pour notre discothèque, on propose très logiquement les entités « Disques » et « Genres ».</p>
+</div>
+</div>
+</div>
+</details>
+<details class="plus-circle">
+<summary><strong>Attributs</strong></summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Définition</label><label for="__tabbed_3_2">Retour à l'exemple</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Chaque entité est décrite par un ensemble de propriétés appelées <strong>attributs</strong>.</p>
+</div>
+<div class="tabbed-block">
+<p>Pour notre discothèque, l'entité « Disques » possède les attributs « <em>Titre</em> », « <em>Artiste</em> » et « <em>Année</em> » tandis que l'entité « Genres » possède l'attribut « <em>Intitulé</em> » (on évite de donner le même nom à une entité et à un de ses attributs).</p>
+</div>
+</div>
+</div>
+</details>
+<details class="plus-circle">
+<summary><strong>Identifiant</strong></summary>
+<p>Un ou plusieurs attributs permettent d'identifier de manière unique l'entité, on parle alors d'<strong>identifiant</strong> (ou de <strong>clé primaire</strong> (<em>Primary Key</em> en anglais)).</p>
+</details>
+</div>
+<p>On peut représenter une entité par le schéma suivant  :</p>
+<p><center markdown="1"></p>
+<table>
+<thead>
+<tr>
+<th align="center">Nom de l'entité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><u markdown="1"><strong>identifiant</strong></u></td>
+</tr>
+<tr>
+<td align="center">attribut 1</td>
+</tr>
+<tr>
+<td align="center">attribut 2</td>
+</tr>
+<tr>
+<td align="center">...</td>
+</tr>
+<tr>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+<p></center>
+Un attribut est désigné par :</p>
+<div class="couleur_puce1">
+<ul>
+<li>Un nom</li>
+<li>Une valeur de type défini (entier, chaine de caractères, booléen...)</li>
+</ul>
+</div>
+<details class="danger">
+<summary>Remarque capitale</summary>
+<p>L'étape consistant à créer autant d'entités que nécessaire est la première de toutes, et elle est absolument fondamentale. Le critère est simple : <strong>aucune valeur de propriété ne doit se répéter</strong> (sauf peut-être, à titre exceptionnel) <strong>dans aucune table</strong>.
+Cette règle, intangible quand il s'agit de valeurs de type texte, peut être assouplie lorsqu'il s'agit de valeurs numériques (dont les dates) : il serait en effet un peu ballot d'économiser la répétition d'un nombre... au prix de la création d'un code permettant d'accéder à ce nombre : ce serait payer de la main gauche ce qu'on économise de la main droite. Cependant, créer une entité composée uniquement de nombres peut se justifier, lorsqu'on veut restreindre les possibilités à un certain ensemble de valeurs (par exemple, les différentes motorisations disponibles pour une automobile).</p>
+</details>
+<p>En ce qui concerne l'identifiant, il est en fait assez rare de trouver spontanément un ou plusieurs attributs capables de jouer ce rôle. Même les propriétés qui semblent faire de bonnes candidates (par exemple, une plaque d'immatriculation ou un numéro de sécurité sociale) ne sont pas forcément aussi opportuns qu'elles en ont l'air, pour un certain nombre de raisons. Et il n'est pas rare qu'aucune des propriétés présentes ne puisse nous prémunir contre les doublons ; c'est le cas avec l'entité « Disques » de notre exemple : plusieurs Cds peuvent très bien avoir le même titre, et je ne parle pas de l'auteur ni de l'année. On ne peut pas davantage exclure la possibilité que deux auteurs homonymes aient sorti la même année un disque portant le même titre (ce qui nous empêche donc d'avoir confiance dans une clé primaire constituée de la combinaison des trois propriétés).</p>
+<p>Voilà pourquoi le plus souvent, on sera amené à créer une <strong>propriété supplémentaire</strong> destinée uniquement à jouer le rôle d'identifiant / clé primaire. Il s'agira presque toujours d'un code, unique pour chaque occurrence de l'entité (et voilà pourquoi un nombre de type « autoincrément » est si pratique). Ce code sera rarement visible par l'utilisateur, qui ignorera sans doute son existence : il n'en sera pas moins indispensable pour le système informatique.<br />
+Ainsi, les deux entités de notre discothèque pourront être représentées ainsi :
+<center markdown="1"></p>
+<div class="tableaux">
+<table>
+<thead>
+<tr>
+<th align="center">Disques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><u markdown="1"><strong>Code disque</strong></u></td>
+</tr>
+<tr>
+<td align="center">titre</td>
+</tr>
+<tr>
+<td align="center">année</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class = "tableaux"></div>
+<div class="tableaux">
+<table>
+<thead>
+<tr>
+<th align="center">Genres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><u markdown="1"><strong>Code genre</strong></u></td>
+</tr>
+<tr>
+<td align="center">intitulé</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></center></p>
+<p>Une entité peut avoir une ou plusieurs occurrences (et parfois même aucune).<br />
+Pour illustrer cela, voici un exemple de 3 occurrences de l'entité « Disques » :
+<center markdown="1">
+<img alt="Tuples" src="../Images/Tuples.png" />
+</center></p>
+<p>Ces occurrences sont appelées <strong>tuples</strong> ou lignes.</p>
+<details class="warning">
+<summary><strong>Remarque importante</strong></summary>
+<p>Vous remarquerez que l'attribut « <em>auteur</em> » a disparu des radars... En effet, comme cet attribut possède des valeurs redondantes (la discothèque contient plusieurs CDs d'un même auteur), le critère de non-redondance des données impose de sortir cet attribut de l'entité « Disques ». On aurait très bien pu créer alors une troisième entité : l'entité « Auteur » par exemple mais cela n'a pas été fait ici dans le seul but de faciliter la compréhension des notions qui vont suivre.</p>
+</details>
+<h3 id="associations"><div class = "encadré6_BDD" markdown="1"><strong>Associations</strong></div></h3>
+<div class="admonition book">
+<p class="admonition-title"><strong>Définition</strong></p>
+<details class="plus-circle">
+<summary><strong>Association</strong></summary>
+<p>Une <strong>association</strong> définit un <strong>lien sémantique (= qui a un sens) entre des entités</strong>.
+Elle permet de traduire une partie des règles de gestion qui n'ont pas été satisfaites par la simple définition des entités.
+Une association est a minima caractérisée par :
+<div class = "couleur_puce2" markdown="1"></p>
+<ul>
+<li>Un <strong>nom</strong> : généralement on utilise un verbe définissant le lien entre les entités.</li>
+<li>Deux <strong>cardinalités</strong> : elles sont présentes sur les 2 extrémités du lien. Chaque cardinalité est un couple de valeurs (mini, maxi) qui traduisent 2 règles de gestion (une par sens).</li>
+</ul>
+</div>
+</details>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>Une association peut aussi avoir des attributs.</p>
+</div>
+<p>On peut représenter une association par le schéma suivant :
+<center markdown="1">
+<img alt="" height="75%" src="../Images/Association.png" width="75%" />
+</center></p>
+<p>Dans le cas de notre discothèque, puisque chaque CD <strong>possède</strong> un genre (et pas n'importe lequel), les deux entités se trouvent naturellement en relation l'une avec l'autre et on peut nommer « possède » cette association.</p>
+<h3 id="cardinalites"><div class = "encadré7_BDD" markdown="1"><strong>Cardinalités</strong></div></h3>
+<p>Il s'agit maintenant de déterminer les cardinalités. Pour cela, on se pose la question suivante : à combien d'éléments de l'autre entité chaque élément peut-il être associé ? Lorsqu'on bâtit une relation entre deux entités, on doit nécessairement préciser ce point, car de lui dépendent de très importantes conséquences.</p>
+<p>Ici, il paraît évident qu'un même genre musical peut être représenté par plusieurs disques. En sens inverse, en revanche, on peut être embêté pour décider à combien de genres peut correspondre chaque disque. On peut en effet imaginer soit que chaque disque ne puisse être rattaché qu'à un genre et un seul afin de faciliter le classement, soit qu'à chaque disque on puisse attribuer plusieurs genres à la fois, ce qui introduit davantage de complexité, mais aussi davantage de souplesse.</p>
+<p>La décision, dans cette alternative, n'appartient pas à l'informaticien : il s'agit d'un choix d'ordre fonctionnel, qui doit être subordonné aux besoins de l'organisation pour laquelle est conçue la base de données. Il n'existe donc aucune règle qui permette de trancher a priori entre les deux possibilités... excepté que la technique doit être au service des besoins de ceux qui s'en serviront, et non l'inverse. En revanche, ce qui nous intéresse ici, ce sont les conséquences de ce choix sur notre base de données.</p>
+<h4 id="cardinalites-minimum-et-maximum"><div class = "encadré8_BDD" markdown="1"><strong>Cardinalités minimum et maximum</strong></div></h4>
+<p>De là, il faut distinguer le nombre minimum et le nombre maximum de ces correspondances : pour chaque élément d'une entité, on doit donc stipuler à combien d'éléments de l'autre entité celui-ci est susceptible de correspondre, au minimum et au maximum. Ainsi, toute relation entre deux entités A et B impose de préciser quatre nombres (quatre cardinalités) : cardinalité minimum de A vers B, maximum de A vers B, minimum de B vers A, maximum de B vers A.</p>
+<p>En reprenant l'exemple de la discothèque, cela revient à se poser les questions suivantes :</p>
+<div class="couleur_puce5_vert">
+<ul>
+<li>À combien de genres au minimum correspond chaque CD ? (autrement dit : un CD peut-il ne pas avoir de genre, ou en a-t-il forcément au moins un ?)</li>
+<li>À combien de genres au maximum correspond chaque CD ? (autrement dit : un CD peut-il avoir plusieurs genres, ou est-il limité à un seul ?)</li>
+<li>À combien de CDs au minimum correspond chaque genre ? (autrement dit : ma table des genres comprend-elle uniquement des genres qui correspondent à mes CDs, ou peut-il y avoir des genres « orphelins » ?)</li>
+<li>À combien de CDs au maximum correspond chaque genre ? (autrement dit : puis-je avoir plusieurs CDs du même genre, ou est-ce interdit ?)</li>
+</ul>
+</div>
+<p>Les cardinalités obéissent à un formalisme assez étroit :</p>
+<h4 id="formalisme-des-cardinalites-les-differentes-valeurs"><div class = "encadré9_BDD" markdown="1">Formalisme des cardinalités : les différentes valeurs</div></h4>
+<p>La cardinalité minimum ne peut prendre que les valeurs 0 ou 1. Autrement dit, soit on considère qu'un élément de la table A peut être en relation avec un (ou plusieurs) éléments de la table B (mais que ce n'est pas obligatoire), soit on considère que tout élément de la table A doit impérativement être en relation avec au moins un élément de la table B. Dans notre exemple, choisir 1 comme cardinalité minimum signifie qu'un disque doit être classé dans au moins un genre. Choisir 0 signifie qu'on estime que certains disques n'ont pas forcément de genre (le même problème se pose dans l'autre sens de la relation, pour savoir s'il peut exister ou non des genres sans disques).</p>
+<p>La cardinalité maximum ne peut valoir que 1 ou N, autrement dit un ou plusieurs. C'est la discussion de tout à l'heure à propos des genres : autorise-t-on ou non chaque CD à être classé dans plusieurs genres à la fois ? En sens inverse, il ne fait aucun doute qu'à chaque genre, doivent pouvoir correspondre plusieurs CD.</p>
+<p>Il n'existe donc que quatre cas de figure possibles pour les cardinalités : <span class="arithmatex">\((0,1)\)</span>, <span class="arithmatex">\((0,N)\)</span>, <span class="arithmatex">\((1,1)\)</span> et <span class="arithmatex">\((1,N)\)</span>.</p>
+<p>Voilà donc ce que cela donne pour notre exemple (<em>schéma réalisé à partir du site <a href="https://www.mocodo.net/" target="_blank">mocodo.net</a></em>) :
+<center markdown="1">
+<img alt="Association" src="../Images/Genres.png" />
+<em>Schéma conceptuel des données pour la gestion d'une discothèque</em>
+<br>
+</center></p>
+<p>Cette représentation ne se lit pas n'importe comment. Pour être certain de ne pas commettre de contresens, lorsqu'on traduit le schéma ci-dessus, il vaut mieux éviter de dire « Les disques possèdent des genres », ou pire encore « La table disque possède certains genres ».<br />
+La bonne traduction, celle qui vous évitera au maximum de commettre des erreurs, consiste à dire que « Chaque élément de la table Disques possède un et un seul genre ».<br />
+En prenant l'affaire par l'autre bout, on peut tout aussi bien dire (même si c'est un peu laid à l'oreille) : « Chaque genre est possédé par zéro, un ou plusieurs disques ».</p>
+<h4 id="raccourcis-de-langage"><div class = "encadré10_BDD" markdown="1"><strong>Raccourcis de langage</strong></div></h4>
+<p>Pour décrire les cardinalités, on va souvent user d'un raccourci de langage. Comme les cardinalités les plus décisives sur l'architecture de la base sont souvent les cardinalités maxima, on aura tendance à ne parler que d'elles.<br />
+Ainsi, dans le cas d'une relation où l'une des deux cardinalités maximales vaut <span class="arithmatex">\(1\)</span> et l'autre <span class="arithmatex">\(N\)</span>, on dira volontiers qu'on a affaire à une relation « un à plusieurs ». Lorsque les deux cardinalités maximales valent <span class="arithmatex">\(N\)</span>, on parlera de relation « plusieurs à plusieurs ».</p>
+<details class="tip">
+<summary><strong>Remarque</strong></summary>
+<p>Une relation de type « un à un » (où, donc, les deux cardinalités maximum sont égales à <span class="arithmatex">\(1\)</span>) est un cas limite. Cela signifie que nous avons créé deux entités qui en réalité n'en forment qu'une seule, puisque chaque élément de l'une corespond à un élément de l'autre, et à un seul. Ce n'est pas à proprement parler une faute, mais face à une telle situation, on a toujours intérêt à se demander ce qui justifie d'avoir créé deux entités plutôt qu'une seule.</p>
+</details>
+<h2 id="du-mcd-au-mld-premiere-approche"><div class = "encadré11_BDD" markdown="1"><strong>Du MCD au MLD : première approche</strong></div></h2>
+<p>On rappelle que par rapport au <strong>MCD</strong>, le <strong>MLD</strong> est un plan moins abstrait et plus proche de la réalité, c'est-à-dire de la base de données telle qu'elle existera sur les machines. On rappelle aussi que toute la difficulté de la modélisation réside dans l'élaboration du <strong>MCD</strong>. Une fois que celui-ci est conçu, le <strong>MLD</strong> s'en déduit par l'application de quelques règles (on pourrait dire : d'un algorithme). Donc, le passage du <strong>MCD</strong> au <strong>MLD</strong> n'est qu'une question de rigueur, et plus du tout d'intelligence ou d'imagination.</p>
+<h3 id="transformation-dune-entite-en-relation"><div class = "encadré12_BDD" markdown="1"><strong>Transformation d'une entité en relation</strong></div></h3>
+<p>Une première règle est que toute entité du <strong>MCD</strong> est transformée en un <strong>tableau à deux dimensions</strong> appelé <strong>relation</strong> comme le montre la figure suivante :</p>
+<p><center markdown="1">
+    <img alt="" class="picture" src="../Images/Disques2.png" />
+    <img alt="" class="picture" height="5%" src="../Images/Fleche.png" width="5%" />
+    <img alt="" class="picture" src="../Images/Relation.png" />
+</center></p>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Remarques</strong></p>
+<div class = "couleur_puce4" markdown="1">
+<ul>
+<li><strong>L'identifiant</strong> de l'entité devient la <strong>clé primaire</strong> de la relation. Il est représenté sur la figure ci-dessus par une clé et la dénomination <em>Pk_Primary</em>.</li>
+<li>L'ensemble des valeurs possibles d'un attribut définit un <strong>domaine</strong>.</li>
+</ul>
+</div>
+</div>
+<p>On trouve également la notation textuelle : <strong>NomRelation</strong>(<u>identifiant</u>, attribut1, attribut2...).<br />
+On peut par exemple noter la relation « Disques » par : <strong>Disques</strong>(<u>Code disque</u>, titre, année)</p>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Remarques</strong></p>
+<div class = "couleur_puce4" markdown="1">
+<ul>
+<li>Le nom de la relation est en gras.</li>
+<li>La clé primaire est soulignée.</li>
+</ul>
+</div>
+</div>
+<h3 id="transformation-dune-association-en-relation"><div class = "encadré13_BDD" markdown="1"><strong>Transformation d’une association en relation</strong></div></h3>
+<p>Selon les cardinalités maximales qui caractérisent la relation, les choses vont se passer très différemment.</p>
+<h4 id="si-lune-des-deux-cardinalites-maximales-vaut-1"><div class = "encadré14_BDD" markdown="1">Si l'une des deux cardinalités maximales vaut 1</div></h4>
+<p>Autrement dit, l'une des cardinalités est <span class="arithmatex">\((0,1)\)</span> ou <span class="arithmatex">\((1,1)\)</span>, ce qui est le cas de notre exemple dont on remet ci-dessous le schéma :
+<img alt="Association" src="../Images/Genres.png" />
+<center markdown="1">
+<em>Schéma du <strong>MCD</strong> lorsque l'une des deux cardinalités vaut</em> <span class="arithmatex">\((1,1)\)</span>
+<br>
+</center></p>
+<p>Concrètement, cela veut dire, comme dans notre exemple, que chaque CD possède un genre et un seul. Un CD ne peut pas ne pas avoir de genre ; il ne peut pas non plus en avoir plusieurs. Dans ce cas, dans le MLD, cette relation devient une relation directe entre les deux tables. L'identifiant de la table côté « plusieurs » devient une nouvelle propriété de la table du côté « un », ainsi que l'illustre cet exemple :
+<img alt="Association" src="../Images/Association_JMerise_4.png" />
+<center markdown="1">
+<em>Schéma du <strong>MLD</strong> lorsque l'une des deux cardinalités vaut</em> <span class="arithmatex">\((1,1)\)</span>
+</center></p>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Remarques</strong></p>
+<div class = "couleur_puce4">
+<ul>
+<li>On a ajouté un attribut « <em>Code genre</em> » dans la relation « Disques », cet attribut correspond à la clé primaire de la relation « Genres ». On dit que c’est une <strong>clé étrangère</strong> (<em>Foreign Key</em>). Dans le schéma ci-dessus, elle est également représentée par une clé et la dénomination <em>Fk_Foreign</em>.</li>
+<li>On lie ces deux attributs entre eux.</li>
+</ul>
+</div>
+</div>
+<p>Dans l’écriture textuelle, on ajoute la clé étrangère avec le symbole « # » ou en soulignant l’attribut concerné par un trait en pointillé.</p>
+<p>Par exemple la relation « Disques » devient : <strong>Disques</strong>(<u>Code disque</u>, #Code genre, titre, année).</p>
+<h4 id="si-les-deux-cardinalites-maximales-sont-n"><div class = "encadré15_BDD" markdown="1">Si les deux cardinalités maximales sont N</div></h4>
+<p>Autrement dit, si la relation est de type « plusieurs à plusieurs ». Voici ce que donnerait le schéma du <strong>MCD</strong> dans le cas de notre discothèque :
+<img alt="Association" src="../Images/Disques.png" />
+<center markdown="1">
+<em>Schéma du <strong>MCD</strong> lorsque les deux cardinalités maximales sont <span class="arithmatex">\(N\)</span></em>
+</center></p>
+<p>Dans le <strong>MLD</strong>, la relation devient alors une <strong>nouvelle table</strong>, elle-même en relation avec les deux tables produites par les deux entités. Une telle table est dite <strong>table de correspondance</strong>, ou encore <strong>table de liaison</strong>, <strong>table de jonction</strong>, <strong>table d'association</strong>, etc. Elle ne contient pas à proprement parler de données : son rôle est d'organiser les rapports entre les éléments des tables qui, elles, les contiennent. Une table de jonction contiendra uniquement des propriétés correspondant aux clés primaires des deux entités, qu'elle associera deux à deux.</p>
+<p>Et voici le schéma du <strong>MLD</strong> :
+<img alt="Association" src="../Images/Association_JMerise_3.png" />
+<center markdown="1">
+<em>Schéma du <strong>MLD</strong> lorsque les deux cardinalités maximales sont <span class="arithmatex">\(N\)</span></em>
+</center></p>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>On a donc transformé l’association en relation par l’ajout de deux attributs correspondant respectivement aux clés primaires de chacune des entités. Dans ce cas, il y a donc <strong>deux clés étrangères</strong>. <strong>Et ce couple de clés étrangères forme la clé primaire</strong> de la nouvelle relation.<br />
+Sur notre schéma, on a les 2 dénominations associées (<em>PFk_Prim_Forei</em>).</p>
+</div>
+<h2 id="les-contraintes-dintegrite"><div class = "encadré16_BDD" markdown="1"><strong>Les contraintes d'intégrité</strong></div></h2>
+<p>Le modèle relationnel impose une règle minimale qui est l'unicité des clés, comme nous allons le voir ci-dessous. Cependant, il existe plusieurs points pour respecter l'intégrité d'une base de données.</p>
+<details class="plus-circle">
+<summary><strong>Unicité de clé</strong></summary>
+<p>Par définition, une relation est un ensemble de tuples. Un ensemble n'ayant pas d'élément en double, il ne peut pas exister deux fois le même tuple dans une relation.<br />
+<strong>Toute relation doit donc posséder une clé unique (clé primaire).</strong></p>
+</details>
+<details class="plus-circle">
+<summary><strong>Contraintes référentielles</strong></summary>
+<p>Correctement construite, une base de données fait appel à des données situées dans différentes relations. Pour que les données restent utilisables et cohérentes, il ne faut pas que l'on puisse détruire des données qui dépendent les unes des autres. C'est le rôle de l'intégrité référentielle de protéger ces relations. Autrement dit, l'intégrité référentielle vérifie qu'une valeur de clé étrangère existe bien en tant que valeur de clé primaire dans une autre table. Dans notre exemple : des genres sont reliés à des disques. L'intégrité référentielle empêchera la suppression d'un genre si des disques y sont rattachés dans la base de données. En procédant ainsi, les genres seront toujours reliés à leurs disques et l'utilisateur ne pourra pas supprimer (involontairement) des données essentielles.</p>
+</details>
+<details class="plus-circle">
+<summary><strong>Valeurs nulles</strong></summary>
+<p>Lors de l'insertion de tuples dans une relation, il arrive fréquemment qu'un attribut soit inconnu ou non applicable. Par exemple, l'année de sortie d'un disque peut être inconnue. On est alors amené à introduire dans la relation une valeur conventionnelle appelée valeur nulle.</p>
+<details class="warning">
+<summary><strong>Attention</strong></summary>
+<p>Tout attribut dans une relation ne peut prendre une valeur nulle. En effet, l'existence d'une clé unique impose la connaissance de la clé afin de pouvour vérifier que cette valeur de clé n'existe pas déjà. La clé ne peut donc pas être nulle ! </p>
+</details>
+</details>
+<details class="plus-circle">
+<summary><strong>Contraintes de domaine</strong></summary>
+<p>En théorie, une relation est construite à partir d'un ensemble de domaines. En pratique, les domaines gérés par les systèmes sont souvent limités aux types de base (entiers, réels, chaînes de caractères), parfois monnaie et date. Afin de spécialiser un type de données pour composer un domaine plus fin (par exemple, les années de sortie d'un disque qui peuvent être des entiers compris entre 1949 et 2100), cette notion de contrainte de domaine est souvent ajoutée aux règles d'intégrité.</p>
+</details>
+
+              
+    <script src="../../../js/ide.js"></script> 
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pied de page">
+      
+        
+        <a href="../../.." class="md-footer__link md-footer__link--prev" aria-label="Précédent: 🏡 Page d&#39;accueil" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              🏡 Page d'accueil
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Exercices_sur_les_bases_de_donn%C3%A9es/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Enoncé" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              Enoncé
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2020 - 2022 Sylvain Liaboeuf
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:sylvain.liaboeuf@ac-lyon.fr" target="_blank" rel="noopener" title="mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://lyc-hippolyte-carnot.ent.auvergnerhonealpes.fr/" target="_blank" rel="noopener" title="Lycée Carnot" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M496 128v16a8 8 0 0 1-8 8h-24v12c0 6.627-5.373 12-12 12H60c-6.627 0-12-5.373-12-12v-12H24a8 8 0 0 1-8-8v-16a8 8 0 0 1 4.941-7.392l232-88a7.996 7.996 0 0 1 6.118 0l232 88A8 8 0 0 1 496 128zm-24 304H40c-13.255 0-24 10.745-24 24v16a8 8 0 0 0 8 8h464a8 8 0 0 0 8-8v-16c0-13.255-10.745-24-24-24zM96 192v192H60c-6.627 0-12 5.373-12 12v20h416v-20c0-6.627-5.373-12-12-12h-36V192h-64v192h-64V192h-64v192h-64V192H96z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.top", "navigation.instant", "navigation.tabs", "navigation.expand", "toc.integrate", {"tabs": false}], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.01de222e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../xtra/javascripts/interpreter.js"></script>
+      
+    
+  </body>
+</html>

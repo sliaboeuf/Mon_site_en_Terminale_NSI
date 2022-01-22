@@ -1,0 +1,1814 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Sylvain Liaboeuf">
+      
+      
+      <link rel="icon" href="../../../Images/Logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
+    
+    
+      
+        <title>Programmation orientée objet - Cours de Terminale NSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#la-programmation-orientee-objet" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Cours de Terminale NSI" class="md-header__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programmation orientée objet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="red"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Mode sombre" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="orange"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Mode clair" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      🏡 Page d'accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Les_bases_de_donnees/Les_bases_de_donn%C3%A9es/" class="md-tabs__link">
+        📦 Les bases de données
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Le_langage_SQL/Le_langage_SQL/" class="md-tabs__link">
+        📇 Le langage SQL
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        💻 Programmation orientée objet
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Complexité_tris/complexite.md" class="md-tabs__link">
+        ⏳ Complexité
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Epreuve_pratique/Modalite/" class="md-tabs__link">
+        🛠️ Epreuve pratique
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cours de Terminale NSI" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Cours de Terminale NSI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI/" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        🏡 Page d'accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          📦 Les bases de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="📦 Les bases de données" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          📦 Les bases de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Les_bases_de_donnees/Les_bases_de_donn%C3%A9es/" class="md-nav__link">
+        Les bases de données
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Les_bases_de_donnees/Exercices_sur_les_bases_de_donn%C3%A9es/" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Les_bases_de_donnees/Correction_des_exercices/" class="md-nav__link">
+        Correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Les_bases_de_donnees/Exercice_bilan/" class="md-nav__link">
+        Exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Les_bases_de_donnees/Correction_de_l%27exercice_bilan/" class="md-nav__link">
+        Correction de l'exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          📇 Le langage SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="📇 Le langage SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          📇 Le langage SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Le_langage_SQL/" class="md-nav__link">
+        Le langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Prise_en_main_DB_Browser/" class="md-nav__link">
+        Présentation de DB Browser for SQLite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Memento_SQL/" class="md-nav__link">
+        Memento SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Exercices_sur_le_langage_SQL/" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Correction_des_exercices/" class="md-nav__link">
+        Correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Exercice_bilan/" class="md-nav__link">
+        Exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Correction_de_l%27exercice_bilan/" class="md-nav__link">
+        Correction de l'exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Le_langage_SQL/Mini_projet/" class="md-nav__link">
+        Mini-projet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          💻 Programmation orientée objet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="💻 Programmation orientée objet" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 Programmation orientée objet
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Programmation orientée objet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Programmation orientée objet
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#paradigme-de-programmation" class="md-nav__link">
+    Paradigme de programmation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programmation-procedurale" class="md-nav__link">
+    Programmation procédurale
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-objets-un-moyen-de-separer-la-conception-de-lutilisation" class="md-nav__link">
+    Les objets : un moyen de séparer la conception de l’utilisation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#petit-historique" class="md-nav__link">
+    Petit historique
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-classes" class="md-nav__link">
+    Les classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#premier-programme" class="md-nav__link">
+    Premier programme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-attributs" class="md-nav__link">
+    Les attributs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-methodes" class="md-nav__link">
+    Les méthodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passer-des-parametres-a-une-instance-de-classe" class="md-nav__link">
+    Passer des paramètres à une instance de classe
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulation-et-interface" class="md-nav__link">
+    Encapsulation et interface
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercice/" class="md-nav__link">
+        Exercice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Correction_de_l_exercice/" class="md-nav__link">
+        Correction de l'exercice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mini_projet/" class="md-nav__link">
+        Mini-projet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          ⏳ Complexité
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="⏳ Complexité" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          ⏳ Complexité
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" data-md-state="indeterminate" type="checkbox" id="__nav_5_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/complexite.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Correction des exos du cours.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          TP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="TP" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          TP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/TD_Complexite.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Correction des exos du TP.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Exercices.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Complexité_tris/Correction.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          🛠️ Epreuve pratique
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="🛠️ Epreuve pratique" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          🛠️ Epreuve pratique
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Epreuve_pratique/Modalite/" class="md-nav__link">
+        Modalité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Epreuve_pratique/EP/" class="md-nav__link">
+        Banque d'exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+<a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI/edit/main/docs/cours/Poo/POO.md" title="Editer cette page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="la-programmation-orientee-objet"><center><div class = "titre1_POO">La programmation orientée objet</div> </center></h1>
+<h2 id="paradigme-de-programmation"><div class = "encadré1_POO"><strong>Paradigme de programmation</strong></div></h2>
+<div class="admonition note1">
+<p class="admonition-title">D'après Wikipédia :</p>
+<p><strong>Un paradigme de programmation est une façon d'approcher la programmation informatique et de traiter les solutions aux
+problèmes et leur formulation dans un langage de programmation approprié.</strong></p>
+</div>
+<p>Jusqu'à présent nous avons vu un seul paradigme de programmation : la <strong>programmation procédurale</strong> (ou <strong>impérative</strong>).</p>
+<h2 id="programmation-procedurale"><div class = "encadré2_POO"><strong>Programmation procédurale</strong></div></h2>
+<p>La programmation <strong>procédurale</strong>, dite aussi programmation <strong>impérative</strong>, est celle que vous avez utilisée jusqu'à maintenant, elle repose donc sur des notions qui vous sont familières :</p>
+<div class="couleur_puce1etoi">
+
+*  La séquence d'instructions (les instructions d'un programme s'exécutent l'une après l'autre).
+*  L'affectation (on attribue une valeur à une variable, par exemple : `#!python a = 5`).  
+*  L'instruction conditionnelle (`#!python if` / `#!python else`).  
+*  La boucle (`#!python while` et `#!python for`).  
+
+</div>
+<p>Elle consiste aussi à diviser un programme en blocs réutilisables appelés fonctions.</p>
+<p>Vous essayez autant que possible de garder votre code en blocs modulaires, en décidant de manière logique quel bloc est appelé. Cela demande moins d’efforts pour visualiser ce que votre programme fait et rend plus facile la maintenance du code puisque vous pouvez voir ce que fait une portion de code. Le fait d’améliorer une fonction (qui est réutilisée) peut améliorer la performance à plusieurs endroits dans votre programme.</p>
+<p>Il y a donc des variables, qui contiennent vos données, et des fonctions. Vous passez vos variables à vos fonctions – qui agissent sur elles et peut-être les modifient. L'interaction entre les variables et les fonctions n'est pas toujours simple à gérer : les variables locales, globales, les effets de bords que provoquent certaines fonctions qui modifient des variables globales sont souvent source de bugs difficiles à déceler.</p>
+<p>On touche ici aux limites de la programmation procédurale, lorsque le nombre de fonctions et de variables devient important.</p>
+<p>La programmation impérative est loin d'être le seul paradigme de programmation (même si c'est sans doute le plus courant). Cette année nous allons étudier deux autres paradigmes : le <strong>paradigme objet</strong> et le <strong>paradigme fonctionnel</strong>. </p>
+<h2 id="les-objets-un-moyen-de-separer-la-conception-de-lutilisation"><div class = "encadré3_POO"><strong>Les objets : un moyen de séparer la conception de l’utilisation</strong></div></h2>
+<p>La programmation orientée objet repose, comme son nom l'indique, sur le concept d'objet.</p>
+<p>Un objet dans la vie de tous les jours, vous connaissez, mais en informatique, qu'est-ce que<br />
+c'est ? 
+Une variable ? Une fonction ? Ni l'un ni l'autre, c'est un nouveau concept.</p>
+<p>Imaginez un objet (de la vie de tous les jours) très complexe (par exemple un moteur de voiture) : il est évident qu'en regardant cet objet, on est frappé par sa complexité (pour un non spécialiste). Imaginez que l'on enferme cet objet dans une caisse et que l'utilisateur de l'objet n'ait pas besoin d'en connaître son principe de fonctionnement interne pour pouvoir l'utiliser. L'utilisateur a, à sa disposition, des boutons, des manettes et des écrans de contrôle pour faire fonctionner l'objet, ce qui rend son utilisation relativement simple. La mise au point de l'objet (par des ingénieurs) a été très complexe, en revanche son utilisation est relativement simple. Programmer de manière orientée objet, c'est un peu reprendre cette idée : utiliser des objets sans se soucier de leur complexité interne. Pour utiliser ces objets, nous n'avons pas à notre disposition des boutons, des manettes ou encore des écrans de contrôle, mais des <strong>attributs</strong> et des <strong>méthodes</strong> (nous aurons l'occasion de revenir longuement sur ces 2 concepts). Un des nombreux avantages de la programmation orientée objet (<strong>POO</strong>), est qu'il existe des milliers d'objets (on parle plutôt de classes, mais là aussi nous reviendrons sur ce terme de classe un peu plus loin) prêts à être utilisés (vous en avez déjà utilisés de nombreuses fois sans le savoir). On peut réaliser des programmes extrêmement complexes uniquement en utilisant des classes préexistantes.</p>
+<p><strong>Objets et POO sont au centre de la manière dont Python fonctionne</strong>. Il n'est pas obligatoire d'utiliser la <strong>POO</strong> dans un programme - mais comprendre le concept est essentiel pour devenir plus qu'un débutant. Et notamment parce que vous aurez besoin d'utiliser les classes et objets fournis par la librairie standard.</p>
+<p>Ainsi, en manipulant les tableaux en python, vous avez certainement remarqué qu'il y a deux syntaxes pour appeler des fonctions :</p>
+<div class="highlight"><pre><span></span><code><span class="n">tableau</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">taille</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
+<span class="n">tableau</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+</code></pre></div>
+<div class="couleur_puce11">
+
+* Le calcul de la longueur du tableau se fait par l'appel à la fonction `#!python len()` avec une syntaxe identique aux fonctions que vous avez l'habitude d'écrire.
+* L'ajout d'un élément dans le tableau est un peu différent car la fonction `#!python append` semble provenir du tableau lui même : dans ce cas, on ne parle pas de fonction mais de méthode associée à l'objet tableau.
+
+</div>
+<p>Un <strong>objet</strong> est une structure de données qui intègre des variables (que l'on nomme <strong>propriétés</strong>) et des fonctions (que l'on nomme <strong>méthodes</strong>). Nous allons voir l'intérêt de cette approche, omniprésente dans Python, en particulier lorsqu'on développe des interfaces graphiques, mais avant quelques petits repères historiques et éléments de contexte.</p>
+<h2 id="petit-historique"><div class = "encadré4_POO"><strong>Petit historique</strong></div></h2>
+<p>La notion de programmation orientée objet remonte aux années 1960. <em>Simula</em> est considéré comme le premier langage de programmation orienté objet.</p>
+<p>Les années 1970 voient les principes de la programmation par objet se développer et prendre forme au travers notamment du langage <em>Smalltalk</em>.</p>
+<p>À partir des années 1980, commence l'effervescence des langages à objets : <em>Objective C</em> (début des années 1980, utilisé sur les plateformes Mac et iOS), <em>C++</em> (C with classes) en 1983 sont les plus célèbres.</p>
+<p>Les années 1990 voient l'âge d'or de l'extension de la programmation par objet dans les différents secteurs du développement logiciel, notemment grâce à l'émergence des systèmes d'exploitation basés sur une interface graphique (MacOS, Linux, Windows) qui font appel abondamment aux principes de la <strong>POO</strong>.</p>
+<h2 id="les-classes"><div class = "encadré5_POO"><strong>Les classes</strong></div></h2>
+<p>Dans la vie réelle, un objet ne sort pas de nulle part. En effet, chaque objet est défini selon des caractéristiques et un plan bien précis. En <strong>POO</strong>, ces informations sont contenues dans ce qu'on appelle des <strong>classes</strong>.</p>
+<p>Prenons un exemple très simple : les gâteaux et leur moule. Le moule est unique. Il peut produire une quantité infinie de gâteaux. Dans ce cas-là, les gâteaux sont les <em>objets</em> et le moule est la <em>classe</em> : le moule va définir la forme du gâteau. La classe contient donc le plan de fabrication d'un objet et on peut s'en servir autant qu'on veut afin d'obtenir une infinité d'objets.</p>
+<p>Une classe est une entité regroupant des variables et des fonctions que tout objet issu de cette classe possédera.</p>
+<div class = "couleur_puce12">
+
+!!! book "Un peu de vocabulaire autour de cette notion de classe :"
+
+    * Le type de données avec ses **caractéristiques** et ses **actions** possibles s’appelle **classe**.
+    * Les **caractéristiques** (ou **variables**) de la classe s’appellent les **attributs**.  
+    * Les **actions** possibles à effectuer avec la classe s’appellent les **méthodes**.  
+    * La classe définit donc les **attributs** et les actions possibles sur ces attributs, les **méthodes**.
+    * Un objet du type de la classe s’appelle une **instance de la classe** et la création d’un objet d’une classe s’appelle une **instanciation de cette classe**.
+    * Lorsqu’on définit les attributs d’un objet de la classe, on parle aussi d’instanciation.
+    * On dit que les attributs et les méthodes sont **encapsulés** dans la classe.
+
+</div>
+<p>Python permet d’utiliser la programmation procédurale mais il permet aussi d’utiliser la <strong>POO</strong>. Il est même possible, comme nous le verrons plus loin, d’utiliser les 2 manières de programmer dans un même programme.</p>
+<p>La création d’une classe en python commence toujours par le mot <code class="highlight"><span class="k">class</span></code>. Ensuite toutes les instructions de la classe seront indentées :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">leNomDeMaClasse</span> <span class="p">:</span>
+    <span class="c1"># instructions de la classe</span>
+<span class="c1"># La définition de la classe est terminée.</span>
+</code></pre></div>
+<h2 id="premier-programme"><div class = "encadré6_POO"><strong>Premier programme</strong></div></h2>
+<p>Pour développer toutes ces notions (et d’autres), nous allons écrire un premier programme :</p>
+<p>Nous allons commencer par écrire une classe <code class="highlight"><span class="n">personnage</span></code> (qui sera dans un premier temps une coquille vide) et, à partir de cette classe créer 2 instances : <code class="highlight"><span class="n">darkVador</span></code> et <code class="highlight"><span class="n">lukeSkywalker</span></code>.</p>
+<p>Ensuite ils vont se combattre...</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 1
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_3"></div></div><div id="term_editor_3" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_3","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_3","ex1")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_3').click()">⤴️</button>                <input type="file" id="input_editor_3" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_3" class="hide">class personnage:backslash_newline    passbackslash_newlinebackslash_newlinedarkVador = personnage()backslash_newlinelukeSkywalker = personnage()backslash_newline</span><span id="corr_content_editor_3" class="hide"></span></p>
+<hr />
+<h2 id="les-attributs"><div class = "encadré7_POO"><strong>Les attributs</strong></div></h2>
+<p>Pour l’instant, notre classe ne sert à rien et nos instances d’objet ne peuvent rien faire. Comme il n’est pas possible de créer une classe totalement vide, nous avons utilisé l’instruction <code class="highlight"><span class="k">pass</span></code> qui ne fait rien. Ensuite nous avons créé 2 instances de la classe <code class="highlight"><span class="n">personnage</span></code> : <code class="highlight"><span class="n">darkVador</span></code> et <code class="highlight"><span class="n">lukeSkywalker</span></code>.</p>
+<p>Comme nous l'avons vu précédemment, une instance de classe possède des attributs et des méthodes. Commençons par les attributs :</p>
+<p><strong>Un attribut est une variable spécifique à la classe.</strong></p>
+<p>Nous allons associer un attribut <code class="highlight"><span class="n">vie</span></code> à notre classe <code class="highlight"><span class="n">personnage</span></code> (chaque instance aura un attribut <code class="highlight"><span class="n">vie</span></code>, quand la valeur de <code class="highlight"><span class="n">vie</span></code> deviendra nulle, le personnage sera mort !)</p>
+<p>Ces attributs s’utilisent comme des variables, l’attribut <code class="highlight"><span class="n">vie</span></code> pour <code class="highlight"><span class="n">lukeSkywalker</span></code> sera noté :</p>
+<div class="highlight"><pre><span></span><code><span class="n">lukeSkywalker</span><span class="o">.</span><span class="n">vie</span>
+</code></pre></div>
+<p>De la même façon l’attribut <code class="highlight"><span class="n">vie</span></code> de l’instance <code class="highlight"><span class="n">darkVador</span></code> sera noté :</p>
+<div class="highlight"><pre><span></span><code><span class="n">darkVador</span><span class="o">.</span><span class="n">vie</span>
+</code></pre></div>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 2
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_5"></div></div><div id="term_editor_5" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_5","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_5","ex2")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_5').click()">⤴️</button>                <input type="file" id="input_editor_5" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_5" class="hide">class personnage:backslash_newline    passbackslash_newlinebackslash_newlinedarkVador = personnage()backslash_newlinedarkVador.vie = 20backslash_newlinelukeSkywalker = personnage()backslash_newlinelukeSkywalker.vie = 20backslash_newline</span><span id="corr_content_editor_5" class="hide"></span></p>
+<p>Comme pour une variable, il est possible d'utiliser la console Python pour afficher la valeur référencée par un attribut. Il suffit de taper dans la console <code class="highlight"><span class="n">darkVador</span><span class="o">.</span><span class="n">vie</span></code> ou <code class="highlight"><span class="n">lukeSkywalker</span><span class="o">.</span><span class="n">vie</span></code> (sans avoir oublié d'exécuter le programme au préalable !).</p>
+<hr />
+<p><strong>Mais cette façon de faire n'est pas très "propre" et n'est pas une bonne pratique.</strong></p>
+<p>En effet, nous ne respectons pas un principe de base de la <strong>POO</strong> : l'encapsulation.</p>
+<p>Il ne faut pas oublier que notre classe doit être "enfermée dans une caisse" pour que l'utilisateur puisse l'utiliser facilement sans se préoccuper de ce qui se passe à l'intérieur, or, ici, ce n'est pas vraiment le cas.</p>
+<p>En effet, les attributs (<code class="highlight"><span class="n">darkVador</span><span class="o">.</span><span class="n">vie</span></code> et <code class="highlight"><span class="n">lukeSkywalker</span><span class="o">.</span><span class="n">vie</span></code>) font parties de la classe et devraient donc être enfermés dans la "caisse" !</p>
+<h2 id="les-methodes"><div class = "encadré8_POO"><strong>Les méthodes</strong></div></h2>
+<p>Pour résoudre ce problème, nous allons définir les attributs, dans la classe, à l'aide d'une méthode d'initialisation des attributs.</p>
+<p>Cette méthode est définie dans le code source par la ligne : </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+</code></pre></div>
+<p>La méthode <code class="highlight"><span class="fm">__init__</span></code> est automatiquement exécutée au moment de la création d’une instance. La variable <code class="highlight"><span class="bp">self</span></code> est obligatoirement le premier argument d’une méthode (nous reviendrons ci-dessous sur ce mot <code class="highlight"><span class="bp">self</span></code>)</p>
+<p>Nous retrouvons ce mot <code class="highlight"><span class="bp">self</span></code> lors de la définition des attributs. La définition des attributs sera de la forme :</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">vie</span> <span class="o">=</span> <span class="mi">20</span>
+</code></pre></div>
+<p>Le mot <code class="highlight"><span class="bp">self</span></code> représente l’instance. Quand vous définissez une instance de classe (<code class="highlight"><span class="n">darkVador</span></code> ou <code class="highlight"><span class="n">lukeSkywalker</span></code>) le nom de votre instance va remplacer le mot <code class="highlight"><span class="bp">self</span></code>.</p>
+<p>Dans le code source, nous allons avoir :</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">personnage</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vie</span> <span class="o">=</span> <span class="mi">20</span>
+</code></pre></div>
+<p>Ensuite lors de la création de l’instance <code class="highlight"><span class="n">darkVador</span></code>, python va automatiquement remplacer <code class="highlight"><span class="bp">self</span></code> par <code class="highlight"><span class="n">darkVador</span></code> et ainsi créer un attribut <code class="highlight"><span class="n">darkVador</span><span class="o">.</span><span class="n">vie</span></code> qui aura pour valeur de départ la valeur donnée à <code class="highlight"><span class="bp">self</span><span class="o">.</span><span class="n">vie</span></code> dans la méthode <code class="highlight"><span class="fm">__init__</span></code></p>
+<p>Il se passera exactement la même chose au moment de la création de l’instance <code class="highlight"><span class="n">lukeSkywalker</span></code>, on aura automatiquement la création de l’attribut <code class="highlight"><span class="n">lukeSkywalker</span><span class="o">.</span><span class="n">vie</span></code>.</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 3
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_7"></div></div><div id="term_editor_7" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_7","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_7","ex3")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_7').click()">⤴️</button>                <input type="file" id="input_editor_7" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_7" class="hide">class personnage:backslash_newlinebackslash_newline    def <strong>__init</strong>__(self):backslash_newline        self.vie = 20backslash_newlinebackslash_newlinedarkVador = personnage()backslash_newlinelukeSkywalker = personnage()backslash_newline</span><span id="corr_content_editor_7" class="hide"></span></p>
+<p>Utilisez la console Python comme dans l'exercice 2.</p>
+<hr />
+<p>Le résultat de l'exercice 3 est identique au résultat de l’exemple de l'exercice 2. Mais cette fois nous n’avons pas défini l’attribut <code class="highlight"><span class="n">darkVador</span><span class="o">.</span><span class="n">vie</span> <span class="o">=</span> <span class="mi">20</span></code> ou <code class="highlight"><span class="n">lukeSkywalker</span><span class="o">.</span><span class="n">vie</span> <span class="o">=</span> <span class="mi">20</span></code> en dehors de la classe, nous avons utilisé une méthode <code class="highlight"><span class="fm">__init__</span></code>.</p>
+<p>C’est une meilleure pratique.</p>
+<h2 id="passer-des-parametres-a-une-instance-de-classe"><div class = "encadré9_POO"><strong>Passer des paramètres à une instance de classe</strong></div></h2>
+<p>Imaginons que nos 2 personnages n’aient pas au départ les mêmes points de vie ! Pour l’instant, impossible d’introduire cette contrainte (<code class="highlight"><span class="bp">self</span><span class="o">.</span><span class="n">vie</span> <span class="o">=</span> <span class="mi">20</span></code>)</p>
+<p>Une méthode, comme une fonction, peut prendre des paramètres.</p>
+<p>Le passage de paramètres se fait au moment de la création de l’instance.</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 4
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_9"></div></div><div id="term_editor_9" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_9","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_9","ex4")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_9').click()">⤴️</button>                <input type="file" id="input_editor_9" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_9" class="hide">class personnage:backslash_newlinebackslash_newline    def <strong>__init</strong>__(self, pointDeVie):backslash_newline        self.vie = pointDeViebackslash_newlinebackslash_newlinedarkVador = personnage(20)backslash_newlinelukeSkywalker = personnage(15)backslash_newline</span><span id="corr_content_editor_9" class="hide"></span></p>
+<p>Utilisez la console Python pour vérifier que <code class="highlight"><span class="n">darkVador</span><span class="o">.</span><span class="n">vie</span></code> est égal à <code class="highlight"><span class="mi">20</span></code> et <code class="highlight"><span class="n">lukeSkywalker</span><span class="o">.</span><span class="n">vie</span></code> est égal à <code class="highlight"><span class="mi">15</span></code>.</p>
+<hr />
+<p>Au moment de la création de l’instance <code class="highlight"><span class="n">darkVador</span></code>, on passe comme argument le nombre de vies (<code class="highlight"><span class="n">darkVador</span> <span class="o">=</span> <span class="n">personnage</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span></code>).</p>
+<p>Ce nombre de vies est attribué au premier argument de la méthode <code class="highlight"><span class="fm">__init__</span></code>, la variable <code class="highlight"><span class="n">pointDeVie</span></code> (<code class="highlight"><span class="n">pointDeVie</span></code> n’est pas tout à fait le premier argument de la méthode <code class="highlight"><span class="fm">__init__</span></code> puisque devant il y a <code class="highlight"><span class="bp">self</span></code>, mais bon, <code class="highlight"><span class="bp">self</span></code> étant obligatoire, nous pouvons dire que <code class="highlight"><span class="n">pointDeVie</span></code> est le premier argument non obligatoire).</p>
+<p>N.B : <code class="highlight"><span class="n">pointDeVie</span></code> est bien une variable (car ce n’est pas un attribut de la classe <code class="highlight"><span class="n">personnage</span></code> puisqu’elle ne commence pas par <code class="highlight"><span class="bp">self</span></code>).</p>
+<p>Nous pouvons passer plusieurs arguments à la méthode <code class="highlight"><span class="fm">__init__</span></code> (comme pour n’importe quelle fonction).</p>
+<p>Nous allons créer 2 nouvelles méthodes :</p>
+<div class="couleur_puce11">
+
+* Une méthode qui enlèvera un point de vie au personnage blessé
+* Une méthode qui renverra le nombre de vies restantes
+</div>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 5
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_11"></div></div><div id="term_editor_11" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_11","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_11","ex5")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_11').click()">⤴️</button>                <input type="file" id="input_editor_11" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_11" class="hide">class personnage:backslash_newlinebackslash_newline    def <strong>__init</strong>__(self, pointDeVie):backslash_newline        self.vie = pointDeViebackslash_newlinebackslash_newline    def donneEtat(self):backslash_newline        return self.viebackslash_newlinebackslash_newline    def perdVie(self):backslash_newline        self.vie = self.vie - 1backslash_newlinebackslash_newlinedarkVador = personnage(20)backslash_newlinelukeSkywalker = personnage(15)backslash_newline</span><span id="corr_content_editor_11" class="hide"></span></p>
+<p>Pour tester ce programme, dans la console, tapez successivement les instructions suivantes :</p>
+<div class="couleur_puce11">
+
+* `#!python darkVador.donneEtat()`
+* `#!python lukeSkywalker.donneEtat()`
+* `#!python darkVador.perdVie()`
+* `#!python darkVador.donneEtat()`
+* `#!python lukeSkywalker.perdVie()`
+* `#!python lukeSkywalker.donneEtat()`
+</div>
+<hr />
+<p>Vous avez sans doute remarqué que lors de "l'utilisation" des instances <code class="highlight"><span class="n">lukeSkywalker</span></code> et <code class="highlight"><span class="n">darkVador</span></code>, nous avons uniquement utilisé des méthodes et nous n’avons plus directement utilisé des attributs (plus de <code class="highlight"><span class="n">darkVador</span><span class="o">.</span><span class="n">vie</span></code>).</p>
+<h2 id="encapsulation-et-interface"><div class = "encadré10_POO"><strong>Encapsulation et interface</strong></div></h2>
+<p>Il est important de savoir que l’utilisation des attributs en dehors de la classe est une mauvaise pratique en programmation orientée objet : les attributs doivent rester "à l'intérieur" de la classe, l’utilisateur de la classe ne doit pas les utiliser directement.</p>
+<p>Il peut les manipuler, mais uniquement par l’intermédiaire d’une méthode (la méthode <code class="highlight"><span class="bp">self</span><span class="o">.</span><span class="n">perdVie</span></code> permet de manipuler l’attribut <code class="highlight"><span class="bp">self</span><span class="o">.</span><span class="n">vie</span></code>).</p>
+<p>Les méthodes constituent "l'interface" de l’objet.</p>
+<p>Pour l’instant nous avons utilisé les méthodes uniquement en tapant des instructions dans la console, il est évidemment possible d’utiliser ces méthodes directement dans votre programme :</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 6
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_13"></div></div><div id="term_editor_13" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_13","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_13","ex6")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_13').click()">⤴️</button>                <input type="file" id="input_editor_13" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_13" class="hide">class personnage:backslash_newlinebackslash_newline    def <strong>__init</strong>__(self, pointDeVie):backslash_newline        self.vie = pointDeViebackslash_newlinebackslash_newline    def donneEtat(self):backslash_newline        return self.viebackslash_newlinebackslash_newline    def perdVie(self):backslash_newline        self.vie = self.vie - 1backslash_newlinebackslash_newlinelukeSkywalker = personnage(15)backslash_newlinelukeSkywalker.perdVie()backslash_newlinepoint = lukeSkywalker.donneEtat()backslash_newline</span><span id="corr_content_editor_13" class="hide"></span></p>
+<p>Évaluez la variable <code class="highlight"><span class="n">point</span></code> à l’aide de la console.</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 7
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Nos personnages peuvent boire une potion qui leur ajoute un point de vie. Modifiez le programme de l'exercice 5 en ajoutant une méthode <code class="highlight"><span class="n">boirePotion</span></code>. Testez ensuite cette modification à l’aide de la console.</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_15"></div></div><div id="term_editor_15" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_15","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_15","ex5")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_15').click()">⤴️</button>                <input type="file" id="input_editor_15" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_15" class="hide">class personnage:backslash_newlinebackslash_newline    def <strong>__init</strong>__(self, pointDeVie):backslash_newline        self.vie = pointDeViebackslash_newlinebackslash_newline    def donneEtat(self):backslash_newline        return self.viebackslash_newlinebackslash_newline    def perdVie(self):backslash_newline        self.vie = self.vie - 1backslash_newlinebackslash_newlinedarkVador = personnage(20)backslash_newlinelukeSkywalker = personnage(15)backslash_newline</span><span id="corr_content_editor_15" class="hide"></span></p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 8
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_17"></div></div><div id="term_editor_17" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_17","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_17","ex8")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_17').click()">⤴️</button>                <input type="file" id="input_editor_17" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_17" class="hide">class personnage:backslash_newlinebackslash_newline    def <strong>__init</strong>__(self, pointDeVie):backslash_newline        self.vie = pointDeViebackslash_newlinebackslash_newline    def donneEtat(self):backslash_newline        return self.viebackslash_newlinebackslash_newline    def perdVie(self, nbPoint):backslash_newline        self.vie = self.vie - nbPointbackslash_newlinebackslash_newlinelukeSkywalker = personnage(15)backslash_newlinelukeSkywalker.perdVie(2)backslash_newlinepoint = lukeSkywalker.donneEtat()backslash_newline</span><span id="corr_content_editor_17" class="hide"></span></p>
+<p>Évaluez la variable <code class="highlight"><span class="n">point</span></code> à l’aide de la console.</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 9
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_19"></div></div><div id="term_editor_19" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_19","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_19","ex9")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_19').click()">⤴️</button>                <input type="file" id="input_editor_19" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_19" class="hide">import randombackslash_newlinebackslash_newlineclass personnage:backslash_newline    def <strong>__init</strong>__(self, pointDeVie):backslash_newline        self.vie = pointDeViebackslash_newlinebackslash_newline    def donneEtat(self):backslash_newline        return self.viebackslash_newlinebackslash_newline    def perdVie(self):backslash_newline        if random.random() &gt; 0.5:backslash_newline            nbPoint = 1backslash_newline        else:backslash_newline            nbPoint = 2backslash_newline        self.vie = self.vie - nbPointbackslash_newlinebackslash_newlinelukeSkywalker = personnage(15)backslash_newlinelukeSkywalker.perdVie()backslash_newlinelukeSkywalker.perdVie()backslash_newlinelukeSkywalker.perdVie()backslash_newlinepoint = lukeSkywalker.donneEtat()backslash_newline</span><span id="corr_content_editor_19" class="hide"></span></p>
+<p>Évaluez la variable <code class="highlight"><span class="n">point</span></code> à l’aide de la console.</p>
+<p>N.B : <code class="highlight"><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span></code> renvoie une valeur aléatoire comprise entre <code class="highlight"><span class="mi">0</span></code> et <code class="highlight"><span class="mi">1</span></code>.</p>
+<p>Expliquez le fonctionnement de la méthode <code class="highlight"><span class="n">perdVie</span></code>.</p>
+<hr />
+<p>Comme vous l’avez remarqué, il est possible d’utiliser une instruction conditionnelle (<code class="highlight"><span class="k">if</span></code> / <code class="highlight"><span class="k">else</span></code>) dans une méthode. Il est donc possible d’utiliser dans le même programme le paradigme objet et le paradigme impératif.</p>
+<p>Nous allons maintenant organiser un combat virtuel entre nos personnages :</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 10
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Analysez et testez ce code :</p>
+<div class="ide_classe"><div class="wrapper"><div class="interior_wrapper"><div id="editor_21"></div></div><div id="term_editor_21" class="term_editor"></div></div><button class="emoji" onclick='interpretACE("editor_21","v")'>▶️</button><span style="indent-text:5em"> </span><button class="emoji" onclick='download_file("editor_21","ex10")'>⤵️</button><span style="indent-text:5em"> </span><button class="emoji" onclick="document.getElementById('input_editor_21').click()">⤴️</button>                <input type="file" id="input_editor_21" name="file" enctype="multipart/form-data" class="hide"/></div>
+<p><span id="content_editor_21" class="hide">import randombackslash_newlinebackslash_newlineclass personnage:backslash_newlinebackslash_newline    def <strong>__init</strong>__(self, pointDeVie):backslash_newline        self.vie = pointDeViebackslash_newlinebackslash_newline    def donneEtat(self):backslash_newline        return self.viebackslash_newlinebackslash_newline    def perdVie(self):backslash_newline        if random.random() &gt; 0.5:backslash_newline            nbPoint = 1backslash_newline        else :backslash_newline            nbPoint = 2backslash_newline        self.vie = self.vie - nbPointbackslash_newlinebackslash_newlinedef game():backslash_newline    lukeSkywalker = personnage(20)backslash_newline    darkVador = personnage(20)backslash_newlinebackslash_newline    while lukeSkywalker.donneEtat() &gt; 0 and darkVador.donneEtat() &gt; 0:backslash_newline        lukeSkywalker.perdVie()backslash_newline        darkVador.perdVie()backslash_newlinebackslash_newline    if lukeSkywalker.donneEtat() &lt;= 0 and darkVador.donneEtat() &gt; 0:backslash_newline        msg = f'''Dark Vador est vainqueur, il lui reste encore {darkVador.donneEtat()} points de vie alors que Luke Skywalker est mort'''backslash_newlinebackslash_newline    elif darkVador.donneEtat() &lt;= 0 and lukeSkywalker.donneEtat() &gt; 0:backslash_newline        msg = f'''Luke Skywalker est vainqueur, il lui reste encore {lukeSkywalker.donneEtat()} points de vie alors que Dark Vador est mort'''backslash_newlinebackslash_newline    else:backslash_newline        msg = "Les deux combattants sont morts en mÃªme temps"backslash_newlinebackslash_newline    return msgbackslash_newline</span><span id="corr_content_editor_21" class="hide"></span></p>
+<p>Pour tester le programme, exécutez la fonction <code class="highlight"><span class="n">game</span></code> dans une console. Vérifiez que l’on peut obtenir des résultats différents en exécutant plusieurs fois la fonction <code class="highlight"><span class="n">game</span></code>.</p>
+<p>Nous avons ici la démonstration qu’il est possible d’utiliser le paradigme objet et le paradigme impératif dans un même programme.</p>
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 11
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Améliorez le programme développé dans l'exercice 10 en modifiant les méthodes et en implémentant les méthodes suivantes :</p>
+<div class="list5_1">
+
+1. Dans l’initialisation, on ne peut donner de nom au personnage !
+
+</div>
+<div class="list5_a">
+
+1. Créez un attribut `#!python nom` qu’on doit donner en premier paramètre : on crée une instance de `#!python personnage` comme ceci :
+    <div class="decal2">
+       <div class="highlight"><pre><span></span><code><span class="n">darkVador</span> <span class="o">=</span> <span class="n">personnage</span><span class="p">(</span><span class="s2">&quot;Dark Vador&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+</div>
+2. Créez une méthode `#!python donneNom` qui renvoie le nom du personnage.
+
+</div>
+<div class="list5_2">
+
+2. Modifiez la fonction `#!python game` pour qu’elle tienne compte du nom du personnage.  
+<div class="decal2">On doit pouvoir créer d’autres personnages et les messages doivent tenir compte des noms de ceux-ci.
+     <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">lukeSkywalker</span> <span class="o">=</span> <span class="n">personnage</span><span class="p">(</span><span class="s2">&quot;Luke Skywalker&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">darkMaul</span> <span class="o">=</span> <span class="n">personnage</span><span class="p">(</span><span class="s2">&quot;Dark Maul&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">game</span><span class="p">(</span><span class="n">lukeSkywalker</span><span class="p">,</span> <span class="n">darkMaul</span><span class="p">)</span>
+<span class="n">Dark</span> <span class="n">Maul</span> <span class="n">est</span> <span class="n">vainqueur</span><span class="p">,</span> <span class="n">il</span> <span class="n">lui</span> <span class="n">reste</span> <span class="n">encore</span> <span class="mi">3</span> <span class="n">points</span> <span class="n">de</span> <span class="n">vie</span> <span class="n">alors</span> <span class="n">que</span> <span class="n">Luke</span> <span class="n">Skywalker</span> <span class="n">est</span> <span class="n">mort</span>
+</code></pre></div>
+</div>
+<div class="decal2">Remarquez bien que la *signature* de la fonction `#!python game` est différente !  
+<br>
+On doit créer les personnages __avant__ de l’appeler. Il faut changer plusieurs éléments.</div>
+
+</div>
+<div class="list5_3">
+
+3. Améliorez encore la fonction `#!python game` pour qu’elle affiche un journal détaillé du combat :  
+   <div class="decal2">
+    <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">hanSolo</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jabbaLeHutt</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">game</span><span class="p">(</span><span class="n">hanSolo</span><span class="p">,</span> <span class="n">jabbaLeHutt</span><span class="p">)</span>
+<span class="n">Han</span> <span class="n">Solo</span> <span class="n">perd</span> <span class="n">un</span> <span class="n">point</span> <span class="n">de</span> <span class="n">vie</span>
+<span class="n">Jabba</span> <span class="n">le</span> <span class="n">Hutt</span> <span class="n">perd</span> <span class="n">deux</span> <span class="n">points</span> <span class="n">de</span> <span class="n">vie</span>
+
+<span class="o">...</span>
+<span class="n">Han</span> <span class="n">Solo</span> <span class="n">perd</span> <span class="n">deux</span> <span class="n">points</span> <span class="n">de</span> <span class="n">vie</span>
+<span class="n">Jabba</span> <span class="n">le</span> <span class="n">Hutt</span> <span class="n">perd</span> <span class="n">deux</span> <span class="n">points</span> <span class="n">de</span> <span class="n">vie</span>
+<span class="n">Han</span> <span class="n">Solo</span> <span class="n">est</span> <span class="n">vainqueur</span><span class="p">,</span> <span class="n">il</span> <span class="n">lui</span> <span class="n">reste</span> <span class="n">encore</span> <span class="mi">2</span> <span class="n">points</span> <span class="n">de</span> <span class="n">vie</span> <span class="n">alors</span> <span class="n">que</span> <span class="n">Jabba</span> <span class="n">le</span> <span class="n">Hutt</span> <span class="n">est</span> <span class="n">mort</span>
+</code></pre></div>
+</div>
+
+</div>
+<div class="list5_4">
+
+4. Revenons à `#!python personnage`.  
+   <div class="decal2">On dispose maintenant des méthodes suivantes :
+    <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">personnage</span><span class="p">:</span>
+    <span class="o">|</span>
+    <span class="o">|</span>  <span class="n">donneEtat</span>
+    <span class="o">|</span>     <span class="o">--&gt;</span> <span class="nb">int</span>
+    <span class="o">|</span>     <span class="n">renvoie</span> <span class="n">le</span> <span class="n">nombre</span> <span class="n">de</span> <span class="n">pts</span> <span class="n">de</span> <span class="n">vie</span>
+    <span class="o">|</span>
+    <span class="o">|</span>  <span class="n">perdVie</span>
+    <span class="o">|</span>     <span class="n">enleve</span> <span class="n">un</span> <span class="n">ou</span> <span class="n">deux</span> <span class="n">points</span> <span class="n">de</span> <span class="n">vie</span>
+    <span class="o">|</span>
+    <span class="o">|</span>  <span class="n">donneNom</span>
+    <span class="o">|</span>     <span class="o">--&gt;</span> <span class="nb">str</span>
+    <span class="o">|</span>     <span class="n">renvoie</span> <span class="n">le</span> <span class="n">nom</span> <span class="n">du</span> <span class="n">personnage</span>
+</code></pre></div>
+</div>
+<div class="decal2">On veut créer un attribut `#!python chance` lors de l’instanciation du personnage.  
+C’est un entier entre `#!python 0` et `#!python 4`.  
+L’effet de la chance est le suivant :
+dans la méthode `#!python perdVie`, on tire toujours un nombre aléatoire entre `#!python 0` et `#!python 1`.</div>
+
+</div>
+<div class = "couleur_puce13">
+
+* Si ce nombre multiplié par `#!python 10` dépasse la chance du personnage, il perd un point de vie.
+* Sinon il ne perd pas de vie et on affiche `#!python "Han Solo a de la chance !"`
+</div>
+<div class="decal4">
+
+Par exemple, Han Solo a `#!python 2` de chance.
+</div>
+<div class = "couleur_puce13">
+
+* Dans `#!python perdVie`, on tire `#!python 0.3`,
+  `#!python 10 * 0.3 = 3` et `#!python 3 > 2` : il perd un point de vie.
+* Dans `#!python perdVie`, on tire `#!python 0.12345`
+  `#!python 10 * 0.12345 = 1.2345` et `#!python 1.2345 < 2` : il ne perd pas de vie.
+</div>
+<div class="decal8">
+
+Il faut aussi changer la méthode `#!python __init__` pour pouvoir créer nos personnages ainsi :
+
+<div class="highlight"><pre><span></span><code><span class="n">hanSolo</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s2">&quot;Han Solo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+Implémentez la chance et faites quelques essais.
+
+Attention, si vous donnez une chance trop élevée, le personnage ne perdra jamais de vie et la boucle de la fonction `#!python game` sera infinie !
+
+</div>
+<div class="list5_5">
+
+5. Maintenant qu’on peut donner un attribut `#!python chance`, il faut *protéger* le programme.  
+
+</div>
+<div class="decal8">
+
+Une valeur de chance trop élevée peut conduire à un programme qui ne termine jamais, il suffit de donner une chance de `#!python 10` pour qu’un personnage soit invicible !
+
+Nous allons créer une méthode interne `#!python __limiterChance` qui empêche la chance d’être supérieure à `#!python 4`.
+
+Si le paramètre `#!python chance` est inférieur ou égal à `#!python 4`, il est inchangé, s’il dépasse `#!python 4`, il est ramené à `#!python 4`.
+
+Cette méthode interne ne sera pas appelée par les éléments extérieurs au programme, seulement par le programme lui-même !
+
+On utilise cette méthode interne dans `#!python __init__`, il faut penser à l’appeler.
+</div>
+
+<hr />
+<div class ="viewPort">
+<div class="monTitre">
+Exercice 12
+</div>
+<div class="cylon_eye"></div>
+</div>
+
+<p>Continuer ce jeu en mode texte avec vos propres méthodes.</p>
+<p>On pourrait créer des méthodes comme <code class="highlight"><span class="n">taper</span></code> dans la classe <code class="highlight"><span class="n">personnage</span></code>, qui dépendrait de la <code class="highlight"><span class="n">chance</span></code> et d’un attribut <code class="highlight"><span class="n">force</span></code> à définir…</p>
+<p><code class="highlight"><span class="n">taper</span></code> pourrait renvoyer un nombre aléatoire entre 1 et <code class="highlight"><span class="n">force</span></code>, par exemple. Et c’est ce nombre qui définirait le nombre de points perdus par le personnage… Ce ne sont que des idées, je vous laisse libre de choisir une amélioration.</p>
+<hr />
+
+              
+    <script src="../../../js/ide.js"></script> 
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pied de page">
+      
+        
+        <a href="../../Le_langage_SQL/Mini_projet/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Mini-projet" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              Mini-projet
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Exercice/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Exercice" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              Exercice
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2020 - 2022 Sylvain Liaboeuf
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:sylvain.liaboeuf@ac-lyon.fr" target="_blank" rel="noopener" title="mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://lyc-hippolyte-carnot.ent.auvergnerhonealpes.fr/" target="_blank" rel="noopener" title="Lycée Carnot" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M496 128v16a8 8 0 0 1-8 8h-24v12c0 6.627-5.373 12-12 12H60c-6.627 0-12-5.373-12-12v-12H24a8 8 0 0 1-8-8v-16a8 8 0 0 1 4.941-7.392l232-88a7.996 7.996 0 0 1 6.118 0l232 88A8 8 0 0 1 496 128zm-24 304H40c-13.255 0-24 10.745-24 24v16a8 8 0 0 0 8 8h464a8 8 0 0 0 8-8v-16c0-13.255-10.745-24-24-24zM96 192v192H60c-6.627 0-12 5.373-12 12v20h416v-20c0-6.627-5.373-12-12-12h-36V192h-64v192h-64V192h-64v192h-64V192H96z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.top", "navigation.instant", "navigation.tabs", "navigation.expand", "toc.integrate", {"tabs": false}], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.01de222e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../xtra/javascripts/interpreter.js"></script>
+      
+    
+  </body>
+</html>
