@@ -1,4 +1,3 @@
-password: test
 
 # <center><div class = "titre1_BDD" markdown="1">Les bases de données</div> </center>
 
