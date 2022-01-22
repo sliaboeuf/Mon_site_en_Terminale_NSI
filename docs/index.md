@@ -1,4 +1,3 @@
-password: test
 
 # <center><div class = "titre1_index"> Cours de Terminale NSI</div></center>
 
