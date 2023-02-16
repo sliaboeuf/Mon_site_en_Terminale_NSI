@@ -1,7 +1,7 @@
 # Informations du site
 site_name: Cours de Terminale NSI
 site_author : Sylvain Liaboeuf
-copyright : Copyright © 2020 - 2022 Sylvain Liaboeuf
+copyright : Copyright © 2020 - 2023 Sylvain Liaboeuf
 
 # Structure des dossiers
 docs_dir: docs
@@ -13,42 +13,63 @@ edit_uri: edit/main/docs/
 # use_directory_urls: false
 
 markdown_extensions:
-  - meta                            # Métadonnées
-  - abbr                            # infobulles sur abbréviations 
-  - admonition                      # Blocs colorés  !!! info "ma remarque"
-  - pymdownx.details                # qui peuvent se plier/déplier.
-  - def_list                        # Les listes de définition.
-  - attr_list                       # Un peu de CSS et des attributs HTML.
-  - footnotes                       # Notes[^1] de bas de page.  [^1]: ma note.
-  - pymdownx.superfences            # Imbrication de blocs.
-  - pymdownx.extra
-  - pymdownx.highlight:             # Coloration syntaxique du code
-      use_pygments: true
-      linenums: false
-  - pymdownx.tasklist:              # Cases à cocher  - [ ]  et - [x]
-      custom_checkbox: true         #   avec cases d'origine
-      clickable_checkbox: true      #   et cliquables.
-  - pymdownx.caret                  # Passage ^^souligné^^ ou en ^exposant^.
-  - pymdownx.tabbed:                 # Volets glissants.  === "Mon volet"
-     alternate_style: true
-  - pymdownx.mark                   # Passage ==surligné==.
-  - pymdownx.keys                   # Touches du clavier.  ++ctrl+d++
-  - pymdownx.tilde                  # Passage ~~barré~~ ou en ~indice~.
-  - pymdownx.snippets               # Inclusion de fichiers externe.
-  - pymdownx.inlinehilite           # pour  `#!python  <python en ligne>`
-  - pymdownx.arithmatex:            # Formules en LaTeX 
+    - meta
+    - abbr
+    - def_list                      # Les listes de définition.
+    - attr_list                     # Un peu de CSS et des attributs HTML.
+    - md_in_html                    # Pour écrire en MarkDown dans des balises HTML https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#markdown-in-html
+    - footnotes                     # Notes[^1] de bas de page.  [^1]: ma note.
+    - admonition                    # Blocs colorés  !!! info "ma remarque"
+    - pymdownx.details              #   qui peuvent se plier/déplier.
+    - pymdownx.caret                # Passage ^^souligné^^ ou en ^exposant^.
+    - pymdownx.mark                 # Passage ==surligné==.
+    - pymdownx.tilde                # Passage ~~barré~~ ou en ~indice~.
+    - pymdownx.highlight:           # Coloration syntaxique du code
+        auto_title: true
+        auto_title_map:
+            "Python": "🐍 Script Python"
+            "C": ""
+            "C++": ""
+            "Ada": "✍️ Pseudo-code"
+            "BARE": "🍲 Recette de cuisine"
+            "Bash": ""
+            "PHP": ""
+            "Java": ""
+            "JavaScript": ""
+            "Rust": ""
+            "Go": ""
+            "Fortran": ""
+            "Python Console Session": "🖳 Console Python"
+            "E-mail": "📥 Entrée"
+            "Text Output": "📤 Sortie"
+            "Text Only": ""
+    - pymdownx.inlinehilite         # pour  `#!python  <python en ligne>`
+    - pymdownx.snippets             # Inclusion de fichiers externe.
+    - pymdownx.tasklist:            # Cases à cocher  - [ ]  et - [x]
+        custom_checkbox: true    #   avec cases d'origine
+        clickable_checkbox: true    #   et cliquables.
+    - pymdownx.tabbed:               # Volets glissants.  === "Mon volet"
+        alternate_style: true 
+    - pymdownx.superfences:          # Imbrication de blocs.
+        preserve_tabs: true
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.keys:                # Touches du clavier.  ++ctrl+d++
+        separator: "\uff0b"
+    - pymdownx.emoji:               # Émojis  :boom:
+        emoji_index:     !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.arithmatex:
         generic: true
-        smart_dollar: false
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.emoji:                 # Émojis  :boom:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 theme:
   name: material
   custom_dir: my_theme_customizations/
   language: fr
+  icon: 
+    logo: material/laptop
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
@@ -81,7 +102,8 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
-  - xtra/stylesheets/pyoditeur.css
+  - xtra/extra.css                      # ajustements
+  - xtra/pyoditeur.css
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
@@ -89,11 +111,19 @@ extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - xtra/javascripts/interpreter.js
+  - xtra/config.js                    # MathJax
+  - xtra/interpreter.js
 
 plugins:
-  - search                         # Inclure une barre de recherche
+  - offline
+  - search
+  - awesome-pages:
+      collapse_single_pages: false
   - macros
+  - mkdocs-video:
+      css_style:
+        width: "95%"
+        height: "30vw"
   #- encryptcontent:
      #remember_password: True
      #password_button: True
@@ -153,6 +183,6 @@ extra:
     - icon: fontawesome/solid/paper-plane
       link: mailto:sylvain.liaboeuf@ac-lyon.fr
       name: mail
-    - icon: fontawesome/solid/university
+    - icon: fontawesome/solid/school
       link: https://lyc-hippolyte-carnot.ent.auvergnerhonealpes.fr/
       name: Lycée Carnot
