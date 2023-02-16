@@ -1,0 +1,2649 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Sylvain Liaboeuf">
+      
+      
+      
+        <link rel="prev" href="../Poo/Mini_projet.html">
+      
+      
+        <link rel="next" href="Correction%20des%20exos%20du%20cours.html">
+      
+      <link rel="icon" href="../../Images/Logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Les arbres - Cours de Terminale NSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../xtra/extra.css">
+    
+      <link rel="stylesheet" href="../../xtra/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#les-arbres" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../index.html" title="Cours de Terminale NSI" class="md-header__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2h-4Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Les arbres
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="red"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Mode sombre" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="orange"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Mode clair" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../index.html" class="md-tabs__link">
+      🏡 Page d'accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Les_bases_de_donnees/Les_bases_de_donn%C3%A9es.html" class="md-tabs__link">
+        📦 Les bases de données
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Le_langage_SQL/Le_langage_SQL.html" class="md-tabs__link">
+        📇 Le langage SQL
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Poo/POO.html" class="md-tabs__link">
+        💻 Programmation orientée objet
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Complexité_tris/complexite.md" class="md-tabs__link">
+        ⏳ Complexité
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="Les%20arbres.html" class="md-tabs__link md-tabs__link--active">
+        🌲 Les arbres
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Epreuve_pratique/Modalite.html" class="md-tabs__link">
+        🛠️ Epreuve pratique
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Cours de Terminale NSI" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2h-4Z"/></svg>
+
+    </a>
+    Cours de Terminale NSI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sliaboeuf/Mon_site_en_Terminale_NSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        🏡 Page d'accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          📦 Les bases de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          📦 Les bases de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Les_bases_de_donnees/Les_bases_de_donn%C3%A9es.html" class="md-nav__link">
+        Les bases de données
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Les_bases_de_donnees/Exercices_sur_les_bases_de_donn%C3%A9es.html" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Les_bases_de_donnees/Correction_des_exercices.html" class="md-nav__link">
+        Correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Les_bases_de_donnees/Exercice_bilan.html" class="md-nav__link">
+        Exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Les_bases_de_donnees/Correction_de_l%27exercice_bilan.html" class="md-nav__link">
+        Correction de l'exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          📇 Le langage SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          📇 Le langage SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Le_langage_SQL.html" class="md-nav__link">
+        Le langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Prise_en_main_DB_Browser.html" class="md-nav__link">
+        Présentation de DB Browser for SQLite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Memento_SQL.html" class="md-nav__link">
+        Memento SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Exercices_sur_le_langage_SQL.html" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Correction_des_exercices.html" class="md-nav__link">
+        Correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Exercice_bilan.html" class="md-nav__link">
+        Exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Correction_de_l%27exercice_bilan.html" class="md-nav__link">
+        Correction de l'exercice bilan
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Le_langage_SQL/Mini_projet.html" class="md-nav__link">
+        Mini-projet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          💻 Programmation orientée objet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          💻 Programmation orientée objet
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Poo/POO.html" class="md-nav__link">
+        Programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Poo/Exercice.html" class="md-nav__link">
+        Exercice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Poo/Correction_de_l_exercice.html" class="md-nav__link">
+        Correction de l'exercice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Poo/Mini_projet.html" class="md-nav__link">
+        Mini-projet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          ⏳ Complexité
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          ⏳ Complexité
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexité_tris/complexite.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexité_tris/Correction des exos du cours.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          TP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          TP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexité_tris/TD_Complexite.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexité_tris/Correction des exos du TP.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexité_tris/Exercices.md" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexité_tris/Correction.md" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          🌲 Les arbres
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          🌲 Les arbres
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Les arbres
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Les%20arbres.html" class="md-nav__link md-nav__link--active">
+        Les arbres
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arbres-quelconques" class="md-nav__link">
+    Arbres quelconques
+  </a>
+  
+    <nav class="md-nav" aria-label="Arbres quelconques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-et-exemples" class="md-nav__link">
+    Définition et exemples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminologie" class="md-nav__link">
+    Terminologie
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arbres-binaires" class="md-nav__link">
+    Arbres binaires
+  </a>
+  
+    <nav class="md-nav" aria-label="Arbres binaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-et-exemples_1" class="md-nav__link">
+    Définition et exemples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas-particuliers-darbres-binaires" class="md-nav__link">
+    Cas particuliers d'arbres binaires
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proprietes" class="md-nav__link">
+    Propriétés
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-en-python" class="md-nav__link">
+    Implémentation en Python
+  </a>
+  
+    <nav class="md-nav" aria-label="Implémentation en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-abstrait-arbre-binaire" class="md-nav__link">
+    Type abstrait arbre binaire
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    Implémentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmique-des-arbres-binaires" class="md-nav__link">
+    Algorithmique des arbres binaires
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parcours-dun-arbre-binaire" class="md-nav__link">
+    Parcours d'un arbre binaire
+  </a>
+  
+    <nav class="md-nav" aria-label="Parcours d'un arbre binaire">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parcours-en-profondeur" class="md-nav__link">
+    Parcours en profondeur
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parcours-en-largeur" class="md-nav__link">
+    Parcours en largeur
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arbres-binaires-de-recherche" class="md-nav__link">
+    Arbres binaires de recherche
+  </a>
+  
+    <nav class="md-nav" aria-label="Arbres binaires de recherche">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probleme-introductif" class="md-nav__link">
+    Problème introductif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-et-exemples_2" class="md-nav__link">
+    Définition et exemples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recherche-dune-cle-dans-un-arbre-binaire-de-recherche" class="md-nav__link">
+    Recherche d’une clé dans un arbre binaire de recherche
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion-dune-cle-dans-un-arbre-binaire-de-recherche" class="md-nav__link">
+    Insertion d’une clé dans un arbre binaire de recherche
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Correction%20des%20exos%20du%20cours.html" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Exercices.html" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Correction.html" class="md-nav__link">
+        Correction des exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          Compression de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Compression de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Activite%20introductive.html" class="md-nav__link">
+        Activités de découverte
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Compression.html" class="md-nav__link">
+        Cours
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+          Projet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Projet
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Projet.html" class="md-nav__link">
+        Enoncé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="R%C3%A9partition.html" class="md-nav__link">
+        Répartition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
+          Les différentes fonctions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Les différentes fonctions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sequenceToOccurrences%28%29.html" class="md-nav__link">
+        sequenceToOccurrences()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="weightTree().md" class="md-nav__link">
+        weightTree()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="insertTreeInForest%28%29.html" class="md-nav__link">
+        insertTreeInForest()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="huffmanTree%28%29.html" class="md-nav__link">
+        huffmanTree()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="treeToCoding%28%29.html" class="md-nav__link">
+        treeToCoding()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="encode%28%29.html" class="md-nav__link">
+        encode()
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="decode%28%29.html" class="md-nav__link">
+        decode()
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Mise%20en%20commun.html" class="md-nav__link">
+        Mise en commun
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Banc_d_essai.html" class="md-nav__link">
+        Banc d'essai
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          🛠️ Epreuve pratique
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          🛠️ Epreuve pratique
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Epreuve_pratique/Modalite.html" class="md-nav__link">
+        Modalité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Epreuve_pratique/EP.html" class="md-nav__link">
+        Banque d'exercices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+    
+                  
+
+  
+  
+
+
+
+<h1 id="les-arbres"><center><div class = "titre1">Les arbres</div></center></h1>
+<p><img alt="Illustration" src="Images/RecursiveTree.JPG" />
+<center></p>
+<p><em>Arbre créé par un algorithme récursif</em></p>
+<p></center></p>
+<h2 id="introduction"><div class = "encadré1"><strong>Introduction</strong></div></h2>
+<div class="admonition probleme">
+<p class="admonition-title"><strong>Problématique</strong></p>
+<p>La notion de liste chaînée explorée dans un précédent chapitre est parfaite pour structurer un ensemble d'éléments destiné à être énuméré <strong>séquentiellement</strong>.  </p>
+<p>Comme on l'a vu avec la réalisation de piles et de files, cette structure permet également un accès simple, suivant le cas, au premier élément ou au dernier de la séquence.  </p>
+<p>Par contre l’accès à un élément situé à une position quelconque est plus problématique, puisqu'on doit parcourir les éléments les uns après les autres, apportant ainsi un temps d’accès proportionnel au nombre d’éléments parcourus soit une complexité moyenne en <span class="arithmatex">\(\mathcal{O}(\small{n}\)</span><span class="arithmatex">\()\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>Structures arborescentes</strong></p>
+<p>Les <strong>structures arborescentes</strong> forment une autre famille de structures chaînées, dans lesquelles le nombre de sauts à effectuer pour aller depuis le point de départ jusqu'à une position souhaitée est potentiellement bien moindre.  </p>
+<p>Ces structures sont omniprésentes en informatique et nous en avons déjà observé une en classe de Première : l'arborescence des fichiers d'un ordinateurs.</p>
+<p><img alt="Illustration" src="Images/Arborescence.JPG" /></p>
+<p>Pour accéder à un fichier par exemple, on parcourt des répertoires (en partant du répertoire racine), ce qui permet ensuite un accès rapide au fichier recherché. On imagine sans mal que si l'on devait parcourir une liste de fichiers jusqu’à obtenir le bon, le temps nécessaire à cet accès serait beaucoup plus grand, proportionnellement au nombre de fichiers de cette liste.  </p>
+<p>Ce principe d'un point de départ unique à partir duquel une structure chaînée se scinde à chaque étape en plusieurs branches donne l'idée générale de la structure d'<em>arbre</em> en informatique, qui est la base d'innombrables structures de données.  </p>
+<p>Cette structure permet en outre une organisation hiérarchique de l'information, qui la rend utile pour représenter des programmes, des formules de logique, le contenu de pages web, etc.</p>
+</div>
+<h2 id="arbres-quelconques"><div class = "encadré2"><strong>Arbres quelconques</strong></div></h2>
+<h3 id="definition-et-exemples"><div class = "encadré2a"><strong>Définition et exemples</strong></div></h3>
+<div class="admonition book">
+<p class="admonition-title"><strong>Définition</strong></p>
+<p>Un <strong>arbre</strong> est une structure hiérarchique permettant de représenter de manière symbolique des informations structurées.</p>
+</div>
+<details class="exemple1">
+<summary><strong>Exemple 1 : un arbre généalogique</strong></summary>
+<p><img alt="Illustration" src="Images/genealogique.jpg" width="45%" />
+<div class="gauche"><em>source :</em><a href="http://derniersvalois.canalblog.com" target="_blank"> derniersvalois.canalblog</a></div></p>
+</details>
+<details class="exemple2">
+<summary><strong>Exemple 2 : un arbre syntaxique</strong></summary>
+<p>Un <strong>arbre syntaxique</strong> représente l’analyse d’une phrase à partir de règles de grammaire.
+<img alt="Illustration" src="Images/syntaxique.png" /></p>
+</details>
+<details class="exemple3">
+<summary><strong>Exemple 3 : un arbre lexicographique</strong></summary>
+<p>Un <strong>arbre lexicographique</strong>, ou arbre en parties communes, ou dictionnaire, représente un ensemble de mots. Les préfixes communs à plusieurs mots apparaissent une seule fois dans l’arbre.
+<img alt="Illustration" src="Images/lexico.png" /></p>
+<details class="exercice1">
+<summary>Exercice 1</summary>
+<p>Rajouter dans cet arbre les mots : <code class="highlight"><span class="n">malle</span></code> et <code class="highlight"><span class="n">portail</span></code>.</p>
+</details>
+</details>
+<details class="exemple4">
+<summary><strong>Exemple 4 : représentation d'une expression arithmétique</strong></summary>
+<p>On peut également représenter les expressions arithmétiques par des arbres étiquetés par des opérateurs, des constantes et des variables. </p>
+<p>La structure de l’arbre rend compte de la priorité des opérateurs et rend inutile tout parenthésage.</p>
+<p>Pour l’expression : <span class="arithmatex">\((\displaystyle\frac{y}{2}-t)(75+z)\)</span> cela donne :
+<img alt="Illustration" src="Images/expression_arith.png" /></p>
+<details class="exercice2">
+<summary>Exercice 2</summary>
+<p>Représenter l’expression : <span class="arithmatex">\(3+(\displaystyle\frac{7}{3}-1)^3\)</span><br />
+<br>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-2" target="_blank">Correction de l'exercice</a></p>
+</details>
+</details>
+<h3 id="terminologie"><div class = "encadré2b"><strong>Terminologie</strong></div></h3>
+<div class="admonition star1">
+<p class="admonition-title"><strong>Noeud</strong></p>
+<p>Un arbre est constitué de <strong>noeuds</strong>, reliés entre eux par des <strong>arêtes</strong> selon une relation <strong>pères-fils</strong>.
+<img alt="Illustration" src="Images/arbre1.png" />
+On distingue trois types de noeuds :
+<div class="couleur_puce1"></p>
+<ul>
+<li><strong>La racine</strong> de l’arbre est l’unique noeud ne possédant pas de parent.</li>
+<li><strong>Les feuilles</strong> (ou <em>noeuds externes</em>), éléments ne possédant pas de fils dans l’arbre.</li>
+<li><strong>Les noeuds internes</strong>, éléments possédant des fils (sous-branches).
+</div>
+<img alt="Illustration" src="Images/arbre2.png" /></li>
+</ul>
+<p>Le chemin à la racine d’un noeud est la liste des noeuds qu’il faut parcourir depuis la racine jusqu’au noeud considéré.
+<img alt="Illustration" src="Images/arbre3.png" /></p>
+<details class="attention">
+<summary><strong>Remarque</strong></summary>
+<p>L'analogie avec les arbres réels peut s'avérer trompeuse. Les arbres - en informatique - sont le plus souvent représentés avec la racine en haut, puis les noeuds, et les feuilles en bas.</p>
+</details>
+</div>
+<div class="admonition star2">
+<p class="admonition-title"><strong>Mesures</strong></p>
+<p>La <strong>profondeur</strong> d’un noeud est la distance (nombre d’arêtes) de la racine au noeud.  </p>
+<p>La <strong>hauteur</strong> d’un arbre est la plus grande profondeur d’une feuille de l’arbre.  </p>
+<p>La <strong>taille</strong> d’un arbre est son nombre de noeuds.  </p>
+<p>La <strong>longueur de cheminement</strong> est la somme des profondeurs de chacune des feuilles.
+<img alt="Illustration" src="Images/arbre4.png" />
+Cette structure de donnée est <strong>récursive</strong> : chaque noeud est lui même noeud-racine d’un sous-arbre (également appelé <strong>branche</strong>).</p>
+<details class="danger">
+<summary><strong>Remarque importante</strong></summary>
+<p><strong>Il n’existe pas de définition universelle pour la hauteur d’un arbre et la profondeur d’un noeud dans un arbre.<br />
+Dans certains cas la profondeur des noeuds est comptée à partir de 1 et/ou la hauteur est égale au nombre de profondeurs différentes…<br />
+Parfois également, la taille d’un arbre ne tient pas compte des feuilles !!</strong></p>
+</details>
+<details class="exercice3">
+<summary>Exercice 3</summary>
+<p>Soit l’arbre suivant :<br />
+<img alt="Illustration" src="Images/Exercice3.png" width="40%" />
+<div class="list1"></p>
+<ol>
+<li>Quelle est la racine de cet arbre ?</li>
+<li>Donner la hauteur et la taille de cet arbre.</li>
+<li>Donner le(s) fils du noeud 7.</li>
+<li>Donner le père du noeud 11.</li>
+<li>Donner toutes les feuilles de cet arbre.</li>
+</ol>
+<p></div>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-3" target="_blank">Correction de l'exercice</a></p>
+</details>
+</div>
+<div class="admonition star3">
+<p class="admonition-title"><strong>Étiquette</strong></p>
+<p>La finalité d’un arbre est le plus souvent de structurer des données : chaque noeud peut être identifié par une <strong>étiquette</strong>.  </p>
+<p>L’étiquette représente directement la <strong>valeur</strong> du noeud ou bien une <strong>clé</strong> associée à une donnée.  </p>
+<p>Un arbre dont tous les noeuds sont nommés est dit <strong>étiqueté</strong>.</p>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>L’arbre ci-dessous est étiqueté avec les entiers de 1 à 10 :
+<img alt="Illustration" src="Images/etiquette.png" /></p>
+</details>
+</div>
+<h2 id="arbres-binaires"><div class = "encadré3"><strong>Arbres binaires</strong></div></h2>
+<h3 id="definition-et-exemples_1"><div class = "encadré3a"><strong>Définition et exemples</strong></div></h3>
+<div class="admonition book">
+<p class="admonition-title"><strong>Définition</strong></p>
+<p>Un <strong>arbre binaire</strong> est un arbre dont tous les noeuds ont au plus deux fils.</p>
+</div>
+<details class="exemple2">
+<summary><strong>Exemple et contre-exemple</strong></summary>
+<p>L'arbre suivant est binaire :
+<img alt="Illustration" src="Images/arbre5.png" /></p>
+<p>En revanche, l'arbre qui a servi d'exemple tout au long du paragraphe précédent n'en est pas un...
+<img alt="Illustration" src="Images/arbre6.png" />
+... puisqu'il contient un noeud ayant plus de deux fils.</p>
+</details>
+<p>Les définitions vues précédemment pour des arbres quelconques restent bien évidemment valables pour les arbres binaires. Mais dans ce cas, chaque noeud possède deux sous-arbres, éventuellement vides, que l'on appelle <strong>sous-arbre gauche</strong> et <strong>sous-arbre droit</strong>.  </p>
+<p>Par exemple, dans le cas de l'arbre binaire précédent, le noeud A possède un sous-arbre gauche et un sous-arbre droit comme le montre la figure suivante :
+<img alt="Illustration" src="Images/arbre7.png" /></p>
+<p>Ainsi, et plus précisément, un arbre binaire est un ensemble fini de noeuds correspondant à l'un des deux cas suivants :</p>
+<div class="couleur_puce2">
+<ul>
+<li><strong>Soit l'arbre est vide</strong>, c'est-à-dire qu'il ne contient aucun noeud.</li>
+<li><strong>Soit l'arbre n'est pas vide</strong>, et ses noeuds sont structurés de la façon suivante :</li>
+</ul>
+</div>
+<div class="couleur_puce2bis">
+<ul>
+<li>Un noeud est la racine de l'arbre.</li>
+<li>Les noeuds restant sont séparés en deux sous-ensembles, qui forment <strong>récursivement</strong> deux sous-arbres (le <strong>gauche</strong> et le <span class="decal1"><strong>droit</strong>).</span></li>
+<li>La racine est reliée à ses deux sous-arbres gauche et droit, et plus précisément à la racine de chacun de ses sous-arbres <span class="decal1">(lorsqu'ils ne sont pas vides).</span></li>
+</ul>
+</div>
+<p>On peut rapprocher la notion de noeud d’un arbre binaire à celle d’une cellule de liste chaînée, la racine d’un arbre non vide correspond à la tête d’une liste non vide qui contient une valeur et deux chainages menant vers les deux directions.</p>
+<h3 id="cas-particuliers-darbres-binaires"><div class = "encadré3b"><strong>Cas particuliers d'arbres binaires</strong></div></h3>
+<p>Il est possible d’avoir des arbres binaires de même taille mais de "formes" très différentes :</p>
+<div class="admonition book">
+<p class="admonition-title"><strong>Arbre complet</strong></p>
+<p>Un <strong>arbre complet</strong> (ou <strong>parfait</strong>) est un arbre binaire dont tous les noeuds possèdent exactement 2 fils (sauf les feuilles qui en ont zéro !).
+<img alt="Illustration" src="Images/arbre8.png" /></p>
+</div>
+<div class="admonition book">
+<p class="admonition-title"><strong>Arbre filiforme</strong></p>
+<p>Un <strong>arbre filiforme</strong> est un arbre binaire dont tous les noeuds (sauf la feuille) possèdent un unique fils (on parle aussi de <strong>peigne</strong>).
+<img alt="Illustration" src="Images/arbre9.png" /></p>
+</div>
+<p>On pourra aussi dire que l’arbre filiforme est <strong>déséquilibré</strong> alors que l’arbre complet est <strong>équilibré</strong>.</p>
+<h3 id="proprietes"><div class = "encadré3c"><strong>Propriétés</strong></div></h3>
+<div class="admonition key">
+<p class="admonition-title"><strong>Encadrement de la hauteur</strong></p>
+<p>La hauteur d’un arbre filiforme de taille <span class="arithmatex">\(~n~\)</span> est égale à <span class="arithmatex">\(~n-1\)</span>.  </p>
+<p>La hauteur d’un arbre complet de taille <span class="arithmatex">\(~n~\)</span> est égale à <span class="arithmatex">\(⌊\operatorname{log_{2}}(n)⌋\)</span> où <span class="arithmatex">\(⌊~⌋\)</span> est le symbole de la partie entière.</p>
+</div>
+<details class="exemple3">
+<summary><strong>Exemple</strong></summary>
+<p>Si on reprend l'arbre complet précédent, <span class="arithmatex">\(\operatorname{log_{2}}(7)\approx2,8\)</span> : la hauteur de l’arbre complet est égale à <span class="arithmatex">\(~2\)</span>, ce que l'on vérifie aisément.</p>
+</details>
+<p>Un arbre filiforme et un arbre complet étant deux cas extrêmes, on peut encadrer la hauteur d’un arbre binaire quelconque :</p>
+<div class="admonition book">
+<p class="admonition-title"><strong>Propriété</strong></p>
+<p>Un encadrement de la hauteur <span class="arithmatex">\(~h~\)</span> d’un arbre binaire quelconque de taille <span class="arithmatex">\(~n~\)</span> est :
+<span class="arithmatex">\(⌊\operatorname{log_{2}}(n)⌋~\)</span><span class="arithmatex">\(\leq\)</span><span class="arithmatex">\(~h~\)</span><span class="arithmatex">\(\leq\)</span><span class="arithmatex">\(~n-1\)</span>.</p>
+</div>
+<p>De la même manière, on peut encadrer la taille d’un arbre binaire quelconque connaissant sa hauteur :</p>
+<div class="admonition book">
+<p class="admonition-title"><strong>Propriété</strong></p>
+<p>Un encadrement de la taille <span class="arithmatex">\(~n~\)</span> d’un arbre binaire quelconque de hauteur <span class="arithmatex">\(~h~\)</span> est :
+<span class="arithmatex">\(h+1~\)</span><span class="arithmatex">\(\leq\)</span><span class="arithmatex">\(~n~\)</span><span class="arithmatex">\(\leq\)</span><span class="arithmatex">\(~2^{h+1}−1\)</span>.</p>
+</div>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>La taille d’un arbre de hauteur <span class="arithmatex">\(~3~\)</span> est comprise entre <span class="arithmatex">\(~3+1=4~\)</span> et <span class="arithmatex">\(~2^{3+1}−1=15\)</span>.
+<img alt="Illustration" src="Images/arbre10.png" /></p>
+</details>
+<h2 id="implementation-en-python"><div class = "encadré4"><strong>Implémentation en Python</strong></div></h2>
+<h3 id="type-abstrait-arbre-binaire"><div class = "encadré4a"><strong>Type abstrait arbre binaire</strong></div></h3>
+<p>De manière générale, on peut construire un arbre binaire comme un noeud composé de deux sous-arbres. L'arbre vide est représentée par la valeur <code class="highlight"><span class="kc">None</span></code>. Ainsi, une feuille est un noeud avec les sous-arbres gauche et droit à <code class="highlight"><span class="kc">None</span></code>. Pour annoter la structure de l'arbre avec des informations, on utilise des étiquettes pouvant être enregistrées à chaque noeud.</p>
+<p>On peut ensuite parcourir un arbre par l'accès à son étiquette et à ses sous-arbres gauche et droit. </p>
+<p>Voici les fonctions primitives qui définissent le type abstrait arbre binaire :
+<center></p>
+<table>
+<thead>
+<tr>
+<th align="center">Action</th>
+<th align="center">Instruction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Créer un arbre vide</td>
+<td align="center"><code class="highlight"><span class="n">arbreVide</span><span class="p">()</span></code></td>
+</tr>
+<tr>
+<td align="center">Tester si l'arbre <code class="highlight"><span class="n">A</span></code> est vide</td>
+<td align="center"><code class="highlight"><span class="n">estVide</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td align="center">Renvoyer la clé (la valeur) de la racine de l'arbre <code class="highlight"><span class="n">A</span></code></td>
+<td align="center"><code class="highlight"><span class="n">cle</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td align="center">Renvoyer le sous-arbre gauche de l'arbre <code class="highlight"><span class="n">A</span></code> (si <code class="highlight"><span class="n">A</span></code> est non vide)</td>
+<td align="center"><code class="highlight"><span class="n">sousArbreGauche</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td align="center">Renvoyer le sous-arbre droit de l'arbre <code class="highlight"><span class="n">A</span></code> (si <code class="highlight"><span class="n">A</span></code> est non vide)</td>
+<td align="center"><code class="highlight"><span class="n">sousArbreDroit</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td align="center">Créer un arbre binaire de clé <code class="highlight"><span class="n">valeur</span></code> et de sous-arbres <code class="highlight"><span class="n">G</span></code> et <code class="highlight"><span class="n">D</span></code></td>
+<td align="center"><code class="highlight"><span class="n">arbreCons</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<details class="exemple4">
+<summary><strong>Exemple</strong></summary>
+<div class="couleur_puce3">
+<ul>
+<li><code class="highlight"><span class="n">A</span> <span class="o">=</span> <span class="n">arbreVide</span><span class="p">()</span></code> <span style="color:red">⇒</span> <code class="highlight"><span class="n">A</span> <span class="o">=</span> <span class="p">()</span></code></li>
+<li><code class="highlight"><span class="n">estVide</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code> <span style="color:red">⇒</span> <code class="highlight"><span class="kc">True</span></code></li>
+<li>Pour définir à l'aide de primitives l'arbre suivant :
+<img alt="Illustration" src="Images/arbre11.png" />
+<div class="decal2">On écrira : <code class="highlight"><span class="n">A</span> <span class="o">=</span> <span class="n">arbreCons</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">arbreCons</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">arbreVide</span><span class="p">(),</span> <span class="n">arbreVide</span><span class="p">()),</span> <span class="n">arbreVide</span><span class="p">())</span></code></div></li>
+<li><code class="highlight"><span class="n">cle</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code> <span style="color:red">⇒</span> <code class="highlight"><span class="mi">21</span></code></li>
+<li><code class="highlight"><span class="n">estVide</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code> <span style="color:red">⇒</span> <code class="highlight"><span class="kc">False</span></code></li>
+<li><code class="highlight"><span class="n">arbreGauche</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code> <span style="color:red">⇒</span> <code class="highlight"><span class="n">arbreCons</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">arbreVide</span><span class="p">(),</span> <span class="n">arbreVide</span><span class="p">())</span></code></li>
+<li><code class="highlight"><span class="n">arbreDroit</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></code> <span style="color:red">⇒</span> <code class="highlight"><span class="n">arbreVide</span><span class="p">()</span></code></li>
+</ul>
+</div>
+</details>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 4</strong></p>
+<div class="list2">
+<ol>
+<li>Comment s'écrit à l'aide de fonctions primitives l'arbre suivant, noté <code class="highlight"><span class="n">B</span></code> ? <img alt="Illustration" src="Images/arbre12.png" /></li>
+<li>A l'aide de fonctions primitives et des arbres <code class="highlight"><span class="n">A</span></code> et <code class="highlight"><span class="n">B</span></code> créés précédemment, définir l'arbre <code class="highlight"><span class="n">C</span></code> suivant : <img alt="Illustration" src="Images/arbre13.png" /></li>
+<li>Quel arbre est renvoyé par l'instruction : <code class="highlight"><span class="n">sousArbreGauche</span><span class="p">(</span><span class="n">sousArbreDroit</span><span class="p">(</span><span class="n">C</span><span class="p">))</span></code> ?</li>
+<li>Que renvoie l'instruction : <code class="highlight"><span class="n">estVide</span><span class="p">(</span><span class="n">sousArbreDroit</span><span class="p">(</span><span class="n">sousArbreGauche</span><span class="p">(</span><span class="n">sousArbreGauche</span><span class="p">(</span><span class="n">C</span><span class="p">))))</span></code> ?</li>
+<li>Même question avec l'instruction : <code class="highlight"><span class="n">cle</span><span class="p">(</span><span class="n">sousArbreDroit</span><span class="p">(</span><span class="n">sousArbreDroit</span><span class="p">(</span><span class="n">C</span><span class="p">)))</span></code>.</li>
+</ol>
+<p></div>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-4" target="_blank">Correction de l'exercice</a></p>
+</div>
+<h3 id="implementation"><div class = "encadré4b"><strong>Implémentation</strong></div></h3>
+<p>Suivant l’usage, un arbre binaire peut être représenté par :</p>
+<div class="couleur_puce2">
+<ul>
+<li>Un <strong>chaînage</strong> (similaire à une liste chaînée, mais chaque noeud a deux fils)</li>
+<li>Un <strong>tableau qui stocke les noeuds, la racine à la première position, les autres noeuds ont la position qu’on veut</strong>.</li>
+<li>Un <strong>tableau où les noeuds ont une position définie à l’avance</strong>. La racine est à la position <span class="arithmatex">\(~1\)</span>. <span class="decal5">Le noeud à la position <span class="arithmatex">\(~p~\)</span> est le père des noeuds des positions <span class="arithmatex">\(~2p~\)</span> et <span class="arithmatex">\(~2p+1~\)</span>.</span></li>
+</ul>
+</div>
+<p>Python ne propose pas nativement de structure de données permettant d'implémenter directement les arbres binaires. Il va donc être nécessaire de créer manuellement cette structure et pour cela, nous allons utiliser un <strong>chaînage</strong>.  </p>
+<p>Pour programmer ce type de structure, nous allons utiliser le paradigme de la programmation orientée objet (P.O.O.).  </p>
+<p>Un arbre vide est représenté par l’attribut <code class="highlight"><span class="n">valeur</span></code> à <code class="highlight"><span class="kc">None</span></code>.<br />
+Les attributs <code class="highlight"><span class="n">G</span></code> et <code class="highlight"><span class="n">D</span></code> sont des arbres donc tous les noeuds sont des arbres, une feuille a deux attributs <code class="highlight"><span class="n">G</span></code> et <code class="highlight"><span class="n">D</span></code> à <code class="highlight"><span class="kc">None</span></code>.</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">class</span> <span class="nc">Arbre</span> <span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="o">=</span> <span class="n">G</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">D</span>
+
+    <span class="c1"># ...</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="n">a1</span> <span class="o">=</span> <span class="n">Arbre</span><span class="p">()</span> <span class="c1"># arbre vide</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">88</span><span class="p">)</span> <span class="c1"># arbre avec un noeud (la racine)</span>
+</code></pre></div>
+<p>Ainsi, si l'on souhaite créer en Python l'arbre <code class="highlight"><span class="n">C</span></code> de l'exercice 4, on peut procéder ainsi :</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">29</span><span class="p">),</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">88</span><span class="p">)))</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Arbre</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">A</span><span class="p">),</span> <span class="n">B</span><span class="p">)</span>
+</code></pre></div>
+<p>On donne la méthode d'affichage ci-dessous afin de représenter au mieux un arbre dans une console Python :</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">def</span> <span class="nf">affichage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">niveau</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">132</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">affichage</span><span class="p">(</span><span class="n">niveau</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">47</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">niveau</span><span class="si">}{</span><span class="nb">chr</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">affichage</span><span class="p">(</span><span class="n">niveau</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">92</span><span class="p">)</span>
+</code></pre></div>
+<p>Ainsi, l'utilisation de cette méthode sur l'arbre <code class="highlight"><span class="n">C</span></code> donne :</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">C</span><span class="o">.</span><span class="n">affichage</span><span class="p">()</span>
+            <span class="o">/</span><span class="mi">88</span>
+        <span class="o">/</span><span class="mi">13</span>
+    <span class="o">/</span><span class="mi">7</span>
+        \<span class="mi">29</span>
+<span class="err">•</span><span class="mi">5</span>
+    \<span class="mi">12</span>
+        \<span class="mi">21</span>
+            \<span class="mi">8</span>
+</code></pre></div>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 5 : implémentation de primitives</strong></p>
+<p>Coder en Python les méthodes suivantes de la classe <code class="highlight"><span class="n">Arbre</span></code> :
+<div class="list2"></p>
+<ol>
+<li><code class="highlight"><span class="n">estVide</span><span class="p">()</span></code> qui renvoie <code class="highlight"><span class="kc">True</span></code> si l'arbre est vide, <code class="highlight"><span class="kc">False</span></code> sinon.</li>
+<li><code class="highlight"><span class="n">cle</span><span class="p">()</span></code> qui renvoie la clé de la racine de l'arbre.</li>
+<li><code class="highlight"><span class="n">sousArbreGauche</span><span class="p">()</span></code> qui renvoie le sous-arbre gauche de la racine de l'arbre (si <code class="highlight"><span class="n">A</span></code> est non vide).</li>
+<li><code class="highlight"><span class="n">sousArbreDroit</span><span class="p">()</span></code> qui renvoie le sous-arbre droit de la racine de l'arbre (si <code class="highlight"><span class="n">A</span></code> est non vide).</li>
+<li><code class="highlight"><span class="n">estFeuille</span><span class="p">()</span></code> qui renvoie <code class="highlight"><span class="kc">True</span></code> si l'arbre est une feuille, <code class="highlight"><span class="kc">False</span></code> sinon.</li>
+</ol>
+<p></div>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-5" target="_blank">Correction de l'exercice</a></p>
+</div>
+<h3 id="algorithmique-des-arbres-binaires"><div class = "encadré4c"><strong>Algorithmique des arbres binaires</strong></div></h3>
+<p>La définition d'un arbre binaire étant récursive, il est naturel d'écrire des opérations sur les arbres binaires sous la forme de fonctions récursives.  </p>
+<p>L'exemple le plus simple est celui d'une fonction <code class="highlight"><span class="n">taille</span><span class="p">()</span></code> qui calcule la taille d'un arbre.  </p>
+<p>On commence par considérer le cas de base où l'arbre est vide. Dans ce cas, il convient de renvoyer <code class="highlight"><span class="mi">0</span></code> car il n'y a aucun noeud dans l'arbre.<br />
+Dans le cas contraire, l'arbre contient au moins un noeud (la racine de l'arbre), auquel on va ajouter la taille des sous-arbres gauche et droit, calculée récursivement :</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">def</span> <span class="nf">taille</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estVide</span><span class="p">():</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sousArbreGauche</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">sousArbreDroit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">gauche</span><span class="o">.</span><span class="n">taille</span><span class="p">()</span> <span class="o">+</span> <span class="n">droit</span><span class="o">.</span><span class="n">taille</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 6 : hauteur d'un arbre</strong></p>
+<p>Pour calculer la hauteur d’un arbre, il faut parcourir toutes ses branches et retenir la profondeur de la feuille la plus éloignée.<br />
+La fonction est bien entendue récursive…  </p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">hauteur</span><span class="p">()</span></code> de la classe <code class="highlight"><span class="n">Arbre</span></code> qui calcule la hauteur d'un arbre.<br />
+<br>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-6" target="_blank">Correction de l'exercice</a></p>
+</div>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 7 : nombre de feuilles d'un arbre</strong></p>
+<p>Pour calculer le nombre de feuilles d’un arbre, il faut là encore parcourir toutes ses branches et compter les noeuds.<br />
+La fonction est également récursive.  </p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">nbFeuilles</span><span class="p">()</span></code> de la classe <code class="highlight"><span class="n">Arbre</span></code> qui calcule le nombre de feuilles d'un arbre.<br />
+<br>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-7" target="_blank">Correction de l'exercice</a></p>
+</div>
+<h3 id="parcours-dun-arbre-binaire"><div class = "encadré4d"><strong>Parcours d'un arbre binaire</strong></div></h3>
+<p>Les deux fonctions <code class="highlight"><span class="n">taille</span><span class="p">()</span></code> et <code class="highlight"><span class="n">hauteur</span><span class="p">()</span></code> parcourent tous les noeuds de l'arbre. L'ordre dans lequel ce parcours est effectué n'est pas important. Dans les deux cas, peu importe si on commence le calcul par le sous-arbre gauche ou le droit.  </p>
+<p>Ecrivons maintenant une autre fonction qui affiche les valeurs contenues dans tous les noeuds de l'arbre. L'ordre dans lequel le parcours des noeuds est effectué devient important. On peut par exemple parcourir le sous-arbre gauche, puis afficher la valeur de la racine, puis enfin parcourir le sous-arbre droit.</p>
+<div class="admonition book">
+<p class="admonition-title"><strong>Définition</strong></p>
+<p>Un <strong>parcours d’arbre</strong> est une façon d’ordonner les noeuds d’un arbre afin de les parcourir. <br />
+Il existe différents types de parcours :
+<div class="couleur_puce4"></p>
+<ul>
+<li><strong>Parcours en profondeur</strong> :</li>
+</ul>
+<p></div>
+<div class="couleur_puce4bis"></p>
+<ul>
+<li><strong>Infixe</strong> (en ordre)</li>
+<li><strong>Préfixe</strong> (en préordre)</li>
+<li><strong>Postfixe</strong> (en postordre)</li>
+</ul>
+<p></div>
+<div class="couleur_puce4"></p>
+<ul>
+<li><strong>Parcours en largeur</strong></li>
+</ul>
+</div>
+</div>
+<p><center></p>
+<h4 id="parcours-en-profondeur"><div class = "encadré5a"><strong>Parcours en profondeur</strong></div></h4>
+<p></center></p>
+<p>Les trois méthodes de parcours en profondeur se distinguent uniquement par l’ordre dans lequel on réalise les parcours des branches droite et gauche par rapport à la visite d’un noeud.</p>
+<p>Pour illustrer chaque méthode, reprenons l'arbre d'un précédent exemple :</p>
+<p><img alt="Illustration" src="Images/arbre14.png" /></p>
+<p>Ensuite, entourons-le de la façon suivante :</p>
+<p><img alt="Illustration" src="Images/arbre15.png" /></p>
+<div class="admonition star4">
+<p class="admonition-title"><strong>Parcours infixe</strong></p>
+<p>Dans un parcours infixe (<em>inorder traversal</em>), chaque noeud est visité après son enfant gauche mais avant son enfant droit.  </p>
+<p>Le parcours infixe affiche la racine après avoir traité le sous-arbre gauche. Et après traitement de la racine, on traite le sous-arbre droit (c'est donc un parcours de type <strong>"GRD"</strong> : Gauche, Racine, Droite).  </p>
+<p>Ainsi, l’affichage des noeuds avec un parcours infixe de l’arbre précédent est : <code class="highlight"><span class="mi">8</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">88</span></code>.  </p>
+<div class="admonition a-retenir">
+<p class="admonition-title"><strong>Procédé mnémotechnique</strong></p>
+<p>Une façon relativement simple de retenir l'ordre infixe est de suivre la ligne qui entoure l'arbre, dans le sens anti-horaire, et en partant de la racine.  </p>
+<p>A chaque fois que l'on rencontre un noeud et qu'il est possible de "toucher" le <strong>bas</strong> de ce noeud, on note son étiquette.  </p>
+<p>Dans l'exemple précédent, on part de la racine, mais il n'est pas possible de "toucher" la partie inférieure de celle-ci (à cause de l'arête entre la racine et le noeud étiqueté <code class="highlight"><span class="mi">12</span></code>).<br />
+De même pour les deux noeuds suivants : ceux étiquetés <code class="highlight"><span class="mi">12</span></code> puis <code class="highlight"><span class="mi">21</span></code>.<br />
+Ainsi, le premier noeud dont il est possible "d'atteindre" le bas est celui dont l'étiquette est <code class="highlight"><span class="mi">8</span></code> et ainsi de suite.
+<img alt="Illustration" src="Images/arbre16.png" /></p>
+</div>
+<details class="plus-circle">
+<summary>Code Python</summary>
+<p>On donne ci-dessous le code de la méthode <code class="highlight"><span class="n">parcoursInfixe</span><span class="p">()</span></code> qui affiche les étiquettes des noeuds d'un arbre dans un parcours infixe.</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">def</span> <span class="nf">parcoursInfixe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="p">:</span>
+        <span class="k">return</span>
+    
+    <span class="n">gauche</span><span class="p">,</span> <span class="n">droit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sousArbreGauche</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">sousArbreDroit</span><span class="p">()</span>
+    <span class="n">gauche</span><span class="o">.</span><span class="n">parcoursInfixe</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valeur</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">droit</span><span class="o">.</span><span class="n">parcoursInfixe</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<div class="admonition exercice7">
+<p class="admonition-title"><strong>Exercice 8</strong></p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">listeParcoursInfixe</span><span class="p">()</span></code> qui renvoie une liste composée des étiquettes des noeuds d'un arbre dans un parcours infixe.<br />
+<span class="arithmatex">\(~\)</span><br />
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-8" target="_blank">Correction de l'exercice</a></p>
+</div>
+</div>
+<div class="admonition star5">
+<p class="admonition-title"><strong>Parcours préfixe</strong></p>
+<p>Dans un parcours <strong>préfixe</strong> (<em>preorder traversal</em>), chaque noeud est visité avant que ses enfants soient visités. </p>
+<p>Cela signifie que l'on affiche la racine de l'arbre, on parcourt tout le sous-arbre de gauche, une fois qu'il n'y a plus de sous-arbre gauche on parcourt les éléments du sous-arbre droit. </p>
+<p>Ce type de parcours peut être résumé en trois lettres : <strong>"RGD"</strong> (pour Racine, Gauche, Droit).  </p>
+<p>Ainsi, l’affichage des noeuds avec un parcours préfixe de l’arbre précédent est : <code class="highlight"><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">88</span></code>.  </p>
+<div class="admonition a-retenir">
+<p class="admonition-title"><strong>Procédé mnémotechnique</strong></p>
+<p>Une façon relativement simple de retenir l'ordre préfixe est de suivre la ligne qui entoure l'arbre, dans le sens anti-horaire, et en partant de la racine.  </p>
+<p>A chaque fois que l'on rencontre un noeud et qu'il est possible de "toucher" la partie <strong>gauche</strong> de ce noeud, on note son étiquette.  </p>
+<p>Dans l'exemple précédent, on part de la racine et on voit qu'il est possible de "toucher" la partie gauche de celle-ci donc on note son étiquette.<br />
+De la même façon, la partie gauche du noeud suivant, dont l'étiquette est <code class="highlight"><span class="mi">12</span></code> est atteignable et ainsi de suite.
+<img alt="Illustration" src="Images/arbre17.png" /></p>
+</div>
+<div class="admonition exercice8">
+<p class="admonition-title"><strong>Exercice 9</strong></p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">parcoursPrefixe</span><span class="p">()</span></code> qui affiche les étiquettes des noeuds d'un arbre dans un parcours préfixe.<br />
+<br>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-9" target="_blank">Correction de l'exercice</a></p>
+</div>
+</div>
+<div class="admonition star6">
+<p class="admonition-title"><strong>Parcours suffixe (ou postfixe)</strong></p>
+<p>Dans un parcours <strong>suffixe</strong> (ou <strong>postfixe</strong> pour <em>postorder traversal</em>), chaque noeud est visité après que ses enfants soient visités. </p>
+<p>Le parcours postfixe effectue schématiquement le parcours suivant : sous-arbre gauche, sous-arbre droit puis la racine, c'est donc un parcours <strong>"GDR"</strong> (Gauche, Droite, Racine).  </p>
+<p>Ainsi, l’affichage des noeuds avec un parcours postfixe de l’arbre précédent est : <code class="highlight"><span class="mi">8</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span></code>.  </p>
+<div class="admonition a-retenir">
+<p class="admonition-title"><strong>Procédé mnémotechnique</strong></p>
+<p>Une façon relativement simple de retenir l'ordre postfixe est de suivre la ligne qui entoure l'arbre, dans le sens anti-horaire, et en partant de la racine.  </p>
+<p>A chaque fois que l'on rencontre un noeud et qu'il est possible de "toucher" la partie <strong>droite</strong> de ce noeud, on note son étiquette.  </p>
+<p>Dans l'exemple précédent, on part de la racine, mais il n'est pas possible de "toucher" la partie droite de celle-ci (à cause de l'arête entre la racine et le noeud étiqueté <code class="highlight"><span class="mi">12</span></code>).<br />
+De même pour les deux noeuds suivants : ceux étiquetés <code class="highlight"><span class="mi">12</span></code> puis <code class="highlight"><span class="mi">21</span></code>.<br />
+Ainsi, le premier noeud dont il est possible "d'atteindre" la partie droite est celui dont l'étiquette est <code class="highlight"><span class="mi">8</span></code> et ainsi de suite.
+<img alt="Illustration" src="Images/arbre18.png" /></p>
+</div>
+<div class="admonition exercice9">
+<p class="admonition-title"><strong>Exercice 10</strong></p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">parcoursPostfixe</span><span class="p">()</span></code> qui affiche les étiquettes des noeuds d'un arbre dans un parcours postfixe.<br />
+<br>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-10" target="_blank">Correction de l'exercice</a></p>
+</div>
+</div>
+<p><center></p>
+<h4 id="parcours-en-largeur"><div class = "encadré5b"><strong>Parcours en largeur</strong></div></h4>
+<p></center></p>
+<div class="admonition star7">
+<p class="admonition-title"><strong>Parcours en largeur</strong></p>
+<p>Dans un parcours <strong>en largeur</strong> (ou <strong>BFS</strong>, pour <em>Breadth First Search</em>), on commence par explorer la racine de l'arbre, puis son fils gauche (s'il existe) suivi de son fils droit (s'il existe), puis le fils gauche du fils gauche etc.  </p>
+<p>Ainsi, l’affichage des noeuds avec un parcours en largeur de l’arbre précédent est : <code class="highlight"><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">88</span></code>.
+<img alt="Illustration" src="Images/arbre19.png" />
+Pour implémenter ce parcours, le plus simple est d'utiliser une file afin d'y stocker les différents éléments visités.  </p>
+<p>Le principe de l’algorithme de parcours en largeur est le suivant :<br />
+<div class="list11"></p>
+<ol>
+<li>Mettre l'arbre source dans la file. </li>
+<li>Retirer l'arbre du début de la file pour le traiter (récupérer sa racine). </li>
+<li>Mettre les sous-arbres dans la file (s'ils existent !). </li>
+<li>Si la file n'est pas vide reprendre à l'étape <span style = "color : rgb(255, 12, 0); font-weight: bold;">2</span>.</li>
+</ol>
+</div>
+<div class="admonition exercice10">
+<p class="admonition-title"><strong>Exercice 11</strong></p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">parcoursLargeur</span><span class="p">()</span></code> qui affiche les étiquettes des noeuds d'un arbre dans un parcours en largeur en utilisant une file.<br />
+<br>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-11" target="_blank">Correction de l'exercice</a></p>
+</div>
+</div>
+<h2 id="arbres-binaires-de-recherche"><div class = "encadré6"><strong>Arbres binaires de recherche</strong></div></h2>
+<h3 id="probleme-introductif"><div class = "encadré6a"><strong>Problème introductif</strong></div></h3>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 12</strong></p>
+<p>La ville Binarus a été construite selon la manière suivante :
+<div class="couleur_puce2"></p>
+<ul>
+<li>Chaque rue mène à une seule maison identifiée par trois lettres de l’alphabet.</li>
+<li>Il y a autant de maisons que de combinaisons possibles de triplets de trois lettres.</li>
+<li>Devant chaque maison se trouve deux nouvelles rues, si on emprunte la rue de gauche, toutes les maisons que l’on <div class="decal5">rencontrera porteront un nom de trois lettres inférieur dans l’ordre lexicographique à la maison du départ de l’embranchement. Par contre la rue de droite mène vers des maisons dont le nom est supérieur dans l’ordre lexicographique.</div></li>
+</ul>
+<p></div>
+On a commencé le plan de la ville Binarus où l'entrée est gardée ici par la maison "MAI":
+<img alt="Illustration" src="Images/arbre22.png" />
+<div class="list2"></p>
+<ol>
+<li>Proposer une suite possible avec 7 premières maisons.</li>
+<li>Combien de maisons possède la ville Binarus ?</li>
+<li>Déterminer le nombre maximal de rues à traverser pour trouver une maison quelconque dans le cas où l'arbre est complet.</li>
+</ol>
+<p></div>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-12" target="_blank">Correction de l'exercice</a></p>
+</div>
+<h3 id="definition-et-exemples_2"><div class = "encadré6b"><strong>Définition et exemples</strong></div></h3>
+<div class="admonition book">
+<p class="admonition-title"><strong>Définition</strong></p>
+<p>Un <strong>arbre binaire de recherche (ABR)</strong> est un arbre binaire qui est étiqueté par des valeurs totalement  ordonnables (c'est-à-dire qu'il doit exister une manière de dire si un élément est plus grand ou plus petit qu'un autre) grâce à deux règles de construction.  </p>
+<p>L’étiquette d’un noeud est :<br />
+<div class = "list4"></p>
+<ol>
+<li>supérieure ou égale à celle de chaque noeud de son sous-arbre gauche ;</li>
+<li>inférieure ou égale à celle de chaque noeud de son sous-arbre droit.</li>
+</ol>
+<p></div>
+ Selon la mise en oeuvre de l'<strong>ABR</strong>, on pourra interdire ou non des clés de valeur égale.</p>
+</div>
+<details class="exemple2">
+<summary><strong>Exemple et contre-exemple</strong></summary>
+<p>L'arbre suivant est un arbre binaire de recherche :
+<img alt="Illustration" src="Images/arbre20.png" /></p>
+<p>En revanche, l'arbre suivant n'en est pas un...
+<img alt="Illustration" src="Images/arbre21.png" />
+... puisque le noeud étiqueté <code class="highlight"><span class="mi">7</span></code> ne peut pas se trouver dans le sous-arbre droit du noeud étiqueté <code class="highlight"><span class="mi">8</span></code>.</p>
+</details>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 13</strong></p>
+<p>Un vétérinaire voudrait stocker les fiches médicales de ses patients, et, plutôt que d'utiliser un tableau ou une liste, on se propose d'utiliser un arbre binaire de recherche.  </p>
+<p>La fiche contiendra différentes informations sur l'animal ; on utilisera son nom comme <strong>clé</strong> (c'est-à-dire comme critère pour la relation d'ordre), que l'on triera selon l'ordre alphabétique croissant. </p>
+<p>Le vétérinaire reçoit sa première patiente, qui répond au nom de <strong>Gaufrette</strong>.  Comme sa fiche sera le premier noeud de notre arbre, elle en devient automatiquement la racine. </p>
+<p>Puis le vétérinaire reçoit les animaux dans l’ordre suivant afin de les soigner : <strong>Charlie</strong>, <strong>Médor</strong>, <strong>Flipper</strong>, <strong>Bubulle</strong> et <strong>Augustin</strong>.
+<div class="list2"></p>
+<ol>
+<li>Construire l’arbre binaire de recherche associé à cette séquence.</li>
+<li>Imaginons que la séquence soit maintenant la suivante : {<strong>Gaufrette</strong>, <strong>Charlie</strong>, <strong>Médor</strong>, <strong>Flipper</strong>, <strong>Augustin</strong>, <strong>Bubulle</strong>}, <div class="decal2">c’est-à-dire que <strong>Augustin</strong> soit arrivé au rendez-vous médical avant <strong>Bubulle</strong>.<br />
+L’arbre binaire de recherche est-il encore le même ?<br />
+Quelle conclusion peut-on en tirer ?</div></li>
+</ol>
+<p></div>
+<a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-13" target="_blank">Correction de l'exercice</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>Les algorithmes vus sur les arbres binaires (<strong>taille</strong> et <strong>hauteur</strong>, de même que les <strong>parcours infixe</strong>, <strong>préfixe</strong>, <strong>postfixe</strong> et <strong>en largeur</strong>) fonctionnent bien entendu sur les <strong>ABR</strong> (qui n'en sont qu'un cas particulier). </p>
+<div class="admonition exercice5">
+<p class="admonition-title"><strong>Exercice 14</strong></p>
+<p>Afficher, à la main, le parcours <strong>infixe</strong> de l'<strong>ABR</strong> suivant :<br />
+<img alt="Illustration" src="Images/arbre20.png" />
+Quelle propriété semble se dégager ?  </p>
+<p><a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-14" target="_blank">Correction de l'exercice</a></p>
+</div>
+</div>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 15</strong></p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">estABR</span><span class="p">()</span></code> qui renvoie <code class="highlight"><span class="kc">True</span></code> si l'arbre est un arbre binaire de recherche et <code class="highlight"><span class="kc">False</span></code> sinon. On veillera à utiliser la méthode <code class="highlight"><span class="n">listeParcoursInfixe</span><span class="p">()</span></code>.</p>
+<p><a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-15" target="_blank">Correction de l'exercice</a></p>
+</div>
+<h3 id="recherche-dune-cle-dans-un-arbre-binaire-de-recherche"><div class = "encadré6c"><strong>Recherche d’une clé dans un arbre binaire de recherche</strong></div></h3>
+<p>Comme l’a montré le problème introductif, la recherche d’éléments dans un <strong>ABR</strong> est particulièrement efficace.  </p>
+<p>L’idée est donc de comparer l’élément recherché aux valeurs de noeuds successifs :</p>
+<div class="couleur_puce2">
+<ul>
+<li>Si l’élément cherché est plus grand, on continue la recherche dans le sous-arbre droit et s'il est plus petit, dans le sous-arbre <span class="decal5">gauche.</span></li>
+<li>Si on le trouve on renvoie <code class="highlight"><span class="kc">True</span></code>, par contre si on termine dans le sous-arbre vide d’une feuille on renvoie <code class="highlight"><span class="kc">False</span></code>.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>Plus l’<strong>ABR</strong> est "équilibré" , c’est-à-dire qu'il a un nombre de noeuds équitablement répartis entre les sous-arbres droit et gauche, plus la recherche est efficace.  </p>
+<p>En effet, notre algorithme de recherche élimine la moitié des éléments à chaque étape. Cela fait écho à la recherche dichotomique dans un tableau trié, où chaque étape divise par 2 le nombre d'éléments à examiner.  </p>
+<p>On sait que cet algorithme est extrêmement efficace (complexité dans le pire des cas en <span class="arithmatex">\(\mathcal{O}(\operatorname{log_{2}}(n))\)</span>), ainsi, il ne faut pas plus de 20 étapes pour chercher parmi un million de valeurs.  </p>
+<p>Aussi, on essaiera d’éviter la structure de "peigne", où l’on rangerait tous les éléments dans l’ordre croissant ou décroissant puique la recherche serait au contraire peu efficace (elle serait susceptible de parcourir l'arbre tout entier, dans le cas d'un recherche infructueuse).</p>
+</div>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 16</strong></p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">rechercherElement</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></code> qui renvoie <code class="highlight"><span class="kc">True</span></code> si l'élément <code class="highlight"><span class="n">e</span></code> est un élément d'un arbre binaire de recherche et <code class="highlight"><span class="kc">False</span></code> sinon.<br />
+On veillera à ce que l'arbre sur laquelle cette méthode s'applique est bien un <strong>ABR</strong>.  </p>
+<p><a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-16" target="_blank">Correction de l'exercice</a></p>
+</div>
+<h3 id="insertion-dune-cle-dans-un-arbre-binaire-de-recherche"><div class = "encadré6d"><strong>Insertion d’une clé dans un arbre binaire de recherche</strong></div></h3>
+<p>Il est tout à fait possible d'insérer un noeud dans un arbre binaire de recherche.  </p>
+<p>De la même manière que nous avons cherché un élément dans un <strong>ABR</strong>, nous allons nous déplacer dans l’<strong>ABR</strong> afin d’ajouter un nouvel élément en respectant les contraintes liées à la définition de l’<strong>ABR</strong>.</p>
+<div class="admonition rocket">
+<p class="admonition-title"><strong>Principe</strong></p>
+<p>Pour insérer un nouveau noeud <code class="highlight"><span class="n">x</span></code> dans un <strong>ABR</strong>, on parcourt l'arbre de façon similaire à l'algorithme de recherche jusqu'à trouver un noeud <code class="highlight"><span class="n">y</span></code> sans fils gauche et de clé supérieure (ou sans fils droit et de clé inférieure). À cet instant, on place <code class="highlight"><span class="n">x</span></code> en tant que fils gauche (resp. droit) de <code class="highlight"><span class="n">y</span></code>.</p>
+</div>
+<div class="admonition exercice4">
+<p class="admonition-title"><strong>Exercice 17</strong></p>
+<p>Coder en Python la méthode <code class="highlight"><span class="n">insererElement</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></code> qui insère un noeud de clé <code class="highlight"><span class="n">e</span></code> dans un arbre binaire de recherche.  </p>
+<p>Si l'étiquette existe déjà, on placera le noeud dans le sous-arbre gauche du noeud contenant cette étiquette.  </p>
+<p>On veillera à ce que l'arbre sur laquelle cette méthode s'applique est bien un <strong>ABR</strong>.</p>
+<p><a href="Correction%20des%20exos%20du%20cours.html#correction-de-lexercice-17" target="_blank">Correction de l'exercice</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>Remarques</strong></p>
+<div class="list5">
+<ol>
+<li>Les <strong>ABR</strong> construits dans ce cours peuvent contenir plusieurs fois le même élément : on dit qu'ils réalisent des <div class="decal2"><em>multiensembles</em>. Si on veut en revanche réaliser des <em>ensembles</em>, où chaque élément apparaît exactement une fois, il ne faut pas ajouter de nouvelle occurence de l'élément lorsqu'il se trouve déjà dans l'arbre. Pour cela, il y a deux solutions (voir exercice)</div> </li>
+<li>La complexité de la fonction <code class="highlight"><span class="n">insererElement</span></code> n'est donc pas différente de celle de la fonction <code class="highlight"><span class="n">rechercherElement</span></code> <div class="decal2">puisqu'on prend exactement les mêmes décisions quant à la descente dans l'arbre. Aussi, dans les deux cas, la complexité dépend de la forme de l'arbre et elle est, dans le pire des cas, majorée par sa hauteur.</div></li>
+<li>Avec la méthode <code class="highlight"><span class="n">insererElement</span></code>, nous allons pouvoir construire des <strong>ABR</strong> par ajouts successifs d'éléments, en partant <div class="decal2">d'un arbre vide, comme le montre l'exemple suivant :
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">def</span> <span class="nf">genABR</span><span class="p">(</span><span class="n">nbElements</span><span class="p">):</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbElements</span><span class="p">)]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">Arbre</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">D</span><span class="o">.</span><span class="n">insererElement</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+    <span class="n">D</span><span class="o">.</span><span class="n">affichage</span><span class="p">()</span>
+</code></pre></div>
+L'appel <code class="highlight"><span class="n">genABR</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span></code> donne alors dans la console :
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">executing</span> <span class="n">file</span> <span class="s2">&quot;Arbre.py&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+                <span class="o">/</span><span class="mi">82</span>
+            <span class="o">/</span><span class="mi">75</span>
+        <span class="o">/</span><span class="mi">49</span>
+            \<span class="mi">39</span>
+                \<span class="mi">38</span>
+                    \<span class="mi">29</span>
+    <span class="o">/</span><span class="mi">21</span>
+        \<span class="mi">20</span>
+                <span class="o">/</span><span class="mi">19</span>
+            \<span class="mi">17</span>
+<span class="err">•</span><span class="mi">16</span>
+    \<span class="mi">15</span>
+        \<span class="mi">14</span>
+            \<span class="mi">1</span>
+</code></pre></div>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+
+
+
+                
+    <script src="../../js/ide.js"></script> 
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2020 - 2023 Sylvain Liaboeuf
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:sylvain.liaboeuf@ac-lyon.fr" target="_blank" rel="noopener" title="mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://lyc-hippolyte-carnot.ent.auvergnerhonealpes.fr/" target="_blank" rel="noopener" title="Lycée Carnot" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M337.8 5.4c-10.8-7.2-24.8-7.2-35.6 0L166.3 96H48c-26.5 0-48 21.5-48 48v320c0 26.5 21.5 48 48 48h544c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48H473.7L337.8 5.4zM256 416c0-35.3 28.7-64 64-64s64 28.7 64 64v96H256v-96zM96 192h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zM96 320h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1-176 0zm88-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-16v-16c0-8.8-7.2-16-16-16z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.top", "navigation.instant", "navigation.tabs", "navigation.expand", "toc.integrate", {"tabs": false}], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../xtra/config.js"></script>
+      
+        <script src="../../xtra/interpreter.js"></script>
+      
+    
+  </body>
+</html>
