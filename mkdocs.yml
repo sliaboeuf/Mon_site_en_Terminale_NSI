@@ -1,7 +1,7 @@
 # Informations du site
 site_name: Cours de Terminale NSI
 site_author : Sylvain Liaboeuf
-copyright : Copyright © 2020 - 2023 Sylvain Liaboeuf
+copyright : Copyright © 2020 - 2027 Sylvain Liaboeuf
 
 # Structure des dossiers
 docs_dir: docs
@@ -32,9 +32,11 @@ markdown_extensions:
             "C++": ""
             "Ada": "✍️ Pseudo-code"
             "BARE": "🍲 Recette de cuisine"
-            "Bash": ""
+            "Bash": "✍️ Algorithme"
             "PHP": ""
             "Java": ""
+            "Kotlin": ""
+            "Haskell": ""
             "JavaScript": ""
             "Rust": ""
             "Go": ""
@@ -68,14 +70,16 @@ theme:
   name: material
   custom_dir: my_theme_customizations/
   language: fr
-  icon: 
+  logo: images/logo2.png
+  icon:
+    annotation: material/arrow-right-circle
     logo: material/laptop
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: light blue
-      accent: red
+      accent: purple
       toggle:
         icon: material/weather-night
         name: Mode sombre
@@ -83,12 +87,12 @@ theme:
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep purple
-      accent: orange
+      primary: light blue
+      accent: purple
       toggle:
         icon: material/weather-sunny
         name: Mode clair
-  favicon : Images/Logo.png
+  favicon : images/Logo.png
   features:
     #- header.autohide
     #- search.highlight
@@ -96,9 +100,12 @@ theme:
     - navigation.top
     - navigation.instant
     - navigation.tabs
-    - navigation.expand
+    #- navigation.expand
     - toc.integrate
     - tabs : false
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
 
 extra_css:
   - stylesheets/extra.css
@@ -107,7 +114,7 @@ extra_css:
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
-  - javascripts/tablesort.js
+  #- javascripts/tablesort.js
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
@@ -137,67 +144,146 @@ plugins:
 
 nav:
     -  🏡 Page d'accueil : index.md    
-    -  📦 Les bases de données :
-        -  Cours : 
-            -  Les bases de données : cours/Les_bases_de_donnees/Les_bases_de_données.md
-        -  Exercices : 
-            -  Enoncé : cours/Les_bases_de_donnees/Exercices_sur_les_bases_de_données.md
-            -  Correction : cours/Les_bases_de_donnees/Correction_des_exercices.md
-            -  Exercice bilan : cours/Les_bases_de_donnees/Exercice_bilan.md
-            -  Correction de l'exercice bilan : cours/Les_bases_de_donnees/Correction_de_l'exercice_bilan.md
-    - 📇 Le langage SQL :
-        -  Cours : 
-            - Le langage SQL : cours/Le_langage_SQL/Le_langage_SQL.md
-        -  Présentation de DB Browser for SQLite : cours/Le_langage_SQL/Prise_en_main_DB_Browser.md
-        -  Memento SQL : cours/Le_langage_SQL/Memento_SQL.md
-        -  Exercices : 
-            -  Enoncé : cours/Le_langage_SQL/Exercices_sur_le_langage_SQL.md
-            -  Correction : cours/Le_langage_SQL/Correction_des_exercices.md
-            -  Exercice bilan : cours/Le_langage_SQL/Exercice_bilan.md
-            -  Correction de l'exercice bilan : cours/Le_langage_SQL/Correction_de_l'exercice_bilan.md
-        -  Mini-projet : cours/Le_langage_SQL/Mini_projet.md
-    -  💻 Programmation orientée objet :
-        -  Cours : 
-            -  Programmation orientée objet : cours/Poo/POO.md
-        -  Exercice : cours/Poo/Exercice.md
-        -  Correction de l'exercice : cours/Poo/Correction_de_l_exercice.md
-        -  Mini-projet : cours/Poo/Mini_projet.md 
-    -  ⏳ Complexité :
-        -  Cours : 
-            -  Enoncé : cours/Complexité_tris/complexite.md
-            -  Correction des exercices : cours/Complexité_tris/Correction des exos du cours.md
-        -  TP : 
-            -  Enoncé : cours/Complexité_tris/TD_Complexite.md
-            -  Correction des exercices : cours/Complexité_tris/Correction des exos du TP.md
-        -  Exercices : 
-            -  Enoncé : cours/Complexité_tris/Exercices.md
-            -  Correction des exercices : cours/Complexité_tris/Correction.md
-    -  🌲 Les arbres :
-        -  Cours : 
-            -  Les arbres : cours/Arbres/Les arbres.md
-            -  Correction des exercices : cours/Arbres/Correction des exos du cours.md
-        -  Exercices : 
-            -  Enoncé : cours/Arbres/Exercices.md
-            -  Correction des exercices : cours/Arbres/Correction.md
-        -  Compression de données :
-            -  Activités de découverte : cours/Arbres/Activite introductive.md
-            -  Cours : cours/Arbres/Compression.md
-        -  Projet :
-            - Enoncé : cours/Arbres/Projet.md
-            - Répartition : cours/Arbres/Répartition.md
-            - Les différentes fonctions :
-                - sequenceToOccurrences() : cours/Arbres/sequenceToOccurrences().md
-                - weightTree() : cours/Arbres/weightTree().md
-                - insertTreeInForest() : cours/Arbres/insertTreeInForest().md
-                - huffmanTree() : cours/Arbres/huffmanTree().md
-                - treeToCoding() : cours/Arbres/treeToCoding().md
-                - encode() : cours/Arbres/encode().md
-                - decode() : cours/Arbres/decode().md
-            -  Mise en commun : cours/Arbres/Mise en commun.md
-            -  Banc d'essai : cours/Arbres/Banc_d_essai.md
-    -  🛠️ Epreuve pratique :
-        -  Modalité : cours/Epreuve_pratique/Modalite.md
-        -  Banque d'exercices : cours/Epreuve_pratique/EP.md
+    -  "📦 T1 : Bases de données" :
+        -  Sommaire : cours/T1_bases_de_donnees/sommaire.md
+        -  ❶ Modèle relationnel :
+            -  Cours : cours/T1_bases_de_donnees/Les_bases_de_donnees/Les_bases_de_données.md
+            -  Exercices : 
+                -  Enoncé : cours/T1_bases_de_donnees/Les_bases_de_donnees/Exercices_sur_les_bases_de_données.md
+                -  Correction : cours/T1_bases_de_donnees/Les_bases_de_donnees/Correction_des_exercices.md
+            -  Exercice bilan : 
+                -  Enoncé : cours/T1_bases_de_donnees/Les_bases_de_donnees/Exercice_bilan.md
+                -  Correction : cours/T1_bases_de_donnees/Les_bases_de_donnees/Correction_de_l'exercice_bilan.md
+        -  ❷ Le langage SQL :
+            -  Cours : cours/T1_bases_de_donnees/Le_langage_SQL/Le_langage_SQL.md
+            -  Présentation de DB Browser for SQLite : cours/T1_bases_de_donnees/Le_langage_SQL/Prise_en_main_DB_Browser.md
+            -  Memento SQL : cours/T1_bases_de_donnees/Le_langage_SQL/Memento_SQL.md
+            -  Exercices : 
+                -  Enoncé : cours/T1_bases_de_donnees/Le_langage_SQL/Exercices_sur_le_langage_SQL.md
+                -  Correction : cours/T1_bases_de_donnees/Le_langage_SQL/Correction_des_exercices.md
+            -  Exercice bilan : 
+                -  Enoncé : cours/T1_bases_de_donnees/Le_langage_SQL/Exercice_bilan.md
+                -  Correction de l'exercice bilan : cours/T1_bases_de_donnees/Le_langage_SQL/Correction_de_l'exercice_bilan.md
+            -  Mini-projet : cours/T1_bases_de_donnees/Le_langage_SQL/Mini_projet.md
+    -  "💻 T2 : Programmation" :
+        -  Sommaire : cours/T2_programmation/sommaire.md
+        -  ❶ POO :
+            -  Cours : cours/T2_programmation/Poo/POO.md
+            -  Exercice : 
+                -  Enoncé : cours/T2_programmation/Poo/Exercice.md
+                -  Correction : cours/T2_programmation/Poo/Correction_de_l_exercice.md
+            -  Mini-projet : cours/T2_programmation/Poo/Mini_projet.md
+        -  ❷ Présentation du code. Modularité. Validation d'un programme :
+            -  Cours : 
+                -  Cours : cours/T2_programmation/Presentation_du_code/Cours.md
+                -  Correction des exercices : cours/T2_programmation/Presentation_du_code/Correction_des_exercices.md
+            -  Exercice bilan : 
+                -  Enoncé : cours/T2_programmation/Presentation_du_code/Mini_projet.md
+                -  Correction : cours/T2_programmation/Presentation_du_code/Correction_du_mini_projet.md
+    -  "📝 T3 : Algorithmique" :
+        -  Sommaire : cours/T3_algorithmique/sommaire.md
+        -  ❶ Complexité. Variant et invariant de boucle :
+            -  Cours : 
+                -  Cours : cours/T3_algorithmique/Complexité/complexite.md
+                -  Correction des exercices : cours/T3_algorithmique/Complexité/Correction des exos du cours.md
+            -  Exercices : 
+                -  Enoncé : cours/T3_algorithmique/Complexité/Exercices.md
+                -  Correction des exercices : cours/T3_algorithmique/Complexité/Correction.md
+            -  TP : 
+                -  Enoncé : cours/T3_algorithmique/Complexité/TD_Complexite.md
+                -  Correction des exercices : cours/T3_algorithmique/Complexité/Correction des exos du TP.md
+        -  ❷ Algorithmes de tri :
+            -  Cours : cours/T3_algorithmique/Algos_de_tri/tri.md
+            -  Exercices : 
+                -  Enoncé : cours/T3_algorithmique/Algos_de_tri/exercices.md
+                -  Correction : cours/T3_algorithmique/Algos_de_tri/Correction.md
+        -  ❸ Algorithmes gloutons :
+            -  Cours : 
+                -  Cours : cours/T3_algorithmique/Algos_gloutons/glouton.md
+                -  Correction des exercices : cours/T3_algorithmique/Algos_gloutons/Correction.md
+            -  "TP n°1 - Le voyageur de commerce" : cours/T3_algorithmique/Algos_gloutons/voyageur.md
+            -  "TP n°2 - Le problème des étagères" : cours/T3_algorithmique/Algos_gloutons/etagere.md
+            -  "TP n°3 - Un problème d’organisation" : cours/T3_algorithmique/Algos_gloutons/organisation.md
+        -  ❹ Algorithme KNN :
+            -  Cours : cours/T3_algorithmique/Algo_KNN/knn.md
+            -  Exercices : cours/T3_algorithmique/Algo_KNN/exercices.md
+            -  "TP n°1 - Crocodiles VS Alligators" : cours/T3_algorithmique/Algo_KNN/croco.md
+            -  "TP n°2 - Classification sur les Pokémons" : cours/T3_algorithmique/Algo_KNN/pokemon.md
+            -  "TP n°3 - Les joueurs du TOP 14" : 
+                -  Enoncé : cours/T3_algorithmique/Algo_KNN/TOP14.md
+                -  Correction des exercices : cours/T3_algorithmique/Algo_KNN/correction_TOP14.md
+        -  ❺ Diviser pour régner :
+            -  Cours : 
+                -  Cours : cours/T3_algorithmique/Diviser_pour_regner/Diviser_pour_régner.md
+                -  Correction de l'exercice : cours/T3_algorithmique//Diviser_pour_regner/Correction_des_exos_du_cours.md 
+            -  Exercice : 
+                -  Enoncé : cours/T3_algorithmique/Diviser_pour_regner/Exo_rotation.md
+                -  Correction : cours/T3_algorithmique/Diviser_pour_regner/Correction_exo_rotation.md
+        -  ❻ Optimisation d'une fonction récursive :
+            -  Cours : cours/T3_algorithmique/Optimisation/Optimiser_fonction_recursive.md
+            -  Correction des exercices : cours/T3_algorithmique/Optimisation/Correction_des_exos_du_cours.md
+        -  ❼ Vers la programmation dynamique :
+            -  Cours : cours/T3_algorithmique/Prog_dynamique/Programmation_dyn.md
+            -  Exercices : 
+                -  Enoncé : cours/T3_algorithmique/Prog_dynamique/Exercices.md
+                -  Correction des exercices : cours/T3_algorithmique/Prog_dynamique/Correction.md
+        -  ❽ Recherche textuelle :
+            -  Cours : cours/T3_algorithmique/Recherche_textuelle/Motifs.md
+            -  Correction de l'exercice : cours/T3_algorithmique/Recherche_textuelle/Correction_des_exos_du_cours.md
+    -  "📊 T4 : Structures de données" :
+        -  Sommaire : cours/T4_structures_de_donnees/sommaire.md
+        -  ❶ Les listes, les piles et les files :
+            -  Cours : 
+                -  Les arbres : cours/T4_structures_de_donnees/Listes_Piles_Files/SDL.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Listes_Piles_Files/Correction_des_exos_du_cours.md
+            -  Exercices : 
+                -  Enoncé : cours/T4_structures_de_donnees/Listes_Piles_Files/Exercices.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Listes_Piles_Files/Correction.md
+        -  ❷ Les dictionnaires :
+            -  Cours : 
+                -  Les dictionnaires : cours/T4_structures_de_donnees/Dictionnaires/Dictionnaire.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Dictionnaires/Correction_des_exercices_du_cours.md
+            -  Exercices : 
+                -  Enoncé : cours/T4_structures_de_donnees/Dictionnaires/Exercices.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Dictionnaires/Correction_des_exercices.md
+            -  TP : 
+                -  Enoncé : cours/T4_structures_de_donnees/Dictionnaires/TP_Dictionnaire.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Dictionnaires/Correction_des_exos_du_TP.md
+        -  ❸ Les arbres :
+            -  Cours : 
+                -  Les arbres : cours/T4_structures_de_donnees/Arbres/Les_arbres.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Arbres/Correction_des_exos_du_cours.md
+            -  Exercices : 
+                -  Enoncé : cours/T4_structures_de_donnees/Arbres/Exercices.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Arbres/Correction.md
+            -  Compression de données :
+                -  Activités de découverte : cours/T4_structures_de_donnees/Arbres/Activite_intro.md
+                -  Cours : cours/T4_structures_de_donnees/Arbres/Compression.md
+            -  Projet :
+                - Enoncé : cours/T4_structures_de_donnees/Arbres/Projet.md
+                - Répartition : cours/T4_structures_de_donnees/Arbres/Répartition.md
+                - Les différentes fonctions :
+                    - sequenceToOccurrences() : cours/T4_structures_de_donnees/Arbres/sequenceToOccurrences().md
+                    - weightTree() : cours/T4_structures_de_donnees/Arbres/weightTree().md
+                    - insertTreeInForest() : cours/T4_structures_de_donnees/Arbres/insertTreeInForest().md
+                    - huffmanTree() : cours/T4_structures_de_donnees/Arbres/huffmanTree().md
+                    - treeToCoding() : cours/T4_structures_de_donnees/Arbres/treeToCoding().md
+                    - encode() : cours/T4_structures_de_donnees/Arbres/encode().md
+                    - decode() : cours/T4_structures_de_donnees/Arbres/decode().md
+                -  Mise en commun : cours/T4_structures_de_donnees/Arbres/Mise en commun.md
+                -  Banc d'essai : cours/T4_structures_de_donnees/Arbres/Banc_d_essai.md
+        -  ❹ Les graphes :
+            -  Cours : 
+                -  Les graphes : cours/T4_structures_de_donnees/Graphes/Les_graphes.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Graphes/Correction_des_exos_du_cours.md
+            -  Algorithme sur les graphes : 
+                -  Cours : cours/T4_structures_de_donnees/Graphes/Algo_sur_les_graphes.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Graphes/Correction_des_exos_algo_sur_les_graphes.md
+            -  Exercices : 
+                -  Enoncé : cours/T4_structures_de_donnees/Graphes/Exercices.md
+                -  Correction des exercices : cours/T4_structures_de_donnees/Graphes/Correction_des_exos.md
+            -  Devoir Maison : cours/T4_structures_de_donnees/Graphes/DM.md
+            -  Mini-projet : cours/T4_structures_de_donnees/Graphes/Mini_projet.md
  
 extra:
   #scripts_url : .

@@ -78,3 +78,4 @@ p2.addEventListener('click', () => { paintACE('ace/theme/crimson_editor') });
 
 var p1 = document.querySelector('input[id="__palette_1"]')
 p1.addEventListener('click', () => { paintACE('ace/theme/tomorrow_night_bright') });
+
