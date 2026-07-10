@@ -581,23 +581,30 @@ Améliorez le programme développé dans l'exercice 10 en modifiant les méthode
 dans la méthode `#!python perd_vie`, on tire toujours un nombre aléatoire entre `#!python 0` et `#!python 1`.</span>
 
 </div>
+<div class="decal1" markdown="1">
 <div class = "couleur_puce13" markdown="1">
 
 * Si ce nombre multiplié par `#!python 10` dépasse la chance du personnage, il perd un point de vie.
 * Sinon il ne perd pas de vie et on affiche `#!python "Han Solo a de la chance !"`
+
 </div>
-<div class="decal4" markdown="1">
+</div>
+<div class="decal12" markdown="1">
 
 Par exemple, Han Solo a `#!python 2` de chance.
+
 </div>
+<div class="decal1" markdown="1">
 <div class = "couleur_puce13" markdown="1">
 
 * Dans `#!python perdVie`, on tire `#!python 0.3`,
   `#!python 10 * 0.3 = 3` et `#!python 3 > 2` : il perd un point de vie.
 * Dans `#!python perdVie`, on tire `#!python 0.12345`
   `#!python 10 * 0.12345 = 1.2345` et `#!python 1.2345 < 2` : il ne perd pas de vie.
+
 </div>
-<div class="decal8" markdown="1">
+</div>
+<div class="decal1" markdown="1">
 
 Il faut aussi changer la méthode `#!python __init__` pour pouvoir créer nos personnages ainsi :
 
