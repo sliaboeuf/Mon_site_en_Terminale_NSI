@@ -145,7 +145,7 @@ Pour ce faire, on identifie chaque genre par un code unique :</span>
 </center>
 Et on reporte ce code dans le tableau des CDs :
 
-<center>
+<center markdown="1">
 
 | Titre                           | Artiste       | Annee | Code              |
 | :---------:                     | :-----------: | :---: | :---------------: |
