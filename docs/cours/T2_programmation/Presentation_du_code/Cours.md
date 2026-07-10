@@ -67,8 +67,12 @@ Il existe plusieurs moyens de vérifier si un code Python vérifie les recommand
 
     1. Etudier ce code source et décrire ce que renvoie la fonction `#!python ma_fonction(n)`.
     2. Tester si ce code vérifie les recommandations de la PEP8 à partir du site en ligne : <a href="https://www.codewof.co.nz/style/python3/" target="_blank">{code:WOF}</a>
-    3. Donner le code modifié de telle sorte que les recommandations de la PEP8 soient respectées.</div>
-    [Correction de l'exercice](Correction_des_exercices.md#correction-de-lexercice-1)
+    3. Donner le code modifié de telle sorte que les recommandations de la PEP8 soient respectées.
+
+    </div>
+    <center markdown="1">
+    [Correction de l'exercice 1 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-1){:target="_blank" .md-button}
+    </center>
 
 ### <div class = "encadré3"> __Nommer les arguments de la fonction lors de l'appel__ </div>
 
@@ -219,7 +223,7 @@ Pour expliquer le fonctionnement d'une fonction, on lui ajoute un __prototype__ 
 
 ??? exercice "Exercice 2"
     Vérifier, qu'en tapant `#!python help(ajout)`, on obtient bien toutes les informations utiles pour manipuler la fonction.
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-2){:target="_blank" .md-button}
     </center>
     
@@ -233,7 +237,7 @@ Pour expliquer le fonctionnement d'une fonction, on lui ajoute un __prototype__ 
     * Est documentée en utilisant les docstrings.
     
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 3 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-3){:target="_blank" .md-button}
     </center>
 
@@ -525,7 +529,7 @@ Pour documenter un module il suffit encore une fois de créer la `#!python docst
 
 ??? exercice "Exercice 4"
     Vérifier que dans le fichier `#!python test_import_module.py`, après avoir importé le module `#!python fibo`, en tapant `#!python help(fibo)` dans la console,  on obtient bien toutes les informations utiles pour manipuler ce module.
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 4 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-4){:target="_blank" .md-button}
     </center>
 
@@ -627,7 +631,7 @@ Le mécanisme d'assertion est là pour empêcher des erreurs qui ne devraient pa
     2. A l'aide d'une docstring et d'assertions, proposer un code plus explicite.
 
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 5 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-5){:target="_blank" .md-button}
     </center>
 
@@ -795,7 +799,7 @@ On peut également provoquer soi-même des exceptions avec l'instruction `#!pyth
     * `#!python erreur` : une chaîne indiquant la description de l'erreur si erreur il y a et une chaîne vide s'il n'y a pas d'erreur.
     
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 6 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-6){:target="_blank" .md-button}
     </center>
 
@@ -926,7 +930,7 @@ Il est bien sûr recommandé de prévoir plusieurs jeux de tests pour chaque fon
     * Documenter en utilisant les __docstrings__.
     * Proposer plusieurs tests unitaires pertinents utilisant la bibliothèque `#!python doctest`.
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 7 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-7){:target="_blank" .md-button}
     </center>
 
@@ -1031,7 +1035,7 @@ FAILED (failures=2)
     On parle d'échec (`#!python failure`) et non pas d'erreur (`#!python error`). Cela signifie que notre assertion ne s'est pas vérifiée (il suffit de regarder le traceback) mais que notre test s'est correctement exécuté.
 
 Les méthodes d'assertion sont nombreuses, pour en avoir une liste complète, il faut consulter la documentation officielle du module __unittest__, cependant, on peut donner les plus courantes :
-<center>
+<center markdown="1">
 
 | Méthodes                      | Explications                                      |
 | :---------------------------: | :-----------------------------------------------: |
