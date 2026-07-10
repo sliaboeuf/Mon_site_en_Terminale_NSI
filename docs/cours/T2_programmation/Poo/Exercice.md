@@ -3,7 +3,7 @@
 Le domino est un jeu très ancien constitué de 28 pièces toutes différentes. Sur chacune de ces pièces, il y a deux côtés qui sont constitués de 0 (blanc) à 6 points noirs.  
 Lorsque les 2 côtés possèdent le même nombre de points, on l'appelle domino double.
 
-<center>
+<center markdown="1">
 ![Domino](images/Dominos.png)
 </center>
 <div class="list1_1" markdown="1">
@@ -15,9 +15,9 @@ Lorsque les 2 côtés possèdent le même nombre de points, on l'appelle domino 
 <div class="couleur_puce14" markdown="1">
 
 * `#!python afficher_domino(self)` qui affiche les valeurs des deux faces de manière horizontale pour un domino classique et de manière verticale pour un domino double comme le montre la figure suivante :
-<center>
+
 ![Domino](images/Affichage_dominos_2.png){: .center width=40% .image}
-</center>
+
 * `#!python nb_points(self)` qui compte le nombre de points sur un domino.
 * `#!python est_blanc(self)` qui teste si le domino est blanc (c'est-à-dire si au moins un des côtés est blanc).
 * `#!python est_double(self)` qui teste si le domino est double. 
