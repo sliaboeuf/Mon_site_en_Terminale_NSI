@@ -479,7 +479,7 @@ Par exemple la relation « Disques » devient : __Disques__(<u>Code disque</u>, 
 Autrement dit, si la relation est de type « plusieurs à plusieurs ». Voici ce que donnerait le schéma du MCD dans le cas de notre discothèque :
 
 ![Association](images/Disques.png){style="width: 50%" .image}
-<center>
+<center markdown="1">
 *Schéma du MCD lorsque les deux cardinalités maximales sont N*
 </center>
 
@@ -491,7 +491,7 @@ Dans le MLD, la relation devient alors une __nouvelle table__, elle-même en rel
 Et voici le schéma du MLD :
 
 ![Association](images/Association_JMerise_3.png){style="width: 75%" .image}
-<center>
+<center markdown="1">
 *Schéma du MLD lorsque les deux cardinalités maximales sont N*
 </center>
 
