@@ -14,7 +14,7 @@ Le logiciel se trouve <a href="https://sqlitebrowser.org/dl/" target="_blank">ic
 ### <div class = "encadré3_SQL"> __Utilisation__ </div>
 
 Au lancement, la fenêtre devrait ressembler à cela :
-<center>
+<center markdown="1">
 
 ![Tuto](images/DB_Browser_Original.png)
 </center>
@@ -52,7 +52,7 @@ __(\*\*)__ Cases à cocher, suivant les cas : « *Non null* » si on ne veut pas
 <div class="list2_4" markdown="1">
 
 4. Ajout d’enregistrements (onglet __Parcourir les données__) : 
-<center>
+<center markdown="1">
 ![Tuto](images/DB_Browser_Original_3.png)
 </center>
 __(\*)__ On remarquera que la valeur d’un champ « __id__ » est automatiquement augmenté (si la case  « *IA* » a été cochée à l’étape 3).
@@ -74,7 +74,7 @@ INSERT INTO Activites VALUES (Null, 'Do-In')
 5. Questionnement de la base de données (onglet __Exécuter le SQL__) :
 
 </div>
-<center>
+<center markdown="1">
 
 ![Tuto](images/DB_Browser_Original_4.png)
 </center>

@@ -13,7 +13,7 @@
    La requête __SQL__ retourne le résultat suivant :  
 </span>
 
-<center>
+<center markdown="1">
 
  | NomStation    |
  | :--------:	 |
@@ -35,7 +35,7 @@
    La requête __SQL__ retourne le résultat suivant :  
 </sapn>
 
-<center>
+<center markdown="1">
 
  | Nom           |
  | :--------:	 |
@@ -56,7 +56,7 @@
    La requête __SQL__ retourne le résultat suivant :  
 </span>
 
-<center>
+<center markdown="1">
 
  | NomStation    |
  | :--------:	 |
@@ -83,7 +83,7 @@
    La requête __SQL__ retourne le résultat suivant :  
 </span>
 
-<center>
+<center markdown="1">
 
  | Nom 			 |
  | :--------:	 |
@@ -115,7 +115,7 @@
    Le résultat de cette requête donne :
 </span>
 
- <center>
+ <center markdown="1">
 
  | Station       |
  | :--------:	 |
@@ -150,7 +150,7 @@ INNER JOIN Clients AS c ON ((c.Id = s.IdClient) AND (c.Region = 'Europe'))
    Le résultat obtenu est :
 </span>
 
-<center>
+<center markdown="1">
 
  | Total         |
  | :--------:	 |
@@ -170,7 +170,7 @@ INNER JOIN Clients AS c ON ((c.Id = s.IdClient) AND (c.Region = 'Europe'))
    Le résultat obtenu est :  
 </span>
 
-<center>
+<center markdown="1">
 
  | Prix Moyen Activites Tanger  |
  | :--------:					|

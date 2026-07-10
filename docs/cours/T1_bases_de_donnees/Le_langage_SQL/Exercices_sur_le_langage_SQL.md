@@ -14,7 +14,7 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 5. Noms des stations visitées par des européens.
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -27,7 +27,7 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 2. Donner le prix moyen d'une activité à Tanger. On stockera le résultat dans une colonne nommée *Prix Moyen Activites Tanger*.
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
@@ -36,7 +36,7 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 
 1. Donner l'expression __SQL__ de la requête permettant d'afficher la liste des stations suivie du lieu (en majuscule) entre parenthèses et du tarif HT et TTC comme le montre l'exemple suivant :
 
-<center>
+<center markdown="1">
 
 | Stations	        	| Tarif HT	    |Tarif TTC 	    |
 | :---------------: 	| :-----------: |:-----------:	|	
@@ -53,7 +53,7 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 2. Les données qui correspondent au tarif TTC des stations sont-elles stockées dans la base de données ?
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 3 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-3){:target="_blank" .md-button}
 </center>
 
@@ -64,7 +64,7 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 2. Peut-on, dans l'état, ajouter à cette base que Mme Karibou a fait de la randonnée ?
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 4 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-4){:target="_blank" .md-button}
 </center>
 
@@ -75,7 +75,7 @@ Donner l'expression __SQL__ des requêtes suivantes ainsi que le résultat obten
 2. Peut-on changer ici le nom de l'attribut *Prix* en *Prix HT* de la relation « Activites » par une requête de type __UPDATE__ ?
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 5 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-5){:target="_blank" .md-button}
 </center>
 
@@ -87,6 +87,6 @@ On supposera que la structure est bien correcte, à savoir que l'attribut *IdCli
 2. Que faire si la clé étrangère n'a pas été définie dans la relation « Sejours » ?
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 6 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-6){:target="_blank" .md-button}
 </center>
