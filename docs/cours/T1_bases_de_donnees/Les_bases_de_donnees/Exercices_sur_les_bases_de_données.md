@@ -52,7 +52,7 @@ A l'aide de ce modèle, répondre aux questions suivantes :
 5. Peut-on réserver plusieurs fois une chambre à une date donnée ?
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 3 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-3){:target="_blank" .md-button}
 </center>
 
@@ -60,7 +60,7 @@ A l'aide de ce modèle, répondre aux questions suivantes :
 
 Donner le schéma relationnel de la base de données « compagnie d'hôtels » décrite par le modèle Entités/Associations dans l'exercice précédent.
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 4 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-4){:target="_blank" .md-button}
 </center>
 
@@ -79,7 +79,7 @@ En utilisant ce modèle, répondre aux questions suivantes :
 4. Deux médecins différents peuvent-ils prescrire le même médicament ?
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 5 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-5){:target="_blank" .md-button}
 </center>
 
@@ -87,7 +87,7 @@ En utilisant ce modèle, répondre aux questions suivantes :
 
 Donner le schéma relationnel de la base de données « visites médicales » décrite par le modèle Entités/Associations dans [l'exercice précédent](Exercices_sur_les_bases_de_données.md#exercice-5).
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 6 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-6){:target="_blank" .md-button}
 </center>
 
@@ -109,7 +109,7 @@ Pour les colonnes « Unicité » et « Valeur nulle permise », on répondra par
 Pour la colonne « Clé », on mettra __CP__ pour clé primaire et __CE__ pour clé étrangère ou on laissera vide.  
 Pour la colonne « Domaine éventuel », on précisera le domaine possible.  
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 7 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-7){:target="_blank" .md-button}
 </center>
 
@@ -127,6 +127,6 @@ Citer les anomalies constatées :
 
 </center>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 8 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-8){:target="_blank" .md-button}
 </center>
