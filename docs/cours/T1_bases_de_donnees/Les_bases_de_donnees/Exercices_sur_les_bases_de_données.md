@@ -14,7 +14,7 @@ On traitera successivement les deux hypothèses :
 </div>
 Etablir le MCD et le MLD dans ces deux cas.
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
