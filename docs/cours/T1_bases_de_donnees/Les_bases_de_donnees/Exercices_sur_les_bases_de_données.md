@@ -32,7 +32,7 @@ Etablir le MCD adéquat dans les deux hypothèses suivantes :
 
 Etablir ensuite le MLD dans ces deux cas.
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
