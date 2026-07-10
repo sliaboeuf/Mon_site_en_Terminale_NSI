@@ -54,7 +54,7 @@ On veillera à ne jamais utiliser d'espaces ou d'accents dans les noms de bases 
 Dans cette partie, nous allons nous intéresser au langage __SQL__ dans sa partie interrogation et manipulation de données (insertion, mise à jour, destruction), donc dans la partie __LMD__ de la plupart des __SGBD__. Il existe bien évidemment des manipulations bien plus avancées qui dépassent le cadre du programme de NSI.  
 <span style="display: block; margin: 20px 0 0 0;">
 Pour la suite de ce chapitre, nous prendrons en exemple la petite base de données suivante constituée de 4 relations :</span>
-<center>
+<center markdown="1">
 <div class="padding1" markdown="1">
 
 | NomStation        | Capacite      | Lieu 		| Region        |Tarif	       |
@@ -69,7 +69,7 @@ __Relation « Stations »__
 </div>
 </center>
 <br>
-<center>
+<center markdown="1">
 <div class="padding2" markdown="1">
 
 | NomStation        | Libelle	    | Prix 		|
@@ -86,7 +86,7 @@ __Relation « Activites »__
 </div>
 </center>
 <br>  
-<center>
+<center markdown="1">
 <div class="padding3" markdown="1">
 
 | Id    | Nom	   	| Prenom	| Ville       	|Région	       |Solde     |
@@ -100,7 +100,7 @@ __Relation « Clients »__
 </div>
 </center>
 <br>  
-<center>
+<center markdown="1">
 <div class="padding4" markdown="1">
 
 | IdClient 	| Station   	| Arrivee		| NbPlaces  |
@@ -150,7 +150,7 @@ Cette requète est constituée de 3 clauses :
 
 Le résultat obtenu est le suivant :
 
-<center>
+<center markdown="1">
 
 | NomStation        | Lieu	    |
 | :---------------: | :-------: |
@@ -197,7 +197,7 @@ WHERE Nom LIKE 'B%'
 ```
 Le résultat obtenu est le suivant :
 
-<center>
+<center markdown="1">
 
 | Nom        |
 | :--------: |
@@ -236,7 +236,7 @@ FROM Activites
 ```
 Résultat :
 
-<center>
+<center markdown="1">
 
 | Libelle        |
 | :------------: |
@@ -256,7 +256,7 @@ FROM Activites
 ```
 Résultat :
 
-<center>
+<center markdown="1">
 
 | Libelle        |
 | :------------: |
@@ -279,7 +279,7 @@ ORDER BY Region ASC, Lieu DESC
 ```
 Le résultat obtenu est le suivant :
 
-<center>
+<center markdown="1">
 
 | NomStation        | Capacite      | Lieu 		| Region        |Tarif	       |
 | :---------------: | :-----------: | :---: 	| :-----------: |:-----------: |
@@ -304,7 +304,7 @@ ORDER BY Region ASC, Lieu DESC
 LIMIT 3
 ```
 
-<center>
+<center markdown="1">
 
 | NomStation        | Capacite      | Lieu 		| Region        |Tarif	       |
 | :---------------: | :-----------: | :---: 	| :-----------: |:-----------: |
@@ -329,7 +329,7 @@ Par exemple, la requête suivante donnera une relation plus « lisible » :
 SELECT CONCAT(Prenom,'',UPPER(Nom)) AS Individu, Ville
 FROM Clients
 ```
-<center>
+<center markdown="1">
 
 | Individu	        | Ville	    |
 | :---------------: | :-------: |
@@ -366,7 +366,7 @@ SELECT Nom, Station
 FROM Clients
 INNER JOIN Sejours ON id = idClient
 ```
-<center>
+<center markdown="1">
 
 | Nom		        | Station	    |
 | :---------------: | :-----------: |
@@ -388,7 +388,7 @@ SELECT Stations.NomStation, Lieu, Region, Libelle, Prix
 FROM Stations
 INNER JOIN Activites ON Stations.NomStation = Activites.NomStation
 ```
-<center>
+<center markdown="1">
 
 | NomStation        | Lieu    		| Region 		| Libelle       | Prix	     	|
 | :---------------: | :-----------: | :---:		 	| :-----------: |:-----------: 	|
@@ -421,7 +421,7 @@ INNER JOIN Sejours AS se ON c.Id = se.Idclient)
 INNER JOIN Stations AS s ON se.Station = s.NomStation)
 ```
 
-<center>
+<center markdown="1">
 
 | Nom		        | Station	    |Region	   	    |
 | :---------------: | :-----------: |:-----------:	|	
@@ -436,7 +436,7 @@ INNER JOIN Stations AS s ON se.Station = s.NomStation)
 
 </center>
 Cette jointure correspond à l'intersection de la théorie des ensembles.
-<center>
+<center markdown="1">
 
 ![Diagramme De Venn](images/Diagramme_De_Venn.png)
 </center>
@@ -461,7 +461,7 @@ SELECT COUNT(NomStation) AS Nombre
 FROM Stations 
 WHERE Region = 'Europe'
 ```
-<center>
+<center markdown="1">
 
 | Nombre         |
 | :------------: |
@@ -474,7 +474,7 @@ Essayons maintenant de savoir le tarif minimum, maximum et moyen des stations.
 SELECT MIN(Tarif) AS Mini, MAX(Tarif) AS Maxi, AVG(Tarif) AS Moy
 FROM Stations
 ```
-<center>
+<center markdown="1">
 
 | Mini		        | Maxi 		    |Moy	   	    |
 | :---------------: | :-----------: |:-----------:	|	
@@ -488,7 +488,7 @@ SELECT SUM(NbPlaces) AS Total
 FROM Sejours
 INNER JOIN Clients ON id = IdClient AND Nom = 'Smith'
 ```
-<center>
+<center markdown="1">
 
 | Total          |
 | :------------: |
