@@ -132,7 +132,7 @@ Il ne reste plus à présent qu'à préciser à quel genre appartient chaque CD.
 <span style="display: block; margin: 10px 0 0 0;">
 Pour ce faire, on identifie chaque genre par un code unique :</span> 
 
-<center>
+<center markdown="1">
 
 | Code | Genre             |
 | :--: | :---------------: |
