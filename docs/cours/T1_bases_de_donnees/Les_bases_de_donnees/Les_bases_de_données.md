@@ -83,7 +83,7 @@ Or, ce petit tableau, à lui seul, fait apparaître au moins deux problèmes maj
 
 Ces deux problèmes possèdent une solution commune, très simple mais extrêmement efficace, qui consiste à recenser __séparément__ les CDs et les genres :
 
-<center>
+<center markdown="1">
 <div class = "tableaux" markdown="1">
 
 | Titre                           | Artiste       | Annee |
