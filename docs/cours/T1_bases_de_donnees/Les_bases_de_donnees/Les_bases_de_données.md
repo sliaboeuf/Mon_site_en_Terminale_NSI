@@ -47,7 +47,7 @@ Il va de soi que pour représenter de telles informations, une liste c'est bien,
 Les conventions étant en accord avec ce que nous suggère l'intuition, on mettra en ligne, les uns en-dessous des autres, les différents disques (autrement dit, en quelque sorte, les « individus » de notre base). Et on portera en colonne les différents renseignements dont on dispose pour chacun de ces individus.</span>
 <span style="display: block; margin: 10px 0 0 0;">
 Naturellement, il est préférable – et, en réalité, obligatoire – de nommer ces colonnes : ma discothèque prendrait ainsi la forme du tableau suivant :</span>
-<center>
+<center markdown="1">
 
 | Titre                           | Artiste       | Annee | Genre             |
 | :---------:                     | :-----------: | :---: | :---------------: |
