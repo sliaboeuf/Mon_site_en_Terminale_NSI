@@ -52,7 +52,7 @@ Nous travaillerons sur ces différentes questions sur des exemples "simples" qu�
     <span style="display: block; margin: 3px 0 0 0;">Nous noterons `#!python c` l’élément recherché (cible) et la liste dans laquelle nous cherchons `#!python c` sera notée `#!python L`.</span>
 
 Voici un algorithme en langage naturel qui résout ce problème :
-<center>
+<center markdown="1">
 
 ![Algorithme](images/Algo1.png){width=75% .image}
 
@@ -69,7 +69,7 @@ Voici un algorithme en langage naturel qui résout ce problème :
     1. __La terminaison__ : cet algorithme se finira-t-il en un temps fini ?
     2. __La correction__ : l’algorithme fait-il ce pourquoi il est conçu?
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 1 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-1){:target="_blank" .md-button}
     </center>
 
@@ -112,7 +112,7 @@ Déterminons, ensemble, le temps d’exécution au pire des cas de l’algorithm
 * __Etape 2 : compter le nombre de fois où chaque opération est effectuée, pour chaque ligne.__
 
 </div>
-<center>
+<center markdown="1">
 
 | Ligne | Affec. booléen  | Calcul longueur|Itération | Accès tableau  | Comp. de réels |Renvoi de valeur|
 | :---: | :-------------: | :-------------:|:--------:| :-------------:| :-------------:| :-------------:|
@@ -130,7 +130,7 @@ Ainsi, l'algorithme de recherche d'un élément dans une liste exécute __$~4n+3
 
 Pour catégoriser les algorithmes, nous aurons recours à des classes de complexité. Des algorithmes appartenant à une même classe seront alors considérés comme de complexité équivalente. Cela signifiera que l’on considèrera qu’ils ont la même efficacité (cela est approximativement vrai si on regarde les temps d’exécution pour des données de grandes tailles).  
 <span style="display: block; margin: 8px 0 0 0;">Le tableau suivant récapitule __les complexités de référence par ordre croissant de temps d’exécution :__</span>
-<center>
+<center markdown="1">
 
 | Complexité                    | Désignation               | Exemple d'algorithme                          |
 | :--------------------------:  | :-----------------------: | :------------------------------------------:  | 
@@ -147,7 +147,7 @@ Pour catégoriser les algorithmes, nous aurons recours à des classes de complex
 Pour se fixer les idées, voici un tableau qui donne le temps approximatif d’exécution en fonction de la taille des données.  
 <span style="display: block; margin: 3px 0 0 0;">Nous partirons du principe qu’une instruction élémentaire prend $~1~\mu{s}$ ($~10^{-6}~$ secondes).</span>
 <span style="display: block; margin: 3px 0 0 0;">Un temps astronomique est supérieur à un milliard de milliards d’années.</span>
-<center>
+<center markdown="1">
 
 | Taille $(n)$  | $\operatorname{log_{2}}(n)$ | $n$             |$n\operatorname{log_{2}}(n)$  |$n^2$| $2^n$   | $n!$    |
 | :--------:    | :--------------------------: | :----------:    | :--------------------------: | :----------:  | :----------:| :----------:  |
@@ -162,7 +162,7 @@ Et voici un graphique donnant les représentations graphiques des fonctions :
 <span style="display: block; margin: 3px 0 0 0;">Du "bas vers le haut", on a les courbes des fonctions $~x \mapsto \operatorname{log_{2}}(x)$, $~x \mapsto x$, $~x \mapsto x\operatorname{log_{2}}(x)$, $~x \mapsto x^2$, $~x \mapsto 2^x$ et $~x \mapsto x^3$.</span>
 
 La courbe de la fonction $~x \mapsto x^3~$ ne reste pas longtemps "au-dessus" de celle de la fonction $~x \mapsto 2^x$ puisque pour $~x = 10$, $~10^3=1000~$ tandis que $~2^{10}=1024~$.
-<center>
+<center markdown="1">
 
 ![Courbes](images/Courbes.png)
 
@@ -203,7 +203,7 @@ La signification de la notation $\mathcal{O}$ (appelée aussi "__notation de Lan
     5. $n\operatorname{log_{2}}(n)+2^n+7n^3$
     6. $n!+8n+9n^2$
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 2 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-2){:target="_blank" .md-button}
     </center>
     
@@ -220,7 +220,7 @@ L’algorithme `#!python recherche` (voir __Exercice 1__) est un algorithme dont
     3. __La correction__ : l’algorithme fait-il ce pourquoi il est conçu?
     4. __Le coût__ : quel est le temps d’exécution au pire des cas ? Quelle est la classe de complexité de cet algorithme?
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 3 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-3){:target="_blank" .md-button}
     </center>
 
@@ -234,7 +234,7 @@ L’algorithme `#!python recherche` (voir __Exercice 1__) est un algorithme dont
     3. __La correction__ : l’algorithme fait-il ce pourquoi il est conçu?
     4. __Le coût__ : quel est le temps d’exécution au pire des cas ? Quelle est la classe de complexité de cet algorithme?
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 4 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-4){:target="_blank" .md-button}
     </center>
 
@@ -258,7 +258,7 @@ L’algorithme `#!python recherche` (voir __Exercice 1__) est un algorithme dont
     1. Que fait cette fonction ?
     2. Quel est le temps d’exécution au pire des cas ? Quelle est la classe de complexité de cet algorithme ?
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 5 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-5){:target="_blank" .md-button}
     </center>
 
@@ -289,7 +289,7 @@ Pour certains algorithmes, il peut être difficile de prouver que l’algorithme
 
 ???+ exercice "Exercice 6"
     Écrire la trace de l’algorithme pour $\operatorname{a=22}$ et $\operatorname{b=3}$.
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 6 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-6){:target="_blank" .md-button}
     </center>
 
@@ -343,7 +343,7 @@ Ainsi, $~a=bq+r~$ est notre invariant de boucle.
 
 ???+ exercice "Exercice 7"
     On considère l’algorithme suivant :
-    <center>
+    <center markdown="1">
 
     ![Algorithme](images/Algo3.png){: width=50%}
 
@@ -371,7 +371,7 @@ Ainsi, $~a=bq+r~$ est notre invariant de boucle.
     3. Montrer que $\,f=i!\,$ est un invariant de la boucle.
     4. Prouver que cet algorithme est correct.
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 7 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-7){:target="_blank" .md-button}
     </center>
 
@@ -395,11 +395,8 @@ Ainsi, $~a=bq+r~$ est notre invariant de boucle.
 __Principe de la recherche dichotomique__ : comparer l’élément avec la valeur du milieu de la liste ; si les valeurs sont égales, la tâche est accomplie, sinon on recommence dans la moitié de la liste pertinente.  
 
 Voici l’algorithme présenté en langage naturel :
-<center>
 
 ![Algorithme](images/Algo4.png){: .image}
-
-</center>
 
 ???+ exercice "Exercice 8"
     <div class = "list6_1">
@@ -422,6 +419,6 @@ Voici l’algorithme présenté en langage naturel :
     <span style="display: block; margin: 3px 0 0 0;">Quelle est la classe de complexité de cet algorithme ?</span>
     
     </div>
-    <center>
+    <center markdown="1">
     [Correction de l'exercice 8 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-8){:target="_blank" .md-button}
     </center>
