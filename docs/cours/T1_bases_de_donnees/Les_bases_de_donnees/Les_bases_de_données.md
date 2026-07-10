@@ -407,7 +407,7 @@ Donc, le passage du MCD au MLD n'est qu'une question de rigueur, et plus du tout
 
 Une première règle est que toute entité du __MCD__ est transformée en un __tableau à deux dimensions__ appelé __relation__ comme le montre la figure suivante :
 
-<center>
+<center markdown="1">
 <img src="images/Disques2.png" class="picture">
 <img src="images/Fleche.png" class="picture">
 <img src="images/Relation.png" class="picture">
@@ -442,7 +442,7 @@ Selon les cardinalités maximales qui caractérisent la relation, les choses von
 Autrement dit, l'une des cardinalités est `(0,1)` ou `(1,1)`, ce qui est le cas de notre exemple dont on remet ci-dessous le schéma :
 
 ![Association](images/Genres.png){style="width: 50%" .image}
-<center>
+<center markdown="1">
 *Schéma du MCD lorsque l'une des deux cardinalités vaut* `(1,1)`
 <br>
 </center>
@@ -452,7 +452,7 @@ Concrètement, cela veut dire, comme dans notre exemple, que chaque CD possède 
 <span style="display: block; margin: 5px 0 0 0;">L'identifiant de la table côté « plusieurs » devient une nouvelle propriété de la table du côté « un », ainsi que l'illustre cet exemple :</span>
 
 ![Association](images/Association_JMerise_4.png){style="width: 75%" .image}
-<center>
+<center markdown="1">
 *Schéma du MLD lorsque l'une des deux cardinalités vaut* `(1,1)`
 </center>
 
