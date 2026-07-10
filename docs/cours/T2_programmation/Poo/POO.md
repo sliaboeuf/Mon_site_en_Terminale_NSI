@@ -581,7 +581,7 @@ Améliorez le programme développé dans l'exercice 10 en modifiant les méthode
 dans la méthode `#!python perd_vie`, on tire toujours un nombre aléatoire entre `#!python 0` et `#!python 1`.</span>
 
 </div>
-<div class="decal1" markdown="1">
+<div class="decal5" markdown="1">
 <div class = "couleur_puce13" markdown="1">
 
 * Si ce nombre multiplié par `#!python 10` dépasse la chance du personnage, il perd un point de vie.
@@ -589,12 +589,12 @@ dans la méthode `#!python perd_vie`, on tire toujours un nombre aléatoire entr
 
 </div>
 </div>
-<div class="decal12" markdown="1">
+<div class="decal5" markdown="1">
 
 Par exemple, Han Solo a `#!python 2` de chance.
 
 </div>
-<div class="decal1" markdown="1">
+<div class="decal5" markdown="1">
 <div class = "couleur_puce13" markdown="1">
 
 * Dans `#!python perdVie`, on tire `#!python 0.3`,
