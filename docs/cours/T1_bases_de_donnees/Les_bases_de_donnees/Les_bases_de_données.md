@@ -268,7 +268,7 @@ Voilà pourquoi le plus souvent, on sera amené à créer une __propriété supp
 « auto-incrément » est si pratique). Ce code sera rarement visible par l'utilisateur, qui ignorera sans doute son existence : il n'en sera pas moins indispensable pour le système informatique.</span>
 <span style="display: block; margin: 10px 0 0 0;">
 Ainsi, les deux entités de notre discothèque pourront être représentées ainsi :</span>
-<center>
+<center markdown="1">
 <div class = "tableaux" markdown="1">
 
 |Disques  				|
@@ -376,7 +376,7 @@ Il n'existe donc que quatre cas de figure possibles pour les cardinalités : `(0
 Voilà donc ce que cela donne pour notre exemple (*schéma réalisé à partir du site <a href="https://www.mocodo.net/" target="_blank">mocodo.net</a>*) :</span>
 
 ![Association](images/Genres.png){style="width: 45%" .image}
-<center>
+<center markdown="1">
 *Schéma conceptuel des données pour la gestion d'une discothèque*
 <br>
 </center>
