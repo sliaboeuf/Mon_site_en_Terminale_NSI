@@ -10,7 +10,7 @@
 1. On peut identifier 4 entités :
 
 </div>
-<div class="decal1" markdown="1">
+<div class="decal12" markdown="1">
 <div class="couleur_puce9" markdown="1">
 
 - « Vendeur » et l'identifiant est « *Code_ven* »
