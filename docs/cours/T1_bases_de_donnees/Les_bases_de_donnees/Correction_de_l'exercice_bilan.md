@@ -10,6 +10,7 @@
 1. On peut identifier 4 entités :
 
 </div>
+<div class="decal1" markdown="1">
 <div class="couleur_puce9" markdown="1">
 
 - « Vendeur » et l'identifiant est « *Code_ven* »
@@ -17,6 +18,7 @@
 - « Facture » et l'identifiant est « *Num_fact* »
 - « Produit » et l'identifiant est « *Num_prod* »
 
+</div>
 </div>
 <div class="list3_b" markdown="1">
 
