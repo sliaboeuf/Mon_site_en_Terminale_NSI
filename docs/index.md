@@ -1,6 +1,6 @@
 # <center><div class = "titre1"> Cours de Terminale NSI</div></center>
 
-<center>
+<center markdown="1">
 **_Les ressources de ce travail sont disponibles sous licence Creative Commons BY-NC-SA.  
 Respect de la Paternité – Pas d’utilisation commerciale – Partage des conditions initiales à l’identique._**
 
