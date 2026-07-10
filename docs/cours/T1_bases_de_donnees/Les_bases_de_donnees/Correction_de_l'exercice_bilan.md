@@ -61,6 +61,6 @@ Et enfin, pour l'association « Ajouter » :
 </div>
 <div class="list2_2" markdown="1">
 
-1. <center>![MCD](images/Ex_bilan_5.1/MCD.png){ .image}</center> 
-2. <center>![MLD](images/Ex_bilan_5.1/MLD.png){ .image}</center>
+1. <center markdown="1">![MCD](images/Ex_bilan_5.1/MCD.png){ .image}</center> 
+2. <center markdown="1">![MLD](images/Ex_bilan_5.1/MLD.png){ .image}</center>
 </div>

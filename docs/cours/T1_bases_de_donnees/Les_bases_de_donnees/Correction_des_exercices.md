@@ -82,7 +82,7 @@ La méthode est la même que celle utilisée dans l'exercice 2. La seule différ
 	Il faut bien veiller à définir comme clé primaire de la relation « Prescrire » les deux clés étrangères « *Numero* » et « *Code* ».
 
 ### <div class = "encadré_exo"> __Correction de l'exercice 7__ </div>
-<center>
+<center markdown="1">
 
 | Relation    | Attribut  | Type       | Unicité | Domaine éventuel | Valeur nulle permise | Clé |
 | :---------: | :-------: | :--------: | :-----: | :--------------: | :-----------------:  |     |

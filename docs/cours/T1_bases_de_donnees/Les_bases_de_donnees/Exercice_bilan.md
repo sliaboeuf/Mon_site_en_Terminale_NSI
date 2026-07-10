@@ -2,7 +2,7 @@
 Pendant la phase de conception, toutes les données recueillies et spécifiées sont inscrites dans ce que l'on appelle un dictionnaire de données.  
 
 On dispose du dictionnaire de données suivant :
-<center>
+<center markdown="1">
 
 | Code de la donnée   | Description 		 	      | Type       |
 | :-----------------: | :---------------------------: | :--------: |
@@ -48,6 +48,6 @@ Pour chacune d'entre elles, spécifier leur cardinalité et éventuellement leur
 3. En déduire le modèle relationnel.
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice bilan :material-cursor-default-click:](Correction_de_l'exercice_bilan.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
