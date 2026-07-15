@@ -21,7 +21,7 @@ Le système peut déclencher une vérification des prêts non retournés afin de
 </div>
 
 !!! ampoule "__Indications :__"
-	<div class= "list4_1" markdown="1">
+	<div class= "list21_1" markdown="1">
 
 	1. Vous avez toute la liberté de définir les attributs des différentes entités manipulées.
 	2. Vous êtes aussi libre de prendre des décisions d’ordre technique, ainsi que de choisir la façon dont les choses vont être organisées.
