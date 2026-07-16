@@ -80,7 +80,7 @@ Le langage de programmation <a href = "https://fr.wikipedia.org/wiki/Lisp" targe
 
 </center>
 
-??? exercice "Exercice 1"
+??? exercice {{exercice(False, prem=0)}}
     <div class = "list6_1">
 
     1. Voici une série d'instructions (les instructions ci-dessous s'enchaînent), expliquer ce qui se passe à chacune des étapes :<span style="display: block; margin: 8px 0 0 0;">
@@ -181,7 +181,7 @@ En général, on utilise une file pour mémoriser temporairement des transaction
 </span>
 </center>
 
-??? exercice "Exercice 2"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. Expliquer la différence fondamentale entre une pile et une file.
@@ -249,7 +249,7 @@ Le coût des opérations courantes peut être différent d'une structure à l'au
     ![Listes](images/Tableau_2.png){ .image}
 <span style="display: block; margin: 30px 0 0 0;"></span>
 
-??? exercice "Exercice 3"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. A quoi servent les tableaux et les listes chaînées ?
@@ -294,7 +294,7 @@ Voici résumé sous la forme d’un tableau les opérations que l'on peut réali
 | Renvoyer le nombre d’éléments présents dans la pile `#!python P`   |`#!python P.taille()`            |
 
 </center>
-??? exercice "Exercice 4"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. Indiquer quelles seront les instructions dans l’ordre chronologique permettant de créer la pile `#!python 12`, `#!python 14`, `#!python 8`, `#!python 7`, `#!python 19` et `#!python 22`, le sommet de la pile étant `#!python 22`.
@@ -363,7 +363,7 @@ print(p.lire_sommet())
 print(p.taille())
 ```
 
-??? exercice "Exercice 5"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. Quel est le constructeur de la classe `#!python Pile` ?
@@ -426,7 +426,7 @@ class Pile:
         return ch
 ```
 
-??? exercice "Exercice 6"
+??? exercice {{exercice(False)}}
 
     En utilisant les 2 classes précédentes, créer un programme permettant de créer la pile initiale sur laquelle on réalisera les actions affichées ci-dessous :
 
@@ -463,7 +463,7 @@ Pour évaluer cette expression, on utilisera une pile. On parcourt la liste de l
 </div>
 Le résultat de l'expression est l'unique élément restant dans la pile.
 
-??? exercice "Exercice 7"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. Soit l’opération arithmétique : $~3 × (2 + 4)$. Comment sera-t-elle codée en notation polonaise inversée ?
@@ -562,7 +562,7 @@ Voici résumé sous la forme d’un tableau les opérations que l'on peut réali
 | Afficher le nombre d’éléments présents dans la file `#!python F`  |`#!python F.taille()`                     |
 
 </center>
-??? exercice "Exercice 8"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. Indiquer quelles seront les instructions dans l’ordre chronologique permettant de créer la file `#!python 12`, `#!python 14`, `#!python 8`, `#!python 7`, `#!python 19` et `#!python 22`, l’élément de tête de la file étant `#!python 22`.
@@ -634,7 +634,7 @@ f.enfiler(78)
 print(f)
 ```
 
-??? exercice "Exercice 9"
+??? exercice {{exercice(False)}}
 
     Identifier la tête et la queue de la file au moment du premier affichage de la file.
     <span style="display: block; margin: 3px 0 0 0;">Le programme a-t-il le comportement attendu ?</span>
@@ -707,7 +707,7 @@ class File:
         return ch
 ```
 
-??? exercice "Exercice 10"
+??? exercice {{exercice(False)}}
 
     Vérifier que le programme précédent redonne bien les mêmes résultats que ceux du paragraphe [__Implémentation d’une file en Python avec un tableau dynamique__](SDL.md#implementation-dune-file-en-python-avec-un-tableau-dynamique)  
     <div></div>
