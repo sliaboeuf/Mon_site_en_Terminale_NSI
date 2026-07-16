@@ -6,22 +6,20 @@
 1. En langage naturel :
 
 </div>
-<center>
 
 ![Algorithme](images/Algo9.png){ .image width=75%}
 
-</center>
 <div class="decal8">En langage Python : 
 
 ```python
-def compte(L:list, c:int or float or str) -> int:
+def compte(L: list, c: int or float or str) -> int:
     n = 0
     for elem in L:
         if elem == c:
             n += 1
     return n
 
-def compte2(L:list, c:int or float or str) -> int:
+def compte2(L: list, c: int or float or str) -> int:
     n = 0
     for elem in L:
         n += (elem == c) # Variation qui évite la boucle si
@@ -81,7 +79,7 @@ En effet, la valeur $~n-1-i~$ est positive à la première itération ($~i=0~$ e
 
 1. 
     ```python
-    def est_triee(L:list) -> bool:
+    def est_triee(L: list) -> bool:
         bool = True
         n = len(L)
         for indice in range(n-1): # n-1 pour s'arrêter à l'avant-dernier élément de la liste
@@ -199,7 +197,7 @@ Si la liste est déjà triée, au bout d’un certain nombre d’itérations, no
 
 1. 
     ```python
-    def compte_voyelles(phrase:str) -> int:
+    def compte_voyelles(phrase: str) -> int:
         compte = 0
         for lettre in phrase:
             if lettre in "aeiouy":
@@ -296,11 +294,9 @@ Ainsi, le temps d'exécution de cet algorithme au pire des cas est $~9×E(\displ
 1. 
 
 </div>
-<center>
 
 ![Algorithme](images/Algo10.png){ .image}
 
-</center>
 <div class="list1_2" markdown="1">
 
 2. On considère comme variant de boucle l’exposant de 2 dans la décomposition de `#!python n` en produit de facteurs premiers.
