@@ -66,7 +66,7 @@ Elle est constituée d’éléments d’un même type, chacun possédant un rang
 Le langage de programmation <a href = "https://fr.wikipedia.org/wiki/Lisp" target="_blank">__Lisp__</a> (inventé par <a href = "https://fr.wikipedia.org/wiki/John_McCarthy" target="_blank">John McCarthy</a> en 1958) a été l’un des premiers langages de programmation à introduire cette notion de liste (Lisp signifie "list processing").  
 <span style="display: block; margin: 8px 0 0 0;">Voici les opérations qui peuvent être effectuées sur une liste :</span>
 
-<center>
+<center markdown="1">
 
 | Action                                                                       | Instruction         |
 | :--------------------------------------------------------------------------: | :-----------------: |
@@ -77,7 +77,6 @@ Le langage de programmation <a href = "https://fr.wikipedia.org/wiki/Lisp" targe
 | Donner l'élément `#!python x` situé dans la liste `#!python L` à la place `#!python p`                  |`#!python contenu(L, p)`      |
 | Compter le nombre d’éléments dans une liste `#!python L`                              |`#!python longueur(L)`        |
 | Accéder à un élément `#!python x` de la liste `#!python L` en renvoyant sa place               |`#!python acces(L, x)`        |
-
 
 </center>
 
@@ -126,10 +125,8 @@ Le langage de programmation <a href = "https://fr.wikipedia.org/wiki/Lisp" targe
 ### <div class = "encadré3"> __Type abstrait pile__ </div>
 
 Les __piles__ (__stacks__ en anglais) sont fondées sur le principe du « __dernier arrivé, premier sorti__ » : elles sont dites de type __LIFO (Last In, First Out)__. C’est le principe même de la pile d’assiettes : c’est la dernière assiette posée sur la pile d’assiettes sales qui sera la première lavée.
-<center>
 ![Listes](images/Pile_1.png){ .image}
 
-</center>
 L’insertion d’un élément dans la pile est appelée « __Empiler__ » et la suppression d’un élément de la pile est appelée « __Dépiler__ ». 
 <span style="display: block; margin: 2px 0 0 0;">Dans la pile, nous gardons toujours trace du dernier élément présent dans la liste avec un pointeur appelé *top*.</span>
 <span style="display: block; margin: 8px 0 0 0;">De nombreuses applications s’appuient sur l’utilisation d’une pile. En voici quelques-unes :</span>
@@ -169,7 +166,7 @@ En général, on utilise une file pour mémoriser temporairement des transaction
 
 ### <div class = "encadré3"> __Pile vs file : synthèse__ </div>
 
-<center>
+<center markdown="1">
 <span style="display: block; margin: 35px 0 0 0;">
 
 | Pile                                                                              | File      |
@@ -210,9 +207,7 @@ Les listes, les piles et les files sont donc des types mathématiques abstraits 
 ### <div class = "encadré3"> __Les tableaux__ </div>
 
 Un tableau est une suite contiguë de cases mémoires (les adresses des cases mémoires se suivent). Le système réserve (alloue) une plage d'adresses mémoires afin d’y stocker la valeur des éléments d’une pile ou d’une file par exemple.
-<center>
 ![Listes](images/Tableau_1.png){ .image}
-</center>
 <span style="display: block; margin: 15px 0 0 0;">
 La taille d'un tableau est fixe : une fois que l'on a défini le nombre d'éléments que le tableau peut accueillir, il n'est pas possible de modifier sa taille. Si l'on veut insérer une nouvelle donnée, on doit créer un nouveau tableau plus grand et déplacer les éléments du premier tableau vers le second tout en ajoutant la donnée au bon endroit !</span>
 <span style="display: block; margin: 8px 0 0 0;">Le langage __C__ par exemple, qui est un langage très populaire et très utilisé, utilise les tableaux comme implémentation des listes.</span>
@@ -235,7 +230,7 @@ Le coût des opérations courantes peut être différent d'une structure à l'au
 <span style="display: block; margin: 8px 0 0 0;">Il peut être difficile au début de savoir quelle structure de données choisir dans un cas précis. Même si nous avons fait un choix, il faut rester attentif aux opérations que nous faisons. Si par exemple nous nous retrouvons à demander souvent la taille d'une liste, ou à l'inverse à essayer de concaténer fréquemment des tableaux, il est peut-être temps de changer d'avis.</span>
 <span style="display: block; margin: 8px 0 0 0;">Certains langages offrent des facilités pour manipuler les tableaux, et non pour les listes (qu'il faut construire à la main, par exemple en __C__) : si nous n'avons pas de bibliothèque pour nous faciliter la tâche, il vaut mieux privilégier la structure qui est facile à utiliser (dans de nombreux cas, il est possible d'imiter ce que l'on ferait naturellement avec une liste en utilisant maladroitement un tableau).</span>
 <span style="display: block; margin: 15px 0 20px 0;">Voici, résumé dans un tableau, la complexité de certaines opérations courantes concernant une liste suivant son implémentation :</span>
-<center>
+<center markdown="1">
 
 | Opération                | Tableau             | Liste chaînée      |
 | :----------------------: | :-----------------: | :----------------: |
@@ -251,9 +246,7 @@ Le coût des opérations courantes peut être différent d'une structure à l'au
     Dans certains langages de programmation, et notamment __Python__, on trouve une version "évoluée" des tableaux : les tableaux dynamiques.
     <span style="display: block; margin: 5px 0 0 0;">Les tableaux dynamiques ont une taille qui peut varier. Il est donc relativement simple d'insérer des éléments dans le tableau.</span>
     <span style="display: block; margin: 5px 0 0 0;"> Ce type de tableau permet d'implémenter facilement le type abstrait __liste__ (de même pour les __piles__ et les __files__).</span>
-    <center>
     ![Listes](images/Tableau_2.png){ .image}
-    </center>
 <span style="display: block; margin: 30px 0 0 0;"></span>
 
 ??? exercice "Exercice 3"
@@ -289,7 +282,7 @@ Une pile est une structure de données abstraite sur laquelle on va pouvoir réa
 
 Voici résumé sous la forme d’un tableau les opérations que l'on peut réaliser sur un __objet__ de type __Pile__ :
 
-<center>
+<center markdown="1">
 
 | Action sur la pile                                    | Méthode de la classe `Pile`   |
 | :---------------------------------------------------: | :------------------------:    |
@@ -387,9 +380,7 @@ print(p.taille())
 Chaque « boîte » ou « maillon » contient une donnée, la flèche à droite de la boîte est le lien sur la donnée suivante (A noter que le dernier maillon ne pointe sur rien ― on utilisera `#!python None` en Python). 
 <span style="display: block; margin: 5px 0 0 0;">En python, une fois l'objet de type `#!python Pile` instancié et stocké dans une variable nommée `#!python p` par exemple, la première flèche à gauche (en rouge) peut être associée à cette variable.</span>
 <span style="display: block; margin: 5px 0 0 0;">la variable `#!python p` de type `#!python Pile` "pointe" sur le premier maillon (celui qui correspond au sommet de la pile) et permet de le récupérer avec la syntaxe `#!python p.lire_sommet()`.</span>
-<center>
 ![Listes](images/Liste_chainee_3.png){ .image}
-</center>
 <span style="display: block; margin: 20px 0 0 0;">Le programme suivant permet d’implémenter une pile en utilisant une liste chaînée. Le programme repose sur une classe `#!python Maillon` et une classe `#!python Pile`.</span>
 
 ```python
@@ -559,7 +550,7 @@ Une file est une structure de données abstraite sur laquelle on va pouvoir réa
 
 Voici résumé sous la forme d’un tableau les opérations que l'on peut réaliser sur un __objet__ de type __File__ :
 
-<center>
+<center markdown="1">
 
 | Action sur la file                                    | Méthode de la classe `#!python File`   |
 | :---------------------------------------------------: | :---------------------------: |
@@ -658,11 +649,8 @@ La structure de liste doublement chaînée est bien adaptée pour une implément
 <span style="display: block; margin: 3px 0 0 0;">Chaque « boîte » ou « maillon » contient une donnée, la flèche à droite de la boîte est le lien sur la donnée suivante, la flèche à gauche le lien sur la donnée précédente.</span>
 <span style="display: block; margin: 3px 0 0 0;">Le dernier maillon a un suivant "vide", le premier maillon a un prédécesseur "vide" (on utilisera `#!python None` en python).</span>
 <span style="display: block; margin: 3px 0 0 0;">La flèche en rouge à gauche peut être associée dans le code python ci-dessous à la variable `#!python f` (la variable `#!python f` de type `#!python File` "pointe" sur le premier maillon et permet de le récupérer avec la syntaxe `#!python f.debut`).</span>
-
-<center>
 ![Listes](images/Liste_chainee_4.png){ width="75%" .image}
 
-</center>
 Le programme ci-après permet d’implémenter une file en utilisant une liste doublement chaînée. Le programme repose sur une classe `Maillon` et une classe `File`.
 
 ```python
