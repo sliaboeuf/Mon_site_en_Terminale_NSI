@@ -6,7 +6,7 @@
 Supposons que l’on ait un problème de classification qui consiste à déterminer la classe d’appartenance de nouvelles instances $\operatorname{X}_i$.
 Les classes possibles sont $1$, $2$ ou $3$.
 <span style="display: block; margin: 10px 0 20px 0;">Selon la base de connaissances suivante, déterminez à la main (ou à l’aide d’un tableur) la classe de l’instance $\operatorname{X}_6$, dont les valeurs des attributs numériques $\operatorname{A}_1$ à $\operatorname{A}_5$ sont respectivement $3$, $12$, $4$, $7$ et enfin $8$, à l’aide de l’algorithme $k$-NN avec $k = 1$ puis $k = 3$.</span>
-<center>
+<center markdown="1">
 
 | Instances     | $\operatorname{A}_1$     | $\operatorname{A}_2$     | $\operatorname{A}_3$    | $\operatorname{A}_4$     | $\operatorname{A}_5$     | Classe     |
 |:-------------:|:------:|:------:|:------:|:------:|:------:|:----------:|
@@ -57,7 +57,7 @@ Quelle est la bonne réponse (sous la forme d’un triplet de classes pour le tr
 On cherche à prédire la couleur d’un fruit en fonction de sa largeur $(\operatorname{L})$ et de sa hauteur $(\operatorname{H})$.
 <span style="display: block; margin: 10px 0 0 0;">On dispose des données d’apprentissage suivantes :</span>
 
-<center>
+<center markdown="1">
 
 | largeur     | hauteur     | couleur     | 
 |:-----------:|:-----------:|:-----------:|
@@ -72,11 +72,8 @@ On cherche à prédire la couleur d’un fruit en fonction de sa largeur $(\oper
 
 </center>
 Ces données sont placées dans un repère ($\operatorname{L}$ en abscisse, $\operatorname{H}$ en ordonnée).
-<center>
-
 ![](images/knn7.png){ .image width=50%}
 
-</center>
 L’objectif ici est d’étudier l’influence des voisins sur la propriété de couleur d’un fruit.
 
 Soit $\operatorname{U}$ le nouveau fruit de largeur $\operatorname{C}=1$, et de hauteur $\operatorname{H}=4$.
@@ -100,7 +97,7 @@ Soit $\operatorname{U}$ le nouveau fruit de largeur $\operatorname{C}=1$, et de 
 
 Arrivé dans la cantina de la planète Tatooine, Han Solo décide de donner des indications à Luke pour qu’il ne provoque pas les extraterrestres belliqueux. Il repère quelques caractéristiques et vous demande de l’aider à fournir des éléments à Luke pour ne pas créer de problèmes et donc pouvoir définir un extraterrestre belliqueux.
 
-<center>
+<center markdown="1">
 
 | Couleur     | Taille     | Poids     | Yeux par pair ?    | Belliqueux  ?   |
 |:-----------:|:----------:|:---------:|:------------------:|:---------------:|
