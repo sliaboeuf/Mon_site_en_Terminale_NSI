@@ -113,27 +113,27 @@ L’algorithme de compression de Huffman est utilisé par exemple, en complémen
 
 Compression du mot "__BIENVENUE__" soit $~9~$ caractères ASCII et donc $~9×8=72~$ bits.
 <center markdown="1">
-        <table>
-        <tr>
-        <th align="center" style="vertical-align:middle"><b>Symbole du fichier source</b></th>
-        <td align="center" style="vertical-align:middle"><b>B</b></td>
-        <td align="center" style="vertical-align:middle"><b>I</b></td>
-        <td align="center" style="vertical-align:middle"><b>V</b></td>
-        <td align="center" style="vertical-align:middle"><b>U</b></td>
-        <td align="center" style="vertical-align:middle"><b>N</b></td>
-        <td align="center" style="vertical-align:middle"><b>E</b></td>
-        </tr>
-        <tr>
-        <th align="center" style="vertical-align:middle"><b>Fréquence d’apparition</b></th>
-        <td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></td>
-        <td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></b></td>
-        <td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></b></td>
-        <td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></b></td>
-        <td align="center" style="vertical-align:middle"><b><span style="color:red">2</span></b></b></td>
-        <td align="center" style="vertical-align:middle"><b><span style="color:red">3</span></b></b></td>
-        </tr>
-        </table>
-        </center>
+<table>
+<tr>
+<th align="center" style="vertical-align:middle"><b>Symbole du fichier source</b></th>
+<td align="center" style="vertical-align:middle"><b>B</b></td>
+<td align="center" style="vertical-align:middle"><b>I</b></td>
+<td align="center" style="vertical-align:middle"><b>V</b></td>
+<td align="center" style="vertical-align:middle"><b>U</b></td>
+<td align="center" style="vertical-align:middle"><b>N</b></td>
+<td align="center" style="vertical-align:middle"><b>E</b></td>
+</tr>
+<tr>
+<th align="center" style="vertical-align:middle"><b>Fréquence d’apparition</b></th>
+<td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></td>
+<td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></b></td>
+<td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></b></td>
+<td align="center" style="vertical-align:middle"><b><span style="color:red">1</span></b></b></td>
+<td align="center" style="vertical-align:middle"><b><span style="color:red">2</span></b></b></td>
+<td align="center" style="vertical-align:middle"><b><span style="color:red">3</span></b></b></td>
+</tr>
+</table>
+</center>
 
 !!! star1 "__Etape 1__"
     Création d’un arbre (à un seul élément) par symbole du texte, triés dans l’ordre croissant (ou décroissant) de leurs fréquences d’apparition.
