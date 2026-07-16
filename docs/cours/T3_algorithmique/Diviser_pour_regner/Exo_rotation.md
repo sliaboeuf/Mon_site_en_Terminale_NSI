@@ -60,13 +60,13 @@ La suite de ce problème a pour objectif de réaliser un algorithme permettant d
 <span style="display:block; margin: 5px 0px 0px 0px;">
 On adopte dans cet exercice une stratégie diviser pour régner. L'image est divisée en quatre quadrants. Chaque quadrants est tourné récursivement puis une permutation circulaire des quadrants est effectuée.
 <span style="display:block; margin: 15px 0px 0px 0px;">
-<center>
+<center markdown="1">
     <img src="images/Quadrant.png" style="width: 80%; height: 80%;">
 </center>
 </span>
 <span style="display:block; margin: 15px 0px 0px 0px;">La permutation circulaire est réalisée en enchaînant plusieurs échanges de quadrants.
 <span style="display:block; margin: 5px 0px 15px 0px;">Le schéma suivant présente un exemple de stratégie permettant de le faire :</span>
-<center>
+<center markdown="1">
 <img src="images/Permut.png" style="width: 80%; height: 80%;">
 </center>
 </span>
@@ -75,6 +75,6 @@ On adopte dans cet exercice une stratégie diviser pour régner. L'image est div
 4. Ecrire une procédure effectuant la rotation de quart de tour de l'image. Enregistrer l'image et l'afficher.
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice :material-cursor-default-click:](Correction_exo_rotation.md#Rotation-dun-quart-de-tour-dune-image-:-correction){:target="_blank" .md-button}
 </center>

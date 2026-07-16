@@ -113,7 +113,7 @@ boucle2(100, autre = 50)
 ```
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice :material-cursor-default-click:](Correction.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -171,7 +171,7 @@ def fibonacci(n):
     Attention ! Pour les fonctions récursives, chaque appel est ainsi chronométré.
     <span style="display:block; margin: 10px 0px 20px 0px;">Les affichages de temps se feront donc à chaque appel. Parmi tous les affichages, lequel devra-t-on retenir dans ce cas ?</span>
      
-<center>
+<center markdown="1">
 [Correction de l'exercice :material-cursor-default-click:](Correction.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
