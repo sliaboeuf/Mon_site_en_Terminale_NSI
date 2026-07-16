@@ -1,7 +1,7 @@
 # <center><div class = "titre1">Les arbres</div></center>
 
 ![Illustration](images/RecursiveTree.JPG){: .image}
-<center>
+<center markdown="1">
 
 *Arbre créé par un algorithme récursif*
 
@@ -41,7 +41,7 @@
     Un __arbre lexicographique__, ou arbre en parties communes, ou dictionnaire, représente un ensemble de mots. Les préfixes communs à plusieurs mots apparaissent une seule fois dans l’arbre.
     ![Illustration](images/lexico.png){: .image}
     
-    ??? exercice "Exercice 1"
+    ??? exercice {{exercice(False, prem=0)}}
         Rajouter dans cet arbre les mots : `#!python malle` et `#!python portail`.
 
 ??? exemple4 "__Exemple 4 : représentation d'une expression arithmétique__"
@@ -51,7 +51,7 @@
     Pour l’expression : $(\displaystyle\frac{y}{2}-t)(75+z)$ cela donne :
     ![Illustration](images/expression_arith.png){: .image}
     
-    ??? exercice "Exercice 2"
+    ??? exercice {{exercice(False)}}
         Représenter l’expression : $3+(\displaystyle\frac{7}{3}-1)^3$
         <center>
         [Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-2){:target="_blank" .md-button}
@@ -93,7 +93,7 @@
         Dans certains cas la profondeur des noeuds est comptée à partir de 1 et/ou la hauteur est égale au nombre de profondeurs différentes…  
         Parfois également, la taille d’un arbre ne tient pas compte des feuilles !!__
 
-    ??? exercice "Exercice 3"
+    ??? exercice {{exercice(False)}}
         Soit l’arbre suivant :  
         ![Illustration](images/Exercice3.png){: .image width="40%" }
         <div class="list6_1">
@@ -195,7 +195,7 @@ De la même manière, on peut encadrer la taille d’un arbre binaire quelconque
 De manière générale, on peut construire un arbre binaire comme un noeud composé de deux sous-arbres. L'arbre vide est représentée par la valeur `#!python None`. Ainsi, une feuille est un noeud avec les sous-arbres gauche et droit à `#!python None`. Pour annoter la structure de l'arbre avec des informations, on utilise des étiquettes pouvant être enregistrées à chaque noeud.
 <span style="display: block; margin: 10px 0 0 0;">On peut ensuite parcourir un arbre par l'accès à son étiquette et à ses sous-arbres gauche et droit.</span>
 <span style="display: block; margin: 10px 0 0 0;">Voici les fonctions primitives qui définissent le type abstrait arbre binaire :</span>
-<center>
+<center markdown="1">
 
 | Action                                                                       | Instruction         |
 | :--------------------------------------------------------------------------: | :-----------------: |
@@ -223,7 +223,7 @@ De manière générale, on peut construire un arbre binaire comme un noeud compo
     
     </div>
 
-!!! exercice "__Exercice 4__"
+!!! exercice {{exercice(False)}}
     <div class="list6_1">
 
     1. Comment s'écrit à l'aide de fonctions primitives l'arbre suivant, noté `#!python B` ? ![Illustration](images/arbre12.png){: .image}
@@ -306,7 +306,7 @@ Ainsi, l'utilisation de cette méthode sur l'arbre `#!python C` donne :
 
 ```
 
-!!! exercice "__Exercice 5 : implémentation de primitives__"
+!!! exercice {{exercice(False, niveau=2, text="__implémentation de primitives__")}}
     Coder en Python les méthodes suivantes de la classe `#!python Arbre` :
     <div class="list6_1">
 
@@ -338,7 +338,7 @@ def taille(self):
 
 ```
 
-!!! exercice "__Exercice 6 : hauteur d'un arbre__"
+!!! exercice {{exercice(False, niveau=2, text="__hauteur d'un arbre__")}}
     Pour calculer la hauteur d’un arbre, il faut parcourir toutes ses branches et retenir la profondeur de la feuille la plus éloignée.  
     La fonction est bien entendue récursive…  
     <span style="display: block; margin: 10px 0 20px 0;">Coder en Python la méthode `#!python hauteur()` de la classe `#!python Arbre` qui calcule la hauteur d'un arbre.</span>
@@ -346,7 +346,7 @@ def taille(self):
     [Correction de l'exercice 6 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-6){:target="_blank" .md-button}
     </center>
 
-!!! exercice "__Exercice 7 : nombre de feuilles d'un arbre__"
+!!! exercice {{exercice(False, niveau=2, text="__nombre de feuilles d'un arbre__")}}
     Pour calculer le nombre de feuilles d’un arbre, il faut là encore parcourir toutes ses branches et compter les noeuds.  
     La fonction est également récursive.  
     <span style="display: block; margin: 10px 0 0 0;">Coder en Python la méthode `#!python nb_feuilles()` de la classe `#!python Arbre` qui calcule le nombre de feuilles d'un arbre.</span>
@@ -379,7 +379,7 @@ Les deux fonctions `#!python taille()` et `#!python hauteur()` parcourent tous l
     * __Parcours en largeur__
 
     </div>
-<center>
+<center markdown="1">
 
 #### <div class = "encadré4">__Parcours en profondeur__</div>
 
@@ -421,7 +421,7 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
 
         ```
 
-    !!! exercice "__Exercice 8__"
+    !!! exercice {{exercice(False, niveau=2)}}
         Coder en Python la méthode `#!python liste_parcours_infixe()` qui renvoie une liste composée des étiquettes des noeuds d'un arbre dans un parcours infixe.  
         <center>
         [Correction de l'exercice 8:material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-8){:target="_blank" .md-button}
@@ -440,7 +440,7 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
         <span style="display: block; margin: 10px 0 0 0;">De la même façon, la partie gauche du noeud suivant, dont l'étiquette est `#!python 12` est atteignable et ainsi de suite.</span>
         ![Illustration](images/arbre17.png){: .image}
 
-    !!! exercice "__Exercice 9__"
+    !!! exercice {{exercice(False, niveau=2)}}
         Coder en Python la méthode `#!python parcours_prefixe()` qui affiche les étiquettes des noeuds d'un arbre dans un parcours préfixe.  
         <center>
         [Correction de l'exercice 9 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-9){:target="_blank" .md-button}
@@ -459,12 +459,12 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
         <span style="display: block; margin: 10px 0 0 0;">Ainsi, le premier noeud dont il est possible "d'atteindre" la partie droite est celui dont l'étiquette est `#!python 8` et ainsi de suite.</span>
         ![Illustration](images/arbre18.png){: .image}
 
-    !!! exercice "__Exercice 10__"
+    !!! exercice {{exercice(False, niveau=2)}}
         Coder en Python la méthode `#!python parcours_postfixe()` qui affiche les étiquettes des noeuds d'un arbre dans un parcours postfixe.  
         <center>
         [Correction de l'exercice 10 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-10){:target="_blank" .md-button}
         </center>
-<center>
+<center markdown="1">
 
 #### <div class = "encadré4">__Parcours en largeur__</div>
 
@@ -485,7 +485,7 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
 
     </div>
 
-    !!! exercice "__Exercice 11__"
+    !!! exercice {{exercice(False, niveau=2)}}
         Coder en Python la méthode `#!python parcours_largeur()` qui affiche les étiquettes des noeuds d'un arbre dans un parcours en largeur en utilisant une file.  
         <center>
         [Correction de l'exercice 11 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-11){:target="_blank" .md-button}
@@ -494,7 +494,7 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
 ## <div class = "encadré2">__Arbres binaires de recherche__</div>
 ### <div class = "encadré3">__Problème introductif__</div>
 
-!!! exercice "__Exercice 12__"
+!!! exercice {{exercice(False, niveau=2)}}
     La ville Binarus a été construite selon la manière suivante :
     <div class="couleur_puce25">
 
@@ -536,7 +536,7 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
     ![Illustration](images/arbre21.png){: .image}
     <span style="display: block; margin: 40px 0 0 0;">... puisque le noeud étiqueté `#!python 7` ne peut pas se trouver dans le sous-arbre droit du noeud étiqueté `#!python 8`.</span>
 
-!!! exercice "__Exercice 13__"
+!!! exercice {{exercice(False)}}
     Un vétérinaire voudrait stocker les fiches médicales de ses patients, et, plutôt que d'utiliser un tableau ou une liste, on se propose d'utiliser un arbre binaire de recherche.  
     <span style="display: block; margin: 10px 0 0 0;">La fiche contiendra différentes informations sur l'animal ; on utilisera son nom comme __clé__ (c'est-à-dire comme critère pour la relation d'ordre), que l'on triera selon l'ordre alphabétique croissant.</span>
     <span style="display: block; margin: 10px 0 0 0;">Le vétérinaire reçoit sa première patiente, qui répond au nom de __Gaufrette__.  Comme sa fiche sera le premier noeud de notre arbre, elle en devient automatiquement la racine.</span>
@@ -556,7 +556,7 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
 !!! notes1 "__Remarque__"
     Les algorithmes vus sur les arbres binaires (__taille__ et __hauteur__, de même que les __parcours infixe__, __préfixe__, __postfixe__ et __en largeur__) fonctionnent bien entendu sur les __ABR__ (qui n'en sont qu'un cas particulier). 
 
-    !!! exercice "__Exercice 14__"
+    !!! exercice {{exercice(False)}}
         Afficher, à la main, le parcours __infixe__ de l'__ABR__ suivant :  
         ![Illustration](images/arbre20.png){: .image}
         Quelle propriété semble se dégager ?  
@@ -564,7 +564,7 @@ Les trois méthodes de parcours en profondeur se distinguent uniquement par l’
         [Correction de l'exercice 14 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-14){:target="_blank" .md-button}
         </center>
 
-!!! exercice "__Exercice 15__"
+!!! exercice {{exercice(False, niveau=2)}}
     Coder en Python la méthode `#!python est_ABR()` qui renvoie `#!python True` si l'arbre est un arbre binaire de recherche et `#!python False` sinon. On veillera à utiliser la méthode `#!python liste_parcours_infixe()`.
     <center>
     [Correction de l'exercice 15 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-15){:target="_blank" .md-button}
@@ -587,7 +587,7 @@ Comme l’a montré le problème introductif, la recherche d’éléments dans u
     <span style="display: block; margin: 10px 0 0 0;">On sait que cet algorithme est extrêmement efficace (complexité dans le pire des cas en $\mathcal{O}(\operatorname{log_{2}}(n))$), ainsi, il ne faut pas plus de 20 étapes pour chercher parmi un million de valeurs.</span>
     <span style="display: block; margin: 10px 0 0 0;">Aussi, on essaiera d’éviter la structure de "peigne", où l’on rangerait tous les éléments dans l’ordre croissant ou décroissant puique la recherche serait au contraire peu efficace (elle serait susceptible de parcourir l'arbre tout entier, dans le cas d'un recherche infructueuse).</span>
 
-!!! exercice "__Exercice 16__"
+!!! exercice {{exercice(False, niveau=2)}}
     Coder en Python la méthode `#!python rechercher_element(e)` qui renvoie `#!python True` si l'élément `#!python e` est un élément d'un arbre binaire de recherche et `#!python False` sinon. <span style="display: block; margin: 10px 0 0 0;">On veillera à ce que l'arbre sur laquelle cette méthode s'applique est bien un __ABR__.</span>
     <center>
     [Correction de l'exercice 16 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-16){:target="_blank" .md-button}
@@ -601,7 +601,7 @@ Il est tout à fait possible d'insérer un noeud dans un arbre binaire de recher
 !!! rocket "__Principe__"
     Pour insérer un nouveau noeud `#!python x` dans un __ABR__, on parcourt l'arbre de façon similaire à l'algorithme de recherche jusqu'à trouver un noeud `#!python y` sans fils gauche et de clé supérieure (ou sans fils droit et de clé inférieure). À cet instant, on place `#!python x` en tant que fils gauche (resp. droit) de `#!python y`.
 
-!!! exercice "__Exercice 17__"
+!!! exercice {{exercice(False, niveau=2)}}
     Coder en Python la méthode `#!python inserer_element(e)` qui insère un noeud de clé `#!python e` dans un arbre binaire de recherche.  
     <span style="display: block; margin: 10px 0 0 0;">Si l'étiquette existe déjà, on placera le noeud dans le sous-arbre gauche du noeud contenant cette étiquette.</span>
     <span style="display: block; margin: 10px 0 0 0;">On veillera à ce que l'arbre sur laquelle cette méthode s'applique est bien un __ABR__.</span>
