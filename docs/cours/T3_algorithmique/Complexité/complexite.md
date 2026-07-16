@@ -223,7 +223,7 @@ L’algorithme `#!python recherche` (voir __Exercice 1__) est un algorithme dont
     </center>
 
 
-???+ exercice "Exercice 4 : recherche d'un extremum"
+???+ exercice {{exercice(False, text="recherche d'un extremum", niveau=2)}}
     On s’intéresse ici à la recherche du plus grand élément dans une liste de flottants.
     <div class = "list6_1">
 
@@ -236,7 +236,7 @@ L’algorithme `#!python recherche` (voir __Exercice 1__) est un algorithme dont
     [Correction de l'exercice 4 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-4){:target="_blank" .md-button}
     </center>
 
-???+ exercice "Exercice 5"
+???+ exercice {{exercice(False, niveau=2)}}
     Un élève un peu anxieux à réalisé ce code :
     ```python
     def mystere(L) :
@@ -285,7 +285,7 @@ Pour certains algorithmes, il peut être difficile de prouver que l’algorithme
         return (q, r)
     ```
 
-???+ exercice "Exercice 6"
+???+ exercice {{exercice(False)}}
     Écrire la trace de l’algorithme pour $\operatorname{a=22}$ et $\operatorname{b=3}$.
     <center markdown="1">
     [Correction de l'exercice 6 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-6){:target="_blank" .md-button}
@@ -339,13 +339,10 @@ Ainsi, $~a=bq+r~$ est notre invariant de boucle.
 <span style="display: block; margin: 3px 0 0 0;">A l’issue de l’algorithme, $~a=bq+r~$ et comme la boucle s’est terminée cela signifie aussi que $~r<b~$ (condition d’arrêt de la boucle `#!python while`). C’est ce que l’on souhaitait obtenir.</span>
 <span style="display: block; margin: 3px 0 0 0;">Cet algorithme est donc correct.</span>
 
-???+ exercice "Exercice 7"
+???+ exercice {{exercice(False, niveau=3)}}
     On considère l’algorithme suivant :
-    <center markdown="1">
+    ![Algorithme](images/Algo3.png){: .image width=50%}
 
-    ![Algorithme](images/Algo3.png){: width=50%}
-
-    </center>
     <div class = "list6_1">
 
     1. Justifier que la boucle n’est pas infinie.
@@ -396,7 +393,7 @@ Voici l’algorithme présenté en langage naturel :
 
 ![Algorithme](images/Algo4.png){: .image}
 
-???+ exercice "Exercice 8"
+???+ exercice {{exercice(False, niveau=3)}}
     <div class = "list6_1">
 
     1. On considère la liste triée : `#!python L = [2, 5, 7, 11, 13, 17, 19, 23, 29]`</div>
