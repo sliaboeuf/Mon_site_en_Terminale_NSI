@@ -68,7 +68,7 @@ from donnees_titanic import passagers
 2. Sachant qu'un passager embarqué à Cherbourg est représenté par la valeur `#!python 'C'` associée à la clé `#!python 'Embarked'`, écrire un programme qui donne le nombre de survivants embarqués à Cherbourg (18%).
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -111,7 +111,7 @@ On souhaite écrire un programme qui compte les occurences de mots dans un texte
 	```
 3. Télécharger le texte du ([« Petit Chaperon Rouge »](Fichiers/Petit_Chaperon_Rouge_Sans_Ponctuation.txt)) dans le même dossier que le code Python.
 <span style="display: block; margin: 5px 0 0 0;">Dans le programme principal, importer ce texte puis écrire les instructions nécessaires pour afficher, dans la console, chaque mot de ce texte suivi de son nombre d'occurrences dans le texte.</span>
-<div class="decal1" markdown="1">
+<div class="decal5" markdown="1">
 
 ??? tools "Rappel : ouverture d'un fichier en mode lecture"
 	```python
@@ -159,6 +159,6 @@ Appliquer ensuite, dans le programme principal, cette fonction au texte du « Pe
 Cette fonction renvoie un tableau constitués des chaînes de caractères de taille la longueur spécifiée et associées à la plus grande valeur dans le dictionnaire.
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
