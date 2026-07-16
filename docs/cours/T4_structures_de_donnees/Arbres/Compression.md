@@ -15,7 +15,7 @@ De nombreux algorithmes de compressions existent, chacun ayant sa particularité
 <span style="display: block; margin: 10px 0 0 0;">En effet un algorithme de compression très efficace pour un fichier texte sera une catastrophe pour de la vidéo et inversement.</span>
 <span style="display: block; margin: 10px 0 0 0;">Lors de la décompression, la reconstruction des données s’effectue par un algorithme inverse ou différent de celui de la compression.</span> 
 
-<center>
+<center markdown="1">
 ### <div class = "encadré3">__Compression symétrique / asymétrique__</div>
 </center>
 
@@ -26,7 +26,7 @@ De nombreux algorithmes de compressions existent, chacun ayant sa particularité
 ??? book2 "__La compression asymétrique__" 
     Dans ce cas, la compression et la décompression ne demandent pas la même quantité de travail. Par exemple la compression en MP3 est plus lente que la décompression pour la lecture, idem pour les vidéos.
 
-<center>
+<center markdown="1">
 ### <div class = "encadré3">__Compression avec / sans pertes__</div>
 </center>
 
@@ -68,7 +68,7 @@ Le codage de Huffman est un codage statistique à longueur variable. David Alber
 <span style="display: block; margin: 10px 0 0 0;">La compression se fait en remplaçant les caractères les plus fréquents par des codes courts et les caractères les moins fréquents par des codes longs. On observe ainsi des réductions de taille de l'ordre de 20 à 90 %.</span>
 <span style="display: block; margin: 10px 0 0 0;">C'est une méthode de compression largement utilisée, souvent en complément d'autres algorithmes.</span>
 
-<center>
+<center markdown="1">
 ### <div class = "encadré3">__L’algorithme__</div>
 </center>
 
@@ -91,13 +91,13 @@ Le codage de Huffman est un codage statistique à longueur variable. David Alber
         On réécrit le fichier source en utilisant le nouveau code binaire des caractères, puis l’on joint la table de codage des caractères. 
         <span style="display: block; margin: 10px 0 0 0;">En pratique c’est l’encodage de l’arbre de Huffman qui est joint avant le codage du texte compressé.</span>
 
-<center>
+<center markdown="1">
 ### <div class = "encadré3">__Utilisation__</div>
 </center>
 
 L’algorithme de compression de Huffman est utilisé par exemple, en complément d’autres algorithmes (souvent utilisé en deuxième passage), dans les formats de compression aussi variés que ZIP, PNG, JPEG, MP3.
 
-<center>
+<center markdown="1">
 ### <div class = "encadré3">__Caractéristiques__</div>
 </center>
 <div class="couleur_puce17" markdown="1">
@@ -112,7 +112,7 @@ L’algorithme de compression de Huffman est utilisé par exemple, en complémen
 ## <div class = "encadré2">__Exemple de compression__</div>
 
 Compression du mot "__BIENVENUE__" soit $~9~$ caractères ASCII et donc $~9×8=72~$ bits.
-<center>
+<center markdown="1">
         <table>
         <tr>
         <th align="center" style="vertical-align:middle"><b>Symbole du fichier source</b></th>
