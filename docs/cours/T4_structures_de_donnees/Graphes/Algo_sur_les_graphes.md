@@ -22,7 +22,7 @@ Selon les actions opérées au cours d'un parcours, on peut détecter des cycles
 </div>
 
 Dans la suite, on considérera les deux graphes $\small{G_1}$ et $\small{G_2}$ suivants :
-<center>
+<center markdown = "1">
     
 <img src="images/Algo1.png" style="display:inline-block; vertical-align:middle;">
 $~~~~~~~~~$
@@ -205,7 +205,7 @@ En stockant les sommets encore à visiter dans une <span style="font-family: 'Tr
         <span style="margin :5px 0 0 0; display: block;">On aurait donc pu utiliser ici une structure de données abstraite plus simple : l'ensemble (voir [Exercice 2](Exercices.md#exercice-2)).</span>
         <span style="margin :5px 0 0 0; display: block;">On verra par la suite l'intérêt d'avoir utilisé un dictionnaire plutôt qu'une autre structure.</span>
 
-??? exercice4 "__Exercice 1__"
+??? exercice4 {{exercice(False, prem=0, niveau=2)}}
     Écrire pour la classe `#!python grapheNoLs` une nouvelle méthode `#!python parcours_DFS()`, qui utilise une pile.  
     <span style="margin :10px 0 0 0; display: block;">Pour tester cette méthode, on pourra utiliser la fonction suivante qui génère un graphe simple non-orienté à `#!python nb_sommets` sommets, `#!python nb_aretes` arêtes et qui est représenté par un dictionnaire :</span>
 
@@ -356,7 +356,7 @@ En stockant les sommets encore à visiter dans une <span style="font-family: 'Tr
 
     </div>
 
-??? exercice4 "__Exercice 2__"
+??? exercice4 {{exercice(False, niveau=2)}}
     Écrire pour la classe `#!python grapheNoLs` une nouvelle méthode `#!python parcours_BFS()`, qui utilise une file.  
     
     <center>
@@ -383,7 +383,7 @@ Il suffit d'adapter légèrement, au choix, l'un des deux algorithmes de parcour
 <span style="margin :10px 0 0 0; display: block;">L'algorithme est alors identique à celui d'un parcours en stoppant le parcours si un cycle est trouvé.</span>
 <span style="margin :10px 0 0 0; display: block;">Enfin, si le graphe non-orienté est connexe, on peut tester la présence d'un cycle à partir de n'importe quel sommet de départ. En revanche, pour un graphe non connexe (et toujours non-orienté), il faut s'assurer de parcourir tous ses sommets. On peut par exemple lancer la détection à partir de chaque sommet.</span>
 
-??? exercice4 "__Exercice 3__"
+??? exercice4 {{exercice(False, niveau=2)}}
     Écrire pour la classe `#!python grapheNoLs` la méthode `#!python is_cycle()` qui renvoie `#!python True` si le graphe présente un cycle.  
 
     <center>
@@ -398,7 +398,7 @@ La précédente technique ne marche plus si l'on recherche la présence d'un cir
 Par contre, il est toujours possible d'adapter l'un des deux algorithmes de parcours du graphe, en comparant le sommet de départ avec les successeurs de chaque sommet découvert pendant le parcours. Si l'un des successeurs est le sommet de départ, c'est qu'il y a un circuit !
 <span style="margin :5px 0 0 0; display: block;">Il suffit de faire cette vérification en partant de n'importe quel sommet du graphe.</span>
 
-??? exercice4 "__Exercice 4__"
+??? exercice4 {{exercice(False, niveau=2)}}
     Écrire pour la classe `#!python grapheOLs` la méthode `#!python is_circuit()` qui renvoie `#!python True` si le graphe présente un circuit.  
 
     <center>
