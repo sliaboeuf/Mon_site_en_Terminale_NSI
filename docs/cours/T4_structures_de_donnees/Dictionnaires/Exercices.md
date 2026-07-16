@@ -1,6 +1,6 @@
 # <center><div class = "titre2">Exercices</div> </center>
 
-### <div class = "encadré8"> __Exercice 1__ </div>
+### <div class = "encadré_exo"> __Exercice 1__ </div>
    
 > Le Titanic appareille de Southampton (Angleterre) le mercredi 10 avril à 12 h 15.
 > <span style="display: block; margin: 8px 0 0 0;">Six heures plus tard, à 18 h 15, il fait escale dans la rade de Cherbourg. Il y débarque 24 passagers et en embarque 274, amenés par les transbordeurs Nomadic et Traffic. Il appareille à 20 h 10.</span>
@@ -49,12 +49,12 @@ Télécharger ce fichier ([donnees_titanic.py](Fichiers/donnees_titanic.py)) dan
 ```python
 from donnees_titanic import passagers
 ```
-<div class="list2" markdown="1">
+<div class="list1_1" markdown="1">
 
 1. Rédiger un programme qui :
 
 </div>
-<div class="list6_a" markdown="1">
+<div class="list1_a" markdown="1">
 
 1. affiche le nombre de passagers dans la liste (891) ;
 2. vérifie que le passager 54 est :
@@ -62,20 +62,20 @@ from donnees_titanic import passagers
 3. affiche le nombre de survivants (342).
 
 </div>
-<div class="list6_2" markdown="1">
+<div class="list1_2" markdown="1">
 
 1. Sachant qu'il y a [trois classes](https://fr.wikipedia.org/wiki/Passagers_du_Titanic#Des_passagers_aux_origines_diverses){. target="_blank"} (1, 2 et 3), écrire un programme qui affiche le pourcentage de survivants par classe.
 2. Sachant qu'un passager embarqué à Cherbourg est représenté par la valeur `#!python 'C'` associée à la clé `#!python 'Embarked'`, écrire un programme qui donne le nombre de survivants embarqués à Cherbourg (18%).
 
 </div>
 <center>
-[Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-1){:target="_blank" .md-button}
+[Correction de l'exercice 1 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
-### <div class = "encadré8"> __Exercice 2__ </div>
+### <div class = "encadré_exo"> __Exercice 2__ </div>
 
 On souhaite écrire un programme qui compte les occurences de mots dans un texte afin de connaître les mots les plus fréquents.
-<div class="list2" markdown="1">
+<div class="list1_1" markdown="1">
 
 1. Compléter la définition de la fonction `#!python occurences(sequence)` en respectant les spécifications.
 	```python
@@ -122,7 +122,7 @@ On souhaite écrire un programme qui compte les occurences de mots dans un texte
 </div>
 
 </div>
-<div class="list6_4" markdown="1">
+<div class="list1_4" markdown="1">
 
 4. Compléter la définition de la fonction `#!python compte_tous_mots(phrase)` en respectant ses spécifications.
 	```python
@@ -160,5 +160,5 @@ Cette fonction renvoie un tableau constitués des chaînes de caractères de tai
 
 </div>
 <center>
-[Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-2){:target="_blank" .md-button}
+[Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exercices.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>

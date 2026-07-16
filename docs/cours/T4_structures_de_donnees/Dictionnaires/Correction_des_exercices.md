@@ -1,6 +1,6 @@
 # <center><div class = "titre2">Correction des exercices</div> </center>
 
-### <div class = "encadré8"> __Correction de l'exercice 1__ </div>
+### <div class = "encadré_exo"> __Correction de l'exercice 1__ </div>
 
 ```python
 from donnees_titanic import passagers
@@ -50,7 +50,7 @@ print(f"{nb_survivants_cherbourg * 100 // nb_passager_cherbourg}% des passagers 
 
 ```
 
-### <div class = "encadré8"> __Correction de l'exercice 2__ </div>
+### <div class = "encadré_exo"> __Correction de l'exercice 2__ </div>
 
 ```python
 def occurrences(sequence):
