@@ -52,13 +52,11 @@ Nous travaillerons sur ces différentes questions sur des exemples "simples" qu�
     <span style="display: block; margin: 3px 0 0 0;">Nous noterons `#!python c` l’élément recherché (cible) et la liste dans laquelle nous cherchons `#!python c` sera notée `#!python L`.</span>
 
 Voici un algorithme en langage naturel qui résout ce problème :
-<center markdown="1">
 
 ![Algorithme](images/Algo1.png){width=75% .image}
 
-</center>
 
-??? exercice "Exercice 1"
+??? exercice {{exercice(False, prem=0, niveau=2)}}
     <div class = "list6_1" markdown="1">
 
     1. Écrire une implémentation en Python de cet algorithme sous la forme d’une fonction nommée `#!python recherche` et la compléter par deux tests.
@@ -67,7 +65,7 @@ Voici un algorithme en langage naturel qui résout ce problème :
     <div class ="list6_a" markdown="1">
 
     1. __La terminaison__ : cet algorithme se finira-t-il en un temps fini ?
-    2. __La correction__ : l’algorithme fait-il ce pourquoi il est conçu?
+    2. __La correction__ : l’algorithme fait-il ce pourquoi il est conçu ?
     </div>
     <center markdown="1">
     [Correction de l'exercice 1 :material-cursor-default-click:](Correction des exos du cours.md#correction-de-lexercice-1){:target="_blank" .md-button}
