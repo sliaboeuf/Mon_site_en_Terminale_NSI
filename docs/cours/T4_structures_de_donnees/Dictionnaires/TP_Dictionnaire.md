@@ -68,7 +68,7 @@ Ne renvoie rien.</td>
 
 ### <div class = "encadré3_TP">Implémentation d'un dictionnaire à partir de deux listes</div>
 
-<span class="border1"> __Description __ </span><div></div>
+<span class="border1"> __Description__ </span><div></div>
 Les entrée du dictionnaire sont stockées dans deux listes distinctes :
 <div class="couleur_puce35" markdown = "1">
 
@@ -82,7 +82,7 @@ table1 = ['un', 'deux', 'trois', None, None ]
 table2 = [ 1, 2, 3, None, None ]
 ```
 
-??? exercice2 "Exercice 1"
+??? exercice2 {{exercice(False, prem=0, niveau=2)}}
     Implémenter ce premier dictionnaire en se basant sur le squelette suivant :
     ```python
     """ Implémentation n°1 d'un dictionnaire en programmation orientée objet Python
@@ -185,14 +185,14 @@ table2 = [ 1, 2, 3, None, None ]
 
 ### <div class = "encadré3_TP">Implémentation d'un dictionnaire à partir d'une liste de tuples</div>
 
-<span class="border1"> __Description __ </span><div></div>
+<span class="border1"> __Description__ </span><div></div>
 Les entrées du dictionnaire sont stockées dans une liste de tuples `#!python (clef, valeur)` triée par ordre croissant de clé.  
 <span style="display: block; margin: 10px 0 0 0;">Par exemple, pour un dictionnaire de taille 5 contenant 3 éléments :</span>
 <span style="display: block; margin: 3px 0 0 0;">`#!python table = [(), (), ("deux", 2) , ("trois", 3), ("un", 1)]`</span>
 
 La position des éléments se justifie par l’ordre alphabétique.
 
-??? exercice2 "Exercice 2"
+??? exercice2 {{exercice(False, niveau=2)}}
     Implémenter ce second dictionnaire en se basant sur le squelette suivant :
     ```python
     """ Implémentation n°2 d'un dictionnaire en programmation orientée objet Python
@@ -309,7 +309,7 @@ La position des éléments se justifie par l’ordre alphabétique.
 
 ### <div class = "encadré3_TP">Implémentation d'un dictionnaire à partir d'une table de hachage</div>
 
-<span class="border1"> __Description __ </span><div></div>
+<span class="border1"> __Description__ </span><div></div>
 Les entrée du dictionnaire sont stockées dans une table de hachage qui est une liste de listes :
 <div class="couleur_puce35" markdown = "1">
 
@@ -332,7 +332,7 @@ La position des éléments se justifie par :
 
 </div>
 
-??? exercice2 "Exercice 3"
+??? exercice2 {{exercice(False, niveau=2)}}
     Implémenter ce troisième et dernier dictionnaire en se basant sur le squelette suivant :
     ```python
     """ Implémentation n°3 d'un dictionnaire en programmation orientée objet Python
@@ -701,10 +701,10 @@ Pour chacune des cinq implémentations, nous allons estimer la complexité tempo
 <a href="https://www.python.org/dev/peps/pep-0456/#siphash" target="_blank">https://www.python.org/dev/peps/pep-0456/#siphash</a>
 
 </div>
-<center>
+<center markdown = "1">
 <span class="border2"> __Synthèse des résultats__ </span><div></div>
 </center>
-<center>
+<center markdown = "1">
 
 |               | `#!python Dico1`                       | `#!python Dico2`                                                      | `#!python Dico3`                           | `#!python Dico4`                   | `#!python DicoPython`              |
 |:------------: |:----------------------------: |:-----------------------------------------------------------: |:-------------------------: |:------------------------: |:------------------------: | 
@@ -724,7 +724,7 @@ Protocole de tests :
 
 </div>
 
-??? exercice2 "Exercice 4"
+??? exercice2 {{exercice(False, niveau=2)}}
     <div class = "list7_1">
 
     1. A l'aide du script suivant, ordonner par ordre croissant du temps d’exécution les cinq implémentations `#!python Dico1`, `#!python Dico2`, `#!python Dico3`, `#!python Dico4` et `#!python DicoPython` pour chacune des trois méthodes de classe `#!python ecrire`, `#!python lire` et `#!python supprimer`:
