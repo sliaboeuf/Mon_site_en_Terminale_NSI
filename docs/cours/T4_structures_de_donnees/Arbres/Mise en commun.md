@@ -1,5 +1,5 @@
 # <center><div class = "titre7">Mise en commun</div></center>
-<center>
+<center markdown="1">
 ## <div class="para2">Programme final</div>
 </center>
 <div class="encadre">
@@ -41,9 +41,9 @@ Créer dans votre dossier un nouveau fichier python nommé <span style="font-fam
 from fct_weight_tree import weight_tree
 ```
 
-## <div class="para3"> Niveau 1 : Compression/décompression d’une chaine de caractères <br>(sans manipuler de fichiers)</div>
+## <div class="para3"> Niveau 1 : Compression/décompression d’une chaine de caractères (sans manipuler de fichiers)</div>
 
-!!! exercice6 "__Exercice 1__"   
+!!! exercice6 {{exercice(False, prem=0, niveau=2)}}
     Ecrire en quelques lignes une fonction nommée `#!python compresse()` de compression avec l’algorithme de Huffman.  
     <span style="display: block; margin: 10px 0 0 0;">Le texte à compresser sera une chaine de caractères directement écrite dans le programme.</span>
     <span style="display: block; margin: 10px 0 0 0;">*Exemple* : `#!python texte = 'hello world !'`</span>
@@ -186,11 +186,11 @@ from fct_weight_tree import weight_tree
 
 Lorsque votre programme fonctionne et transforme le texte source en une suite optimale de `#!python 0` et de `#!python 1`, passer à l'exercice 2.
 
-!!! exercice6 "__Exercice 2__"
+!!! exercice6 {{exercice(False, niveau=2)}}
     Ecrire une fonction nommée `#!python taux_compression()` qui renvoie le taux de compression (en %) obtenu.  
     <span style="display: block; margin: 10px 0 0 0;">Comparer pour cela les tailles des textes original et compressé.</span>
 
-!!! exercice6 "__Exercice 3__"
+!!! exercice6 {{exercice(False, niveau=2)}}
     Créer maintenant une fonction nommée `#!python decompresse()` qui ne va faire qu’exécuter la fonction `#!python decode()` importée.  
     <span style="display: block; margin: 10px 0 0 0;">Cette fonction `#!python decompresse()` prend comme arguments le texte compressé (chaine de `#!python 0` et de `#!python 1`) et l’arbre de Huffman.</span>
     <span style="display: block; margin: 10px 0 0 0;">Elle renvoie le texte source décompressé.</span>
@@ -250,7 +250,7 @@ Ce fichier <span style="font-family: 'Trebuchet MS' ; font-weight: bold">fcts_fo
 
 </div>
 
-!!! exercice6 "__Exercice 4__"
+!!! exercice6 {{exercice(False, niveau=3)}}
     Modifier la fonction `#!python compresse()` du niveau 1 afin qu’elle prenne en argument un nom de fichier avec extension `#!python str`, et qu’elle compresse ce fichier en écrivant deux nouveaux fichiers :
     <div class="couleur_puce29">
 
@@ -279,16 +279,16 @@ Ce fichier <span style="font-family: 'Trebuchet MS' ; font-weight: bold">fcts_fo
     ```
     </div>
 
-!!! exercice6 "__Exercice 5__"
+!!! exercice6 {{exercice(False)}}
     Ajouter une ou deux lignes dans votre fonction `#!python compresse()` afin qu’elle affiche dans la console le taux de compression et tester sur le fichier <span style="font-family: 'Trebuchet MS' ; font-weight: bold">NSI.txt</span>.
 
 ### <div class="para">Décompression</div>
 
-!!! exercice6 "__Exercice 6__"
+!!! exercice6 {{exercice(False)}}
     Modifier la fonction `#!python decode()` afin qu’elle remplisse une liste python, au lieu de créer une chaine de caractères.
     <span style="display: block; margin: 10px 0 0 0;">Réécrire la docstring en fonction bien sûr.</span>
 
-!!! exercice6 "__Exercice 7__"
+!!! exercice6 {{exercice(False, niveau=2)}}
     Modifier la fonction `#!python decompresse()` du niveau 1 afin qu’elle décompresse un fichier d’extension "__.huf__".  
     <span style="display: block; margin: 10px 0 0 0;">Votre fonction doit prendre deux arguments :</span>
     <div class="couleur_puce29">
