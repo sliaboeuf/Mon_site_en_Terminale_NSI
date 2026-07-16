@@ -275,7 +275,7 @@ Pour certains algorithmes, il peut être difficile de prouver que l’algorithme
 === "En Python"
 
     ```python
-    def division(a:int, b:int) -> tuple:
+    def division(a: int, b: int) -> tuple:
     """ Entrée : a et b sont deux entiers positifs non nuls 
         Sortie : un tuple (q,r) constitué de deux entiers q et r qui sont respectivement le quotient et le reste  
         de la division euclidienne de a par b """ 

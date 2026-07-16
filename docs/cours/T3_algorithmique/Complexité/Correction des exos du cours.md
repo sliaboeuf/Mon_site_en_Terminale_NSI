@@ -6,7 +6,7 @@
 1. 
 <span style="display: block; margin: 3px 0 0 0;">
 ```python
-def recherche(L:list, c:int or float or str) -> bool:
+def recherche(L: list, c: int or float or str) -> bool:
     present = False
     for i in range (len(L)):
         if c == L[i]:
@@ -64,7 +64,7 @@ Comme on renvoie la variable `#!python present`, on vérifie que `#!python prese
 <div class="decal8">En langage Python : 
 
 ```python
-def moyenne(L:list) -> float:
+def moyenne(L: list) -> float:
     somme = 0
     for i in range (len(L)):
         somme = somme + L[i]
@@ -123,7 +123,7 @@ Ainsi, le temps d'exécution de cet algorithme au pire des cas est $~4n+6$.
 <div class="decal8">En langage Python : 
 
 ```python
-def maximum(L:list) -> int:
+def maximum(L: list) -> int:
     max = L[0]
     for i in range (1, len(L)):
         if L[i] > max:
@@ -209,7 +209,7 @@ Ainsi, le temps d'exécution de cet algorithme au pire des cas est $\displaystyl
 </div>
 ### <div class = "encadré_exo"> __Correction de l'exercice 6__ </div>
 
-<center>
+<center markdown="1">
 
 | Etape                           		| q         | r     | r$~\ge~$3 ? |
 |                               		| :-------: | :---: |:-------:  |

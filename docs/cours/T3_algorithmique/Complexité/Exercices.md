@@ -8,7 +8,7 @@
 3. Justifier que cet algorithme se termine.
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Correction.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -21,7 +21,7 @@ L’algorithme doit renvoyer `#!python True` si la liste est triée et `#!python
 3. Justifier que cet algorithme se termine.
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Correction.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
