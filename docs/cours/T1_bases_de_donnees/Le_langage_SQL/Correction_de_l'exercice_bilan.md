@@ -1,3 +1,7 @@
+---
+password: "corr_SQL_bilan"
+---
+
 # <center><div class = "titre3"> Correction de l'exercice bilan </div>
 </center>
 <div class= "list2_1" markdown="1">

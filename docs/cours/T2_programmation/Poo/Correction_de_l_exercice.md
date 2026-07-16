@@ -1,3 +1,7 @@
+---
+password: "corr_POO"
+---
+
 # <center><div class = "titre2">Correction de l'exercice</div> </center>
 
 ```python

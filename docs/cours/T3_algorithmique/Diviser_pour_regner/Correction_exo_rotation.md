@@ -1,3 +1,7 @@
+---
+password: "corr_Diviser_rotation"
+---
+
 # <center><div class = "titre2"> Rotation d'un quart de tour d'une image : correction </div></center>
 
 ## <div class = "partie"><span style="color : #f36379;">Partie A</span></div>

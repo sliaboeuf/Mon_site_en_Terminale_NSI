@@ -1,3 +1,7 @@
+---
+password: "corr_Arbre"
+---
+
 # <center><div class = "titre2">Correction des exercices du cours</div></center>
 
 ### <div class = "encadré_exo"> __Correction de l'exercice 2__ </div>

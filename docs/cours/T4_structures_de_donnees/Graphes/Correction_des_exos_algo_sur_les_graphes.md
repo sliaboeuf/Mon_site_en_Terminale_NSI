@@ -1,3 +1,7 @@
+---
+password: "corr_Graphe_algo"
+---
+
 # <center><div class = "titre2"> Correction des exercices</div></center>
 
 ### <div class = "encadré_exo"> __Correction de l'exercice 1__ </div>

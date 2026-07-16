@@ -1,3 +1,7 @@
+---
+password: "corr_Tri"
+---
+
 # <center><div class = "titre2">Correction des exercices</div></center>
 
 ### <div class = "encadré_exo"> __Correction de l'exercice 6__ </div>

@@ -1,3 +1,7 @@
+---
+password: "corr_Complexité_TP"
+---
+
 # <center><div class = "titre5">Correction des exercices du TP</div></center>
 
 ### <div class = "encadré2_TP"> __Correction de l'exercice 1__ </div>

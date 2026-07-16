@@ -1,3 +1,7 @@
+---
+password: "corr_Diviser"
+---
+
 # <center><div class = "titre2"> Correction de l'exercice du cours </div></center>
 
 <div class="list1_1" markdown="1">
