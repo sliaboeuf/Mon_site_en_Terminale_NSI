@@ -22,7 +22,7 @@
 4. Ecrire une fonction qui prend une pile non vide en argument et place l’élément situé à son sommet tout au fond de la pile, en conservant l’ordre des autres éléments.
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Correction.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -38,7 +38,7 @@ On se donne une pile `#!python P1` contenant des entiers positifs.
 
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Correction.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
@@ -49,7 +49,7 @@ Le but de cet exercice est d’écrire en Python une procédure qui inverse une 
 <span style="display: block; margin: 3px 0 0 0;">On demande de ne pas utiliser de tableau ou de liste de travail pour effectuer l'inversion, mais d'utiliser plutôt une pile.</span>
 <span style="display: block; margin: 3px 0 0 0;">Il existe en effet une méthode très simple pour inverser une file en utilisant une pile.</span>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 3 :material-cursor-default-click:](Correction.md#correction-de-lexercice-3){:target="_blank" .md-button}
 </center>
 
@@ -67,7 +67,7 @@ Un problème fréquent pour les compilateurs et les traitements de textes est de
 Notre but est donc d’évaluer la validité d’une expression en ne considérant que ses parenthèses et ses crochets. On suppose que l’expression à tester est dans une chaîne de caractères, dont on peut ignorer tous les caractères autres que `#!python ‘(’`, `#!python ‘[’`, `#!python ’]’` et `#!python ‘)’`.  
 <span style="display: block; margin: 8px 0 0 0;">Écrire en Python la fonction `valide` qui renvoie `#!python True` si l’expression passée en paramètre est valide, `#!python False` sinon.</span>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 4 :material-cursor-default-click:](Correction.md#correction-de-lexercice-4){:target="_blank" .md-button}
 </center>
 
@@ -99,7 +99,7 @@ La fonction renvoie `#!python autre_P`.
 
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 5 :material-cursor-default-click:](Correction.md#correction-de-lexercice-5){:target="_blank" .md-button}
 </center>
 
@@ -109,7 +109,7 @@ Un palindrome est une chaîne de caractères qui se lit de la même manière de 
 <span style="display: block; margin: 5px 0 0 0;">En utilisant une pile et une file, écrire un programme qui détermine si une chaîne de caractères est un palindrome.</span>
 <span style="display: block; margin: 5px 0 0 0;">On veillera à ce que la chaîne de caractères passée en argument de la fonction ne sera parcourue qu’une seule fois. L’algorithme doit donner en sortie `#!python True` ou `#!python False` selon le cas.</span>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 6 :material-cursor-default-click:](Correction.md#correction-de-lexercice-6){:target="_blank" .md-button}
 </center>
 
@@ -121,6 +121,6 @@ Un palindrome est une chaîne de caractères qui se lit de la même manière de 
 
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 7 :material-cursor-default-click:](Correction.md#correction-de-lexercice-7){:target="_blank" .md-button}
 </center>

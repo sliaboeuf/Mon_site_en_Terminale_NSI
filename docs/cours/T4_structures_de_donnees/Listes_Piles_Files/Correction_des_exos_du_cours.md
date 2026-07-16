@@ -153,7 +153,7 @@ print(p.taille())
 2. On peut représenter ainsi l’exécution du calcul précédent :
 
 </div>
-<center>
+<center markdown="1">
 
 <table>
 <thead>
@@ -203,7 +203,7 @@ print(p.taille())
 3. Représentation de l’évolution de la pile permettant de réaliser le calcul sous forme d'un tableau :
 
 </div>
-<center>
+<center markdown="1">
 
 <table>
 <thead>
