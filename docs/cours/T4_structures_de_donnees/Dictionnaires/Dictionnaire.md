@@ -73,7 +73,7 @@ La __longueur__ d’un dictionnaire est le __nombre de clés__. On l’obtient a
 6
 ```
 
-??? exercice "Exercice 1"
+??? exercice {{exercice(False, prem=0)}}
     <div class = "list6_1">
 
     1. Créer un dictionnaire vide nommé `#!python dico`. Ce dictionnaire comprendra en clés des mots en anglais et en valeurs une traduction possible en français.
@@ -83,7 +83,7 @@ La __longueur__ d’un dictionnaire est le __nombre de clés__. On l’obtient a
 
     </div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-1){:target="_blank" .md-button}
+    [Correction de l'exercice 1 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-1){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré3">__Comment récupérer une valeur dans un dictionnaire python ?__</div>
@@ -109,10 +109,10 @@ Si la clé est introuvable, la méthode `#!python get()` ne renvoie rien. On peu
 "Ce nom n'existe pas dans le dictionnaire"
 ```
 
-??? exercice "Exercice 2"
+??? exercice {{exercice(False)}}
     A partir du dictionnaire nommé `#!python dico` précédemment créé, accéder aux valeurs par les clés et tester un appel d'une clé qui n'est pas dans le dictionnaire.  
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-2){:target="_blank" .md-button}
+    [Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-2){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré2">__Comment modifier une valeur dans un dictionnaire python ?__</div>
@@ -127,10 +127,10 @@ On peut bien sûr modifier la valeur d’une clé :
 
 On pourrait par exemple dans le dictionnaire `#!python dico` précédent modifier la valeur de la clé `#!python 'bed room'` par `#!python 'chambre'`, ce qui est plus convenable.
 
-??? exercice "Exercice 3"
+??? exercice {{exercice(False)}}
     A partir du dictionnaire précédemment créé, modifier la valeur de la clé `#!python 'bed room'` par `#!python 'chambre'`.  
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-3){:target="_blank" .md-button}
+    [Correction de l'exercice 3 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-3){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré3">__Comment supprimer une valeur dans un dictionnaire python ?__</div>
@@ -157,10 +157,10 @@ Deux façons de procéder pour supprimer un élément dans un dictionnaire :
 
 La différence réside dans le fait que la méthode `#!python pop()`, en plus de supprimer la clé du dictionnaire, renvoie la valeur de cette clé.
 
-??? exercice "Exercice 4"
+??? exercice {{exercice(False)}}
     Supprimer une entrée du dictionnaire `#!python dico`.
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-4){:target="_blank" .md-button}
+    [Correction de l'exercice 4 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-4){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré3">__Comment parcourir les clés ou les valeurs dans un dictionnaire python ?__</div>
@@ -251,7 +251,7 @@ Les valeurs du dictionnaire sont 642123458
 
 </div>
 
-??? exercice "Exercice 5"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. Afficher les clés et valeurs du dictionnaire `#!python dico` avec les différentes méthodes proposées.
@@ -260,7 +260,7 @@ Les valeurs du dictionnaire sont 642123458
 
     </div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-5){:target="_blank" .md-button}
+    [Correction de l'exercice 5 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-5){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré3">__Comment copier un dictionnaire : méthode <span class="roboto">copy()</span>__</div>
@@ -304,7 +304,7 @@ Pour obtenir une vraie copie d’un dictionnaire, il faut utiliser, __comme avec
 {'Yanis': 642123456, 'Axel': 642123457, 'Milo': 642123456, 'Eden': 642123458, 'Armand': 642123462}
 ```
 
-??? exercice "Exercice 6"
+??? exercice {{exercice(False)}}
     <div class = "list6_1">
 
     1. Copier le dictionnaire `#!python dico` dans un autre dictionnaire et modifier des valeurs.
@@ -312,7 +312,7 @@ Pour obtenir une vraie copie d’un dictionnaire, il faut utiliser, __comme avec
 
     </div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-6){:target="_blank" .md-button}
+    [Correction de l'exercice 6 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-6){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré3">__Création d’un dictionnaire par compréhension__</div>
@@ -431,7 +431,7 @@ On considère, dans un premier temps, que la clé est une valeur numérique.
 
 </div>
 
-??? exercice "Exercice 7"
+??? exercice {{exercice(False, niveau=2)}}
     <div class = "list6_1">
 
     1. Rappeler ce que fait l'opérateur modulo.
@@ -470,13 +470,13 @@ On considère, dans un premier temps, que la clé est une valeur numérique.
     
     </div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-7){:target="_blank" .md-button}
+    [Correction de l'exercice 7 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-7){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré3">__Traitement des collisions par chaînage__</div>
 Chaque cellule de la table de hachage est une __liste chaînée__ qui peut accueillir plusieurs éléments en cas de collision.
 
-??? exercice "Exercice 8"
+??? exercice {{exercice(False, niveau=2)}}
     <div class = "list6_1">
 
     1. Rappeler ce qu'est une liste chaînée.
@@ -499,7 +499,7 @@ Chaque cellule de la table de hachage est une __liste chaînée__ qui peut accue
     
     </div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-8){:target="_blank" .md-button}
+    [Correction de l'exercice 8 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-8){:target="_blank" .md-button}
     </center>
 
 ### <div class = "encadré3">__Traitement des collisions par sondage__</div>
@@ -518,10 +518,10 @@ $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\
 La position est alors obtenue par la formule $~[h(x)+i×g(x)]~~mod~m$.  
 <span style="display: block; margin: 3px 0 0 0;">On teste pour toutes les valeurs de $~i~$ entre $~0~$ et $~m-1~$.</span>
 
-??? exercice "Exercice 9"
+??? exercice {{exercice(False)}}
     Quelle est la formule obtenue lorsque $~i=0~$ ?  
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-9){:target="_blank" .md-button}
+    [Correction de l'exercice 9 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-9){:target="_blank" .md-button}
     </center>
 
 A présent, nous allons remplir la table de hachage pour les premiers termes.  
@@ -552,9 +552,9 @@ $[15~~mod~11+2×(1+15~~mod~10)]~~mod~11=[4+2×6]~~mod~11=16~~mod~11=5$.
 
 On peut alors placer la clé $~15~$ dans la cellule $~5$.
 
-??? exercice "Exercice 10"
+??? exercice {{exercice(False, niveau=2)}}
     Placer le reste des clés.
     <div></div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-10){:target="_blank" .md-button}
+    [Correction de l'exercice 10 :material-cursor-default-click:](Correction_des_exercices_du_cours.md#correction-de-lexercice-10){:target="_blank" .md-button}
     </center>
