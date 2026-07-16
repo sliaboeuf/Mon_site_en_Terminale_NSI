@@ -4,7 +4,7 @@
 
 ![Illustration](images/Marmotte.jpg){: .image}
 
-!!! exercice5 "__Exercice 1__"
+!!! exercice5 {{exercice(False, prem=0)}}
     <div class="list12_1">
 
     1.  Regarder la vidéo suivante :
@@ -45,7 +45,7 @@
     </video>   
     </center>
 
-!!! exercice5 "__Exercice 2__"
+!!! exercice5 {{exercice(False)}}
     Appliquer l'algorithme précédent avec 7 chemins et 8 marmottes `#!python [2, 2, 2, 4, 4, 5, 5, 6]`.
 
 ??? solution "__Solution__"
@@ -57,7 +57,7 @@
 
 ## <center><div class = "encadré_act">__Activité 2 : Construction de l’arbre d’Huffman sur un mot__</div></center>
 
-!!! exercice5 "__Exercice 3__"
+!!! exercice5 {{exercice(False)}}
     <div class="list12_1">
 
     1.  Regarder la vidéo suivante :

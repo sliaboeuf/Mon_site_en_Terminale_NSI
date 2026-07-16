@@ -66,7 +66,7 @@
 	assert C.est_strict(), "Erreur"
 	```
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Correction.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -95,7 +95,7 @@ Ecrire une méthode `#!python compte(x)` de la classe `#!python Arbre` qui renvo
 	assert D.compte(6) == 0, "Erreur"
 	```
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Correction.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
@@ -130,7 +130,7 @@ On cherche dans cet exercice à tester l'égalité de deux arbres binaires.
 	
 	```
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 3 :material-cursor-default-click:](Correction.md#correction-de-lexercice-3){:target="_blank" .md-button}
 </center>
 
@@ -155,7 +155,7 @@ Ecrire une méthode récursive `#!python max_branche()` de la classe `#!python A
 	
 	```
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 4 :material-cursor-default-click:](Correction.md#correction-de-lexercice-4){:target="_blank" .md-button}
 </center>
 
@@ -245,7 +245,7 @@ Soit un arbre binaire représentant une expression arithmétique contenant des e
 	```
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 5 :material-cursor-default-click:](Correction.md#correction-de-lexercice-5){:target="_blank" .md-button}
 </center>
  
