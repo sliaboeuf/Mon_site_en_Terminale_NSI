@@ -70,7 +70,7 @@ $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$<span style="display: inline-b
 <span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;">$\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$ d. </span> Polynomial $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$ <span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;"> e. </span> Constant $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$ <span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;"> f. </span> Quadratique $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$</span>
 
 </div>
-<center>
+<center markdown="1">
 [Correction de l'exercice 3 :material-cursor-default-click:](Correction.md#correction-de-lexercice-3){:target="_blank" .md-button}
 </center>
 
@@ -82,18 +82,16 @@ $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$<span style="display: inline-b
 2. Déterminer son temps d’exécution au pire des cas.
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 4 :material-cursor-default-click:](Correction.md#correction-de-lexercice-4){:target="_blank" .md-button}
 </center>
 
 ### <div class = "encadré_exo"> __Exercice 5__ </div>
 
 On considère l’algorithme suivant :
-<center>
 
 ![Algorithme](images/Algo5.png){width=75% .image}
 
-</center>
 <div class="list1_1" markdown="1">
 
 1. Exécuter cet algorithme pour `#!python mot = radar`. Quelle est la fonction de cet algorithme ? 
@@ -102,7 +100,7 @@ On considère l’algorithme suivant :
 
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 5 :material-cursor-default-click:](Correction.md#correction-de-lexercice-5){:target="_blank" .md-button}
 </center>
 
@@ -115,18 +113,16 @@ On considère l’algorithme suivant :
 
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 6 :material-cursor-default-click:](Correction.md#correction-de-lexercice-6){:target="_blank" .md-button}
 </center>
 
 ### <div class = "encadré_exo"> __Exercice 7__ </div>
 
 On considère l’algorithme suivant :
-<center>
 
 ![Algorithme](images/Algo6.png){width=75% .image}
 
-</center>
 <div class="list1_1" markdown="1">
 
 1. Trouver un invariant de boucle de cet l’algorithme, puis en déduire la valeur renvoyée à la fin de l’exécution. 
@@ -134,7 +130,7 @@ On considère l’algorithme suivant :
 
 </div>
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 7 :material-cursor-default-click:](Correction.md#correction-de-lexercice-7){:target="_blank" .md-button}
 </center>
 
