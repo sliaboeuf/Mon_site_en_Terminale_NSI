@@ -190,7 +190,7 @@ Plus généralement, si $~f(n)~$ désigne une expression mathématique dépendan
 
 La signification de la notation $\mathcal{O}$ (appelée aussi "__notation de Landau__") sera vue si vous décidez de vous spécialiser dans l’algorithmique (ou que vous avez la chance d’étudier les comportements asymptotiques en analyse), il vous faudra sans doute approfondir un peu plus les fondements formels de cette notation, mais cela devrait largement suffire pour ce cours, et plus généralement pour une compréhension solide de la complexité des algorithmes (qui dépend en pratique remarquablement peu des subtilités mathématiques de la notation $\mathcal{O}$).
 
-???+ exercice "Exercice 2"
+???+ exercice {{exercice(False)}}
     Voici quelques complexités d’algorithmes, déterminer les complexités de référence qui sont du même ordre de grandeur.
     <div class = "list6_1">
 
@@ -209,7 +209,7 @@ L’algorithme `#!python recherche` (voir __Exercice 1__) est un algorithme dont
 
 ## <div class = "encadré2">__Quelques exercices__</div>
 
-???+ exercice "Exercice 3 : calcul de moyenne"
+???+ exercice {{exercice(False, text="Calcul de moyenne", niveau=2)}}
     On s’intéresse ici au calcul de la moyenne d’une liste de flottants.
     <div class = "list6_1">
 
