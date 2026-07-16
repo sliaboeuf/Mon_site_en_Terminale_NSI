@@ -8,7 +8,7 @@
 
 </div>
 
-<center>
+<center markdown = "1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Correction_des_exos.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -56,7 +56,7 @@ s = set()
 
 A partir de la classe `#!python grapheNoLs`, créer une classe `#!python grapheNoLsSet` qui permet de mémoriser les voisins de chaque sommet dans un ensemble à la place d'une liste.  
 
-<center>
+<center markdown = "1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Correction_des_exos.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
@@ -68,7 +68,7 @@ A partir de la classe `#!python grapheNoLs`, créer une classe `#!python grapheN
 
 </div>
 
-<center>
+<center markdown = "1">
 [Correction de l'exercice 3 :material-cursor-default-click:](Correction_des_exos.md#correction-de-lexercice-3){:target="_blank" .md-button}
 </center>
 
@@ -82,7 +82,7 @@ Le parcours en profondeur peut être réalisé par récursivité :
 </div>
 Écrire pour la classe `#!python grapheNoLs` une nouvelle méthode récursive `#!python parcours_DFS_rec()`.
 
-<center>
+<center markdown = "1">
 [Correction de l'exercice 4 :material-cursor-default-click:](Correction_des_exos.md#correction-de-lexercice-4){:target="_blank" .md-button}
 </center>
 
@@ -111,13 +111,13 @@ On appelle __chaîne eulérienne__ une chaîne qui parcourt toutes les arêtes d
 2. Ecrire une méthode `#!python est_eulerien()` qui renvoie un booléen indiquant si un graphe est eulérien.
  
 </div>
-<center>
+<center markdown = "1">
 [Correction de l'exercice 5 :material-cursor-default-click:](Correction_des_exos.md#correction-de-lexercice-5){:target="_blank" .md-button}
 </center>
 
 ### <div class = "encadré_exo">__Exercice 6__</div>
 
-<center><span style="color : red; font-size: 18px; font-weight: bold;border: 4px ridge red; padding:1px 2px 1px 2px;">Algorithmes de coloration de sommets</span></center>
+<center markdown = "1"><span style="color : red; font-size: 18px; font-weight: bold;border: 4px ridge red; padding:1px 2px 1px 2px;">Algorithmes de coloration de sommets</span></center>
 
 On veut colorier chaque sommet d'un graphe de telle sorte que deux sommets voisins soient de couleurs différentes.  
 Le but est de trouver le nombre minimale de couleurs (ce nombre est appelé __nombre chromatique__ du graphe).
@@ -135,7 +135,7 @@ $~~~~~~~~~$
 <img src="images/coloriage3.png" style="display:inline-block; vertical-align:middle;"/>
 $~~~~~~~~~~~~~~~~~~~~~~~~~~~$
 <img src="images/coloriage4.png" style="display:inline-block; vertical-align:middle;"/>
-<center>
+<center markdown = "1">
 <img src="images/coloriage5.png" style="display:inline-block; vertical-align:middle;"/>
 </center>
 <div class="list1_2" markdown="1">
@@ -189,6 +189,6 @@ $~~~~~~~~~~~~~~~~~~~~~~~~~~~$
 2. Dérouler à la "main" l'algorithme de Welsh-Powell sur les exemples ci-dessus puis l'implémenter en Python.
 
 </div>
-<center>
+<center markdown = "1">
 [Correction de l'exercice 6 :material-cursor-default-click:](Correction_des_exos.md#correction-de-lexercice-6){:target="_blank" .md-button}
 </center>
