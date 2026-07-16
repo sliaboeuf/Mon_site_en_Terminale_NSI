@@ -258,7 +258,7 @@ On considère un sac de $10$ kg et les objets suivants :
 
 Quels objets faut-il prendre ?
 
-**Stratégies gloutonnes **
+**Stratégies gloutonnes**
 
 Il y a plusieurs choix possibles :
 <div class="couleur_puce17" markdown="1">

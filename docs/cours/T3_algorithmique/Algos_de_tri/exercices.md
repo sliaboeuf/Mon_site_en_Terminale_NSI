@@ -254,7 +254,7 @@ assert tableau == [], "Erreur avec un tableau vide"
 print("Bravo !")
 ```
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 6 :material-cursor-default-click:](Correction.md#correction-de-lexercice-6){:target="_blank" .md-button}
 </center>
 
@@ -287,7 +287,7 @@ assert tableau_3 == [], "Erreur avec un tableau vide"
 print("Bravo !")
 ```
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 7 :material-cursor-default-click:](Correction.md#correction-de-lexercice-7){:target="_blank" .md-button}
 </center>
 
@@ -346,6 +346,6 @@ assert eleves == [(6, "Targeur Samir"), (5, "Alose Tom"), (5, "Blennie Aymeric")
 print("Bravo !")
 ```
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 8 :material-cursor-default-click:](Correction.md#correction-de-lexercice-8){:target="_blank" .md-button}
 </center>
