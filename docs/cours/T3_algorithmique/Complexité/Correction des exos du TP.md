@@ -61,11 +61,9 @@ def randlist(n):
 1. 
 
 </div>
-<center>
 
-![Algorithme](images/Courbe1.png){ width="65%" }
+![Algorithme](images/Courbe1.png){.image width="65%" }
 
-</center>
 <div class = "decal1" markdown="1">
 La représentation graphique de cette fonction se rapproche de la droite d'équation $~y=x$.</div>
 <div class = "list8_2" markdown="1">
@@ -105,11 +103,9 @@ La représentation graphique de cette fonction se rapproche de la droite d'équa
 1. 
 
 </div>
-<center>
 
-![Algorithme](images/Courbe2.png){ width="65%" }
+![Algorithme](images/Courbe2.png){ .image width="65%" }
 
-</center>
 <div class = "decal1" markdown="1">
 La représentation graphique de cette fonction a la forme d'une parabole donc elle se rapproche de la courbe d'équation $~y=x^2$.</div>
 <div class = "list8_2" markdown="1">
@@ -143,9 +139,7 @@ La représentation graphique de cette fonction a la forme d'une parabole donc el
     assert recherche_naïve(L, 0) == False
     ```
 3. 
-    <center>
-![Algorithme](images/Courbe3.png){ width="75%" }
-    </center>
+    ![Algorithme](images/Courbe3.png){.image  width="75%" }
 
 </div>
 
@@ -174,20 +168,14 @@ La représentation graphique de cette fonction a la forme d'une parabole donc el
     assert recherche_dichotomique(L, 0) == False
     ```
 2. 
-    <center>
-![Algorithme](images/Courbe4.png){ width="65%" }
-    </center>
+    ![Algorithme](images/Courbe4.png){.image width="65%" }
 
 </div>
 <div class = "decal1" markdown="1">
     
 ??? remarque "__Remarque__"
     il peut être intéressant de comparer la précédente représentation graphique avec celle de la fonction logarithmique binaire :
-    <center>
-
-    ![Algorithme](images/Courbe6.png){ width="75%" }
-
-    </center>
+    ![Algorithme](images/Courbe6.png){.image width="75%" }
 
 </div>
 
@@ -195,9 +183,7 @@ La représentation graphique de cette fonction a la forme d'une parabole donc el
 <div class = "list8_1" markdown="1">
 
 1. 
-    <center>
-![Algorithme](images/Courbe5.png){ width="65%" }
-    </center>
+    ![Algorithme](images/Courbe5.png){.image width="65%" }
 
 </div>
 <div class = "list8_2" markdown="1">

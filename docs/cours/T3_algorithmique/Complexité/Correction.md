@@ -144,39 +144,39 @@ Si la liste est déjà triée, au bout d’un certain nombre d’itérations, no
 <div class = "list1_1" markdown="1">
 
 1. Le coût en temps d’un algorithme naïf de recherche est :  
-<div class="centrer" markdown="1"> $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$<span style="display: inline-block; color: rgb(243, 99, 121);"> c. </span> Linéaire</div>
+<div class="centrer" markdown="1"> $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$<span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;"> c. </span> Linéaire</div>
 
 </div>
 <div class="list1_2" markdown="1">
 
 2. Le coût en temps d’un algorithme de recherche de maximum est :
-<div class="centrer" markdown="1"> $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$<span style="display: inline-block; color: rgb(243, 99, 121);"> c. </span> Linéaire</div>
+<div class="centrer" markdown="1"> $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$<span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;"> c. </span> Linéaire</div>
 
 </div>
 <div class="list1_3" markdown="1">
 
 3. Le coût en temps d’un algorithme de recherche par dichotomie est :
-<div class="centrer" markdown="1"><span style="display: inline-block; color: rgb(243, 99, 121);"> b. </span> Logarithmique $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$</div>
+<div class="centrer" markdown="1"><span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;"> b. </span> Logarithmique $\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$</div>
 
 </div>
 <div class="list1_4" markdown="1">
 
 4. On mesure le temps sur un algorithme de coût linéaire qui s’exécute sur une liste de 1 000 <span style="display: block; margin: 3px 0 0 0;">éléments. Quel temps mettra-t-il sur une liste de 5 000 éléments ?</span>  
 
- <span style="display: block; margin: 10px 0 0 0;"><span style="display: inline-block; color: rgb(243, 99, 121);">$\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$c. </span> Il mettra environ 5 fois plus de temps</span>
+ <span style="display: block; margin: 10px 0 0 0;"><span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;">$\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$c. </span> Il mettra environ 5 fois plus de temps</span>
 
 </div>
 <div class="list1_5" markdown="1">
 
 5. On mesure le temps sur un algorithme de coût quadratique qui s’exécute sur une liste de <span style="display: block; margin: 3px 0 0 0;">1 000 éléments. Quel temps mettra-t-il sur une liste de 5 000 éléments ?</span>  
 
-  <span style="display: block; margin: 10px 0 0 0;"><span style="display: inline-block; color: rgb(243, 99, 121);">$\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$ d. </span> Il mettra 25 fois plus de temps</span>
+  <span style="display: block; margin: 10px 0 0 0;"><span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;">$\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,$ d. </span> Il mettra 25 fois plus de temps</span>
 
 </div>
 <div class="list1_6" markdown="1">
 
 6. On mesure le temps sur un algorithme de coût constant qui s’exécute sur une liste de 1 000 <span style="display: block; margin: 3px 0 0 0;">éléments. Quel temps mettra-t-il sur une liste de 5 000 éléments ?</span>
-<span style="display: block; margin: 10px 0 0 0;"><span style="display: inline-block; color: rgb(243, 99, 121);">$\,\,\,\,\,\,\,\,\,\,\,$ a. </span> Il mettra le même temps</span>
+<span style="display: block; margin: 10px 0 0 0;"><span style="display: inline-block; color: rgb(243, 99, 121); font-weight: bold;">$\,\,\,\,\,\,\,\,\,\,\,$ a. </span> Il mettra le même temps</span>
 
 </div>
 <div class="list1_7" markdown="1">

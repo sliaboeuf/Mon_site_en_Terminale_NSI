@@ -495,7 +495,7 @@ Dans cette partie, nous allons comparer deux algorithmes de recherche dans des l
     </div>
     <center>
     [Correction de l'exercice 9 :material-cursor-default-click:](Correction des exos du TP.md#correction-de-lexercice-9){:target="_blank" .md-button}
-    </center><
+    </center>
 
 ### <div class = "encadré3_TP">Comparaison des deux algorithmes</div>
 
