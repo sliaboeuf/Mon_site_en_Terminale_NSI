@@ -9,7 +9,7 @@ Les graphes sont une structure de données très riche permettant de modéliser 
 
 </div>
 ![Illustration](images/Reseau.png){: .image}
-<center>
+<center markdown="1">
 
 *Source : Wikipedia, Mro, licence CC BY-SA 3.0*
 
@@ -20,7 +20,7 @@ Les graphes sont une structure de données très riche permettant de modéliser 
 
 </div>
 ![Illustration](images/RS.png){: .image width=60%}
-<center>
+<center markdown="1">
 
 *Source : Pixabay*
 
@@ -31,7 +31,7 @@ Les graphes sont une structure de données très riche permettant de modéliser 
 
 </div>
 ![Illustration](images/Dijkstra.svg){: .image}
-<center>
+<center markdown="1">
 
 *Source : <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#" target="_blank">Wikipedia</a>, HB, licence CC BY-SA 3.0*
 
@@ -42,7 +42,7 @@ Les graphes sont une structure de données très riche permettant de modéliser 
 
 </div>
 ![Illustration](images/Molecule.png){: .image}
-<center>
+<center markdown="1">
 
 *Source : Wikipedia, William Crochot, licence CC BY-SA 4.0*
 
@@ -58,7 +58,7 @@ Les graphes sont une structure de données très riche permettant de modéliser 
 Les relations peuvent être orientées ou non.  
 <span style="display:block; margin: 8px 0px 0px 0px;">Exemple de relation orientée :</span>
 ![Illustration](images/Chifoumi.png){: .image}
-<center>
+<center markdown="1">
 
 *le jeu de Pierre-Papier-Ciseaux-Lezard-Spock pour représenter  
 la supériorité des figures les unes par rapport aux autres.*
@@ -261,9 +261,9 @@ Dans le cas des __graphes orientés__, les arêtes ont un sens et elles sont app
 
     </div>
 
-??? exercice4 "__Exercice 1__"
+??? exercice4 {{exercice(False, prem=0)}}
     Voici deux graphes que l'on appellera respectivement $\,G_1\,$ (celui de gauche) et $\,G_2\,$ (celui de droite) :
-    <center>
+    <center markdown="1">
     
     <img src="images/Ex1_GO.png" style="display:inline-block; vertical-align:middle;" width=40%>
     $~~~~~~~~~$
@@ -307,7 +307,7 @@ Dans le cas des __graphes orientés__, les arêtes ont un sens et elles sont app
 Un graphe est __simple__ si au plus une relation relie deux sommets et s'il n'y a pas de boucle.  
 <span style="display:block; margin: 10px 0px 0px 0px;">On peut imaginer des graphes avec des boucles et/ou des relations reliant les deux mêmes sommets. On appelle ces graphes des __multigraphes__.</span>
 ![Illustration](images/Multigraphe.png){: .image width=35%}
-<center>
+<center markdown="1">
 
 *Multigraphe non orienté*
 
@@ -318,7 +318,7 @@ Un graphe est __simple__ si au plus une relation relie deux sommets et s'il n'y 
 Certains graphes (orientés ou non) sont dits __valués__ : on ajoute un __coût__ (ou __valuation__, ou __poids__) à chaque arête/arc.
 <span style="display:block; margin: 10px 0px 0px 0px;">Dans le cas d'un graphe représentant un réseau routier, le coût sur chaque arête pourrait, par exemple, être la distance entre deux villes.</span>
 ![Illustration](images/GV_ex.png){: .image width=50%}
-<center>
+<center markdown="1">
 
 *Graphe valué*
 
@@ -336,7 +336,7 @@ Une __matrice__ $\,M\,$ est un tableau de nombres, qui peut être représenté e
     Si les sommets $\,A, B, C, …\,$ du graphe :
     ![Illustration](images/GNO_ex.png){: .image}
     sont respectivement numérotés $\,0, 1, 2, …\,$ alors sa matrice d'adjacence est :
-    <center>
+    <center markdown="1">
 
     $M=\begin{pmatrix} 0 & 1 & 0 & 0 & 0 & 1 & 1\\1 & 0 & 1 & 0 & 0 & 1 & 0\\0 & 1 & 0 & 1 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 1 & 0 & 0\\ 0 & 0 & 0 & 1 & 1 & 1 & 0\\1 & 1 & 1 & 0 & 1 & 0 & 1\\1 & 0 & 0 & 0 & 0 & 1 & 0\end{pmatrix}$
 
@@ -364,7 +364,7 @@ Une __matrice__ $\,M\,$ est un tableau de nombres, qui peut être représenté e
     <span style="display:block; margin: 8px 0px 0px 0px;">Ainsi, le graphe :</span>
     ![Illustration](images/GO_ex.png){: .image}
     a pour matrice d'adjacence :  
-    <center>
+    <center markdown="1">
 
     $M=\begin{pmatrix} 0 & 1 & 0 & 0 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0 & 0 & 0\\0 & 0 & 0 & 1 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 1 & 0 & 0 & 0\\0 & 1 & 0 & 0 & 1 & 0 & 1\\1 & 0 & 0 & 0 & 0 & 0 & 0\end{pmatrix}$
 
@@ -412,7 +412,7 @@ Une autre façon de représenter un graphe est d'associer à chaque sommet la li
     }
     ```
 
-??? exercice4 "__Exercice 2__"
+??? exercice4 {{exercice(False)}}
     On reprend les deux graphes $\,G_1\,$ et $\,G_2\,$ de l'exercice 1.
     <div class="list18_1">
 
@@ -538,7 +538,7 @@ Dans un graphe __non orienté__, ajouter ou retirer un sommet peut affecter l'en
     Les conventions précédentes restent valables dans le cas d'un graphe __orienté__.
 
 Voici les fonctions primitives qui définissent le type abstrait __graphe non orienté__ :
-<center>
+<center markdown="1">
 
 | Action                                            | Instruction         |
 | :-----------------------------------------------: | :-----------------: |
@@ -647,16 +647,16 @@ class grapheNoMa:
 
 ```
 
-??? exercice4 "__Exercice 3__"
+??? exercice4 {{exercice(False, niveau=2)}}
     Coder la méthode `#!python voisins(s)` de la classe `#!python grapheNoMa` qui retourne la liste des voisins d'un sommet `#!python s` du graphe.  
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-3){:target="_blank" .md-button}
+    [Correction de l'exercice 3 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-3){:target="_blank" .md-button}
     </center>
 
-??? exercice4 "__Exercice 4__"
+??? exercice4 {{exercice(False, niveau=2)}}
     En vous inspirant de ce qui vient d'être fait, proposer un nouveau type abstrait __graphe orienté__ (pour lequel on donnera les opérations de base) et son implémentation par une matrice d'adjacence sous forme d'une classe `#!python grapheOMa`.  
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-4){:target="_blank" .md-button}
+    [Correction de l'exercice 4 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-4){:target="_blank" .md-button}
     </center>
 
 !!! probleme "__Inconvénient de cette structure__"
@@ -690,7 +690,7 @@ class grapheNoLs:
 !!! notes1 "__Remarque__"
     L’obtention des voisins d’un sommet est cette fois-ci une opération en temps constant.
 
-??? exercice4 "__Exercice 5__"
+??? exercice4 {{exercice(False, niveau=3)}}
     Coder en Python les méthodes suivantes de la classe `#!python grapheNoLs` :
     <div class="list18_1">
 
@@ -704,21 +704,21 @@ class grapheNoLs:
 
     </div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-5){:target="_blank" .md-button}
+    [Correction de l'exercice 5 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-5){:target="_blank" .md-button}
     </center>
 
-??? exercice4 "__Exercice 6__"
+??? exercice4 {{exercice(False, niveau=3)}}
     En vous inspirant de ce qui vient d'être fait, proposer un nouveau type abstrait __graphe orienté__ (pour lequel on donnera les opérations de base) et son implémentation par un dictionnaire d'adjacence sous forme d'une classe `#!python grapheOLs`.  
     
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-6){:target="_blank" .md-button}
+    [Correction de l'exercice 6 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-6){:target="_blank" .md-button}
     </center>
     
 ### <div class = "encadré3">__Passage d'une représentation à l'autre__</div>
 
 Les deux implémentations sont totalement équivalentes et on peut passer de l'une à l'autre simplement en énumérant les sommets et les voisins depuis une représentation tout en construisant l'autre représentation.
 
-??? exercice4 "__Exercice 7__"
+??? exercice4 {{exercice(False, niveau=3)}}
     <div class="list18_1">
 
     1. Ecrire la fonction `#!python ma_to_ls(gma)` ayant pour argument un graphe non orienté représenté par une __matrice d'adjacence__ et qui renvoie ce même graphe représenté par un __dictionnaire d'adjacence__.
@@ -726,5 +726,5 @@ Les deux implémentations sont totalement équivalentes et on peut passer de l'u
 
     </div>
     <center>
-    [Correction de l'exercice :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-7){:target="_blank" .md-button}
+    [Correction de l'exercice 7 :material-cursor-default-click:](Correction_des_exos_du_cours.md#correction-de-lexercice-7){:target="_blank" .md-button}
     </center>
