@@ -258,7 +258,7 @@ On considère un sac de $10$ kg et les objets suivants :
 
 Quels objets faut-il prendre ?
 
-**Stratégies gloutonnes**
+**⇒ Stratégies gloutonnes**
 
 Il y a plusieurs choix possibles :
 <div class="couleur_puce17" markdown="1">
@@ -354,7 +354,8 @@ Le plus simple est de l'expliquer sur un exemple : prenons le problème du sac �
 <span style="display: block; margin: 10px 0 0 0;">Chaque objet est pris ou pas : il s'agit donc d'une donnée binaire.
 <span style="display: block; margin: 10px 0 0 0;">Avec $3$ objets, il y a donc $2^3$ combinaisons d'objets possibles, c'est-à-dire $8$, ce qui est tout à fait acceptable.</span>
 <span style="display: block; margin: 10px 0 0 0;">De manière générale, avec $n$
-objets, il y aurait $2^n$ combinaisons à énumérer et tester. On obtient une complexité dite exponentielle et c'est là le problème : avec $80$ objets, on obtient $2^{80}$ combinaisons à tester, c'est-à-dire environ $10^{24}$ combinaisons, soit de l'ordre de grandeur du nombre d'étoiles dans l'Univers observable, ou de gouttes d'eau dans la mer, ou du nombre de grains de sables au Sahara... (référence : [https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_nombres](https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_nombres){. target="_blank"}).
+objets, il y aurait $2^n$ combinaisons à énumérer et tester. On obtient une complexité dite exponentielle et c'est là le problème : avec $80$ objets, on obtient $2^{80}$ combinaisons à tester, c'est-à-dire environ $10^{24}$ combinaisons, soit de l'ordre de grandeur du nombre d'étoiles dans l'Univers observable, ou de gouttes d'eau dans la mer, ou du nombre de grains de sables au Sahara...  
+(référence : [https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_nombres](https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_nombres){. target="_blank"}).
 <span style="display: block; margin: 10px 0 0 0;">La stratégie force brute est donc inapplicable si trop d'objets sont en jeu. Il en est de même pour les autres problèmes d'optimisation dès que le taille des données est trop importante.</span>
 
 ## <div class = "encadré2">__Résumé__</div>

@@ -21,7 +21,7 @@ Une telle situation est simple puisque tous les conférenciers peuvent interveni
 
 On considère à nouveau quatre conférenciers dont les créneaux horaires ne sont plus toujours disjoints.
 
-<center>
+<center markdown="1">
 $C_1 ∶ [2, 4[~~~~C_2 ∶ [0, 1[~~~~C_3 ∶ [1, 3[~~~~C_4 ∶ [0, 2[$
 </center>
 ![](images/orga2.png){ .image width=40%}
@@ -39,7 +39,7 @@ Il semble donc que ces deux idées mènent à des résultats identiques. En outr
 
 Après avoir classé les intervalles par valeurs croissantes des heures de début, sélectionner l’intervalle de la première plus petite valeur, puis celui de la deuxième plus petite valeur compatible avec la précédente, et ainsi de suite. On observe que :
 
-<center>$d_2 = d_4 < d_3 < d_1$</center>
+<center markdown="1">$d_2 = d_4 < d_3 < d_1$</center>
 
 et que :
 <div class="couleur_puce35" markdown="1">
@@ -63,7 +63,7 @@ Cette solution était également proposée par la stratégie précédente. Il es
 
 Considérons à présent trois conférenciers et appliquons les deux stratégies précédentes.
 
-<center>
+<center markdown="1">
 $C_1 ∶ [0, 3[~~~~C_2 ∶ [1, 2[~~~~C_3 ∶ [2, 3[$
 </center>
 ![](images/orga3.png){ .image width=40%}
@@ -90,7 +90,7 @@ Illustrons la mise en œuvre de cet algorithme sur la situation suivante :
 
 Commençons par classer les conférenciers par heures de fin croissantes en notant $~\le~$ la relation d’ordre associée.
 
-<center>$C_8 \le C_4 \le C_6 \le C_{13} \le C_{10} \le C_{15} \le C_2 \le C_{11} \le C_5 \le C_9 \le C_1 \le C_7 \le C_{14} \le C_3 \le C_{12}$</center>
+<center markdown="1">$C_8 \le C_4 \le C_6 \le C_{13} \le C_{10} \le C_{15} \le C_2 \le C_{11} \le C_5 \le C_9 \le C_1 \le C_7 \le C_{14} \le C_3 \le C_{12}$</center>
 
 Puis construisons petit à petit le planning :
 <div class="couleur_puce22" markdown="1">
@@ -104,7 +104,7 @@ Puis construisons petit à petit le planning :
 </div>
 Ce qui mène au planning final suivant.
 
-<center>$[C_8, C_4, C_2, C_5, C_3]$</center>
+<center markdown="1">$[C_8, C_4, C_2, C_5, C_3]$</center>
 
 !!! remarque "Remarques"
 	<div class="couleur_puce31">
