@@ -90,7 +90,7 @@ Montrer qu'il s'agit d'un interblocage, c'est-à-dire que les quatre conditions 
 </center>
 
 ### <div class = "encadré_exo"> __Exercice 4__ </div> 
-<center>*D'après 2021, Métropole, Candidats Libres, J2, Ex. 2*</center>
+<center markdown="1">*D'après 2021, Métropole, Candidats Libres, J2, Ex. 2*</center>
 
 Les états possibles d'un processus sont : prêt, élu, terminé et bloqué.
 <div class="list1_1" markdown="1">
@@ -162,7 +162,7 @@ En supposant que les processus correspondant à ces programmes s'exécutent simu
 </center>
 
 ### <div class = "encadré_exo"> __Exercice 5__ </div> 
-<center markdown = "1">*D'après 2022, Polynésie, J1, Ex. 2, modifié*</center>   
+<center markdown="1">*D'après 2022, Polynésie, J1, Ex. 2, modifié*</center>   
 
 Un système est composé de 4 périphériques, numérotés de 0 à 3, et d'une mémoire, reliés entre eux par un bus auquel est également connecté un dispositif ordonnanceur. À l'aide d'un signal spécifique envoyé sur le bus, l'ordonnanceur sollicite à tour de rôle les périphériques pour qu'ils indiquent le type d'opération (lecture ou écriture) qu'ils souhaitent effectuer, et l'adresse mémoire concernée.
 <span style="display: block; margin: 8px 0 0 0;">Un tour a lieu quand les 4 périphériques ont été sollicités. __Au début d'un nouveau tour, on considère que toutes les adresses sont disponibles en lecture et écriture.__</span>
