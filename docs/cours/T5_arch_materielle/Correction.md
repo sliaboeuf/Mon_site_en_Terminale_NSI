@@ -226,7 +226,7 @@
 6. __P3__ demande __R1__
 
 </div>
-<div class = "decal1" markdown="1">Ce que montre la figure suivante :
+<div class = "decal3" markdown="1">Ce que montre la figure suivante :
 ![Interblocage2](images/Interblocage2.png){: .image}
 <span style="display: block; margin: 30px 0 0 0;">Dans ce cas, on dit que l'exécution des processus est gérée par un ordonnanceur <b>du type circulaire</b>.</span></div>
 
