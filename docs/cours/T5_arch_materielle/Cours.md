@@ -185,7 +185,7 @@ Outre leur taille miniaturisée bien adaptée aux terminaux nomades (smartphones
 </div>
 Pour arriver à de bonnes performances en ménageant la consommation d’un processeur, il est possible de jouer sur __plusieurs facteurs__ : __la fréquence__ du processeur, __le type de coeur__ au sein du processeur, ainsi que le __procédé de gravure__.  
 <center markdown="1">
-<div class="encadré4_soc">
+<div class="encadré4_soc" markdown="1">
 La fréquence
 </div>
 
