@@ -3,7 +3,7 @@
 ### <div class = "encadré_exo"> __Correction de l'exercice 1__ </div>
 
 Il y a 3 variables qui interviennent dans la fonction `#!python f` :
-<div class="couleur_puce14" markdown="1">
+<div class="couleur_puce19" markdown="1">
 
  * `#!python a` qui a une portée globale (puisque déclarée en tant que telle dans la fonction)
  * `#!python b` qui a elle aussi une portée globale (puisqu'elle n'est pas redéclarée dans la fonction)

@@ -23,7 +23,7 @@ print(c)
 - [ ] Quelles sont les variables locales et globales de la fonction `f` ?
 - [ ] Qu’affiche ce programme ?
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 1 :material-cursor-default-click:](Portee_des_variables_corr_ex.md#correction-de-lexercice-1){:target="_blank" .md-button}
 </center>
 
@@ -57,7 +57,7 @@ On considère les deux scripts Python suivants :
 
 - [ ] Vont-ils afficher le même résultat ? Pourquoi ?
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 2 :material-cursor-default-click:](Portee_des_variables_corr_ex.md#correction-de-lexercice-2){:target="_blank" .md-button}
 </center>
 
@@ -81,6 +81,6 @@ print(f(6) + v + a)
 
 - [ ] Qu’affiche ce programme ? Pourquoi ?
 
-<center>
+<center markdown="1">
 [Correction de l'exercice 3 :material-cursor-default-click:](Portee_des_variables_corr_ex.md#correction-de-lexercice-3){:target="_blank" .md-button}
 </center>
