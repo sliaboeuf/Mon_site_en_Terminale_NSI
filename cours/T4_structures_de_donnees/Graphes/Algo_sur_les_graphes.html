@@ -1,0 +1,7342 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Sylvain Liaboeuf">
+      
+      
+        <link rel="canonical" href="https://sliaboeuf.github.io/Mon_site_en_Terminale_NSI/cours/T4_structures_de_donnees/Graphes/Algo_sur_les_graphes.html">
+      
+      
+        <link rel="prev" href="Correction_des_exos_du_cours.html">
+      
+      
+        <link rel="next" href="Correction_des_exos_algo_sur_les_graphes.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/Logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Cours - Cours de Terminale NSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2012a10%2010%200%200%201-10%2010A10%2010%200%200%201%202%2012%2010%2010%200%200%201%2012%202a10%2010%200%200%201%2010%2010M6%2013h8l-3.5%203.5%201.42%201.42L17.84%2012l-5.92-5.92L10.5%207.5%2014%2011H6z%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../xtra/extra.css">
+    
+      <link rel="stylesheet" href="../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0J6CVZ9WRG"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0J6CVZ9WRG",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0J6CVZ9WRG",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#algorithmes-sur-les-graphes" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../../index.html" title="Cours de Terminale NSI" class="md-header__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  <img src="../../../images/logo2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cours
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="purple"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="purple"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏡 Page d'accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T1_bases_de_donnees/sommaire.html" class="md-tabs__link">
+          
+  
+  
+  📦 T1 : Bases de données
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T2_programmation/sommaire.html" class="md-tabs__link">
+          
+  
+  
+  💻 T2 : Programmation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T3_algorithmique/sommaire.html" class="md-tabs__link">
+          
+  
+  
+  📝 T3 : Algorithmique
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../sommaire.html" class="md-tabs__link">
+          
+  
+  
+  📊 T4 : Structures de données
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T5_arch_materielle/Cours.html" class="md-tabs__link">
+          
+  
+  
+  💾 T5 : Arch. matérielle
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Cours de Terminale NSI" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  <img src="../../../images/logo2.png" alt="logo">
+
+    </a>
+    Cours de Terminale NSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏡 Page d'accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📦 T1 : Bases de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📦 T1 : Bases de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ Modèle relationnel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ Modèle relationnel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Les_bases_de_donn%C3%A9es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Exercices_sur_les_bases_de_donn%C3%A9es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice bilan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice bilan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Correction_de_l%27exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Le langage SQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Le langage SQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Le_langage_SQL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Prise_en_main_DB_Browser.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation de DB Browser for SQLite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Memento_SQL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memento SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Exercices_sur_le_langage_SQL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_5" id="__nav_2_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice bilan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice bilan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Correction_de_l%27exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction de l'exercice bilan
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 T2 : Programmation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💻 T2 : Programmation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ POO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ POO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/POO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/Exercice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/Correction_de_l_exercice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Présentation du code. Modularité. Validation d'un programme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Présentation du code. Modularité. Validation d'un programme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice bilan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice bilan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Correction_du_mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 T3 : Algorithmique
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📝 T3 : Algorithmique
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ Complexité. Variant et invariant de boucle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ Complexité. Variant et invariant de boucle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Complexit%C3%A9/complexite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Complexit%C3%A9/Correction%20des%20exos%20du%20cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Complexit%C3%A9/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Complexit%C3%A9/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Complexit%C3%A9/TD_Complexite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Complexit%C3%A9/Correction%20des%20exos%20du%20TP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Algorithmes de tri
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Algorithmes de tri
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_de_tri/tri.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_de_tri/exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_de_tri/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❸ Algorithmes gloutons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❸ Algorithmes gloutons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_gloutons/glouton.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_gloutons/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_gloutons/voyageur.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°1 - Le voyageur de commerce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_gloutons/etagere.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°2 - Le problème des étagères
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algos_gloutons/organisation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°3 - Un problème d’organisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❹ Algorithme KNN
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❹ Algorithme KNN
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algo_KNN/knn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algo_KNN/exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algo_KNN/croco.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°1 - Crocodiles VS Alligators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algo_KNN/pokemon.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°2 - Classification sur les Pokémons
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_5" id="__nav_4_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°3 - Les joueurs du TOP 14
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP n°3 - Les joueurs du TOP 14
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algo_KNN/TOP14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Algo_KNN/correction_TOP14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❺ Diviser pour régner
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❺ Diviser pour régner
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Diviser_pour_regner/Diviser_pour_r%C3%A9gner.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Diviser_pour_regner/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction de l'exercice
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_2" id="__nav_4_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Diviser_pour_regner/Exo_rotation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Diviser_pour_regner/Correction_exo_rotation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❻ Optimisation d'une fonction récursive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❻ Optimisation d'une fonction récursive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Optimisation/Optimiser_fonction_recursive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Optimisation/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❼ Vers la programmation dynamique
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❼ Vers la programmation dynamique
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Prog_dynamique/Programmation_dyn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8_2" id="__nav_4_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Prog_dynamique/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Prog_dynamique/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❽ Recherche textuelle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❽ Recherche textuelle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Recherche_textuelle/Motifs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T3_algorithmique/Recherche_textuelle/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction de l'exercice
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊 T4 : Structures de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📊 T4 : Structures de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ Les listes, les piles et les files
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ Les listes, les piles et les files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_1" id="__nav_5_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Listes_Piles_Files/SDL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les listes, les piles et les files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Listes_Piles_Files/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Listes_Piles_Files/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Listes_Piles_Files/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Les dictionnaires
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Les dictionnaires
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dictionnaires/Dictionnaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les dictionnaires
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dictionnaires/Correction_des_exercices_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dictionnaires/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dictionnaires/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dictionnaires/TP_Dictionnaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dictionnaires/Correction_des_exos_du_TP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❸ Les arbres
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❸ Les arbres
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Les_arbres.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les arbres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_2" id="__nav_5_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compression de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compression de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Activite_intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activités de découverte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Compression.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4" id="__nav_5_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projet
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projet
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/R%C3%A9partition.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Répartition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4_3" id="__nav_5_4_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les différentes fonctions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Les différentes fonctions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/sequenceToOccurrences%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sequenceToOccurrences()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/weightTree%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    weightTree()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/insertTreeInForest%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    insertTreeInForest()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/huffmanTree%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    huffmanTree()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/treeToCoding%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    treeToCoding()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/encode%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    encode()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/decode%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    decode()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Mise%20en%20commun.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mise en commun
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arbres/Banc_d_essai.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banc d'essai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❹ Les graphes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❹ Les graphes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_1" id="__nav_5_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Les_graphes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les graphes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_2" id="__nav_5_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithme sur les graphes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algorithme sur les graphes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Algo_sur_les_graphes.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parcours-en-profondeur-et-en-largeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parcours en profondeur et en largeur
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parcours en profondeur et en largeur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparaison-des-deux-algorithmes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparaison des deux algorithmes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principe-de-lalgorithme-de-parcours-en-profondeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principe de l'algorithme de parcours en profondeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principe-de-lalgorithme-de-parcours-en-largeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principe de l'algorithme de parcours en largeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reperer-la-presence-dun-cyclecircuit-dans-un-graphe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repérer la présence d'un cycle/circuit dans un graphe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repérer la présence d&#39;un cycle/circuit dans un graphe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principe-de-lalgorithme-de-detection-de-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principe de l'algorithme de détection de cycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principe-de-lalgorithme-de-detection-dun-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principe de l'algorithme de détection d'un circuit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recherche-dun-chemindune-chaine-dans-un-graphe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recherche d'un chemin/d'une chaîne dans un graphe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recherche d&#39;un chemin/d&#39;une chaîne dans un graphe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principe-de-lalgorithme-de-recherche-dun-chemindune-chaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principe de l'algorithme de recherche d'un chemin/d'une chaîne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recherche-dun-plus-court-chemin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recherche d'un plus court chemin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-entre-les-sommets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance entre les sommets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bilan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bilan
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Correction_des_exos_algo_sur_les_graphes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Correction_des_exos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="DM.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Devoir Maison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 T5 : Arch. matérielle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💾 T5 : Arch. matérielle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture matérielle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture matérielle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables locale et globale
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Variables locale et globale
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Portee_des_variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Portee_des_variables_ex.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Portee_des_variables_corr_ex.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+    
+                  
+
+
+  
+  
+
+
+<div><h1 id="algorithmes-sur-les-graphes"><center><div class="titre1">Algorithmes sur les graphes</div></center></h1>
+<h2 id="introduction"><div class="encadré2"><strong>Introduction</strong></div></h2>
+<p>Un des premiers algorithmes qu’on doit savoir utiliser sur un graphe est celui de son parcours. Parcourir un graphe, c’est visiter ses différents sommets, afin de pouvoir opérer une action tour à tour sur eux.
+<span style="margin :10px 0 0 0; display: block;">Les deux algorithmes fondamentaux permettant de parcourir un graphe s'appellent :</span></p>
+<div class="couleur_puce11">
+<ul>
+<li>le <em>parcours en profondeur</em> d'abord ;</li>
+<li>le <em>parcours en largeur</em> d'abord.</li>
+</ul>
+</div>
+<p>Selon les actions opérées au cours d'un parcours, on peut détecter des cycles dans le graphe, trouver le chemin le plus court entre deux sommets, calculer la distance entre deux sommets, etc.
+<span style="margin :10px 0 0 0; display: block;">Les algorithmes sur les graphes sont très utilisés dans la vie courante, ils permettent par exemple :</span></p>
+<div class="couleur_puce1etoi">
+<ul>
+<li>le routage des paquets de données dans un réseau ;</li>
+<li>de trouver le chemin le plus court entre deux villes (utilisé par les GPS) ;</li>
+<li>de sortir d'un labyrinthe ;</li>
+<li>etc.</li>
+</ul>
+</div>
+<p>Dans la suite, on considérera les deux graphes <span class="arithmatex">\(\small{G_1}\)</span> et <span class="arithmatex">\(\small{G_2}\)</span> suivants :</p>
+<center>
+<p><img src="images/Algo1.png" style="display:inline-block; vertical-align:middle;">
+<span class="arithmatex">\(~~~~~~~~~\)</span>
+<img src="images/Algo2.png" style="display:inline-block; vertical-align:middle;"></p>
+</center>
+<p>Ils seront représentés par listes de successeurs et implémentés par des dictionnaires.</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="n">G1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+    <span class="s2">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+    <span class="s2">"C"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">],</span>
+    <span class="s2">"D"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+    <span class="s2">"E"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+    <span class="s2">"F"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C"</span><span class="p">],</span>
+    <span class="s2">"G"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C"</span><span class="p">]</span>    
+<span class="p">}</span>
+
+<span class="n">G2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+    <span class="s2">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+    <span class="s2">"C"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">],</span>
+    <span class="s2">"D"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">],</span>
+    <span class="s2">"E"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">],</span>
+    <span class="s2">"F"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"E"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="parcours-en-profondeur-et-en-largeur"><div class="encadré2"><strong>Parcours en profondeur et en largeur</strong></div></h2>
+<h3 id="comparaison-des-deux-algorithmes"><div class="encadré3"><strong>Comparaison des deux algorithmes</strong></div></h3>
+<p>Ces deux algorithmes ont le même but : explorer tous les sommets atteignables d'un graphe à partir d'un sommet de départ.
+<span style="margin :5px 0 0 0; display: block;">L'idée est d'explorer les voisins (ou successeurs) rencontrés au fur et à mesure en marquant les sommets visités pour ne pas tourner en rond.</span></p>
+<div class="admonition rocket">
+<p class="admonition-title"><strong>Profondeur VS largeur</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">⬇️ <span class="arithmatex">\(~\)</span><strong>Parcours en profondeur d'abord</strong></label><label for="__tabbed_1_2">↔️ <span class="arithmatex">\(~\)</span><strong>Parcours en largeur d'abord</strong></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>A partir d'un sommet, on explore un de ses voisins (ou successeurs), et ainsi de suite. S'il n'y a plus de voisins, on revient au sommet précédent et on passe à un autre de ses voisins.<br>
+<span style="margin :10px 0 0 0; display: block;">Cette façon de faire implique que chaque "branche" est explorée jusqu'au bout, avant de revenir sur nos pas, d'où le nom de parcours en <em>profondeur</em> (ou <strong>DFS</strong> (pour <b>D</b>epth <b>F</b>irst <b>S</b>earch) en anglais).</span></p>
+</div>
+<div class="tabbed-block">
+<p>A partir d'un sommet, on explore tous ses voisins (ou successeurs), puis on explore tous les voisins de ces voisins, et ainsi de suite.<br>
+<span style="margin :10px 0 0 0; display: block;">Le parcours balaie ainsi chaque "branche" au même rythme, d'où le nom de parcours en <em>largeur</em> (ou <strong>BFS</strong> (pour <b>B</b>readth <b>F</b>irst <b>S</b>earch) en anglais).</span></p>
+</div>
+</div>
+</div>
+</div>
+<details class="notes1">
+<summary><strong>Remarque</strong></summary>
+<p>La seule différence entre ces deux algorithmes est donc l'ordre dans lequel les voisins sont traités. Cela permet d'écrire le même algorithme pour les deux parcours, en changeant juste la collection qui stocke les sommets à visiter : une <span style="font-family: 'Trebuchet MS' ; font-weight: bold">pile</span> pour le parcours en profondeur et une <span style="font-family: 'Trebuchet MS' ; font-weight: bold">file</span> pour le parcours en largeur.</p>
+</details>
+<h3 id="principe-de-lalgorithme-de-parcours-en-profondeur"><div class="encadré3"><strong>Principe de l'algorithme de parcours en profondeur</strong></div></h3>
+<div class="couleur_puce17">
+<ul>
+<li>On choisit un sommet de départ.</li>
+<li>On l'empile.</li>
+<li>Tant que la pile n'est pas vide :</li>
+</ul>
+</div>
+<div class="couleur_puce17etoi_decal">
+<ul>
+<li>On dépile son sommet.</li>
+<li>S'il n'a pas encore été visité, on le marque comme visité (en le plaçant dans un dictionnaire <code class="highlight"><span class="n">sommets_visites</span></code> par exemple) et on empile tous ses voisins non encore visités.</li>
+<li>Sinon on ne fait rien.</li>
+</ul>
+</div>
+<div class="couleur_puce17">
+<ul>
+<li>On renvoie alors le dictionnaire obtenu.</li>
+</ul>
+</div>
+<p>En stockant les sommets encore à visiter dans une <span style="font-family: 'Trebuchet MS' ; font-weight: bold">pile</span>, on s'assure que ce sont les derniers sommets découverts qui vont être visités en premier (<strong>LIFO</strong>, <em>Last In First Out</em>).</p>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>On applique cet algorithme sur le graphe <span class="arithmatex">\(\small{G_1}\)</span> précédent à partir du sommet <span class="arithmatex">\(\small{A}\)</span> par exemple :</p>
+<p></p><div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="n">G1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+    <span class="s2">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+    <span class="s2">"C"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">],</span>
+    <span class="s2">"D"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+    <span class="s2">"E"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+    <span class="s2">"F"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C"</span><span class="p">],</span>
+    <span class="s2">"G"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C"</span><span class="p">]</span>   
+<span class="p">}</span>
+</code></pre></div>
+<div class="couleur_puce32">
+<ul>
+<li>On empile le sommet <span class="arithmatex">\(\small{A}\)</span> dans une pile :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile1.png">
+<div class="couleur_puce32">
+<ul>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{A}\)</span>.</li>
+<li><span class="arithmatex">\(\small{A}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire <code class="highlight"><span class="n">visites</span></code> : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On empile ses voisins <span class="arithmatex">\(\small{B}\)</span> et <span class="arithmatex">\(\small{D}\)</span> (qui n'ont pas encore été visités) dans la pile :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile2.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{D}\)</span>.</li>
+<li><span class="arithmatex">\(\small{D}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On empile son seul voisin (<span class="arithmatex">\(\small{E}\)</span>) qui n'a pas encore été visité (puisque <span class="arithmatex">\(\small{A}\)</span> l'a été) dans la pile :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile3.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{E}\)</span>.</li>
+<li><span class="arithmatex">\(\small{E}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On empile ses deux voisins (<span class="arithmatex">\(\small{B}\)</span> et <span class="arithmatex">\(\small{C}\)</span>) qui n'ont pas encore été visités (puisque <span class="arithmatex">\(\small{D}\)</span> l'a été) dans la pile :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile4.png">
+<div class="admonition notes2">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>Le sommet <span class="arithmatex">\(\small{B}\)</span> est donc empilé deux fois, en tant que voisin des sommets <span class="arithmatex">\(\small{A}\)</span> et <span class="arithmatex">\(\small{E}\)</span> mais n'est toujours pas marqué comme "visité" !</p>
+</div>
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{C}\)</span>.</li>
+<li><span class="arithmatex">\(\small{C}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On empile ses trois voisins (<span class="arithmatex">\(\small{B}\)</span>, <span class="arithmatex">\(\small{F}\)</span> et <span class="arithmatex">\(\small{G}\)</span>) qui n'ont pas encore été visités (puisque <span class="arithmatex">\(\small{E}\)</span> l'a été) dans la pile :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile5.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{G}\)</span>.</li>
+<li><span class="arithmatex">\(\small{G}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li><span class="arithmatex">\(\small{G}\)</span> n'a aucun voisin non visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile6.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{F}\)</span>.</li>
+<li><span class="arithmatex">\(\small{F}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li><span class="arithmatex">\(\small{F}\)</span> n'a aucun voisin non visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile7.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{B}\)</span>.</li>
+<li><span class="arithmatex">\(\small{B}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile8.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{B}\)</span>.</li>
+<li><span class="arithmatex">\(\small{B}\)</span> a déjà été visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile9.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la pile n'est pas vide.</li>
+<li>On dépile le sommet de la pile qui est <span class="arithmatex">\(\small{B}\)</span>.</li>
+<li><span class="arithmatex">\(\small{B}\)</span> a déjà été visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/Pile10.png">
+<div class="couleur_puce32">
+<ul>
+<li>La pile est vide !</li>
+<li>Le dictionnaire retourné est donc <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+</ul>
+</div>
+<div class="admonition notes2">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>On a utilisé ici un dictionnaire pour marquer les sommets (en les ajoutant dans le dictionnaire). La valeur d'un sommet visité (ici <code class="highlight"><span class="kc">True</span></code>) n'a pas d'importance.
+<span style="margin :5px 0 0 0; display: block;">On aurait donc pu utiliser ici une structure de données abstraite plus simple : l'ensemble (voir <a href="Exercices.html#exercice-2">Exercice 2</a>).</span>
+<span style="margin :5px 0 0 0; display: block;">On verra par la suite l'intérêt d'avoir utilisé un dictionnaire plutôt qu'une autre structure.</span></p>
+</div>
+</details>
+<details class="exercice4">
+<summary>Exercice 1 ⭐⭐ </summary>
+<p>Écrire pour la classe <code class="highlight"><span class="n">grapheNoLs</span></code> une nouvelle méthode <code class="highlight"><span class="n">parcours_DFS</span><span class="p">()</span></code>, qui utilise une pile.<br>
+<span style="margin :10px 0 0 0; display: block;">Pour tester cette méthode, on pourra utiliser la fonction suivante qui génère un graphe simple non-orienté à <code class="highlight"><span class="n">nb_sommets</span></code> sommets, <code class="highlight"><span class="n">nb_aretes</span></code> arêtes et qui est représenté par un dictionnaire :</span></p>
+<p></p><div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gen_graph_no_ls</span><span class="p">(</span><span class="n">nb_sommets</span><span class="p">,</span> <span class="n">nb_aretes</span><span class="p">):</span>
+    <span class="n">alphabet</span> <span class="o">=</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">65</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_sommets</span><span class="p">)]</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">grapheNoLs</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">lettre</span> <span class="ow">in</span> <span class="n">alphabet</span> <span class="p">:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_sommet</span><span class="p">(</span><span class="n">lettre</span><span class="p">)</span>
+    
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_aretes</span><span class="p">):</span>
+        <span class="k">while</span> <span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span> <span class="ow">or</span> <span class="n">G</span><span class="o">.</span><span class="n">existe_arete</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">):</span>
+            <span class="n">s1</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
+            <span class="n">s2</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_arete</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">G</span>
+</code></pre></div>
+<center>
+<a class="md-button" href="Correction_des_exos_algo_sur_les_graphes.html#correction-de-lexercice-1" target="_blank">Correction de l'exercice 1 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M10.76 8.69a.76.76 0 0 0-.76.76V20.9c0 .42.34.76.76.76.19 0 .35-.06.48-.16l1.91-1.55 1.66 3.62c.13.27.4.43.69.43.11 0 .22 0 .33-.08l2.76-1.28c.38-.18.56-.64.36-1.01L17.28 18l2.41-.45a.9.9 0 0 0 .43-.26c.27-.32.23-.79-.12-1.08l-8.74-7.35-.01.01a.76.76 0 0 0-.49-.18M15 10V8h5v2zm-1.17-5.24 2.83-2.83 1.41 1.41-2.83 2.83zM10 0h2v5h-2zM3.93 14.66l2.83-2.83 1.41 1.41-2.83 2.83zm0-11.32 1.41-1.41 2.83 2.83-1.41 1.41zM7 10H2V8h5z"></path></svg></span></a>
+</center>
+</details>
+<h3 id="principe-de-lalgorithme-de-parcours-en-largeur"><div class="encadré3"><strong>Principe de l'algorithme de parcours en largeur</strong></div></h3>
+<p>C'est simple, il suffit de remplacer la <span style="font-family: 'Trebuchet MS' ; font-weight: bold">pile</span> par une <span style="font-family: 'Trebuchet MS' ; font-weight: bold">file</span> !</p>
+<div class="couleur_puce17">
+<ul>
+<li>On choisit un sommet de départ.</li>
+<li>On l'enfile.</li>
+<li>Tant que la file n'est pas vide :</li>
+</ul>
+</div>
+<div class="couleur_puce17etoi_decal">
+<ul>
+<li>On défile son premier élément.</li>
+<li>S'il n'a pas encore été visité, on le marque comme visité (en le plaçant dans un dictionnaire <code class="highlight"><span class="n">sommets_visites</span></code> par exemple) et on enfile tous ses voisins non encore visités.</li>
+<li>Sinon on ne fait rien.</li>
+</ul>
+</div>
+<p>En stockant les sommets encore à visiter dans une <span style="font-family: 'Trebuchet MS' ; font-weight: bold">file</span>, on s'assure que ce sont les premiers sommets découverts qui vont être visités en premier (<strong>FIFO</strong>, <em>First In First Out</em>).</p>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>On applique cet algorithme sur le graphe <span class="arithmatex">\(\small{G_1}\)</span> précédent à partir du sommet <span class="arithmatex">\(\small{A}\)</span> par exemple :</p>
+<p></p><div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="n">G1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+    <span class="s2">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+    <span class="s2">"C"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"F"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">],</span>
+    <span class="s2">"D"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span>
+    <span class="s2">"E"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+    <span class="s2">"F"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C"</span><span class="p">],</span>
+    <span class="s2">"G"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C"</span><span class="p">]</span>   
+<span class="p">}</span>
+</code></pre></div>
+<div class="couleur_puce32">
+<ul>
+<li>On enfile le sommet <span class="arithmatex">\(\small{A}\)</span> dans une file :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File1.png">
+<div class="couleur_puce32">
+<ul>
+<li>On défile l'élément en tête de file qui est <span class="arithmatex">\(\small{A}\)</span>.</li>
+<li><span class="arithmatex">\(\small{A}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire <code class="highlight"><span class="n">visites</span></code> : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On enfile ses voisins <span class="arithmatex">\(\small{B}\)</span> et <span class="arithmatex">\(\small{D}\)</span> (qui n'ont pas encore été visités) dans la file :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File2.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{B}\)</span>.</li>
+<li><span class="arithmatex">\(\small{B}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On enfile ses deux voisins (<span class="arithmatex">\(\small{C}\)</span> et <span class="arithmatex">\(\small{E}\)</span>) qui n'ont pas encore été visités (puisque <span class="arithmatex">\(\small{A}\)</span> l'a été) dans la file :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File3.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{D}\)</span>.</li>
+<li><span class="arithmatex">\(\small{D}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On enfile son seul voisin (<span class="arithmatex">\(\small{E}\)</span>) qui n'a pas encore été visité (puisque <span class="arithmatex">\(\small{A}\)</span> l'a été) dans la file :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File4.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{C}\)</span>.</li>
+<li><span class="arithmatex">\(\small{C}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li>On enfile ses trois voisins (<span class="arithmatex">\(\small{E}\)</span>, <span class="arithmatex">\(\small{F}\)</span> et <span class="arithmatex">\(\small{G}\)</span>) qui n'ont pas encore été visités (puisque <span class="arithmatex">\(\small{B}\)</span> l'a été) dans la file :</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File5.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{E}\)</span>.</li>
+<li><span class="arithmatex">\(\small{E}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li><span class="arithmatex">\(\small{E}\)</span> n'a aucun voisin non visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File6.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{E}\)</span>.</li>
+<li><span class="arithmatex">\(\small{E}\)</span> a déjà été visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File7.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{E}\)</span>.</li>
+<li><span class="arithmatex">\(\small{E}\)</span> a déjà été visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File8.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{F}\)</span>.</li>
+<li><span class="arithmatex">\(\small{F}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li><span class="arithmatex">\(\small{F}\)</span> n'a aucun voisin non visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File9.png">
+<div class="couleur_puce32">
+<ul>
+<li>On recommence puisque la file n'est pas vide.</li>
+<li>On défile la tête de la file qui est <span class="arithmatex">\(\small{G}\)</span>.</li>
+<li><span class="arithmatex">\(\small{G}\)</span> n'a pas encore été visité donc on le place dans le dictionnaire : <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+<li><span class="arithmatex">\(\small{G}\)</span> n'a aucun voisin non visité.</li>
+</ul>
+<p></p></div>
+<img alt="Illustration" class="image" src="images/File10.png" width="50%">
+<div class="couleur_puce32">
+<ul>
+<li>La file est vide !</li>
+<li>Le dictionnaire retourné est donc <code class="highlight"><span class="n">visites</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></code>.</li>
+</ul>
+</div>
+</details>
+<details class="exercice4">
+<summary>Exercice 2 ⭐⭐ </summary>
+<p>Écrire pour la classe <code class="highlight"><span class="n">grapheNoLs</span></code> une nouvelle méthode <code class="highlight"><span class="n">parcours_BFS</span><span class="p">()</span></code>, qui utilise une file.  </p>
+<p></p><center>
+<a class="md-button" href="Correction_des_exos_algo_sur_les_graphes.html#correction-de-lexercice-2" target="_blank">Correction de l'exercice 2 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M10.76 8.69a.76.76 0 0 0-.76.76V20.9c0 .42.34.76.76.76.19 0 .35-.06.48-.16l1.91-1.55 1.66 3.62c.13.27.4.43.69.43.11 0 .22 0 .33-.08l2.76-1.28c.38-.18.56-.64.36-1.01L17.28 18l2.41-.45a.9.9 0 0 0 .43-.26c.27-.32.23-.79-.12-1.08l-8.74-7.35-.01.01a.76.76 0 0 0-.49-.18M15 10V8h5v2zm-1.17-5.24 2.83-2.83 1.41 1.41-2.83 2.83zM10 0h2v5h-2zM3.93 14.66l2.83-2.83 1.41 1.41-2.83 2.83zm0-11.32 1.41-1.41 2.83 2.83-1.41 1.41zM7 10H2V8h5z"></path></svg></span></a>
+</center>
+</details>
+<div class="admonition warning">
+<p class="admonition-title"><strong>Attention</strong></p>
+<p>Quel que soit le parcours, l'ordre de parcours dépend de l'ordre dans lequel sont stockés les voisins dans les listes de voisins/successeurs car celui-ci détermine l'ordre d'ajout dans la <span style="font-family: 'Trebuchet MS' ; font-weight: bold">pile</span> ou la <span style="font-family: 'Trebuchet MS' ; font-weight: bold">file</span>. Il y a donc plusieurs réponses possibles pour un même parcours.</p>
+</div>
+<h2 id="reperer-la-presence-dun-cyclecircuit-dans-un-graphe"><div class="encadré2"><strong>Repérer la présence d'un cycle/circuit dans un graphe</strong></div></h2>
+<p>Rappelons les définitions d'un cycle et d'un circuit :</p>
+<div class="couleur_puce11">
+<ul>
+<li>Dans un graphe <strong>non-orienté</strong>, un <strong>cycle</strong> est une suite d'arêtes consécutives (chaîne) dont les deux sommets extrémités sont identiques.</li>
+<li>Dans un graphe <strong>orienté</strong>, un <strong>circuit</strong> est une suite d'arcs consécutifs (chemin) dont les deux sommets extrémités sont identiques.</li>
+</ul>
+</div>
+<h3 id="principe-de-lalgorithme-de-detection-de-cycle"><div class="encadré3"><strong>Principe de l'algorithme de détection de cycle</strong></div></h3>
+<p>Il suffit d'adapter légèrement, au choix, l'un des deux algorithmes de parcours du graphe. Si lors du parcours on rencontre (en dépilant ou en défilant) un sommet déjà visité (marqué grâce à une liste), on a trouvé un cycle !<br>
+<span style="margin :10px 0 0 0; display: block;">En effet, cela signifie que ce sommet a été ajouté au moins deux fois dans la pile ou dans la file, ce qui veut dire que l'on peut l'atteindre par au moins deux sommets différents. Ces deux chemins ayant pour origine le sommet de départ du parcours, on a nécessairement un cycle.</span>
+<span style="margin :10px 0 0 0; display: block;">L'algorithme est alors identique à celui d'un parcours en stoppant le parcours si un cycle est trouvé.</span>
+<span style="margin :10px 0 0 0; display: block;">Enfin, si le graphe non-orienté est connexe, on peut tester la présence d'un cycle à partir de n'importe quel sommet de départ. En revanche, pour un graphe non connexe (et toujours non-orienté), il faut s'assurer de parcourir tous ses sommets. On peut par exemple lancer la détection à partir de chaque sommet.</span></p>
+<details class="exercice4">
+<summary>Exercice 3 ⭐⭐ </summary>
+<p>Écrire pour la classe <code class="highlight"><span class="n">grapheNoLs</span></code> la méthode <code class="highlight"><span class="n">is_cycle</span><span class="p">()</span></code> qui renvoie <code class="highlight"><span class="kc">True</span></code> si le graphe présente un cycle.  </p>
+<p></p><center>
+<a class="md-button" href="Correction_des_exos_algo_sur_les_graphes.html#correction-de-lexercice-3" target="_blank">Correction de l'exercice 3 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M10.76 8.69a.76.76 0 0 0-.76.76V20.9c0 .42.34.76.76.76.19 0 .35-.06.48-.16l1.91-1.55 1.66 3.62c.13.27.4.43.69.43.11 0 .22 0 .33-.08l2.76-1.28c.38-.18.56-.64.36-1.01L17.28 18l2.41-.45a.9.9 0 0 0 .43-.26c.27-.32.23-.79-.12-1.08l-8.74-7.35-.01.01a.76.76 0 0 0-.49-.18M15 10V8h5v2zm-1.17-5.24 2.83-2.83 1.41 1.41-2.83 2.83zM10 0h2v5h-2zM3.93 14.66l2.83-2.83 1.41 1.41-2.83 2.83zm0-11.32 1.41-1.41 2.83 2.83-1.41 1.41zM7 10H2V8h5z"></path></svg></span></a>
+</center>
+</details>
+<h3 id="principe-de-lalgorithme-de-detection-dun-circuit"><div class="encadré3"><strong>Principe de l'algorithme de détection d'un circuit</strong></div></h3>
+<p>La précédente technique ne marche plus si l'on recherche la présence d'un circuit dans un graphe orienté.
+<span style="margin :10px 0 0 0; display: block;">En effet, ce n'est pas parce qu'un sommet a été ajouté deux fois dans une pile ou une file qu'il y a présence d'un cycle. Il est possible que ce sommet soit atteint par deux arcs entrants comme l'exemple suivant :</span>
+<img alt="Illustration" class="image" src="images/GO_parcours.png">
+Par contre, il est toujours possible d'adapter l'un des deux algorithmes de parcours du graphe, en comparant le sommet de départ avec les successeurs de chaque sommet découvert pendant le parcours. Si l'un des successeurs est le sommet de départ, c'est qu'il y a un circuit !
+<span style="margin :5px 0 0 0; display: block;">Il suffit de faire cette vérification en partant de n'importe quel sommet du graphe.</span></p>
+<details class="exercice4">
+<summary>Exercice 4 ⭐⭐ </summary>
+<p>Écrire pour la classe <code class="highlight"><span class="n">grapheOLs</span></code> la méthode <code class="highlight"><span class="n">is_circuit</span><span class="p">()</span></code> qui renvoie <code class="highlight"><span class="kc">True</span></code> si le graphe présente un circuit.  </p>
+<p></p><center>
+<a class="md-button" href="Correction_des_exos_algo_sur_les_graphes.html#correction-de-lexercice-4" target="_blank">Correction de l'exercice 4 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M10.76 8.69a.76.76 0 0 0-.76.76V20.9c0 .42.34.76.76.76.19 0 .35-.06.48-.16l1.91-1.55 1.66 3.62c.13.27.4.43.69.43.11 0 .22 0 .33-.08l2.76-1.28c.38-.18.56-.64.36-1.01L17.28 18l2.41-.45a.9.9 0 0 0 .43-.26c.27-.32.23-.79-.12-1.08l-8.74-7.35-.01.01a.76.76 0 0 0-.49-.18M15 10V8h5v2zm-1.17-5.24 2.83-2.83 1.41 1.41-2.83 2.83zM10 0h2v5h-2zM3.93 14.66l2.83-2.83 1.41 1.41-2.83 2.83zm0-11.32 1.41-1.41 2.83 2.83-1.41 1.41zM7 10H2V8h5z"></path></svg></span></a>
+</center>
+</details>
+<h2 id="recherche-dun-chemindune-chaine-dans-un-graphe"><div class="encadré2"><strong>Recherche d'un chemin/d'une chaîne dans un graphe</strong></div></h2>
+<p>Rappelons quelques définitions :</p>
+<div class="couleur_puce11">
+<ul>
+<li>Dans un graphe non orienté, une chaîne est une séquence ordonnée d'arêtes telle que chaque arête a une extrémité en commun avec l'arête suivante.</li>
+<li>Dans un graphe orienté, un chemin désigne une séquence ordonnée d'arcs consécutifs.</li>
+</ul>
+</div>
+<div class="admonition notes1">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>Dans la suite, on ne parlera que de chaînes ou de chemins simples, c'est-à-dire n'empruntant pas deux fois la même arête (ou le même arc).</p>
+</div>
+<p>En utilisant un parcours en profondeur ou en largeur, on peut trouver tous les sommets accessibles à partir d'un sommet de départ. Cela permet d'écrire très facilement un algorithme qui renvoie <code class="highlight"><span class="kc">True</span></code> s'il existe un chemin pour aller d'un point <span class="arithmatex">\(\small{A}\)</span> à un point <span class="arithmatex">\(\small{B}\)</span>. Il suffit de lancer l'un des deux parcours à partir du sommet <span class="arithmatex">\(\small{A}\)</span> et de regarder à la fin du parcours si le sommet <span class="arithmatex">\(\small{B}\)</span> a été atteint (s'il est dans le dictionnaire <code class="highlight"><span class="n">sommets_visites</span></code>).
+<span style="margin :10px 0 0 0; display: block;">Cependant, cet algorithme ne permet pas d'exhiber un tel chemin. Pour cela, il faut travailler un peu plus.</span></p>
+<h3 id="principe-de-lalgorithme-de-recherche-dun-chemindune-chaine"><div class="encadré3"><strong>Principe de l'algorithme de recherche d'un chemin/d'une chaîne</strong></div></h3>
+<p>Une idée est <strong>d'utiliser différemment le dictionnaire <code class="highlight"><span class="n">sommets_visites</span></code></strong>. Celui-ci ne servira plus à marquer (à <code class="highlight"><span class="kc">True</span></code>) les sommets visités mais associera à chaque sommet, le sommet qui permet de l'atteindre pour la première fois (le premier sommet duquel il est voisin dans le parcours).
+<span style="margin :10px 0 0 0; display: block;">Autrement dit, dès qu'on visite un sommet, il faut l'associer à tous ses voisins (non encore visités) dans le dictionnaire. On initialisera à <code class="highlight"><span class="kc">None</span></code> le sommet initial dans le dictionnaire. A la fin du parcours, il suffira de "remonter" le dictionnaire du sommet de fin au sommet de début.</span>
+<span style="margin :10px 0 0 0; display: block;">Voici le principe plus en détail (en utilisant un parcours en profondeur) :</span></p>
+<div class="couleur_puce17">
+<ul>
+<li>On choisit le sommet de départ que l'on associe à <code class="highlight"><span class="kc">None</span></code>.</li>
+<li>On l'empile.</li>
+<li>Tant que la pile n'est pas vide :</li>
+</ul>
+</div>
+<div class="couleur_puce17etoi_decal">
+<ul>
+<li>On dépile son sommet <code class="highlight"><span class="n">s</span></code>.</li>
+<li>On empile tous ses voisins non encore visités et on les associe à la valeur <code class="highlight"><span class="n">s</span></code> dans le dictionnaire.</li>
+</ul>
+</div>
+<p>La méthode <code class="highlight"><span class="n">parcours_chemin_DFS</span><span class="p">()</span></code> suivante, basée sur un parcours en profondeur, permet de construire ce dictionnaire :</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parcours_chemin_DFS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debut</span><span class="p">):</span>
+    <span class="n">sommets_visites</span> <span class="o">=</span> <span class="p">{</span><span class="n">debut</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span> <span class="c1"># on associe le sommet de départ à None</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="n">debut</span><span class="p">)</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+        <span class="n">liste_voisins</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">voisins</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sommets_visites</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">voisin</span> <span class="ow">in</span> <span class="n">liste_voisins</span><span class="p">:</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="n">voisin</span><span class="p">)</span>
+            <span class="n">sommets_visites</span><span class="p">[</span><span class="n">voisin</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span> <span class="c1"># on associe s à tous les voisins de s pas encore visités</span>
+    <span class="k">return</span> <span class="n">sommets_visites</span>
+</code></pre></div>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>On peut lancer le parcours sur le graphe <span class="arithmatex">\(\small{G_1}\)</span> à partir du sommet <span class="arithmatex">\(\small{A}\)</span> :
+<img alt="Illustration" class="image" src="images/Algo1.png"></p>
+<div class="highlight"><span class="filename">🖳 Console Python</span><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">parcours_chemin_DFS</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)</span>
+<span class="go">{'A': None, 'B': 'A', 'D': 'A', 'E': 'D', 'C': 'E', 'F': 'C', 'G': 'C'}</span>
+</code></pre></div>
+<p>Pour trouver un chemin entre le sommet <span class="arithmatex">\(\small{A}\)</span> et le sommet <span class="arithmatex">\(\small{G}\)</span>, il faut "remonter" les sommets à partir de <span class="arithmatex">\(\small{G}\)</span> :
+</p><div class="couleur_puce32">
+<ul>
+<li>On cherche <span class="arithmatex">\(\small{G}\)</span> : il est associé à la valeur <span class="arithmatex">\(\small{C}\)</span> donc on a pu atteindre <span class="arithmatex">\(\small{G}\)</span> à partir de <span class="arithmatex">\(\small{C}\)</span>.</li>
+<li>On cherche <span class="arithmatex">\(\small{C}\)</span> : atteint à partir de <span class="arithmatex">\(\small{E}\)</span>.</li>
+<li>On cherche <span class="arithmatex">\(\small{E}\)</span> : atteint à partir de <span class="arithmatex">\(\small{D}\)</span>.</li>
+<li>On cherche <span class="arithmatex">\(\small{D}\)</span> : atteint à partir de <span class="arithmatex">\(\small{A}\)</span>.</li>
+</ul>
+<p></p></div>
+On a terminé puisqu'on a fini par tomber sur <span class="arithmatex">\(\small{A}\)</span>.<br>
+<span style="margin :5px 0 0 0; display: block;">Un chemin possible entre <span class="arithmatex">\(\small{A}\)</span> et <span class="arithmatex">\(\small{G}\)</span> est donc : <code class="highlight"><span class="n">A</span> <span class="o">--&gt;</span> <span class="n">D</span> <span class="o">--&gt;</span> <span class="n">E</span> <span class="o">--&gt;</span> <span class="n">C</span> <span class="o">--&gt;</span> <span class="n">G</span></code>.</span>
+<div class="admonition notes2">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>Nous étions sûr de remonter jusqu'à <span class="arithmatex">\(\small{A}\)</span> puisque <span class="arithmatex">\(\small{G}\)</span>, se trouvant dans le dictionnaire, était nécessairement atteignable en partant de <span class="arithmatex">\(\small{A}\)</span>. Si un sommet ne se trouve pas dans le dictionnaire, on sait alors qu'il n'existe pas de chemin vers ce sommet en partant de <span class="arithmatex">\(\small{A}\)</span>.</p>
+</div>
+</details>
+<p>La méthode <code class="highlight"><span class="n">chemin_DFS</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span></code> permet d'effectuer le travail de "remonter" en renvoyant une liste <code class="highlight"><span class="n">ch</span></code> contenant les sommets du chemin trouvé entre les sommets <code class="highlight"><span class="n">debut</span></code> et <code class="highlight"><span class="n">fin</span></code>. Elle ajoute les sommets à <code class="highlight"><span class="n">ch</span></code> au fur et à mesure de la remontée jusqu'à tomber sur celui de départ et renvoie ensuite cette liste qui a été préalablement renversée pour obtenir les sommets dans le bon ordre :</p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">chemin_DFS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+    <span class="n">sommets_visites</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parcours_chemin_DFS</span><span class="p">(</span><span class="n">debut</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sommets_visites</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">fin</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span>           <span class="c1"># on ajoute le sommet de fin à partir duquel commence la "remontée"</span>
+    <span class="k">while</span> <span class="n">s</span> <span class="o">!=</span> <span class="n">debut</span><span class="p">:</span>  <span class="c1"># tant qu'on ne trouve pas le sommet de départ</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">sommets_visites</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="c1"># on remonte en passant au sommet associé</span>
+        <span class="n">ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>   <span class="c1"># qu'on ajoute au chemin</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>       <span class="c1"># ne pas oublier de renverser la liste pour renvoyer le chemin dans le bon ordre</span>
+    <span class="k">return</span> <span class="n">ch</span>
+</code></pre></div>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>On vérifie alors le résultat du précédent exemple :
+</p><div class="highlight"><span class="filename">🖳 Console Python</span><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">chemin_DFS</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">)</span>
+<span class="go">['A', 'D', 'E', 'C', 'G']</span>
+</code></pre></div>
+</details>
+<div class="admonition notes2">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>On constate que le chemin n'est pas le plus court car on peut faire mieux : <code class="highlight"><span class="n">A</span> <span class="o">--&gt;</span> <span class="n">B</span> <span class="o">--&gt;</span> <span class="n">C</span> <span class="o">--&gt;</span> <span class="n">G</span></code>.<br>
+Peut-on trouver le chemin le plus court ? La réponse est oui !</p>
+</div>
+<h3 id="recherche-dun-plus-court-chemin"><div class="encadré3"><strong>Recherche d'un plus court chemin</strong></div></h3>
+<p>En faisant la même recherche à partir d'un parcours en largeur, on obtiendrait un plus court chemin (en nombre d'arêtes/arcs).
+<span style="margin :10px 0 0 0; display: block;">En effet, l'algorithme de recherche en largeur explore d'abord les sommets à une distance <code class="highlight"><span class="mi">1</span></code> du sommet de départ, puis ceux à distance <code class="highlight"><span class="mi">2</span></code> du sommet de départ, etc. Ainsi, chacun des autres sommets est atteint en passant par un nombre minimal d'arêtes (ou arcs), ce qui assure de trouver un plus court chemin (en nombre d'arêtes/arcs) vers chacun des autres sommets.</span></p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="c1"># on remplace la pile par une file</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">parcours_chemin_BFS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debut</span><span class="p">):</span>
+    <span class="n">sommets_visites</span> <span class="o">=</span> <span class="p">{</span><span class="n">debut</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span> <span class="c1"># on associe le sommet de départ à None</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">File</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="n">debut</span><span class="p">)</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">f</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">defiler</span><span class="p">()</span>
+        <span class="n">liste_voisins</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">voisins</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sommets_visites</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">voisin</span> <span class="ow">in</span> <span class="n">liste_voisins</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="n">voisin</span><span class="p">)</span>
+            <span class="n">sommets_visites</span><span class="p">[</span><span class="n">voisin</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span> <span class="c1"># on associe s à tous les voisins de s pas encore visités</span>
+    <span class="k">return</span> <span class="n">sommets_visites</span>
+
+<span class="c1"># exactement la même fonction que cheminDFS (en remplacant juste l'appel à la première ligne)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">chemin_BFS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+    <span class="n">sommets_visites</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parcours_chemin_BFS</span><span class="p">(</span><span class="n">debut</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sommets_visites</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">fin</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">s</span> <span class="o">!=</span> <span class="n">debut</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">sommets_visites</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+        <span class="n">ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ch</span>
+</code></pre></div>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>On constate sur l'exemple précédent qu'on obtient le plus court chemin :
+</p><div class="highlight"><span class="filename">🖳 Console Python</span><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">chemin_BFS</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">)</span>
+<span class="go">['A', 'B', 'C', 'G']</span>
+</code></pre></div>
+</details>
+<h3 id="distance-entre-les-sommets"><div class="encadré3"><strong>Distance entre les sommets</strong></div></h3>
+<p>En modifiant le rôle du dictionnaire <code class="highlight"><span class="n">sommets_visites</span></code> utilisé dans la recherche de chemin du parcours en largeur, on peut très facilement trouver la distance du sommet de départ à tous les autres. On va utiliser <code class="highlight"><span class="n">sommets_visites</span></code> pour associer à chaque sommet la distance qui le sépare du sommet d'origine. La distance d'un sommet découvert est celle du sommet d'où l'on vient, plus 1 !
+<span style="margin :10px 0 0 0; display: block;">En initialisant une distance égale à <code class="highlight"><span class="mi">0</span></code> pour le sommet de départ, on obtient, en changeant uniquement une ligne, les distances entre chaque sommet et le sommet de départ :</span></p>
+<div class="highlight"><span class="filename">🐍 Script Python</span><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parcours_distance_BFS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debut</span><span class="p">):</span>
+    <span class="n">sommets_visites</span> <span class="o">=</span> <span class="p">{</span><span class="n">debut</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span> <span class="c1"># debut est à distance 0 de lui-même</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">File</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="n">debut</span><span class="p">)</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">f</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">defiler</span><span class="p">()</span>
+        <span class="n">liste_voisins</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">voisins</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sommets_visites</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">voisin</span> <span class="ow">in</span> <span class="n">liste_voisins</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="n">voisin</span><span class="p">)</span>
+            <span class="n">sommets_visites</span><span class="p">[</span><span class="n">voisin</span><span class="p">]</span> <span class="o">=</span> <span class="n">sommets_visites</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># la distance est celle de s (d'où l'on vient) + 1</span>
+    <span class="k">return</span> <span class="n">sommets_visites</span>
+</code></pre></div>
+<details class="exemple1">
+<summary><strong>Exemple</strong></summary>
+<p>On peut vérifier les distances entre le sommet <span class="arithmatex">\(\small{A}\)</span> et les autres dans le graphe <span class="arithmatex">\(\small{G_1}\)</span>.
+</p><div class="highlight"><span class="filename">🖳 Console Python</span><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">parcours_distance_BFS</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)</span>
+<span class="go">{'A': 0, 'B': 1, 'D': 1, 'C': 2, 'E': 2, 'F': 3, 'G': 3}</span>
+</code></pre></div>
+</details>
+<p>Les notions de plus court chemin ou de distance que l'on vient de voir, correspondent au nombre d'arêtes/arcs séparant les sommets. On suppose donc que chaque arête à le même coût dans ce calcul.  Autrement dit, nos algorithmes s'appliquent sur des graphes non pondérés (ou des graphes dans lesquels toutes les arêtes ont le même poids).
+<span style="margin :10px 0 0 0; display: block;">Avec des graphes pondérés, les arêtes n'ont pas toutes le même coût, ce qui redéfinit cette notion de distance. C'est le cas de la plupart des graphes rencontrés dans la vie courante. On ne peut donc plus appliquer l'algorithme de plus court chemin étudié. Il en existe heureusement d'autres : le plus connu d'entre eux est <strong>l'algorithme de Dijskstra</strong> (voir <a href="DM.html" target="_blank">DM</a>).</span></p>
+<h2 id="bilan"><div class="encadré2"><strong>Bilan</strong></div></h2>
+<div class="couleur_puce13">
+<ul>
+<li>Les algorithmes de parcours de graphe permettent de visiter tous les sommets d'un graphe. On a le choix entre un <strong>parcours en profondeur d'abord</strong> ou un <strong>parcours en largeur d'abord</strong>.</li>
+<li>La différence entre ces deux algorithmes est l'ordre dans lequel on visite tous les sommets. On peut donc les écrire de manière similaire en changeant juste la structure de données qui stocke les sommets à visiter : une <span style="font-family: 'Trebuchet MS' ; font-weight: bold">pile</span> pour poursuivre le parcours avec les derniers sommets rencontrés (parcours en profondeur) ou une <span style="font-family: 'Trebuchet MS' ; font-weight: bold">file</span> pour poursuivre le parcours avec les premiers sommets rencontrés (parcours en largeur).</li>
+<li>Pour ne pas tourner en rond, il faut <strong>marquer les sommets visités</strong> au cours du parcours. On a utilisé un dictionnaire pour faire ce travail.</li>
+<li>En modifiant le rôle et la façon d'utiliser ce dictionnaire, on peut facilement adapter les algorithmes de parcours pour <strong>repérer la présence d'un cycle</strong>, pour <strong>trouver un chemin entre deux sommets</strong>, voire <strong>le plus court d'entre eux</strong>.</li>
+<li>L'algorithme de parcours en largeur assure de trouver un plus court chemin dans un graphe non pondéré car il explore les différents sommets dans l'ordre de leur distance à celui de départ (ceux à distance 1, puis ceux à distance 2, etc.).</li>
+<li><strong>L'algorithme de Dijkstra</strong> (hors programme) permet de trouver le plus court chemin entre deux sommets dans un graphe pondéré : c'est celui utilisé pour router les paquets dans un réseau, pour nous guider avec un GPS, pour sortir d'un labyrinthe...</li>
+</ul>
+</div></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Dernière mise à jour">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 juillet 2026 12:38:05 UTC">18 juillet 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+    <script src="../../../js/ide.js"></script> 
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2020 - 2027 Sylvain Liaboeuf
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:sylvain.liaboeuf@ac-lyon.fr" target="_blank" rel="noopener" title="mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://lyc-hippolyte-carnot.ent.auvergnerhonealpes.fr/" target="_blank" rel="noopener" title="Lycée Carnot" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 192c0-35.3 28.7-64 64-64h64L255.9 12.9c18.3-16.4 46-16.4 64.2 0L448 128h64c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm224 184v88h128v-88c0-22.1-17.9-40-40-40h-48c-22.1 0-40 17.9-40 40m-112 8c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm16-144v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16m368 144c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm16-144v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16m-224 16a64 64 0 1 0 0-128 64 64 0 1 0 0 128"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.top", "navigation.instant", "navigation.tabs", "toc.integrate", {"tabs": false}, "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../xtra/javascripts/config.js"></script>
+      
+        <script src="../../../xtra/javascripts/interpreter.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+    
+  </body>
+</html>
