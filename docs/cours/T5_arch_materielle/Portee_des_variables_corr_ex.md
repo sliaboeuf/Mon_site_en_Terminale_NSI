@@ -1,3 +1,7 @@
+---
+password: "corr_Portée_des_Var_exo"
+---
+
 # <center><div class = "titre2"> Correction des exercices sur la portée des variables</div></center>
 
 ### <div class = "encadré_exo"> __Correction de l'exercice 1__ </div>
