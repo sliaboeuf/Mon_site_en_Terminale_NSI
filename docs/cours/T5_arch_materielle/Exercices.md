@@ -343,13 +343,15 @@ Montrer que l’ordre d’exécution donné aboutit à une situation d’interbl
 Considérons un petit système embarqué : un petit ordinateur relié à trois LED *A*, *B* et *C*.  
 Une LED peut être éteinte ou allumée et on peut configurer sa couleur.  
 On dispose de trois programmes qui affichent des signaux lumineux en faisant clignoter les LED.  
-Chaque programme possède une LED primaire et une LED secondaire. 
+Chaque programme possède une LED primaire et une LED secondaire.
+<div class="decal15" markdown="1">
 <div class="couleur_puce14etoi" markdown="1">
 
 * Le programme P<sub>1</sub> affiche ses signaux sur *A* (primaire) et *B* (secondaire) en vert. 
 * Le programme P<sub>2</sub> affiche ses signaux sur *B* (primaire) et *C* (secondaire) en orange. 
 * Enfin, le programme P<sub>3</sub> affiche ses signaux sur *C* (primaire) et *A* (secondaire) en rouge. 
 
+</div>
 </div>
 Comme les LED ne supportent pas d'être configurées dans deux couleurs en même temps, le système propose deux primitives `acquerirLED(nom)` et `rendreLED(nom)` qui permettent respectivement d'acquérir et de relâcher une LED.  
 <span style="display: block; margin: 8px 0 0 0;">Si une LED est déjà acquise, alors `acquerirLED()` bloque.</span>
