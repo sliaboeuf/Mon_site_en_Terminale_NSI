@@ -1,0 +1,6940 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Sylvain Liaboeuf">
+      
+      
+        <link rel="canonical" href="https://sliaboeuf.github.io/Mon_site_en_Terminale_NSI/cours/T3_algorithmique/Algo_KNN/correction_TOP14.html">
+      
+      
+        <link rel="prev" href="TOP14.html">
+      
+      
+        <link rel="next" href="../Diviser_pour_regner/Diviser_pour_r%C3%A9gner.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/Logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>[Protégé] Correction des exercices - Cours de Terminale NSI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2012a10%2010%200%200%201-10%2010A10%2010%200%200%201%202%2012%2010%2010%200%200%201%2012%202a10%2010%200%200%201%2010%2010M6%2013h8l-3.5%203.5%201.42%201.42L17.84%2012l-5.92-5.92L10.5%207.5%2014%2011H6z%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../xtra/extra.css">
+    
+      <link rel="stylesheet" href="../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0J6CVZ9WRG"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0J6CVZ9WRG",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0J6CVZ9WRG",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#correction-des-exercices" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../../index.html" title="Cours de Terminale NSI" class="md-header__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  <img src="../../../images/logo2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [Protégé] Correction des exercices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="purple"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="purple"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏡 Page d'accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T1_bases_de_donnees/sommaire.html" class="md-tabs__link">
+          
+  
+  
+  📦 T1 : Bases de données
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T2_programmation/sommaire.html" class="md-tabs__link">
+          
+  
+  
+  💻 T2 : Programmation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../sommaire.html" class="md-tabs__link">
+          
+  
+  
+  📝 T3 : Algorithmique
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T4_structures_de_donnees/sommaire.html" class="md-tabs__link">
+          
+  
+  
+  📊 T4 : Structures de données
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../T5_arch_materielle/Cours.html" class="md-tabs__link">
+          
+  
+  
+  💾 T5 : Arch. matérielle
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Cours de Terminale NSI" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI" data-md-component="logo">
+      
+  <img src="../../../images/logo2.png" alt="logo">
+
+    </a>
+    Cours de Terminale NSI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏡 Page d'accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📦 T1 : Bases de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📦 T1 : Bases de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ Modèle relationnel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ Modèle relationnel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Les_bases_de_donn%C3%A9es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Exercices_sur_les_bases_de_donn%C3%A9es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice bilan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice bilan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Les_bases_de_donnees/Correction_de_l%27exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Le langage SQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Le langage SQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Le_langage_SQL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Prise_en_main_DB_Browser.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation de DB Browser for SQLite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Memento_SQL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memento SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Exercices_sur_le_langage_SQL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_5" id="__nav_2_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice bilan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice bilan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Correction_de_l%27exercice_bilan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction de l'exercice bilan
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1_bases_de_donnees/Le_langage_SQL/Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 T2 : Programmation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💻 T2 : Programmation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ POO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ POO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/POO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/Exercice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/Correction_de_l_exercice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Poo/Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Présentation du code. Modularité. Validation d'un programme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Présentation du code. Modularité. Validation d'un programme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice bilan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice bilan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T2_programmation/Presentation_du_code/Correction_du_mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 T3 : Algorithmique
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📝 T3 : Algorithmique
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ Complexité. Variant et invariant de boucle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ Complexité. Variant et invariant de boucle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexit%C3%A9/complexite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexit%C3%A9/Correction%20des%20exos%20du%20cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexit%C3%A9/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexit%C3%A9/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexit%C3%A9/TD_Complexite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complexit%C3%A9/Correction%20des%20exos%20du%20TP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Algorithmes de tri
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Algorithmes de tri
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_de_tri/tri.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_de_tri/exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_de_tri/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❸ Algorithmes gloutons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❸ Algorithmes gloutons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_gloutons/glouton.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_gloutons/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_gloutons/voyageur.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°1 - Le voyageur de commerce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_gloutons/etagere.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°2 - Le problème des étagères
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Algos_gloutons/organisation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°3 - Un problème d’organisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❹ Algorithme KNN
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❹ Algorithme KNN
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="knn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="croco.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°1 - Crocodiles VS Alligators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pokemon.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°2 - Classification sur les Pokémons
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_5" id="__nav_4_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP n°3 - Les joueurs du TOP 14
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP n°3 - Les joueurs du TOP 14
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="TOP14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="correction_TOP14.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [Protégé] Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rappels-sur-la-manipulation-de-fichiers-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rappels sur la manipulation de fichiers CSV
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rappels sur la manipulation de fichiers CSV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 7
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rappels-sur-le-tri-des-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rappels sur le tri des données
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rappels sur le tri des données">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-6_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-7_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 7
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 8
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mise-en-place-de-lalgorithme-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mise en place de l'algorithme k-NN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mise en place de l&#39;algorithme k-NN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-5_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-de-lexercice-6_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction de l'exercice 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❺ Diviser pour régner
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❺ Diviser pour régner
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diviser_pour_regner/Diviser_pour_r%C3%A9gner.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diviser_pour_regner/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction de l'exercice
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_2" id="__nav_4_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diviser_pour_regner/Exo_rotation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diviser_pour_regner/Correction_exo_rotation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❻ Optimisation d'une fonction récursive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❻ Optimisation d'une fonction récursive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Optimisation/Optimiser_fonction_recursive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Optimisation/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❼ Vers la programmation dynamique
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❼ Vers la programmation dynamique
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prog_dynamique/Programmation_dyn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8_2" id="__nav_4_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prog_dynamique/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prog_dynamique/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❽ Recherche textuelle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❽ Recherche textuelle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Recherche_textuelle/Motifs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Recherche_textuelle/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction de l'exercice
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊 T4 : Structures de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📊 T4 : Structures de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/sommaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sommaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❶ Les listes, les piles et les files
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❶ Les listes, les piles et les files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_1" id="__nav_5_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Listes_Piles_Files/SDL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les listes, les piles et les files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Listes_Piles_Files/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Listes_Piles_Files/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Listes_Piles_Files/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❷ Les dictionnaires
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❷ Les dictionnaires
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Dictionnaires/Dictionnaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les dictionnaires
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Dictionnaires/Correction_des_exercices_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Dictionnaires/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Dictionnaires/Correction_des_exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Dictionnaires/TP_Dictionnaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Dictionnaires/Correction_des_exos_du_TP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❸ Les arbres
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❸ Les arbres
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Les_arbres.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les arbres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_2" id="__nav_5_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compression de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compression de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Activite_intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activités de découverte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Compression.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4" id="__nav_5_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projet
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projet
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/R%C3%A9partition.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Répartition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4_3" id="__nav_5_4_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les différentes fonctions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Les différentes fonctions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/sequenceToOccurrences%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sequenceToOccurrences()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/weightTree%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    weightTree()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/insertTreeInForest%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    insertTreeInForest()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/huffmanTree%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    huffmanTree()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/treeToCoding%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    treeToCoding()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/encode%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    encode()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/decode%28%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    decode()
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Mise%20en%20commun.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mise en commun
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Arbres/Banc_d_essai.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banc d'essai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ❹ Les graphes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ❹ Les graphes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_1" id="__nav_5_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/Les_graphes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les graphes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/Correction_des_exos_du_cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_2" id="__nav_5_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithme sur les graphes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algorithme sur les graphes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/Algo_sur_les_graphes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/Correction_des_exos_algo_sur_les_graphes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/Correction_des_exos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/DM.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Devoir Maison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4_structures_de_donnees/Graphes/Mini_projet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💾 T5 : Arch. matérielle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💾 T5 : Arch. matérielle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture matérielle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture matérielle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Cours.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Exercices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enoncé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Correction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables locale et globale
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Variables locale et globale
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Portee_des_variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Portee_des_variables_ex.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5_arch_materielle/Portee_des_variables_corr_ex.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correction des exercices
+  
+
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--encrypted"></span>
+  
+
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+    
+                  
+
+
+  
+  
+
+
+<div id="mkdocs-encrypted-content" style="display:none">U0mqL3HhdRfzo34rLQCqcQ==;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</div>
+<div id="mkdocs-decrypted-content" style="display:none">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>Page protégée par un mot de passe</h1>
+        <p>Contacter l'administrateur du site pour obtenir le mot de passe</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Entrer le mdp">
+        <button class="md-button md-button--primary" id="mkdocs-decrypt-button">Valider</button>
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_8";
+var encryptcontent_path = "Mon_site_en_Terminale_NSI/cours/T3_algorithmique/Algo_KNN/correction_TOP14.html";
+var decryption_failure_message = "Mot de passe invalide !";
+var encryptcontent_keystore = ["iCvdcN2xy03u7dd3qz/X9A==;yToM3tQyB/JtDlcNGHXPBE0nwJoYNj7ZvsCirxU3aZNXaqGHVd1U1ejby65q8cqweiuarzDy4jgq8TeMZ6fvIM6oG94d9rCRl0EM1bEokub+qqHE458lLaIk/qeZ6s/B;DGcPcOfqpAOic8ayAI39xw=="];
+var encryptcontent_obfuscate = 0;
+
+const encryptcontent_event = new Event("encryptcontent_event");
+var encryptcontent_done = false;
+</script>
+<script type="module">
+if (!window.hasOwnProperty("init_decryptor")) {
+    import("../../../assets/javascripts/decrypt-contents.js");
+} else {
+    init_decryptor();
+}
+</script>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Dernière mise à jour">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 août 2026 19:14:23 UTC">7 août 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+    <script src="../../../js/ide.js"></script> 
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2020 - 2027 Sylvain Liaboeuf
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:sylvain.liaboeuf@ac-lyon.fr" target="_blank" rel="noopener" title="mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://lyc-hippolyte-carnot.ent.auvergnerhonealpes.fr/" target="_blank" rel="noopener" title="Lycée Carnot" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 192c0-35.3 28.7-64 64-64h64L255.9 12.9c18.3-16.4 46-16.4 64.2 0L448 128h64c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm224 184v88h128v-88c0-22.1-17.9-40-40-40h-48c-22.1 0-40 17.9-40 40m-112 8c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm16-144v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16m368 144c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm16-144v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16m-224 16a64 64 0 1 0 0-128 64 64 0 1 0 0 128"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.top", "navigation.instant", "navigation.tabs", "toc.integrate", {"tabs": false}, "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../xtra/javascripts/config.js"></script>
+      
+        <script src="../../../xtra/javascripts/interpreter.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+    
+  </body>
+</html>
