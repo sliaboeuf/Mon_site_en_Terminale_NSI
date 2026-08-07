@@ -1,4 +1,4 @@
-# <center><div class = "titre1"> Programmation </div></center>
+# <center><div class = "titre1"> Algorithmique </div></center>
 
 !!! book2 "Les chapitres"
 	<span class='centre'>
